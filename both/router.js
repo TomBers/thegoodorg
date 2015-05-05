@@ -18,6 +18,11 @@ Router.map(function() {
     template: 'addStartup'
   });
 
+this.route('/addCorporate', {
+    path: '/addCorporate',
+    template: 'addCorporate'
+  });
+    
   this.route('/list', {
     path: '/list',
     template: 'list',
@@ -26,6 +31,17 @@ Router.map(function() {
       console.log(Startups.find().fetch());
     return {startups:Startups.find()};
   }
+  });
+    
+  this.route('/list2', {
+    path: '/list2',
+    template: 'list2',
+    // waitOn: function() {  },
+    data: function() {
+      console.log(Corporates.find().fetch());
+    return {corporates:Corporates.find()};
+  }
+
   });
 
 });
