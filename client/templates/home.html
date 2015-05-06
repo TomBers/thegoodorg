@@ -1,3 +1,21 @@
 <template name='home'>
+
+<div class='container'>
 <h1>About TGO</h1>
+
+<h2>Please Choose a Category :</h2>
+
+{{#each category}}
+<div class="checkbox">
+      <label><input type="checkbox" class='opt' id='{{cat}}'>{{cat}}</label>
+    </div>
+{{/each}}
+
+<ol>
+{{#each visibleCompanies}}
+<li>{{name}}</li>
+{{/each}}
+</ol>
+
+</div>
 </template>

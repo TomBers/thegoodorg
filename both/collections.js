@@ -1,7 +1,7 @@
 Startups = new Mongo.Collection("startups");
 Corporates = new Mongo.Collection("corporates");
 Comments = new Mongo.Collection("comments");
-
+Categories = new Mongo.Collection("categories");
 
 Startups.allow({
   insert: function () { return true; },
@@ -31,6 +31,25 @@ Startups.attachSchema(new SimpleSchema({
     autoform: {
        type: "url"
     }
+ },
+ categories: {
+   type: [String],
+   optional: true,
+   autoform: {
+     type: "select-multiple",
+     options: function () {
+
+       var opts = [];
+       var cats = Categories.find().fetch();
+       if(cats == []){return null;}
+       else{
+         cats.forEach(function(c){
+           opts.push({label:c.cat,value:c.cat});
+         });
+         return opts;
+       }
+     }
+   }
  }
 
 }));
