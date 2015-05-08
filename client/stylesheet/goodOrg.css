@@ -1,1 +1,6 @@
 /* CSS declarations go here */
+h1{font-size:3em;}
+p{
+  word-break:break-all;
+  font-size:2.5em;
+}

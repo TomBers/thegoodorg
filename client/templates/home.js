@@ -2,6 +2,7 @@ Session.setDefault('opts',[]);
 
 Template.home.rendered = function(){
 Meteor.subscribe('Startups');
+
 }
 
 Template.home.events({
@@ -19,6 +20,10 @@ Template.home.events({
 
 Template.home.helpers({
   visibleCompanies: function(){
-    return Startups.find({categories:{$in:Session.get('opts')}});
+    if(Session.get('opts').length > 0){
+      return Startups.find({categories:{$in:Session.get('opts')}});
+    }else{
+    return Startups.find();
+  }
   }
 });

@@ -12,3 +12,5 @@ nemo64:bootstrap
 less
 aldeed:autoform
 aldeed:collection2
+accounts-password
+accounts-ui

@@ -1,21 +1,41 @@
 <template name='home'>
 
-<div class='container'>
+<style>
+.companyBox{
+  /*border:1px solid black;*/
+  margin-bottom:30px;
+}
+.radio, .checkbox{
+  display:inline-block;
+  font-size:1.5em;
+  border:2px solid black;
+  padding:10px;
+}
+</style>
+
+<div class='container-fluid'>
+  <div class='col-sm-12'>
+    <div class='row'>
 <h1>About TGO</h1>
 
 <h2>Please Choose a Category :</h2>
-
+<div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
 {{#each category}}
-<div class="checkbox">
-      <label><input type="checkbox" class='opt' id='{{cat}}'>{{cat}}</label>
+<div class="checkbox" style='margin-right:30px;font-size:2em;'>
+      <label><input type="checkbox" class='opt' id='{{cat}}' checked>{{cat}}</label>
     </div>
 {{/each}}
+</div>
+</div>
 
-<ol>
 {{#each visibleCompanies}}
-<li>{{name}}</li>
+<div class='col-sm-4 companyBox'>
+<img src='http://placehold.it/350x150&text={{name}}' style='width:90%;height:auto'>
+<h1 style='margin-bottom: 0px;'>{{name}}</h1><a href='/startup/{{_id}}'>More</a>
+</div>
 {{/each}}
-</ol>
 
+
+</div>
 </div>
 </template>

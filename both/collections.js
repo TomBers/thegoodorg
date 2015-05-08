@@ -2,6 +2,7 @@ Startups = new Mongo.Collection("startups");
 Corporates = new Mongo.Collection("corporates");
 Comments = new Mongo.Collection("comments");
 Categories = new Mongo.Collection("categories");
+Wants = new Mongo.Collection("wants");
 
 Startups.allow({
   insert: function () { return true; },

@@ -12,7 +12,7 @@ Router.map(function() {
    path: '/',
    template: 'home',
      data: function() {
-     return {category:Categories.find()};
+     return {category:Categories.find().fetch()};
    }
  });
 
@@ -27,6 +27,16 @@ Router.map(function() {
 this.route('/addCorporate', {
     path: '/addCorporate',
     template: 'addCorporate'
+  });
+
+  this.route('/startup', {
+    path: '/startup/:_id',
+    template: 'startup',
+    // waitOn: function() {  },
+    data: function() {
+      console.log(Startups.find({_id:this.params._id}).fetch());
+    return Startups.findOne({_id:this.params._id});
+  }
   });
 
   this.route('/list', {
