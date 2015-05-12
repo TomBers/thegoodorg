@@ -59,5 +59,15 @@ this.route('/addCorporate', {
   }
 
   });
+  this.route('/examples', {
+    path: '/examples',
+    template: 'collab_examples',
+    // waitOn: function() {  },
+    data: function() {
+      // console.log(Collaborations.find().fetch());
+    return {collaborations:Collaborations.find()};
+  }
+
+  });
 
 });

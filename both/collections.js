@@ -3,6 +3,9 @@ Corporates = new Mongo.Collection("corporates");
 Comments = new Mongo.Collection("comments");
 Categories = new Mongo.Collection("categories");
 Wants = new Mongo.Collection("wants");
+Collaborations = new Mongo.Collection("collaborations");
+Feedbacks = new Mongo.Collection("feedbacks");
+
 
 Startups.allow({
   insert: function () { return true; },
@@ -61,7 +64,6 @@ Corporates.allow({
   remove: function () { return true; }
 });
 
-
 Corporates.attachSchema(new SimpleSchema({
   name: {
     type: String,
@@ -92,5 +94,99 @@ Corporates.attachSchema(new SimpleSchema({
        type: "url"
     }
  }
+
+}));
+
+Collaborations.allow({
+  insert: function () { return true; },
+  update: function () { return true; },
+  remove: function () { return true; }
+});
+
+Collaborations.attachSchema(new SimpleSchema({
+  name: {
+    type: String,
+    label: "Collaboration Reference",
+    max: 200
+  },
+  id_us: {
+      type: String,
+      min: 1,
+      max: 100,
+      autoform: {
+         rows: 1
+      }
+   },
+  id_them: {
+      type: String,
+      min: 1,
+      max: 100,
+      autoform: {
+         rows: 1
+      }
+   },
+  project: {
+      type: String,
+      min: 1,
+      max: 100,
+      autoform: {
+         rows: 1
+      }
+   },
+  detail: {
+      type: String,
+      min: 1,
+      max: 400,
+      autoform: {
+         rows: 1
+      }
+ }
+
+}));
+
+Feedbacks.allow({
+  insert: function () { return true; },
+  update: function () { return true; },
+  remove: function () { return true; }
+});
+
+Feedbacks.attachSchema(new SimpleSchema({
+  name: {
+    type: String,
+    label: "Feedback Reference",
+    max: 200
+  },
+  id_us: {
+      type: String,
+      min: 1,
+      max: 100,
+      autoform: {
+         rows: 1
+      }
+   },
+  id_them: {
+      type: String,
+      min: 1,
+      max: 100,
+      autoform: {
+         rows: 1
+      }
+   },
+  description: {
+      type: String,
+      min: 1,
+      max: 200,
+      autoform: {
+         rows: 2
+      }
+   },
+  quote: {
+      type: String,
+      min: 1,
+      max: 200,
+      autoform: {
+         rows: 2
+      }
+   }
 
 }));

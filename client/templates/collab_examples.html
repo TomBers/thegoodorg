@@ -1,0 +1,28 @@
+<template name='collab_examples'>
+
+<div class='container'>
+  <h1>Collaborations</h1>
+
+  {{#each collaborations}}
+  <h3>Us : {{id_us}}</h3>
+  <h3>Worked with : {{id_them}}</h3>
+  <h3>On : {{project}}</h3>
+  <h3>Detail : {{detail}}</h3>
+  <h1>----------------------------------------------</h1>
+    {{/each}}
+</div>
+
+<div class='container'>
+    <h1>********************************************</h1>  
+    <h1>Feedback</h1>
+
+    {{#each feedbacks}}
+    <h3>Us : {{id_us}}</h3>
+    <h3>Worked with : {{id_them}}</h3>
+    <h3>On : {{project}}</h3>
+    <h3>" : {{detail}}</h3>
+    <h3>" </h3>
+    <h1>----------------------------------------------</h1>
+        {{/each}}
+</div>
+</template>
