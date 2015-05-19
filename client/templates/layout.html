@@ -13,24 +13,41 @@
     <div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home</a></li>
-        <li><a href="/addStartup">Add Startup</a></li>
-        <li><a href="/addCorporate">Add Corporate</a></li>
-        <li><a href="/list">List All</a></li>
-        <li><a href="/list2">List Corporates</a></li>
-        <li><a href="/examples">Examples</a></li>
-        
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Add
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/addStartup">Add Startup</a></li>
+            <li><a href="/addCorporate">Add Corporate</a></li>
+            <li><a href="/addCompany">Add Company</a></li>
+            <li><a href="/addFeedback">Add Feedback</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Display
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/leaderboard">'Leaderboard'</a></li>
+            <li><a href="/list">All</a></li>
+            <li><a href="/list2">All Corporates</a></li>
+            <li><a href="/listCompanies">All Companies</a></li>
+          </ul>
+        </li>
+
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Edit StartUps</a></li>
-            <li><a href="#">Edit Corporates</a></li> 
-            <li><a href="#">Add Collaboration Example</a></li>
+            <li><a href="#">My Settings</a></li>
+            <li><a href="#">My Notifications</a></li>
+            <li><a href="#">Company Profile</a></li>
           </ul>
-        </li>  
+        </li>
 
         <li style='padding-top:14px'>{{> loginButtons}}</li>
-          
+
       </ul>
 
         <!-- <ul class="nav navbar-nav navbar-right">

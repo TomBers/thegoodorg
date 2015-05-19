@@ -24,10 +24,11 @@ Router.map(function() {
   // }
   });
 
-this.route('/addCorporate', {
-    path: '/addCorporate',
-    template: 'addCorporate'
-  });
+  this.route('/addCorporate', {path: '/addCorporate',template: 'addCorporate'});
+
+  this.route('/addCompany', {path: '/addCompany',template: 'addCompany'});
+
+  this.route('/addFeedback', {path: '/addFeedback',template: 'addFeedback'});
 
   this.route('/startup', {
     path: '/startup/:_id',
@@ -49,22 +50,24 @@ this.route('/addCorporate', {
   }
   });
 
-  this.route('/list2', {
-    path: '/list2',
-    template: 'list2',
-    // waitOn: function() {  },
+  this.route('/list2', {path: '/list2', template: 'list2',
     data: function() {
-      // console.log(Corporates.find().fetch());
-    return {corporates:Corporates.find()};
-  }
+        return {corporates:Corporates.find()};
+      }
+    });
 
-  });
-  this.route('/examples', {
-    path: '/examples',
-    template: 'collab_examples',
-    // waitOn: function() {  },
+  this.route('/listCompanies',
+    {path: '/listCompanies', template: 'listCompanies',
     data: function() {
-      // console.log(Collaborations.find().fetch());
+        return {companies:Companies.find()};
+      }
+    });
+
+
+  this.route('/leaderboard', {
+    path: '/leaderboard',
+    template: 'leaderboard',
+    data: function() {
     return {collaborations:Collaborations.find()};
   }
 
