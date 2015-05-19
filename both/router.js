@@ -40,6 +40,16 @@ Router.map(function() {
   }
   });
 
+  this.route('/edit', {
+    path: '/edit/:_id',
+    template: 'edit',
+    // waitOn: function() {  },
+    data: function() {
+      // console.log(Startups.find({_id:this.params._id}).fetch());
+    return Startups.findOne({_id:this.params._id});
+  }
+  });
+
   this.route('/list', {
     path: '/list',
     template: 'list',

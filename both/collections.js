@@ -31,8 +31,9 @@ Companies.allow({
 
 
 Companies.attachSchema(new SimpleSchema({
-  name: {type: String,label: "Name of Company", max: 200 },
-  description: {type: String, min: 20, max: 1000, autoform: {rows: 5}},
+  title: {type: String,label: "Name of Company", max: 200 },
+  desc: {type: String, min: 20, max: 1000, autoform: {rows: 5}},
+  img: {type: String,label: "Image Url",  },
   url: {type: String, label: "URL", regEx: SimpleSchema.RegEx.Url, autoform: {type: "url"}},
   categories: {type: [String], optional: true,
     autoform: {type: "select-multiple",
@@ -66,12 +67,12 @@ Startups.allow({
 
 
 Startups.attachSchema(new SimpleSchema({
-  name: {
+  title: {
     type: String,
     label: "Name of Startup",
     max: 200
   },
-  description: {
+  desc: {
       type: String,
       min: 20,
       max: 1000,
@@ -79,7 +80,11 @@ Startups.attachSchema(new SimpleSchema({
          rows: 5
       }
    },
-   url: {
+   img: {
+     type: String,
+     label: "URL of image"
+   },
+   link: {
     type: String,
     label: "URL",
     regEx: SimpleSchema.RegEx.Url,
