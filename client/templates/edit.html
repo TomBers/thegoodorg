@@ -1,3 +1,8 @@
 <template name='edit'>
-  {{> quickForm collection='Startups' doc=this id='updateSurveyForm' type='update'}}
+  {{> autoformModals}}
+  {{#afModal class="btn btn-primary" collection="Startups" operation="update" doc=_id}}
+  Update post
+{{/afModal}}
+
+  <!-- {{> quickForm collection='Startups' doc=this id='updateSurveyForm' type='update'}} -->
 </template>
