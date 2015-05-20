@@ -110,7 +110,32 @@ Startups.attachSchema(new SimpleSchema({
        }
      }
    }
- }
+ },
+ level1: {
+     type: Array,
+     optional: true
+  },
+  "level1.$": {
+     type: Object,
+     optional: true
+  },
+  "level1.$.level2a": {
+     type: String
+  },
+  "level1.$.level2b": {
+     type: Array,
+     optional: true
+  },
+  "level1.$.level2b.$": {
+     type: Object,
+     optional: true
+  },
+  "level1.$.level2b.$.level3a": {
+     type: String
+  },
+  "level1.$.level2b.$.level3b": {
+     type: String
+  }
 
 }));
 

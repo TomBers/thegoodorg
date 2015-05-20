@@ -46,7 +46,7 @@ Router.map(function() {
     // waitOn: function() {  },
     data: function() {
       console.log( Startups.findOne({_id:this.params._id}));
-    return {startup:Startups.findOne({_id:this.params._id})};
+    return Startups.findOne({_id:this.params._id});
   }
   });
 
