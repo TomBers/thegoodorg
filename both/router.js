@@ -16,6 +16,9 @@ Router.map(function() {
    }
  });
 
+ this.route('/about', {path: '/about',template: 'about'});
+
+
   this.route('/addStartup', {
     path: '/addStartup',
     template: 'addStartup',
@@ -29,6 +32,28 @@ Router.map(function() {
   this.route('/addCompany', {path: '/addCompany',template: 'addCompany'});
 
   this.route('/addFeedback', {path: '/addFeedback',template: 'addFeedback'});
+
+
+  this.route('/addReq1', {path: '/addReq1',template: 'addReq1', data: function() {
+                return {req_types:Req_Types.find()};}
+                });
+
+  this.route('/addReq2', {path: '/addReq2',template: 'addReq2', data: function() {
+                return {req_amounts:Req_Amounts.find()};}
+                });
+
+  this.route('/addReq3', {path: '/addReq3',template: 'addReq3', data: function() {
+                return {req_timeframes:Req_TimeFrames.find()};}
+                });
+
+  this.route('/addCat', {path: '/addCat',template: 'addCat', data: function() {
+                return {categories:Categories.find()};}
+                });
+
+  this.route('/addSubCat', {path: '/addSubCat',template: 'addSubCat', data: function() {
+                return {subcategories:SubCategories.find()};}
+                });
+
 
   this.route('/startup', {
     path: '/startup/:_id',

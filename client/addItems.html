@@ -37,3 +37,86 @@
     {{> quickForm collection='Corporates' id='insertCorporateForm' type='insert'}}
   </div>
 </template>
+
+<!--        config objects           -->
+
+<template name='addReq1'>
+  <br><br>
+  <div class='container'>
+
+      <h4>All Requirement Types</h4>
+        {{#each req_types}}
+          <h5>Type : {{type}}</h5>
+        {{/each}}
+  </div>
+
+  <div class='container'>
+
+    {{> quickForm collection='Req_Types' id='insertReq_TypesForm' type='insert'}}
+  </div>
+</template>
+
+<template name='addReq2'>
+  <br><br>
+  <div class='container'>
+
+      <h4>All Requirement Amounts</h4>
+        {{#each req_amounts}}
+          <h5>Amount : {{amount}}</h5>
+        {{/each}}
+  </div>
+
+  <div class='container'>
+
+    {{> quickForm collection='Req_Amounts' id='insertReq_AmountsForm' type='insert'}}
+  </div>
+</template>
+
+<template name='addReq3'>
+  <br><br>
+  <div class='container'>
+
+      <h4>All Requirement Timeframes</h4>
+        {{#each req_timeframes}}
+          <h5>Timeframe : {{timeframe}}</h5>
+        {{/each}}
+  </div>
+
+  <div class='container'>
+
+    {{> quickForm collection='Req_TimeFrames' id='insertReq_TimeFramesForm' type='insert'}}
+  </div>
+</template>
+
+
+<template name='addCat'>
+  <br><br>
+  <div class='container'>
+
+      <h4>All Categories</h4>
+        {{#each categories}}
+          <h5>Category : {{cat}}</h5>
+        {{/each}}
+  </div>
+
+  <div class='container'>
+
+    {{> quickForm collection='Categories' id='insertCategoriesForm' type='insert'}}
+  </div>
+</template>
+
+<template name='addSubCat'>
+  <br><br>
+  <div class='container'>
+
+      <h4>All Sub Categories</h4>
+        {{#each subcategories}}
+          <h5>Category : {{cat}}     ||  Sub Category : {{subcat}}</h5>
+        {{/each}}
+  </div>
+
+  <div class='container'>
+
+    {{> quickForm collection='SubCategories' id='insertSubCategoriesForm' type='insert'}}
+  </div>
+</template>

@@ -13,6 +13,7 @@
     <div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home</a></li>
+        <li class="active"><a href="/about">About</a></li>
 
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Add
@@ -33,20 +34,34 @@
             <li><a href="/list">All</a></li>
             <li><a href="/list2">All Corporates</a></li>
             <li><a href="/listCompanies">All Companies</a></li>
+            <li><a href="/listReqConfig">All Config Items</a></li>
           </ul>
         </li>
 
-        <li class="dropdown">
+        <li class="dropdown-submenu">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">My Settings</a></li>
             <li><a href="#">My Notifications</a></li>
             <li><a href="#">Company Profile</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="/addReq1">Add Req Type</a></li>
+            <li><a href="/addReq2">Add Req Amount</a></li>
+            <li><a href="/addReq3">Add Req Timeframe</a></li>
+
+            <li class="divider"></li>
+
+            <li><a href="/addCat">Add Category</a></li>
+            <li><a href="/addSubCat">Add SubCategory</a></li>
           </ul>
         </li>
 
         <li style='padding-top:14px'>{{> loginButtons}}</li>
+
+
 
       </ul>
 

@@ -35,7 +35,12 @@
     <div class='col-md-6'>
       <h1>{{title}}</h1>
       <p>{{desc}}</p>
-      <a href='/edit/{{_id}}'>Edit</a>
+      <!--a href='/edit/{{_id}}'>Edit</a-->
+      <!--a href='/edit/{{_id}}'>Edit</a-->
+      {{> autoformModals}}
+      {{#afModal class="btn btn-primary" collection="Startups" operation="update" doc=_id}}
+        Edit
+      {{/afModal}}
     </div>
   </div>
 </template>
@@ -78,5 +83,16 @@
         <h3>" : {{detail}}</h3>
         <h1>----------------------------------------------</h1>
         {{/each}}
+  </div>
+</template>
+
+
+<template name='listReq_Types'>
+  <h1>All Requirement Types</h1>
+  <div class='container'>
+    {{#each req_types}}
+      <h3>Type : {{type}}</h3>
+      <h1>----------------------------------------------</h1>
+    {{/each}}
   </div>
 </template>
