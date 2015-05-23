@@ -22,11 +22,25 @@
 <div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
 {{#each category}}
 <div class="checkbox" style='margin-right:30px;font-size:2em;'>
-      <label><input type="checkbox" class='opt' id='{{cat}}' checked>{{cat}}</label>
+      <label><input type="checkbox" class='opt' id='{{cat}}'>{{cat}}</label>
     </div>
 {{/each}}
 </div>
+
+
+<h2>Sub Category :</h2>
+<div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
+{{#each subCategory}}
+{{#each subcat}}
+<div class="checkbox" style='margin-right:30px;font-size:2em;'>
+      <label><input type="checkbox" class='opt' id='{{subcat}}' checked>{{this}}</label>
+    </div>
+    {{/each}}
+{{/each}}
 </div>
+
+</div>
+
 
 {{#each visibleCompanies}}
 <div class='col-sm-4 companyBox'>

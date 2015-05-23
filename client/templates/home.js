@@ -1,7 +1,10 @@
-Session.setDefault('opts',[]);
+
 
 Template.home.rendered = function(){
 Meteor.subscribe('Startups');
+
+Session.setDefault('opts',[]);
+
 
 }
 
@@ -14,7 +17,6 @@ Template.home.events({
     })
     Session.set('opts',opts);
 
-
   }
 });
 
@@ -24,6 +26,13 @@ Template.home.helpers({
       return Startups.find({categories:{$in:Session.get('opts')}});
     }else{
     return Startups.find();
+  }
+},
+  subCategory: function(){
+    if(Session.get('opts').length > 0){
+      return Categories.find({cat:{$in:Session.get('opts')}});
+    }else{
+    return null;
   }
   }
 });
