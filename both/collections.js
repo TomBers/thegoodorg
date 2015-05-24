@@ -167,11 +167,13 @@ Startups.allow({
 Startups.attachSchema(new SimpleSchema({
   title: {
     type: String,
+    optional: true,
     label: "Name of Startup",
     max: 200
   },
   desc: {
       type: String,
+      optional: true,
       min: 20,
       max: 1000,
       autoform: {
@@ -180,10 +182,12 @@ Startups.attachSchema(new SimpleSchema({
    },
    img: {
      type: String,
+     optional: true,
      label: "URL of image"
    },
    link: {
     type: String,
+    optional: true,
     label: "URL",
     regEx: SimpleSchema.RegEx.Url,
     autoform: {
@@ -208,40 +212,41 @@ Startups.attachSchema(new SimpleSchema({
        }
      }
    }
- },
+ }
+}));
 
-  projects: {type: Array, optional: true, maxCount:5},
-     "projects.$": {type: Object, optional: true },
-     "projects.$.Name": {type: String, label: "Project Name"},
-     "projects.$.URL": {type: String, label: "Project URL"},
-     "projects.$.SubCategory": {type: String, label: "Sub Category"},
-
-     "projects.$.Requirements": {type: Array, optional: true },
-     "projects.$.Requirements.$": {type: Object, label: "Requirement", optional: true },
-     "projects.$.Requirements.$.Type": {type: String, label: "Type",
-        allowedValues:[
-          "Capital",
-          "Time",
-          "Resources"        ]},
-     "projects.$.Requirements.$.Amount": {type: String, label: "Amount",
-        allowedValues:[
-          "1 Day",
-          "3 Days",
-          "7 Days",
-          "£100",
-          "£1000",
-          "£10000",
-          "Software",
-          "Hardware",
-          "Construction Materials"          ]},
-     "projects.$.Requirements.$.TimeFrame": {type: String, label: "TimeFrame",
-        allowedValues:[
-          "1 Week",
-          "2 Weeks",
-          "4 Weeks",
-          "2 Months",
-          "3 Months"]},
-
+  // projects: {type: Array, optional: true, maxCount:5},
+  //    "projects.$": {type: Object, optional: true },
+  //    "projects.$.Name": {type: String, label: "Project Name"},
+  //    "projects.$.URL": {type: String, label: "Project URL"},
+  //    "projects.$.SubCategory": {type: String, label: "Sub Category"},
+  //
+  //    "projects.$.Requirements": {type: Array, optional: true },
+  //    "projects.$.Requirements.$": {type: Object, label: "Requirement", optional: true },
+  //    "projects.$.Requirements.$.Type": {type: String, label: "Type",
+  //       allowedValues:[
+  //         "Capital",
+  //         "Time",
+  //         "Resources"        ]},
+  //    "projects.$.Requirements.$.Amount": {type: String, label: "Amount",
+  //       allowedValues:[
+  //         "1 Day",
+  //         "3 Days",
+  //         "7 Days",
+  //         "£100",
+  //         "£1000",
+  //         "£10000",
+  //         "Software",
+  //         "Hardware",
+  //         "Construction Materials"          ]},
+  //    "projects.$.Requirements.$.TimeFrame": {type: String, label: "TimeFrame",
+  //       allowedValues:[
+  //         "1 Week",
+  //         "2 Weeks",
+  //         "4 Weeks",
+  //         "2 Months",
+  //         "3 Months"]},
+  //
   // level1: {type: Array, optional: true },
   // "level1.$": {type: Object, optional: true },
   // "level1.$.level2a": {type: String, label: "Title"},
@@ -277,7 +282,7 @@ Startups.attachSchema(new SimpleSchema({
   //    label: "When"
   // }
 
-}));
+// }));
 
 Corporates.allow({
   insert: function () { return true; },
