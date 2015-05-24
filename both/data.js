@@ -12,7 +12,21 @@
 Meteor.startup(function () {
 
   Startups.remove({});
+  Categories.remove({});
 
+  Factory.define('cats', Categories, {
+    cat : 'cat',
+    subcat : ['subA','subB']
+  })
+
+  Factory.create('cats', {
+    cat:'Carbon',
+    subcat : ['A','B']
+  });
+  Factory.create('cats', {
+    cat:'Not Carbon',
+    subcat : ['NotA','NotB']
+  })
 
 Factory.define('startup', Startups, {
   desc : 'descdescdescdescdescdescdescdescdescdescdescdescdesc',
@@ -27,7 +41,7 @@ Factory.create('startup', {
   link : "http://www.clearlyso.com/our-clients/1-25m-invested-into-leyf",
   img : "http://www.clearlyso.com/wp-content/uploads/2015/03/LEFTTT-857x490.jpg",
   title : "London Early Years Foundation: a charity raising investment",
-  categories:['A','B']
+  categories:['A']
 });
 // 2
 Factory.create('startup', {
@@ -35,7 +49,7 @@ Factory.create('startup', {
   link : "http://www.clearlyso.com/our-clients/sustainable-ethical-and-delicious-how-adunas-shaking-up-farming-in-africa/",
   img : "http://www.clearlyso.com/wp-content/uploads/2015/03/Untitled-71-857x490.jpg",
   title : "Aduna: delicious, healthy products with a super ethical supply chain",
-  categories:['A','B']
+  categories:['B']
 });
 // 3
 Factory.create('startup', {
@@ -43,7 +57,7 @@ Factory.create('startup', {
   link : "http://www.clearlyso.com/our-clients/commonplace-and-the-crowd-for-community-regeneration/",
   img : "http://www.clearlyso.com/wp-content/uploads/2015/03/commonplace1-857x490.jpg",
   title : "Commonplace: using the crowd for community regeneration",
-  categories:['A','B']
+  categories:['A']
 });
 // 4
 Factory.create('startup', {
@@ -51,7 +65,7 @@ Factory.create('startup', {
   link : "http://www.clearlyso.com/our-clients/environmentally-friendly-weedkiller-backed-by-key-angel-investors/",
   img : "http://www.clearlyso.com/wp-content/uploads/2015/03/weddingtech1-857x490.jpg",
   title : "Weedingtech: an environmentally-friendly weedkiller backed by angels",
-  categories:['A','B']
+  categories:['B']
 });
 
 // 5
@@ -60,7 +74,7 @@ Factory.create('startup', {
   link : "http://www.clearlyso.com/our-clients/angel-investment-in-education/",
   img : "http://www.clearlyso.com/wp-content/uploads/2015/03/thirdspace-857x490.jpg",
   title : "Third Space Learning: online learning reducing education inequality",
-  categories:['A','B']
+  categories:['A']
 });
 // 6
 Factory.create('startup', {
@@ -68,7 +82,7 @@ Factory.create('startup', {
   link : "http://www.clearlyso.com/our-clients/community-transport-raises-millions-in-impact-investment/",
   img : "http://www.clearlyso.com/wp-content/uploads/2015/03/HTC-grouppp-857x490.jpg",
   title : "HCT Group: growing a community-focused business",
-  categories:['A','B']
+  categories:['B']
 });
 // 7
 Factory.create('startup', {
@@ -76,7 +90,7 @@ Factory.create('startup', {
   link : "http://www.clearlyso.com/our-clients/gaming-for-good-harnessing-the-power-of-gamers-for-good/",
   img : "http://www.clearlyso.com/wp-content/uploads/2015/03/playmob2-857x490.jpg",
   title : "Playmob – harnessing the power of gamers for good",
-  categories:['A','B']
+  categories:['A']
 });
 // 8
 Factory.create('startup', {
@@ -84,7 +98,7 @@ Factory.create('startup', {
   link : "http://www.clearlyso.com/our-clients/ivuk-invest-in-buddys-mental-health-app/",
   img : "http://www.clearlyso.com/wp-content/uploads/2015/03/buddy-857x490.jpg",
   title : "Buddy: an app supporting mental health with an impact fund investor",
-  categories:['A','B']
+  categories:['A']
 });
 
 // 9
@@ -93,7 +107,7 @@ Factory.create('startup', {
   link : "http://www.clearlyso.com/our-clients/investing-in-language-and-communication-for-those-with-special-needs/",
   img : "http://www.clearlyso.com/wp-content/uploads/2015/03/insane-logiccc-857x490.jpg",
   title : "Insane Logic: language and communication for people with special needs",
-  categories:['A','B']
+  categories:['A']
 });
 // 10
 Factory.create('startup', {

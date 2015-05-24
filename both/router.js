@@ -12,7 +12,7 @@ Router.map(function() {
    path: '/',
    template: 'home',
      data: function() {
-     return {category:Categories.find().fetch()};
+     return {category:Categories.find()};
    }
  });
 

@@ -119,6 +119,10 @@ Categories.allow({
 
 Categories.attachSchema(new SimpleSchema({
   cat: {type: String,label: "Category Name", max: 200 },
+  subcat :{
+    type: [String],
+   optional: true
+  }
 }));
 
 Companies.allow({

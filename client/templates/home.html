@@ -33,7 +33,7 @@
 {{#each subCategory}}
 {{#each subcat}}
 <div class="checkbox" style='margin-right:30px;font-size:2em;'>
-      <label><input type="checkbox" class='opt' id='{{subcat}}' checked>{{this}}</label>
+      <label><input type="checkbox" class='subcat' id='{{this}}' checked>{{this}}</label>
     </div>
     {{/each}}
 {{/each}}
@@ -41,7 +41,7 @@
 
 </div>
 
-
+<h1>{{count}}</h1>
 {{#each visibleCompanies}}
 <div class='col-sm-4 companyBox'>
 <img src='{{img}}' style='width:90%;height:auto'>

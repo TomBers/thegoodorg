@@ -17,16 +17,37 @@ Template.home.events({
     })
     Session.set('opts',opts);
 
+    var scat = template.findAll( "input[type=checkbox]:checked.subcat");
+    var scopts = [];
+    scat.forEach(function(e){
+      scopts.push(e.id);
+    })
+    Session.set('scopts',scopts);
+  },
+  'click .subcat' :function(e,template){
+    var scat = template.findAll( "input[type=checkbox]:checked.subcat");
+    var scopts = [];
+    scat.forEach(function(e){
+      scopts.push(e.id);
+    })
+    Session.set('scopts',scopts);
   }
 });
 
 Template.home.helpers({
   visibleCompanies: function(){
-    if(Session.get('opts').length > 0){
-      return Startups.find({categories:{$in:Session.get('opts')}});
+    if(Session.get('scopts').length > 0){
+      return Startups.find({categories:{$in:Session.get('scopts')}});
     }else{
     return Startups.find();
   }
+},
+count :function(){
+  if(Session.get('scopts').length > 0){
+    return Startups.find({categories:{$in:Session.get('scopts')}}).fetch().length;
+  }else{
+  return Startups.find().fetch().length;
+}
 },
   subCategory: function(){
     if(Session.get('opts').length > 0){
