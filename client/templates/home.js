@@ -25,6 +25,11 @@ Template.home.events({
     template.$( ".interaction.checked" ).removeClass( "checked" );
     Session.set('interaction',[e.currentTarget.innerText]);
     e.currentTarget.className = 'interaction checked';
+  },
+  'click .display' :function(e,template){
+    template.$( ".display.checked" ).removeClass( "checked" );
+    Session.set('display',e.currentTarget.innerText);
+    e.currentTarget.className = 'display checked';
   }
 });
 
@@ -35,6 +40,18 @@ Template.home.helpers({
     }else{
       return null;
     }
+},
+visibleProjectRollups: function(){
+  if(Session.get('subcause') != '' && Session.get('interaction') != ''){
+    return Companies.find({cid:
+      Projects.find({
+        categories:{$in:Session.get('subcause')},
+        interactions:{$in:Session.get('interaction')}
+        }).ownerId
+        })
+  }else{
+    return null;
+  }
 },
 showSubCause : function(){
   return (Session.get('cause') == '') ? false : true;
