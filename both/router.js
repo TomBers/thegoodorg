@@ -54,6 +54,25 @@ Router.map(function() {
                 return {subcategories:SubCategories.find()};}
                 });
 
+  this.route('/project', {
+    path: '/project/:_id',
+    template: 'project',
+    // waitOn: function() {  },
+    data: function() {
+      // console.log(Startups.find({_id:this.params._id}).fetch());
+    return Projects.findOne({_id:this.params._id});
+  }
+  });
+
+  this.route('/company', {
+    path: '/company/:_id',
+    template: 'company',
+    // waitOn: function() {  },
+    data: function() {
+      // console.log(Startups.find({_id:this.params._id}).fetch());
+    return {company:Companies.findOne({cid:this.params._id}),projects:Projects.find({ownerId:this.params._id})};
+  }
+  });
 
   this.route('/startup', {
     path: '/startup/:_id',
@@ -64,6 +83,8 @@ Router.map(function() {
     return Startups.findOne({_id:this.params._id});
   }
   });
+
+
 
   this.route('/edit', {
     path: '/edit/:_id',

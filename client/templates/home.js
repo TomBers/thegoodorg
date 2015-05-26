@@ -1,7 +1,9 @@
-
-
+Session.set('cause','');
+Session.set('subcause','');
+Session.set('interaction','');
+var interactions = ['Donate Materials','Monetary Donations','Volunteering','Research Agreements','Product collaboration','Brand Collaboration','Lecturing Opportunites'];
 Template.home.rendered = function(){
-Meteor.subscribe('Startups');
+Meteor.subscribe('Projects');
 
 Session.setDefault('opts',[]);
 
@@ -9,51 +11,42 @@ Session.setDefault('opts',[]);
 }
 
 Template.home.events({
-  'click .opt' :function(e,template){
-    var selected = template.findAll( "input[type=checkbox]:checked");
-    var opts = [];
-    selected.forEach(function(e){
-      opts.push(e.id);
-    })
-    Session.set('opts',opts);
-
-    var scat = template.findAll( "input[type=checkbox]:checked.subcat");
-    var scopts = [];
-    scat.forEach(function(e){
-      scopts.push(e.id);
-    })
-    Session.set('scopts',scopts);
+  'click .cause' :function(e,template){
+    template.$( ".cause.checked" ).removeClass( "checked" );
+    Session.set('cause',e.currentTarget.innerText);
+    e.currentTarget.className = 'cause checked';
   },
-  'click .subcat' :function(e,template){
-    var scat = template.findAll( "input[type=checkbox]:checked.subcat");
-    var scopts = [];
-    scat.forEach(function(e){
-      scopts.push(e.id);
-    })
-    Session.set('scopts',scopts);
+  'click .subcause' :function(e,template){
+    template.$( ".subcause.checked" ).removeClass( "checked" );
+    Session.set('subcause',[e.currentTarget.innerText]);
+    e.currentTarget.className = 'subcause checked';
+  },
+  'click .interaction' :function(e,template){
+    template.$( ".interaction.checked" ).removeClass( "checked" );
+    Session.set('interaction',[e.currentTarget.innerText]);
+    e.currentTarget.className = 'interaction checked';
   }
 });
 
 Template.home.helpers({
-  visibleCompanies: function(){
-    if(Session.get('scopts').length > 0){
-      return Startups.find({categories:{$in:Session.get('scopts')}});
+  visibleProjects: function(){
+    if(Session.get('subcause') != '' && Session.get('interaction') != ''){
+      return Projects.find({categories:{$in:Session.get('subcause')},interactions:{$in:Session.get('interaction')}})
     }else{
-    return Startups.find();
-  }
+      return null;
+    }
 },
-count :function(){
-  if(Session.get('scopts').length > 0){
-    return Startups.find({categories:{$in:Session.get('scopts')}}).fetch().length;
-  }else{
-  return Startups.find().fetch().length;
+showSubCause : function(){
+  return (Session.get('cause') == '') ? false : true;
+},
+subcat: function(){
+  return Categories.findOne({cat:Session.get('cause')}).subcat;
+},
+showInteractions : function(){
+  return (Session.get('subcause') == '') ? false : true;
+},
+interaction: function(){
+  return interactions;
 }
-},
-  subCategory: function(){
-    if(Session.get('opts').length > 0){
-      return Categories.find({cat:{$in:Session.get('opts')}});
-    }else{
-    return null;
-  }
-  }
+
 });

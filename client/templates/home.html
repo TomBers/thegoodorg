@@ -5,51 +5,65 @@
   /*border:1px solid black;*/
   margin-bottom:30px;
 }
-.radio, .checkbox{
+.cause,.subcause,.interaction{
   display:inline-block;
   font-size:1.5em;
   border:2px solid black;
   padding:10px;
+}
+
+.cause.checked,.subcause.checked,.interaction.checked,.cause:hover,.subcause:hover,.interaction:hover{
+  color: white;
+  background: black;
 }
 </style>
 
 <div class='container-fluid'>
   <div class='col-sm-12'>
     <div class='row'>
-<h1>About TGO</h1>
+      <h1>About TGO</h1>
 
-<h2>Please Choose a Category :</h2>
-<div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
-{{#each category}}
-<div class="checkbox" style='margin-right:30px;font-size:2em;'>
-      <label><input type="checkbox" class='opt' id='{{cat}}'>{{cat}}</label>
+      <h2>Please Choose a Category :</h2>
+      <div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
+        {{#each category}}
+        <div class="checkbox cause">
+          {{cat}}
+        </div>
+        {{/each}}
+      </div>
+
+      {{#if showSubCause}}
+      <h2>Please Choose a Sub Category :</h2>
+      <div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
+      {{#each subcat}}
+      <div class="checkbox subcause">
+        {{this}}
+      </div>
+      {{/each}}
     </div>
-{{/each}}
-</div>
+      {{/if}}
 
-
-<h2>Sub Category :</h2>
-<div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
-{{#each subCategory}}
-{{#each subcat}}
-<div class="checkbox" style='margin-right:30px;font-size:2em;'>
-      <label><input type="checkbox" class='subcat' id='{{this}}' checked>{{this}}</label>
+      {{#if showInteractions}}
+      <h2>Please Choose an Interaction :</h2>
+      <div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
+      {{#each interaction}}
+      <div class="checkbox interaction">
+        {{this}}
+      </div>
+      {{/each}}
     </div>
-    {{/each}}
-{{/each}}
-</div>
-
-</div>
-
-<h1>{{count}}</h1>
-{{#each visibleCompanies}}
-<div class='col-sm-4 companyBox'>
-<img src='{{img}}' style='width:90%;height:auto'>
-<h1 style='margin-bottom: 0px;'>{{title}}</h1><a href='/startup/{{_id}}'>More</a>
-</div>
-{{/each}}
+      {{/if}}
 
 
+      {{#each visibleProjects}}
+      <div class='col-sm-4 companyBox'>
+        <img src='{{img}}' style='width:90%;height:auto'>
+        <h1 style='margin-bottom: 0px;'>{{title}}</h1><a href='/project/{{_id}}'>More</a>
+      </div>
+      {{/each}}
+
+
+    </div>
+  </div>
 </div>
-</div>
-</template>
+  </template>
