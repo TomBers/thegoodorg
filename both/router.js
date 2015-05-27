@@ -16,8 +16,9 @@ Router.map(function() {
    }
  });
 
- this.route('/about', {path: '/about',template: 'about'});
+  this.route('/about', {path: '/about',template: 'about'});
 
+  this.route('/admin', {path: '/admin',template: 'admin'});
 
   this.route('/addStartup', {
     path: '/addStartup',

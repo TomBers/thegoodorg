@@ -1,0 +1,65 @@
+<template name='admin'>
+
+
+
+  <div>
+
+  <!-- <li class="divider"></li> -->
+
+  <li><a href="/addReq1">Add Req Type</a></li>
+  <li><a href="/addReq2">Add Req Amount</a></li>
+  <li><a href="/addReq3">Add Req Timeframe</a></li>
+
+  <br><br>
+<!-- <li class="divider"></li> -->
+
+  <li><a href="/addCat">Add Category</a></li>
+  <li><a href="/addSubCat">Add SubCategory</a></li>
+
+  </div>
+
+  <br><br>
+
+  <div>
+
+      <li><a href="/addStartup">Add Startup</a></li>
+      <li><a href="/addCorporate">Add Corporate</a></li>
+
+      <br><br>
+
+      <li><a href="/addFeedback">Add Feedback</a></li>
+
+      <br><br>
+
+
+  </div>
+
+  <br><br>
+
+  <h2>My companies </h2>
+  <br>
+
+  {{#each myCompanies}}
+
+    <h3> _id: {{_id}} </h3>
+    <h3> company: {{name}} </h3>
+    <h3> headline: {{hline}} </h3>
+    <h3> location: {{loc}} </h3>
+
+    {{#afModal class="btn btn-primary" collection="Companies" operation="update" doc=_id}}
+      Edit Company
+    {{/afModal}}
+
+  {{/each}}
+
+<br><br>
+<div>
+  {{> autoformModals}}
+
+  {{#afModal class="btn btn-primary" collection="Companies" operation="insert"}}
+    Add New Company
+  {{/afModal}}
+
+</div>
+
+</template>

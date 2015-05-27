@@ -3,24 +3,39 @@
   <div class='container'>
 
     <div class='row'>
+
     {{#with company}}
-    <div class='col-md-4'>
-      <!-- <img src='http://placehold.it/300&text={{title}}' style='width:100%;height:auto'>  -->
-      <img src= {{logo}} style='width:100%;height:auto'>
-    </div>
-    <div class='col-md-6'>
-      <h1>{{title}}</h1>
-      <h3>{{desc}}</h3>
-    </div>
+
+      <div class='col-md-4'>
+        <!-- <img src='http://placehold.it/300&text={{title}}' style='width:100%;height:auto'>  -->
+        <img src= {{logo}} style='width:100%;height:auto'>
+      </div>
+
+      <div class='col-md-6'>
+        <h1>{{title}}</h1>
+        <h2>{{hline}}</h2>
+        <h3>{{about}}</h3>
+      </div>
+
+      <br>
+      {{> autoformModals}}
+      {{#afModal class="btn btn-primary" collection="Companies" operation="update" doc=_id}}
+        Edit Company
+      {{/afModal}}
+      <br>
+
     {{/with}}
 
   </div>
-<h1>Our Projects :</h1>
+
+  <h1>Our Projects :</h1>
+
     {{#each projects}}
-    {{> projectSummary}}
+      {{> projectSummary}}
     {{/each}}
 
-  </div>
+</div>
+
 </template>
 
 <template name="projectSummary">
@@ -30,10 +45,12 @@
     <div class='col-sm-3'>{{desc}}</div>
     <div class='col-sm-3'>{{link}}</div>
     <div class='col-sm-3'>
-    {{> autoformModals}}
-    {{#afModal class="btn btn-primary" collection="Projects" operation="update" doc=_id}}
-      Edit
-    {{/afModal}}
+
+      {{> autoformModals}}
+      {{#afModal class="btn btn-primary" collection="Projects" operation="update" doc=_id}}
+        Edit Project
+      {{/afModal}}
+
   </div>
   </div>
 

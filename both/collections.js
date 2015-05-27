@@ -33,33 +33,54 @@ Companies.allow({
 
 
 Companies.attachSchema(new SimpleSchema({
-  cid: {type: String,label: "Id of Company", max: 200 },
-  title: {type: String,label: "Name of Company", max: 200 },
-  // logo:{type: String,label: "Logo", max: 200 },
-  // headline: {type: String,label: "Headline", max: 200 ,optional:true  },
-  desc: {type: String,label: "Description", max: 1000 ,optional:true},
-  // url:{type: String,label: "Website", max: 200 },
-  representative:{type: String,label: "Company representative", max: 200, optional:true },
-  // type:{type: String,label: "Company type", max: 200 }
-  // img: {type: String,label: "Image Url",  },
-  // url: {type: String, label: "URL", regEx: SimpleSchema.RegEx.Url, autoform: {type: "url"}},
- //  categories: {type: [String], optional: true,
- //    autoform: {type: "select-multiple",
- //      options: function () {
- //        var opts = [];
- //        var cats = Categories.find().fetch();
- //
- //        if(cats == []){return null;}
- //        else{
- //          cats.forEach(function(c){
- //            opts.push({label:c.cat,value:c.cat});
- //          });
- //        return opts;
- //       }
- //     }
- //   }
- // }
+  cid:    {type: String, label: "Company Ref Number", max: 200, defaultValue:'...CRN: Company Reference Number...'},
+  name:   {type: String, label: "Company Name", max: 200, optional:true ,defaultValue:'...Company Name...'},
+  hline:  {type: String, label: "Headline", max: 200 ,optional:true, defaultValue:'(...company headline...)'},
+  about:   {type: String, label: "About", max: 1000 ,optional:true, defaultValue:'(...company description...)'},
+  url:    {type: String, label: "Website", max: 200, optional:true, defaultValue:'(...URL link to website...)'},
+  logo:   {type: String, label: "Logo", max: 200, optional:true, defaultValue:'(...URL link to logo...)'},
+
+  type:   {type: String, label: "Company Type", optional: false, defaultValue:'StartUp',
+            allowedValues: [
+              "StartUp",
+              "Corporate"]},
+  industry: {
+        type: Array,
+        minCount: 1,
+        maxCount: 5,
+        label: "Select Industry segment(s)",
+        optional: true,
+        defaultValue: ["TBD"],
+        autoform: {
+           options: [
+              {label: "Financial",value: "financial"},
+              {label: "Construction",value: "construction"},
+              {label: "Manufacturing",value: "manufacturing"},
+              {label: "Transport",value: "transport"},
+              {label: "Education",value: "education"},
+              {label: "(Other)",value: "other"},
+              {label: "TBD",value: "tbd"}
+            ]}
+        },
+     "industry.$": {
+        type: String
+     },
+
+  loc:    {type: String, label: "Postcode", max: 10, optional:true, defaultValue:'(XXX XXXX)'},
+  addr:   {type: String, label: "Address", max: 1000 ,optional:true, defaultValue:'(...company address...)'},
+
+  rep_name:    {type: String, label: "Company representative", max: 200, optional:true,defaultValue:'(...firstname lastname...)' },
+  rep_role:    {type: String, label: "contact role in company", max: 200, optional:true,defaultValue:'(... community dept rep ...)' },
+  rep_email:   {type: String, label: "contact email", max: 200, optional:true,defaultValue:'(...name@company.com...)' },
+  rep_tel:     {type: String, label: "contact telephone #", max: 200, optional:true,defaultValue:'(...+44 #### ### ####...)' },
+
+  img:    {type: String, label: "Image Url",  optional:true, defaultValue:'(...URL link to company picture(s)...)'},
+  projects:{type: [String], optional:true, max:10}
+
 }));
+
+
+
 
 Projects.allow({
   insert: function () { return true; },
@@ -69,33 +90,38 @@ Projects.allow({
 
 
 Projects.attachSchema(new SimpleSchema({
-  ownerId:{    type: String,    optional: true,    label: "ID of Owning company",    max: 200  },
-  title: {    type: String,    optional: true,    label: "Name of Startup",    max: 200  },
-  headline: {    type: String,    optional: true,    label: "Headline",    max: 200  },
-  desc: {      type: String,      optional: true,      min: 20,      max: 1000,
-    autoform: {     rows: 5      }   },
-  img: {     type: String,     optional: true,     label: "URL of image"   },
-  link: {    type: String,    optional: true,    label: "URL",    regEx: SimpleSchema.RegEx.Url,
-    autoform: {       type: "url"    } },
-  categories: {type: [String],   optional: true,
-   autoform: {
-     type: "select-multiple",
-     options: function () {
-       var opts = [];
-       var cats = Categories.find().fetch();
-       if(cats == []){return null;}
-       else{
-         cats.forEach(function(c){
-           c.subcat.forEach(function(e){
-             opts.push({label:e,value:e});
-           })
-         });
-         return opts;
-       }
-     }
+  ownerId:  {type: String, optional: true, label: "ID of Owning company", max: 200 },
+  title:    {type: String, optional: true, label: "Name of Startup", max: 200 },
+  hline:    {type: String, optional: true, label: "Headline", max: 200 },
+  desc:     {type: String, optional: true, min: 20, max: 1000,
+    autoform: {rows: 5}   },
+  img:      {type: String, optional: true, label: "URL of image"   },
+  link:     {type: String, optional: true, label: "URL",    regEx: SimpleSchema.RegEx.Url,
+    autoform: {type: "url"} },
+
+  tframe:   {type: String, optional: true, label: "Time Frame", defaultValue:'4W'},
+  status:   {type: String, optional: true, label: "Status" ,defaultValue:'100%'},
+  active:   {type: Boolean, label: "Active", defaultValue: true},
+
+  categories: {type: [String], optional: true,
+    autoform: {
+      type: "select-multiple",
+      options: function () {
+        var opts = [];
+        var cats = Categories.find().fetch();
+        if(cats == []){return null;}
+        else{
+          cats.forEach(function(c){
+            c.subcat.forEach(function(e){
+              opts.push({label:e,value:e});
+            })
+          });
+        return opts;
+        }
+      }
    }
- },
- interactions: {   type: [String],   optional: true,
+  },
+  interactions: {type: [String],optional: true,
    autoform: {
      type: "select-multiple",
      options: function () {
