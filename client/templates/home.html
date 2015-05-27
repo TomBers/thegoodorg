@@ -23,33 +23,27 @@
     <div class='row'>
       <h1>About TGO</h1>
 
-      <h2>Please Choose a Category :</h2>
+      <h2>Cause : {{selCause}}</h2>
       <div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
         {{#each category}}
-        <div class="checkbox cause">
-          {{cat}}
-        </div>
+        {{> cause}}
         {{/each}}
       </div>
-
-      {{#if showSubCause}}
-      <h2>Please Choose a Sub Category :</h2>
+    </div>
+      <!-- {{#if showSubCause}} -->
+      <h2>Category : {{selSubcat}}</h2>
       <div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
       {{#each subcat}}
-      <div class="checkbox subcause">
-        {{this}}
-      </div>
+      {{> subcause}}
       {{/each}}
-    </div>
-      {{/if}}
+      <!-- {{/if}} -->
 
+    </div>
       {{#if showInteractions}}
-      <h2>Please Choose an Interaction :</h2>
+      <h2>Interaction : {{selInteraction}}</h2>
       <div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
-      {{#each interaction}}
-      <div class="checkbox interaction">
-        {{this}}
-      </div>
+      {{#each interactions}}
+      {{> interaction}}
       {{/each}}
     </div>
       {{/if}}
@@ -63,7 +57,25 @@
       {{/each}}
 
 
-    </div>
+
   </div>
 </div>
   </template>
+
+<template name="cause">
+  <div class="cause">
+    {{cat}}
+  </div>
+</template>
+
+<template name="subcause">
+  <div class="subcause">
+    {{this}}
+  </div>
+</template>
+
+<template name="interaction">
+  <div class="interaction">
+    {{this}}
+  </div>
+</template>

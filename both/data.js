@@ -88,7 +88,7 @@ Factory.create('project', {
   link : "http://www.clearlyso.com/our-clients/sustainable-ethical-and-delicious-how-adunas-shaking-up-farming-in-africa/",
   img : "http://www.clearlyso.com/wp-content/uploads/2015/03/Untitled-71-857x490.jpg",
   title : "Aduna: delicious, healthy products with a super ethical supply chain",
-  categories:['Sustainable Transport','Employment'],
+  categories:['Green Technology','Sustainable Transport','Employment'],
   interactions:['Donate Materials','Monetary Donations','Volunteering','Research Agreements','Product collaboration','Brand Collaboration','Lecturing Opportunites']
 });
 // 3
