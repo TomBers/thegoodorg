@@ -20,6 +20,7 @@ Template.subcause.events({
 
 Template.interaction.events({
   'click .interaction' :function(e,template){
+<<<<<<< HEAD
     var tmp = Session.get('interaction');
 
     if(template.$( ".interaction.checked" ).length > 0){
@@ -35,6 +36,18 @@ Template.interaction.events({
 })
 
 
+=======
+    template.$( ".interaction.checked" ).removeClass( "checked" );
+    Session.set('interaction',[e.currentTarget.innerText]);
+    e.currentTarget.className = 'interaction checked';
+  },
+  'click .display' :function(e,template){
+    template.$( ".display.checked" ).removeClass( "checked" );
+    Session.set('display',e.currentTarget.innerText);
+    e.currentTarget.className = 'display checked';
+  }
+});
+>>>>>>> 8b1cd661816af1d0c29f9c1fed4f6aa29901f3ed
 
 Template.home.helpers({
   selCause: function(){return Session.get('cause');},
@@ -46,6 +59,7 @@ Template.home.helpers({
     }else{
       return null;
     }
+<<<<<<< HEAD
   },
   showSubCause : function(){
     return (Session.get('cause').length == 0) ? false : true;
@@ -63,5 +77,32 @@ Template.home.helpers({
   interactions: function(){
     return interactions;
   }
+=======
+},
+visibleProjectRollups: function(){
+  if(Session.get('subcause') != '' && Session.get('interaction') != ''){
+    return Companies.find({cid:
+      Projects.find({
+        categories:{$in:Session.get('subcause')},
+        interactions:{$in:Session.get('interaction')}
+        }).ownerId
+        })
+  }else{
+    return null;
+  }
+},
+showSubCause : function(){
+  return (Session.get('cause') == '') ? false : true;
+},
+subcat: function(){
+  return Categories.findOne({cat:Session.get('cause')}).subcat;
+},
+showInteractions : function(){
+  return (Session.get('subcause') == '') ? false : true;
+},
+interaction: function(){
+  return interactions;
+}
+>>>>>>> 8b1cd661816af1d0c29f9c1fed4f6aa29901f3ed
 
 });

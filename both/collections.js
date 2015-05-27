@@ -35,7 +35,12 @@ Companies.allow({
 Companies.attachSchema(new SimpleSchema({
   cid: {type: String,label: "Id of Company", max: 200 },
   title: {type: String,label: "Name of Company", max: 200 },
-  desc: {type: String, min: 5, max: 1000, autoform: {rows: 5}},
+  logo:{type: String,label: "Logo", max: 200 },
+  headline: {type: String,label: "Headline", max: 200 ,optional:true  },
+  desc: {type: String,label: "Description", max: 1000 ,optional:true},
+  url:{type: String,label: "Website", max: 200 },
+  representative:{type: String,label: "Company representative", max: 200, optional:true },
+  type:{type: String,label: "Company type", max: 200 }
   // img: {type: String,label: "Image Url",  },
   // url: {type: String, label: "URL", regEx: SimpleSchema.RegEx.Url, autoform: {type: "url"}},
  //  categories: {type: [String], optional: true,
@@ -64,44 +69,15 @@ Projects.allow({
 
 
 Projects.attachSchema(new SimpleSchema({
-  ownerId:{
-    type: String,
-    optional: true,
-    label: "ID of Owning company",
-    max: 200
-  },
-  title: {
-    type: String,
-    optional: true,
-    label: "Name of Startup",
-    max: 200
-  },
-  desc: {
-      type: String,
-      optional: true,
-      min: 20,
-      max: 1000,
-      autoform: {
-         rows: 5
-      }
-   },
-   img: {
-     type: String,
-     optional: true,
-     label: "URL of image"
-   },
-   link: {
-    type: String,
-    optional: true,
-    label: "URL",
-    regEx: SimpleSchema.RegEx.Url,
-    autoform: {
-       type: "url"
-    }
- },
- categories: {
-   type: [String],
-   optional: true,
+  ownerId:{    type: String,    optional: true,    label: "ID of Owning company",    max: 200  },
+  title: {    type: String,    optional: true,    label: "Name of Startup",    max: 200  },
+  headline: {    type: String,    optional: true,    label: "Headline",    max: 200  },
+  desc: {      type: String,      optional: true,      min: 20,      max: 1000,
+    autoform: {     rows: 5      }   },
+  img: {     type: String,     optional: true,     label: "URL of image"   },
+  link: {    type: String,    optional: true,    label: "URL",    regEx: SimpleSchema.RegEx.Url,
+    autoform: {       type: "url"    } },
+  categories: {type: [String],   optional: true,
    autoform: {
      type: "select-multiple",
      options: function () {
@@ -119,9 +95,7 @@ Projects.attachSchema(new SimpleSchema({
      }
    }
  },
- interactions: {
-   type: [String],
-   optional: true,
+ interactions: {   type: [String],   optional: true,
    autoform: {
      type: "select-multiple",
      options: function () {

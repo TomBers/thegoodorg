@@ -5,25 +5,38 @@
   /*border:1px solid black;*/
   margin-bottom:30px;
 }
-.cause,.subcause,.interaction{
+.display,.cause,.subcause,.interaction{
   display:inline-block;
   font-size:1.5em;
   border:2px solid black;
   padding:10px;
 }
 
-.cause.checked,.subcause.checked,.interaction.checked,.cause:hover,.subcause:hover,.interaction:hover{
+.display.checked,.cause.checked,.subcause.checked,.interaction.checked,.cause:hover,.subcause:hover,.interaction:hover{
   color: white;
   background: black;
 }
 </style>
+
+<!-- <div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
+<div class="checkbox display">
+  show startups
+</div>
+</div> -->
+
 
 <div class='container-fluid'>
   <div class='col-sm-12'>
     <div class='row'>
       <h1>About TGO</h1>
 
+<<<<<<< HEAD
       <h2>Cause : {{selCause}}</h2>
+=======
+
+
+      <h2>Please Choose a Category :</h2>
+>>>>>>> 8b1cd661816af1d0c29f9c1fed4f6aa29901f3ed
       <div class='col-sm-10 col-sm-offset-2' style='margin-bottom:30px'>
         {{#each category}}
         {{> cause}}
@@ -52,9 +65,27 @@
       {{#each visibleProjects}}
       <div class='col-sm-4 companyBox'>
         <img src='{{img}}' style='width:90%;height:auto'>
-        <h1 style='margin-bottom: 0px;'>{{title}}</h1><a href='/project/{{_id}}'>More</a>
+        <h4 style='margin-bottom: 0px;'>{{title}}</h4>
+        <h6>project headline: {{headline}}</h6>
+        <h6>opportunities: {{interactions}}</h6>
+
+        <a href='/project/{{_id}}'>More</a>
       </div>
       {{/each}}
+
+<!-- <div> <h1>hello</h1>  </div> -->
+
+      {{#each visibleProjectRollups}}
+      <div class='col-sm-4 companyBox'>
+        <!-- <img src='{{img}}' style='width:90%;height:auto'>
+        <h4 style='margin-bottom: 0px;'>{{title}}</h4> -->
+        <!-- <h6>startup: {{headline}}</h6>
+        <h6>opportunities: {{interactions}}</h6> -->
+        <h4>{{cid}}</h4>
+        <a href='/company/{{_id}}'>More</a>
+      </div>
+      {{/each}}
+
 
 
 
