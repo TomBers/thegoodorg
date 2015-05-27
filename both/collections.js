@@ -6,6 +6,8 @@ Projects = new Mongo.Collection("projects");
 /*  Classification object collections   */
 Categories = new Mongo.Collection("categories");
 
+Collaborations = new Mongo.Collection("collaborations");
+
 
 /*  Project attribute object collections   */
 
@@ -139,3 +141,32 @@ Projects.attachSchema(new SimpleSchema({
    }
  }
 }));
+
+
+
+
+Collaborations.allow({
+  insert: function () { return true; },
+  update: function () { return true; },
+  remove: function () { return true; }
+});
+
+
+Collaborations.attachSchema(new SimpleSchema({
+  projectId: {type: String},
+  corp_cid: {type: String},
+//  startup_cid: {type: String}
+  /*
+  ,
+  corp_message: {type: String},
+  startup_message: {type: String},
+  corp_requestedAt: {type: Date},
+  startup_responceAt: {type: Date},
+  status:   {type: String, label: "Status", optional: false, defaultValue:'Request',
+            allowedValues: [
+              "Request",
+              "Accepted",
+			  "Rejected"]},
+			  */
+}));
+
