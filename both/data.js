@@ -38,7 +38,7 @@
 //     desc : 'C desc'
 //   });
 //
-<<<<<<< HEAD
+
 // }
 Meteor.startup(function(){
 
@@ -217,7 +217,7 @@ Factory.create('project', {
 
 
 });
-=======
+
 //
 //   Factory.define('cats', Categories, {
 //     cat : 'cat',
@@ -366,4 +366,3 @@ Factory.create('project', {
 //
 //
 // });
->>>>>>> 8b1cd661816af1d0c29f9c1fed4f6aa29901f3ed

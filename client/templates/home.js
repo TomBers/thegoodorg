@@ -20,7 +20,7 @@ Template.subcause.events({
 
 Template.interaction.events({
   'click .interaction' :function(e,template){
-<<<<<<< HEAD
+
     var tmp = Session.get('interaction');
 
     if(template.$( ".interaction.checked" ).length > 0){
@@ -36,18 +36,6 @@ Template.interaction.events({
 })
 
 
-=======
-    template.$( ".interaction.checked" ).removeClass( "checked" );
-    Session.set('interaction',[e.currentTarget.innerText]);
-    e.currentTarget.className = 'interaction checked';
-  },
-  'click .display' :function(e,template){
-    template.$( ".display.checked" ).removeClass( "checked" );
-    Session.set('display',e.currentTarget.innerText);
-    e.currentTarget.className = 'display checked';
-  }
-});
->>>>>>> 8b1cd661816af1d0c29f9c1fed4f6aa29901f3ed
 
 Template.home.helpers({
   selCause: function(){return Session.get('cause');},
@@ -59,14 +47,13 @@ Template.home.helpers({
     }else{
       return null;
     }
-<<<<<<< HEAD
   },
   showSubCause : function(){
     return (Session.get('cause').length == 0) ? false : true;
   },
   subcat: function(){
     try{
-      return (Session.get('cause').length == 0) ? null : Categories.findOne({cat:{$in:Session.get('cause')}}).subcat;
+      return (Session.get('cause').length == 0) ? null : Categories.find({cat:{$in:Session.get('cause')}});
     }catch(e){
       return null;
     }
@@ -76,8 +63,6 @@ Template.home.helpers({
   },
   interactions: function(){
     return interactions;
-  }
-=======
 },
 visibleProjectRollups: function(){
   if(Session.get('subcause') != '' && Session.get('interaction') != ''){
@@ -95,14 +80,17 @@ showSubCause : function(){
   return (Session.get('cause') == '') ? false : true;
 },
 subcat: function(){
-  return Categories.findOne({cat:Session.get('cause')}).subcat;
+  try{
+  return Categories.findOne({cat:{$in:Session.get('cause')}}).subcat;
+}catch(e){
+  return null;
+}
 },
 showInteractions : function(){
   return (Session.get('subcause') == '') ? false : true;
 },
-interaction: function(){
+interactions: function(){
   return interactions;
 }
->>>>>>> 8b1cd661816af1d0c29f9c1fed4f6aa29901f3ed
 
 });

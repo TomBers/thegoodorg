@@ -35,12 +35,12 @@ Companies.allow({
 Companies.attachSchema(new SimpleSchema({
   cid: {type: String,label: "Id of Company", max: 200 },
   title: {type: String,label: "Name of Company", max: 200 },
-  logo:{type: String,label: "Logo", max: 200 },
-  headline: {type: String,label: "Headline", max: 200 ,optional:true  },
+  // logo:{type: String,label: "Logo", max: 200 },
+  // headline: {type: String,label: "Headline", max: 200 ,optional:true  },
   desc: {type: String,label: "Description", max: 1000 ,optional:true},
-  url:{type: String,label: "Website", max: 200 },
+  // url:{type: String,label: "Website", max: 200 },
   representative:{type: String,label: "Company representative", max: 200, optional:true },
-  type:{type: String,label: "Company type", max: 200 }
+  // type:{type: String,label: "Company type", max: 200 }
   // img: {type: String,label: "Image Url",  },
   // url: {type: String, label: "URL", regEx: SimpleSchema.RegEx.Url, autoform: {type: "url"}},
  //  categories: {type: [String], optional: true,
@@ -113,74 +113,3 @@ Projects.attachSchema(new SimpleSchema({
    }
  }
 }));
-
-
-
-  // projects: {type: Array, optional: true, maxCount:5},
-  //    "projects.$": {type: Object, optional: true },
-  //    "projects.$.Name": {type: String, label: "Project Name"},
-  //    "projects.$.URL": {type: String, label: "Project URL"},
-  //    "projects.$.SubCategory": {type: String, label: "Sub Category"},
-  //
-  //    "projects.$.Requirements": {type: Array, optional: true },
-  //    "projects.$.Requirements.$": {type: Object, label: "Requirement", optional: true },
-  //    "projects.$.Requirements.$.Type": {type: String, label: "Type",
-  //       allowedValues:[
-  //         "Capital",
-  //         "Time",
-  //         "Resources"        ]},
-  //    "projects.$.Requirements.$.Amount": {type: String, label: "Amount",
-  //       allowedValues:[
-  //         "1 Day",
-  //         "3 Days",
-  //         "7 Days",
-  //         "£100",
-  //         "£1000",
-  //         "£10000",
-  //         "Software",
-  //         "Hardware",
-  //         "Construction Materials"          ]},
-  //    "projects.$.Requirements.$.TimeFrame": {type: String, label: "TimeFrame",
-  //       allowedValues:[
-  //         "1 Week",
-  //         "2 Weeks",
-  //         "4 Weeks",
-  //         "2 Months",
-  //         "3 Months"]},
-  //
-  // level1: {type: Array, optional: true },
-  // "level1.$": {type: Object, optional: true },
-  // "level1.$.level2a": {type: String, label: "Title"},
-  // "level1.$.level2b": {type: Array, label: "Requirement", optional: true },
-  // "level1.$.level2b.$": {type: Object, label: "Requirement2", optional: true }
-  // "level1.$.level2b.$.level3a": {
-  //    label: "What",
-  //    type: [String],
-  //    optional: true,
-  //    autoform: {
-  //      type: "select-multiple",
-  //      options: function () {
-  //
-  //        var opts = [];
-  //        var reqs = Req_Types.find().fetch();
-  //        if(reqs == []){return null;}
-  //        else{
-  //          reqs.forEach(function(c){
-  //            opts.push({label:c.type,value:c.type});
-  //          });
-  //          return opts;
-  //        }
-  //      }
-  //    }
-  //
-  // },
-  // "level1.$.level2b.$.level3b": {
-  //    type: String,
-  //    label: "Amount"
-  // },
-  // "level1.$.level2b.$.level3c": {
-  //    type: String,
-  //    label: "When"
-  // }
-
-// }));
