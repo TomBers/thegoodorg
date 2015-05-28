@@ -14,6 +14,7 @@ Meteor.startup(function(){
   Companies.remove({});
   Categories.remove({});
   Projects.remove({});
+  Collaborations.remove({});
 
   Factory.define('company', Companies, {
     cid: '',

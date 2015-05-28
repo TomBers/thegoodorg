@@ -1,0 +1,115 @@
+<template name='messages'>
+
+	Corp view (projects I want to give to):<br>
+	  <table style="width:100%" border="1">
+	  
+	  <tr>
+		  <th>Project</th>
+		  <th>Company</th>
+		  <th>Status</th>
+		  <th>From</th>
+		  <th>Message</th>
+		  <th>Action</th>
+	  </tr>
+	  
+	   {{#each from}}
+	  <tr>
+		<td> 
+			<div project="{{project._id}}" title="{{project.hline}}
+			Click here for more details." onclick="location.href='/project/{{project._id}}';">
+				<img src='{{project.img}}' style='width:10%;height:10%'>
+				<br>
+				<h4 style='margin-bottom: 0px;'>{{project.title}}</h4>
+			</div>
+		</td>
+		<td> 
+			<div startup="{{startup.cid}}" title="{{startup.hline}}
+			Click here for more details." onclick="location.href='/company/{{startup.cid}}';">
+				<img src='{{startup.logo}}' style='width:10%;height:10%'>
+				<br>
+				<h4 style='margin-bottom: 0px;'>{{startup.name}}</h4>
+			</div>
+		</td>
+		<td>
+			{{collaboration.status}}
+		</td>
+		<td> 
+			<div startup="{{corp.cid}}" title="{{corp.hline}}
+			Click here for more details." onclick="location.href='/company/{{corp.cid}}';">
+				<img src='{{corp.logo}}' style='width:10%;height:10%'>
+				<br>
+				<h4 style='margin-bottom: 0px;'>{{corp.name}}</h4>
+			</div>
+		</td>
+		<td>
+			{{collaboration.corp_message}}
+		</td>
+		<td>
+			{{#if isRequestedState collaboration}}
+			<div class='stateChangeButton btn btn-primary' collaborationId='{{collaboration._id}}' newState='Cancelled'>Cancel</div>
+			{{/if}}
+		</td>
+	  </tr>
+	   {{/each}}
+	  </table>
+	  
+	  
+	  
+	  <br><br>
+	  
+	  startup view (my projects):<br>
+	   <table style="width:100%" border="1">
+	  
+	  <tr>
+		  <th>Project</th>
+		  <th>Company</th>
+		  <th>Status</th>
+		  <th>From</th>
+		  <th>Message</th>
+		  <th>Action</th>
+	  </tr>
+	  
+	   {{#each to}}
+	  <tr>
+		<td> 
+			<div project="{{project._id}}" title="{{project.hline}}
+			Click here for more details." onclick="location.href='/project/{{project._id}}';">
+				<img src='{{project.img}}' style='width:10%;height:10%'>
+				<br>
+				<h4 style='margin-bottom: 0px;'>{{project.title}}</h4>
+			</div>
+		</td>
+		<td> 
+			<div startup="{{startup.cid}}" title="{{startup.hline}}
+			Click here for more details." onclick="location.href='/company/{{startup.cid}}';">
+				<img src='{{startup.logo}}' style='width:10%;height:10%'>
+				<br>
+				<h4 style='margin-bottom: 0px;'>{{startup.name}}</h4>
+			</div>
+		</td>
+		<td>
+			{{collaboration.status}}
+		</td>
+		<td> 
+			<div startup="{{corp.cid}}" title="{{corp.hline}}
+			Click here for more details." onclick="location.href='/company/{{corp.cid}}';">
+				<img src='{{corp.logo}}' style='width:10%;height:10%'>
+				<br>
+				<h4 style='margin-bottom: 0px;'>{{corp.name}}</h4>
+			</div>
+		</td>
+		<td>
+			{{collaboration.corp_message}}
+		</td>
+		<td>
+			{{#if isRequestedState collaboration}}
+			<div class='stateChangeButton btn btn-primary' collaborationId='{{collaboration._id}}' newState='Accepted'>Accept</div>
+			<div class='stateChangeButton btn btn-primary' collaborationId='{{collaboration._id}}' newState='Rejected'>Reject</div>
+			{{/if}}
+		</td>
+	  </tr>
+	   {{/each}}
+	  </table>
+	  
+	  
+</template>

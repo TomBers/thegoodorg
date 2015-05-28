@@ -21,13 +21,28 @@
 	  
 	   <div class='btn btn-primary' id='contact_btn'>Contact</div>
 	 
-
+		<br>
 	   {{#if showContactForm}}
 	    <h2>Send Collaboration Request</h2>
 		  <div style="border: 1px solid black">
-		  
-		  
-		  <div class='btn btn-primary' id='send_btn'>Send</div>
+		  From: <select id='collaboration_from'>
+		   {{#each myCompanies}}
+				<option value="{{cid}}">{{name}}</option>
+		   {{/each}}
+		  </select>
+		  <br>
+		  Message (optional):
+		  <br>
+		  <textarea rows='4' cols='50' maxLength='256' id='collaboration_message'></textarea>
+		  <br>
+		  <div class='btn btn-primary' id='collaboration_send_btn'>Send</div>
+		</div>
+		  {{/if}}
+	  
+	  {{#if showMessagesLink}}
+		  <div>
+		  You have already contacted this startup regarding this project.<br>
+		  Click <a class='btn btn-primary' href='/messages/'>messages</a> to see you communications.
 		</div>
 		  {{/if}}
 	  

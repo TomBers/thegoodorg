@@ -155,18 +155,21 @@ Collaborations.allow({
 Collaborations.attachSchema(new SimpleSchema({
   projectId: {type: String},
   corp_cid: {type: String},
-//  startup_cid: {type: String}
+  startup_cid: {type: String},
+  corp_message: {type: String, optional: true},
   /*
   ,
   corp_message: {type: String},
   startup_message: {type: String},
   corp_requestedAt: {type: Date},
   startup_responceAt: {type: Date},
-  status:   {type: String, label: "Status", optional: false, defaultValue:'Request',
+  */
+  status:   {type: String, label: "Status", optional: false, defaultValue:'Requested',
             allowedValues: [
-              "Request",
+              "Requested",
               "Accepted",
-			  "Rejected"]},
-			  */
+			  "Rejected",
+			  "Cancelled"]}
+			  
 }));
 
