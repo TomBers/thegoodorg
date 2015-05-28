@@ -49,10 +49,10 @@ Meteor.startup(function(){
     loc: '',
     addr: '',
 
-    rep_name:'',
-    rep_role:'',
-    rep_email:'',
-    rep_tel:'',
+    rep_name:'Jonathan Dale',
+    rep_role:'CSR rep',
+    rep_email:'j@da1e.com',
+    rep_tel:'+44 7958......',
 
     type:'StartUp'  });
 
