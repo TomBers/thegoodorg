@@ -64,18 +64,18 @@ Template.home.helpers({
   interactions: function(){
     return interactions;
 },
-visibleProjectRollups: function(){
-  if(Session.get('subcause') != '' && Session.get('interaction') != ''){
-    return Companies.find({cid:
-      Projects.find({
-        categories:{$in:Session.get('subcause')},
-        interactions:{$in:Session.get('interaction')}
-        }).ownerId
-        })
-  }else{
-    return null;
-  }
-},
+// visibleProjectRollups: function(){
+//   if(Session.get('subcause') != '' && Session.get('interaction') != ''){
+//     return Companies.find({cid:
+//       Projects.find({
+//         categories:{$in:Session.get('subcause')},
+//         interactions:{$in:Session.get('interaction')}
+//         }).ownerId
+//         })
+//   }else{
+//     return null;
+//   }
+// },
 showSubCause : function(){
   return (Session.get('cause') == '') ? false : true;
 },

@@ -103,19 +103,19 @@ Companies.attachSchema(new SimpleSchema({
       else if (this.isUpsert) {return {$setOnInsert: new Date};}
       else {        this.unset();      }
       }
-    },
-
-    updatedAt: {
-      type: Date,
-      autoValue: function() {
-        //if (this.isUpdate) { return new Date();}
-        //else if (this.isInsert) {return new Date;}
-        //else {}
-        Date;
-        },
-      //denyInsert: false,
-      optional: true
     }
+
+    // updatedAt: {
+    //   type: Date,
+    //   autoValue: function() {
+    //     //if (this.isUpdate) { return new Date();}
+    //     //else if (this.isInsert) {return new Date;}
+    //     //else {}
+    //     Date;
+    //     },
+    //   //denyInsert: false,
+    //   optional: true
+    // }
 }));
 
 
@@ -207,6 +207,5 @@ Collaborations.attachSchema(new SimpleSchema({
               "Accepted",
 			  "Rejected",
 			  "Cancelled"]}
-			  
-}));
 
+}));

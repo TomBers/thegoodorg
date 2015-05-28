@@ -36,7 +36,7 @@ Template.admin.rendered = function(){
 
 Template.admin.helpers({
   myCompanies: function(){
-      varUserID = Meteor.user().emails[0].address
-      return Companies.find({rep_email:varUserID})
+      // varUserID = Meteor.user().emails[0].address
+      // return Companies.find({rep_email:varUserID})
     }
   });
