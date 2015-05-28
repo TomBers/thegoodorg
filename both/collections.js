@@ -1,7 +1,7 @@
 /*  Institution object collections   */
 Companies = new Mongo.Collection("companies");
 Projects = new Mongo.Collection("projects");
-
+UserSettings = new Mongo.Collection("usersettings")
 
 /*  Classification object collections   */
 Categories = new Mongo.Collection("categories");
@@ -24,6 +24,23 @@ Categories.attachSchema(new SimpleSchema({
    optional: true
   }
 }));
+
+
+UserSettings.allow({
+  insert: function () { return true; },
+  update: function () { return true; },
+  remove: function () { return true; }
+});
+
+
+UserSettings.attachSchema(new SimpleSchema({
+  userID:   {type: String,label: "Category Name", max: 200, optional: true },
+  userType: {type:String, label: "User Type", optional:true } ,
+  mailout:  {type: Boolean, label: "Receive Weekly Mailout ?", defaultValue: true}
+}));
+
+
+
 
 Companies.allow({
   insert: function () { return true; },
@@ -75,8 +92,28 @@ Companies.attachSchema(new SimpleSchema({
   rep_tel:     {type: String, label: "contact telephone #", max: 200, optional:true,defaultValue:'(...+44 #### ### ####...)' },
 
   img:    {type: String, label: "Image Url",  optional:true, defaultValue:'(...URL link to company picture(s)...)'},
-  projects:{type: [String], optional:true, max:10}
+  projects:{type: [String], optional:true, max:10},
 
+  createdAt: {
+    type: Date,
+    autoValue: function() {
+      if (this.isInsert) {return new Date;}
+      else if (this.isUpsert) {return {$setOnInsert: new Date};}
+      else {        this.unset();      }
+      }
+    },
+
+    updatedAt: {
+      type: Date,
+      autoValue: function() {
+        //if (this.isUpdate) { return new Date();}
+        //else if (this.isInsert) {return new Date;}
+        //else {}
+        Date;
+        },
+      //denyInsert: false,
+      optional: true
+    }
 }));
 
 
@@ -91,7 +128,7 @@ Projects.allow({
 
 Projects.attachSchema(new SimpleSchema({
   ownerId:  {type: String, optional: true, label: "ID of Owning company", max: 200 },
-  title:    {type: String, optional: true, label: "Name of Startup", max: 200 },
+  title:    {type: String, optional: true, label: "Project Title", max: 200 },
   hline:    {type: String, optional: true, label: "Headline", max: 200 },
   desc:     {type: String, optional: true, min: 20, max: 1000,
     autoform: {rows: 5}   },

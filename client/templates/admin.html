@@ -45,12 +45,15 @@
     <h3> company: {{name}} </h3>
     <h3> headline: {{hline}} </h3>
     <h3> location: {{loc}} </h3>
-
+    <h5>Created: {{createdAt}}</h5>
+    <h5>Last updated: {{updatedAt}}</h5>
     {{#afModal class="btn btn-primary" collection="Companies" operation="update" doc=_id}}
       Edit Company
     {{/afModal}}
 
-  {{/each}}
+    <!-- {{> quickRemoveButton collection="Companies" _id=this._id}}  -->
+    {{> quickRemoveButton collection="Companies" _id=this._id onError=onError onSuccess=onSuccess beforeRemove=beforeRemove class="btn btn-danger"}}
+    {{/each}}
 
 <br><br>
 <div>

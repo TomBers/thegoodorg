@@ -20,6 +20,8 @@ Router.map(function() {
 
   this.route('/admin', {path: '/admin',template: 'admin'});
 
+  this.route('/leaderboard', {path: '/leaderboard',template: 'leaderboard'});
+
   this.route('/addStartup', {
     path: '/addStartup',
     template: 'addStartup',
@@ -121,13 +123,5 @@ Router.map(function() {
     });
 
 
-  this.route('/leaderboard', {
-    path: '/leaderboard',
-    template: 'leaderboard',
-    data: function() {
-    return {collaborations:Collaborations.find()};
-  }
-
-  });
 
 });
