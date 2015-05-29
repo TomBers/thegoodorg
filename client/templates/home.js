@@ -7,14 +7,18 @@ Template.home.rendered = function(){
 }
 Template.cause.events({
   'click .cause' :function(e,template){
+    $( ".cause.checked" ).removeClass( "checked" );
     Session.set('cause',[template.data.cat]);
+    e.currentTarget.className = 'cause checked';
 
   },
 })
 
 Template.subcause.events({
   'click .subcause' :function(e,template){
+    $( ".subcause.checked" ).removeClass( "checked" );
     Session.set('subcause',[template.data]);
+    e.currentTarget.className = 'subcause checked';
   },
 })
 
