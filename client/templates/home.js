@@ -68,18 +68,12 @@ Template.home.helpers({
   interactions: function(){
     return interactions;
 },
-// visibleProjectRollups: function(){
-//   if(Session.get('subcause') != '' && Session.get('interaction') != ''){
-//     return Companies.find({cid:
-//       Projects.find({
-//         categories:{$in:Session.get('subcause')},
-//         interactions:{$in:Session.get('interaction')}
-//         }).ownerId
-//         })
-//   }else{
-//     return null;
-//   }
-// },
+
+//TODO - refine this...  functional code, called each field & iteration
+'linkCompany': function() {
+  return Companies.findOne({"cid":this.ownerId});
+},
+
 showSubCause : function(){
   return (Session.get('cause') == '') ? false : true;
 },

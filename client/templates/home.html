@@ -65,7 +65,30 @@
 
 
       {{#each visibleProjects}}
-        {{> projectDisplay}}
+
+      <div class='col-sm-4 companyBox'>
+        <img src='{{linkCompany.logo}}' style='width:50%;height:auto'>
+
+        <h6>company name: {{linkCompany.name}}</h6>
+        <h6>representative name: {{linkCompany.rep_name}}</h6>
+        <h6>representative role: {{linkCompany.rep_role}}</h6>
+        <h6>company headline: {{linkCompany.hline}}</h6>
+        <h6>industry: {{linkCompany.industry}}</h6>
+        <a href='/company/{{_id}}'>Company Summary</a>
+
+        <h6>-----------------------------</h6>
+
+        <h4 style='margin-bottom: 0px;'>Project: {{title}}</h4>
+        <h6>project headline: {{hline}}</h6>
+        <h6>opportunities: {{interactions}}</h6>
+        <button type="button" class="btn btn-success">Interested ?</button>
+        <h6>-----------------------------</h6>
+        <h6></h6>
+        <a href='/project/{{_id}}'>Project Detail</a>
+      </div>
+
+
+      <!-- {{> projectDisplay}} -->
       {{/each}}
 
 
@@ -92,7 +115,7 @@
 </template>
 
 
-<template name="projectDisplay">
+<!-- <template name="projectDisplay">
   <div class='col-sm-4 companyBox'>
     <img src='{{img}}' style='width:50%;height:auto'>
     <h6>project headline: {{hline}}</h6>
@@ -105,4 +128,4 @@
     <h6></h6>
     <a href='/project/{{_id}}'>More</a>
   </div>
-</template>
+</template> -->
