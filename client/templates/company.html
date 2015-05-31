@@ -6,21 +6,23 @@
 
     {{#with company}}
 
-      <div class='col-md-4'>
+      <div class='col-sm-4 companyBox'>
         <!-- <img src='http://placehold.it/300&text={{title}}' style='width:100%;height:auto'>  -->
         <img src= {{logo}} style='width:100%;height:auto'>
       </div>
 
       <div class='col-md-6'>
-        <h1>About Us:</h1>
-        <h2>{{title}}</h2>
-        <h2>{{hline}}</h2>
-        <h3>{{about}}</h3>
-        <h3>website:</h3><a href='{{url}}'> >> {{url}}</a>
+        <h4>About Us:</h4>
+        <h5>Name: {{name}}</h5>
+
+        <h5>Title:  {{title}}</h5>
+        <h5>Headline: {{hline}}</h5>
+        <h5>About: {{about}}</h5>
+        <h5>Website:</h5><a href='{{url}}'> >> {{url}}</a>
         <br>
 
-        <h1>Where we are:</h1>
-        <h3>location: {{loc}}</h3>
+        <h4>Where we are:</h4>
+        <h5>location: {{loc}}</h5>
         <h5>Created: {{createdAt}}</h5>
         <h5>Last updated: {{updatedAt}}</h5>
         <br>
@@ -29,17 +31,22 @@
     </div>
 
       <br>
-      {{> autoformModals}}
-      {{#afModal class="btn btn-primary" collection="Companies" operation="update" doc=_id}}
-        Edit Company
-      {{/afModal}}
+      <!-- {{#if isRegistered.contact_mail == rep_email}} -->
+      {{#if isOwned}}
+
+        {{> autoformModals}}
+        {{#afModal class="btn btn-primary" collection="Companies" operation="update" doc=_id}}
+          Edit Company
+        {{/afModal}}
+
+      {{/if}}
       <br>
 
     {{/with}}
 
   </div>
 
-  <h1>Our Projects :</h1>
+  <h4>Our Projects :</h4>
 
     {{#each projects}}
       {{> projectSummary}}
@@ -56,12 +63,14 @@
     <div class='col-sm-3'>{{desc}}</div>
     <div class='col-sm-3'>{{link}}</div>
     <div class='col-sm-3'>
+      <!-- {{#if isOwned}}
 
-      {{> autoformModals}}
-      {{#afModal class="btn btn-primary" collection="Projects" operation="update" doc=_id}}
-        Edit Project
-      {{/afModal}}
+        {{> autoformModals}}
+        {{#afModal class="btn btn-primary" collection="Projects" operation="update" doc=_id}}
+          Edit Project
+        {{/afModal}}
 
+      {{/if}} -->
   </div>
   </div>
 

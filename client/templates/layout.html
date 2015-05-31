@@ -2,60 +2,79 @@
   <head>
     <title>The Good.org</title>
     <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">The Good.org</a>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">The Good.org</a>
+        </div>
+        <div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Home</a></li>
+            <li class="active"><a href="/about">About</a></li>
+            <li class="active"><a href="/leaderboard">Leaderboard</a></li>
+
+
+            <!-- {{> layout_displayItems}} -->
+
+
+            {{#if currentUser}}
+              {{> layout_loggedin}}
+            {{else}}
+              {{> layout_loggedout}}
+            {{/if}}
+
+            <li style='padding-top:14px'>{{> loginButtons}}</li>
+
+
+
+          </ul>
+
+          <!-- <ul class="nav navbar-nav navbar-right">
+
+        </ul> -->
+      </div>
     </div>
-    <div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>
-        <li class="active"><a href="/about">About</a></li>
-        <li class="active"><a href="/leaderboard">Leaderboard</a></li>
+  </nav>
+  {{> yield}}
+</body>
+</template>
 
+<template name="layout_loggedin">
+  <li class="active"><a href="/messages">Messages</a></li>
 
-
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Display
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/leaderboard">'Leaderboard'</a></li>
-            <li><a href="/list">All</a></li>
-            <li><a href="/list2">All Corporates</a></li>
-            <li><a href="/listCompanies">All Companies</a></li>
-            <li><a href="/listReqConfig">All Config Items</a></li>
-          </ul>
-        </li>
- 
-		<li class="active"><a href="/messages">Messages</a></li>
- 
-        <li class="dropdown-submenu">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="/admin">My Settings</a></li>
-            <li><a href="#">My Notifications</a></li>
-            <li><a href="#">Company Profile</a></li>
-
-
-          </ul>
-        </li>
-
-        <li style='padding-top:14px'>{{> loginButtons}}</li>
-
-
+  <li class="dropdown-submenu">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="/admin">My Settings</a></li>
+        <li><a href="/messages">My Notifications</a></li>
+        <li><a href="#">Company Profile</a></li>
 
       </ul>
+    </li>
 
-        <!-- <ul class="nav navbar-nav navbar-right">
+  </template>
 
-      </ul> -->
-    </div>
-  </div>
-</nav>
-{{> yield}}
-  </body>
-</template>
+  <template name="layout_loggedout">
+    <li class="disabled"><a href="/messages">Messages</a></li>
+
+  </template>
+
+
+  <template name="layout_displayItems">
+
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Display
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="/leaderboard">'Leaderboard'</a></li>
+          <li><a href="/list">All</a></li>
+          <li><a href="/list2">All Corporates</a></li>
+          <li><a href="/listCompanies">All Companies</a></li>
+          <li><a href="/listReqConfig">All Config Items</a></li>
+        </ul>
+      </li>
+    </template>

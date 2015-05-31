@@ -15,6 +15,56 @@ Meteor.startup(function(){
   Categories.remove({});
   Projects.remove({});
   Collaborations.remove({});
+  UserProfiles.remove({});
+
+
+  Factory.define('userprofile', UserProfiles, {
+    loginID:   '',
+    loginEmail:   '',
+
+    registerAs:  '',
+
+    contact_bool:  true,
+    contact_num:  '',
+    contact_mail:  '',
+
+    // other ...
+    mailout_monthly:  true,
+    mailout_updates:  true,
+
+    //Hidden fields...
+    userType: '' ,
+
+    // CRUD...
+    createdAt: '',
+
+    // perhaps let's not delete anything... set to inactive instead
+    isActive: true
+  })
+
+  Factory.create('userprofile', {
+    loginID:   'j@da1e.com',
+    loginEmail:   'j@da1e.com',
+
+    registerAs:  'Corporate Rep',
+
+    contact_bool:  true,
+    contact_num:  '07958 906 906',
+    contact_mail:  'j@da1e.com',
+
+    // other ...
+    mailout_monthly:  true,
+    mailout_updates:  true,
+
+    //Hidden fields...
+    userType: '' ,
+
+    // CRUD...
+    createdAt: '',
+
+    // perhaps let's not delete anything... set to inactive instead
+    isActive: true
+});
 
   Factory.define('company', Companies, {
     cid: '',

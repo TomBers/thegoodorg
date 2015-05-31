@@ -1,68 +1,129 @@
 <template name='admin'>
+  <h2>Profile: {{userMailAddress}}   </h2>
+
+  <br>
 
 
+  <!-- {{#if isRegistered.isActive = true}} -->
+  {{#if isRegistered}}
+    <h4>My Details:</h4>
+    <h6>Login ID:{{isRegistered.loginID}}</h6>
+    <h6>Login email:{{isRegistered.loginEmail}}</h6>
+    <h6>Registered As:{{isRegistered.registerAs}}</h6>
+    <h6>Contact Me?:{{isRegistered.contact_bool}}</h6>
+    <h6>Telephone:{{isRegistered.contact_num}}</h6>
+    <h6>Email:{{isRegistered.contact_mail}}</h6>
 
-  <div>
+    {{> autoformModals}}
+    {{#afModal class="btn btn-primary" collection="UserProfiles" operation="update" doc=isRegistered._id}}
+      Update Details ?
+    {{/afModal}}
 
-  <!-- <li class="divider"></li> -->
-
-  <li><a href="/addReq1">Add Req Type</a></li>
-  <li><a href="/addReq2">Add Req Amount</a></li>
-  <li><a href="/addReq3">Add Req Timeframe</a></li>
-
-  <br><br>
-<!-- <li class="divider"></li> -->
-
-  <li><a href="/addCat">Add Category</a></li>
-  <li><a href="/addSubCat">Add SubCategory</a></li>
-
-  </div>
-
-  <br><br>
-
-  <div>
-
-      <li><a href="/addStartup">Add Startup</a></li>
-      <li><a href="/addCorporate">Add Corporate</a></li>
-
-      <br><br>
-
-      <li><a href="/addFeedback">Add Feedback</a></li>
-
-      <br><br>
-
-
-  </div>
 
   <br><br>
 
-  <h2>My companies </h2>
+  <h4>My registered companies:</h4>
+
   <br>
 
   {{#each myCompanies}}
+    {{> admin_listCompanies}}
+  {{/each}}
 
-    <h3> _id: {{_id}} </h3>
-    <h3> company: {{name}} </h3>
-    <h3> headline: {{hline}} </h3>
-    <h3> location: {{loc}} </h3>
+    <!-- add new company -->
+    {{> autoformModals}}
+
+    {{#afModal class="btn btn-primary" collection="Companies" operation="insert"}}
+      Add New Company
+    {{/afModal}}
+
+  {{else}}
+    <h4>would you like to register?</h4>
+    {{> autoformModals}}
+    {{#afModal class="btn btn-primary" collection="UserProfiles" operation="insert"}}
+      Register
+    {{/afModal}}
+
+  {{/if}}
+
+
+</template>
+
+
+
+
+
+
+<template name='admin_listCompanies'>
+
+  <div>
+    <!-- <h5> _id: {{_id}} </h5> -->
+    <h5> company: {{name}} </h5>
+    <h5> headline: {{hline}} </h5>
+    <h5> description: {{desc}} </h5>
+    <h5> location: {{loc}} </h5>
     <h5>Created: {{createdAt}}</h5>
-    <h5>Last updated: {{updatedAt}}</h5>
+    <!-- <h5>Last updated: {{updatedAt}}</h5> -->
     {{#afModal class="btn btn-primary" collection="Companies" operation="update" doc=_id}}
       Edit Company
     {{/afModal}}
 
     <!-- {{> quickRemoveButton collection="Companies" _id=this._id}}  -->
     {{> quickRemoveButton collection="Companies" _id=this._id onError=onError onSuccess=onSuccess beforeRemove=beforeRemove class="btn btn-danger"}}
-    {{/each}}
 
-<br><br>
-<div>
+    <br><br>
+
+  </div>
+
+</template>
+
+
+<template name='admin_housekeeping'>
+
+  <div>
+
+    <li><a href="/addReq1">Add Req Type</a></li>
+    <li><a href="/addReq2">Add Req Amount</a></li>
+    <li><a href="/addReq3">Add Req Timeframe</a></li>
+
+    <br><br>
+
+    <li><a href="/addCat">Add Category</a></li>
+    <li><a href="/addSubCat">Add SubCategory</a></li>
+  </div>
+  <br><br>
+
+  <div>
+    <li><a href="/addStartup">Add Startup</a></li>
+    <li><a href="/addCorporate">Add Corporate</a></li>
+    <br><br>
+    <li><a href="/addFeedback">Add Feedback</a></li>
+    <br><br>
+  </div>
+
+</template>
+
+<template name='admin_AddCompany'>
   {{> autoformModals}}
 
   {{#afModal class="btn btn-primary" collection="Companies" operation="insert"}}
     Add New Company
   {{/afModal}}
-
-</div>
-
 </template>
+
+
+
+<!-- <template name="login_admin">
+  {{#if currentUser}}
+
+  {{#if isUserAdmin}}
+    hello admin
+  {{/if}}
+
+  {{ else }}
+
+  pls login
+  {{loginButtons}}
+
+  {{/if}}
+</template> -->

@@ -4,7 +4,8 @@ Session.set('interaction',[]);
 var interactions = ['Donate Materials','Monetary Donations','Volunteering','Research Agreements','Product collaboration','Brand Collaboration','Lecturing Opportunites'];
 Template.home.rendered = function(){
   Meteor.subscribe('Projects');
-}
+  Meteor.subscribe('UserProfiles');
+  }
 Template.cause.events({
   'click .cause' :function(e,template){
     $( ".cause.checked" ).removeClass( "checked" );
@@ -89,6 +90,17 @@ showInteractions : function(){
 },
 interactions: function(){
   return interactions;
+},
+
+
+isRegistered: function(){
+  var user = Meteor.user();
+  try{
+  return UserProfiles.findOne({loginID:user.emails[0].address});
+}catch(e){
+  return null;
+}
+
 }
 
 });

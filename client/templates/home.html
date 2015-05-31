@@ -28,14 +28,14 @@
 
 
 <div class='container-fluid'>
+
+  {{userPrompt}}
+
   <div class='col-sm-12'>
     <div class='row'>
       <h1>About TGO</h1>
 
-
       <h2>Cause : {{selCause}}</h2>
-
-
 
       <h2>Please Choose a Category :</h2>
 
@@ -74,7 +74,7 @@
         <h6>representative role: {{linkCompany.rep_role}}</h6>
         <h6>company headline: {{linkCompany.hline}}</h6>
         <h6>industry: {{linkCompany.industry}}</h6>
-        <a href='/company/{{_id}}'>Company Summary</a>
+        <a href='/company/{{ownerId}}'>Company Summary</a>
 
         <h6>-----------------------------</h6>
 
@@ -115,17 +115,18 @@
 </template>
 
 
-<!-- <template name="projectDisplay">
-  <div class='col-sm-4 companyBox'>
-    <img src='{{img}}' style='width:50%;height:auto'>
-    <h6>project headline: {{hline}}</h6>
-    <h6>-----------------------------</h6>
-    <h4 style='margin-bottom: 0px;'>Project: {{title}}</h4>
-    <h6>project headline: {{hline}}</h6>
-    <h6>opportunities: {{interactions}}</h6>
-    <button type="button" class="btn btn-success">Interested ?</button>
-    <h6>-----------------------------</h6>
-    <h6></h6>
-    <a href='/project/{{_id}}'>More</a>
-  </div>
-</template> -->
+<template name="userPrompt">
+{{#if currentUser}}
+{{else}}
+  Login for additional features...
+{{/if}}
+
+{{#if isRegistered}}
+{{else}}
+  {{> autoformModals}}
+  {{#afModal class="btn btn-primary" collection="UserProfiles" operation="insert"}}
+    Register
+  {{/afModal}}
+{{/if}}
+
+</template>

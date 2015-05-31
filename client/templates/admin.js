@@ -1,42 +1,61 @@
-
+//var currentUserID = Meteor.user().emails[0].address;
+//Session.set('currentUserID','');
+var user = Meteor.user();
 Template.admin.rendered = function(){
-  Meteor.subscribe('Companies');
+  Meteor.subscribe('UserProfiles');
+  // currentUserID = Meteor.user().emails[0].address;
 }
-// Template.cause.events({
-//   'click .cause' :function(e,template){
-//     Session.set('cause',[template.data.cat]);
-//
-//   },
-// })
-
-// Template.subcause.events({
-//   'click .subcause' :function(e,template){
-//     Session.set('subcause',[template.data]);
-//   },
-// })
-
-// Template.interaction.events({
-//   'click .interaction' :function(e,template){
-//
-//     var tmp = Session.get('interaction');
-//
-//     if(template.$( ".interaction.checked" ).length > 0){
-//       template.$( ".interaction.checked" ).removeClass( "checked" );
-//       Session.set('interaction',_.without(tmp,template.data));
-//     }else{
-//       tmp.push(template.data);
-//       Session.set('interaction',tmp);
-//       e.currentTarget.className = 'interaction checked';
-//     }
-//
-//   },
-// })
 
 
 
 Template.admin.helpers({
-  myCompanies: function(){
-      // varUserID = Meteor.user().emails[0].address
-      // return Companies.find({rep_email:varUserID})
+  userMailAddress: function() {
+    var user = Meteor.user();
+    if (user && user.emails)
+  //    var userMail = user.emails[0].address;
+  //    Session.set('currentUserID',varUserMail);
+      //console.log("test");
+      return user.emails[0].address;
+  }
+
+
+  ,myCompanies: function(){
+    var user = Meteor.user();
+    if (user && user.emails)
+
+    return Companies.find({rep_email:user.emails[0].address}); //currentUserID
     }
-  });
+
+    ,isRegistered: function(){
+      var user = Meteor.user();
+      try{
+      return UserProfiles.findOne({loginID:user.emails[0].address});
+    }catch(e){
+      return null;
+    }
+
+    }
+
+
+    ,checkActive: function(){
+      var user = Meteor.user();
+      if (UserProfiles.find({loginID:user.emails[0].address}, {isActive: true}).limit(1))
+      {return true;}
+      else
+      {return false;}
+    }
+
+  // ,  myUserDetails: function(){
+  //       return Companies.find({rep_email:varUserID})
+  //   },
+  //
+  //
+  // isUserAdmin : function(){
+  //   var adminEmail = Meteor.user().emails[0].address;
+  //   if( adminEmail === "j@da1e.com"){
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+});

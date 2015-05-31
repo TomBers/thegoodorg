@@ -1,7 +1,7 @@
 /*  Institution object collections   */
 Companies = new Mongo.Collection("companies");
 Projects = new Mongo.Collection("projects");
-UserSettings = new Mongo.Collection("usersettings")
+UserProfiles = new Mongo.Collection("userprofiles")
 
 /*  Classification object collections   */
 Categories = new Mongo.Collection("categories");
@@ -28,17 +28,49 @@ Categories.attachSchema(new SimpleSchema({
 }));
 
 
-UserSettings.allow({
+UserProfiles.allow({
   insert: function () { return true; },
   update: function () { return true; },
   remove: function () { return true; }
 });
 
 
-UserSettings.attachSchema(new SimpleSchema({
-  userID:   {type: String,label: "Category Name", max: 200, optional: true },
-  userType: {type:String, label: "User Type", optional:true } ,
-  mailout:  {type: Boolean, label: "Receive Weekly Mailout ?", defaultValue: true}
+UserProfiles.attachSchema(new SimpleSchema({
+  loginID:   {type: String,label: "Login ID", max: 200, optional: true },
+  loginEmail:   {type: String,label: "Login mail", max: 200, optional: true },
+
+  registerAs:  {type: String, label: "Register As:", optional: false, defaultValue:'Individual',
+              allowedValues: [
+                "Individual",
+                "StartUp Rep",
+                "Corporate Rep"]},
+
+  contact_bool:  {type: Boolean, label: "Contact Me ?", defaultValue: true},
+  contact_num:  {type: String,label: "Contact Telephone", max: 200, optional: true },
+  contact_mail:  {type: String,label: "Contact email", max: 200, optional: true },
+
+
+  // other ...
+  mailout_monthly:  {type: Boolean, label: "Receive Monthly Mailout ?", defaultValue: true},
+  mailout_updates:  {type: Boolean, label: "Receive weekly update on project matches ?", defaultValue: true},
+
+  //Hidden fields...
+  userType: {type:String, label: "User Type", optional:true ,autoform: {omit: true}} ,
+
+  // CRUD...
+  createdAt: {
+    autoform: {omit: true},
+    type: Date,
+    autoValue: function() {
+      if (this.isInsert) {return new Date;}
+      else if (this.isUpsert) {return {$setOnInsert: new Date};}
+      else {        this.unset();      }
+      }
+    },
+
+    // perhaps let's not delete anything... set to inactive instead
+    isActive: {type: Boolean, label: "User Active ?", defaultValue: true ,autoform: {omit: true}}
+
 }));
 
 
@@ -97,6 +129,7 @@ Companies.attachSchema(new SimpleSchema({
   projects:{type: [String], optional:true, max:10},
 
   createdAt: {
+    autoform: {omit: true},
     type: Date,
     autoValue: function() {
       if (this.isInsert) {return new Date;}
