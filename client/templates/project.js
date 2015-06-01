@@ -36,51 +36,63 @@ Template.project.events({
 Template.project.helpers({
 
 
-showContactForm: function(){
+	showContactForm: function(){
 
-	var var_projectID = Template.currentData()._id ;
+		var var_projectID = Template.currentData()._id ;
 
-	var my_cids = Companies.find().map(function(p) { return p.cid }); //TODO
+		var my_cids = Companies.find().map(function(p) { return p.cid }); //TODO
 
-	x = Collaborations.find({
-		projectId:var_projectID,
-		corp_cid: {$in:my_cids}
-	}).count();
+		x = Collaborations.find({
+			projectId:var_projectID,
+			corp_cid: {$in:my_cids}
+		}).count();
 
-	return Session.get('showContactClicked') && x === 0;
-},
+		return Session.get('showContactClicked') && x === 0;
+	},
 
-showMessagesLink: function(){
+	showMessagesLink: function(){
 
-	var var_projectID = Template.currentData()._id ;
+		var var_projectID = Template.currentData()._id ;
 
 
-	var my_cids = Companies.find().map(function(p) { return p.cid }); //TODO
+		var my_cids = Companies.find().map(function(p) { return p.cid }); //TODO
 
-	x = Collaborations.find({
-		projectId:var_projectID,
-		corp_cid: {$in:my_cids}
-	}).count();
+		x = Collaborations.find({
+			projectId:var_projectID,
+			corp_cid: {$in:my_cids}
+		}).count();
 
-	return Session.get('showContactClicked') && x !== 0;
-},
+		return Session.get('showContactClicked') && x !== 0;
+	},
 
-myCompanies: function(){
-	var user = Meteor.user();
-	var mail = UserProfiles.findOne({loginID:user.emails[0].address});
-	return Companies.find({rep_email:mail.contact_mail}); //TODO -done- return companies based on current user
-},
+	myCompanies: function(){
+		var user = Meteor.user();
+		var mail = UserProfiles.findOne({loginID:user.emails[0].address});
+		return Companies.find({rep_email:mail.contact_mail}); //TODO -done- return companies based on current user
+	},
 
-isOwned: function(){
-	var user = Meteor.user();
-	var mail = UserProfiles.findOne({loginID:user.emails[0].address});
-	var cmpy = Companies.find({cid:this.ownerId});
+	'linkCompany': function() {
+	  return Companies.findOne({"cid":this.ownerId});
+	},
+
+	isOwned: function(){
+		var user = Meteor.user();
+		var mail = UserProfiles.findOne({loginID:user.emails[0].address});
+		var cmpy = Companies.find({cid:this.ownerId});
 		if (cmpy.rep_email == mail.contact_mail)
 		{return true;}
 		else
 		{return false;}
 	}
+	,
+	isRegistered: function(){
+		var user = Meteor.user();
+		try{
+			return UserProfiles.findOne({loginID:user.emails[0].address});
+		}catch(e){
+			return null;
+		}
 
-
+	}
 
 });

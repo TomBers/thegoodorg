@@ -21,6 +21,7 @@ Meteor.startup(function(){
   Factory.define('userprofile', UserProfiles, {
     loginID:   '',
     loginEmail:   '',
+    name: '',
 
     registerAs:  '',
 
@@ -45,12 +46,17 @@ Meteor.startup(function(){
   Factory.create('userprofile', {
     loginID:   'j@da1e.com',
     loginEmail:   'j@da1e.com',
+    name: 'Jonathan Dale',
 
     registerAs:  'Corporate Rep',
 
     contact_bool:  true,
     contact_num:  '07958 906 906',
     contact_mail:  'j@da1e.com',
+
+    user_photo:'http://ecx.images-amazon.com/images/I/41i1BkKG0BL._SX258_BO1,204,203,200_.jpg',
+    user_title:'co founder',
+    user_headline:'',
 
     // other ...
     mailout_monthly:  true,
@@ -64,6 +70,65 @@ Meteor.startup(function(){
 
     // perhaps let's not delete anything... set to inactive instead
     isActive: true
+});
+
+Factory.create('userprofile', {
+  loginID:   'admin@tgo.com',
+  loginEmail:   'admin@tgo.com',
+  name: 'A Dmin',
+
+  registerAs:  'StartUp Rep',
+
+  contact_bool:  true,
+  contact_num:  '07958 000 000',
+  contact_mail:  'admin@tgo.com',
+
+  user_photo:'http://vignette2.wikia.nocookie.net/mrmen/images/d/d2/Mr-perfect.png',
+  user_title:'Founder',
+  user_headline:'help me !...',
+
+  // other ...
+  mailout_monthly:  false,
+  mailout_updates:  true,
+
+  //Hidden fields...
+  userType: '' ,
+
+  // CRUD...
+  createdAt: '',
+
+  // perhaps let's not delete anything... set to inactive instead
+  isActive: true
+});
+
+
+Factory.create('userprofile', {
+  loginID:   'admin2@tgo.com',
+  loginEmail:   'admin2@tgo.com',
+  name: 'Ad Min2',
+
+  registerAs:  'StartUp Rep',
+
+  contact_bool:  true,
+  contact_num:  '07958 000 000',
+  contact_mail:  'admin2@tgo.com',
+
+  user_photo:'http://vignette3.wikia.nocookie.net/mrmen/images/8/80/Mr._Topsy-Turvy.jpg',
+  user_title:'Project Mgr',
+  user_headline:'hello there...',
+
+  // other ...
+  mailout_monthly:  false,
+  mailout_updates:  true,
+
+  //Hidden fields...
+  userType: '' ,
+
+  // CRUD...
+  createdAt: '',
+
+  // perhaps let's not delete anything... set to inactive instead
+  isActive: true
 });
 
   Factory.define('company', Companies, {
@@ -185,6 +250,8 @@ Meteor.startup(function(){
       logo:' http://www.clearlyso.com/wp-content/uploads/2015/02/rapanui-474x454.jpg',
       about : 'Rapanui is a super-ethical fashion business, doing sustainable fashion retail and helping young people into work.',
       url:' "https://rapanuiclothing.com/"',
+      rep_email:'admin@tgo.com',
+
       type:'StartUp'  });
 
     Factory.create('company', {
@@ -194,6 +261,7 @@ Meteor.startup(function(){
       logo:' http://www.clearlyso.com/wp-content/uploads/2015/02/playmob-b-n-w-474x454.jpg',
       about : 'Clearly Social Angels investee Playmob connects causes with online gaming through in-app purchases that are part-donation to a charity.',
       url:' "https://playmob.com/"',
+      rep_email:'admin@tgo.com',
       type:'StartUp'  });
 
     Factory.create('company', {
@@ -203,6 +271,7 @@ Meteor.startup(function(){
       logo:' http://www.clearlyso.com/wp-content/uploads/2015/02/aduna-b-n-w1-474x454.jpg',
       about : 'Aduna sells superfood products from emerging markets into developed economies to create sustainable livelihoods in sub-Saharan Africa.',
       url:' ""',
+      rep_email:'admin2@tgo.com',
       type:'StartUp'  });
 
     Factory.create('company', {
@@ -313,7 +382,15 @@ Meteor.startup(function(){
       url: 'https://www.energydeck.com/home/' ,
       type:'StartUp'  });
 
-
+    Factory.create('company', {
+        cid:'S21',
+        name : 'Q-Bot',
+        hline: 'q-bot develops intelligent tools for the built environment, that turn difficult, disruptive and dirty jobs into clean, efficient and safe processes.',
+        logo:'http://www.q-bot.co/images/logo/qbot.jpg',
+        about : "q-bot develops intelligent tools for the built environment, that turn difficult, disruptive and dirty jobs into clean, efficient and safe processes. Our tools allow installers and contractors to: Access hard to reach areas where it would otherwise be too difficult or disruptive, for a human operator to do so.",
+        url: 'https://www.q-bot.co/' ,
+        rep_email:'admin@tgo.com',
+        type:'StartUp'  });
 
 
 
@@ -353,11 +430,11 @@ Factory.define('project', Projects, {
 
 // 1
 Factory.create('project', {
-  ownerId : 'S1',
+  ownerId : 'S2',
   hline: 'Project 1',
   desc : "ClearlySo raised £1.25m debt investment for the London Early Years Foundation, a charity over 100 years old, using an innovative cross-subsidy model where profits from established nurseries support free spaces in deprived areas.",
   link : "http://www.clearlyso.com/our-clients/1-25m-invested-into-leyf",
-  img : " http://www.clearlyso.com/wp-content/uploads/2015/02/insane-logic-b-n-w-474x454.jpg",
+  img : " https://www.leyf.org.uk/image/2/1200/504/5/uploads/homepage-images/slider-bounce-542d53caf412c.jpg",
   title : "London Early Years Foundation: a charity raising investment",
   categories:['Green Technology','Community'],
   interactions:['Donate Materials','Monetary Donations','Volunteering','Research Agreements','Product collaboration','Brand Collaboration','Lecturing Opportunites']
@@ -368,7 +445,7 @@ Factory.create('project', {
   hline: 'Project 2',
   desc : "Aduna sells superfood products from emerging markets into developed economies to create sustainable livelihoods in sub-Saharan Africa. They have raised multiple rounds of investment and are quickly scaling their business.\r\n",
   link : "http://www.clearlyso.com/our-clients/sustainable-ethical-and-delicious-how-adunas-shaking-up-farming-in-africa/",
-  img : " http://www.clearlyso.com/wp-content/uploads/2015/02/left-bnw-474x454.jpg",
+  img : "http://cdn.shopify.com/s/files/1/0447/0453/files/thumb_P_baobab_basket.jpg?5560",
   title : "Aduna: delicious, healthy products with a super ethical supply chain",
   categories:['Sustainable Transport','Employment'],
   interactions:['Donate Materials','Monetary Donations','Volunteering','Research Agreements','Product collaboration','Brand Collaboration','Lecturing Opportunites']
@@ -379,7 +456,7 @@ Factory.create('project', {
   hline: 'Project 3',
   desc : "ClearlySo and our angel network helped Commonplace to raise investment for their app, which uses crowd-sourced data to do better regeneration ",
   link : "http://www.clearlyso.com/our-clients/commonplace-and-the-crowd-for-community-regeneration/",
-  img : " http://www.clearlyso.com/wp-content/uploads/2015/02/brezzie-b-n-w-474x454.jpg",
+  img : "http://www.breezie.com/wp-content/uploads/2014/10/Breezie-10in-Cutout-Welcome-WithMailbox.png",
   title : "Commonplace: using the crowd for community regeneration",
   categories:['Sustainable Products','Energy Management'],
   interactions:['Donate Materials','Monetary Donations','Volunteering','Research Agreements','Product collaboration','Brand Collaboration','Lecturing Opportunites']
@@ -447,7 +524,7 @@ Factory.create('project', {
   hline: 'Project 9',
   desc : "Insane Logic raised investment with ClearlySo to expand their MyChoicePad iPad app, which helps children with speech and language difficulties to communicate with their parents, friends and teachers. The investment included over £150k from Clearly Social Angels ",
   link : "http://www.clearlyso.com/our-clients/investing-in-language-and-communication-for-those-with-special-needs/",
-  img : "http://www.clearlyso.com/wp-content/uploads/2015/03/insane-logiccc-857x490.jpg",
+  img : "http://cdn.insanelogic.co.uk/wp-content/uploads/2015/03/seesignhear.png",
   title : "Insane Logic: language and communication for people with special needs",
   categories:['Special Needs'],
   interactions:['Donate Materials','Monetary Donations','Volunteering','Research Agreements','Product collaboration','Brand Collaboration','Lecturing Opportunites']
@@ -458,7 +535,7 @@ Factory.create('project', {
   hline: 'Project 10',
   desc : "Rapanui is a super-ethical fashion business set up by two entrepreneurs (and brothers) in their shed on the Isle of Wight, selling sustainable fashion products and helping young people into work.",
   link : "http://www.clearlyso.com/our-clients/rapanui-clothing-with-a-conscience/",
-  img : "http://www.clearlyso.com/wp-content/uploads/2015/03/rapanui1-857x490.jpg",
+  img : "https://rapanuiclothing.com/resources/images/Home_Pods/summer_2015_pods/rapa-ss2015-homepage-pod-large2.jpg",
   title : "Rapanui: a sustainable clothing brand with a conscience",
   categories:['Education'],
   interactions:['Donate Materials','Monetary Donations','Volunteering','Research Agreements','Product collaboration','Brand Collaboration','Lecturing Opportunites']
@@ -469,7 +546,7 @@ Factory.create('project', {
   hline: 'Project 11',
   desc : "ClearlySo worked with Oopmh! through The Big Venture Challenge.  The business is dedicated to transforming the day-to-day health and quality of life of older people through group-based exercise classes that improve mobility, social interaction and mental stimulation.",
   link : "http://www.clearlyso.com/our-clients/investing-in-oomph-fitness-for-the-elderly/",
-  img : "http://www.clearlyso.com/wp-content/uploads/2015/03/oomph3-857x490.jpg",
+  img : "http://www.oomph-wellness.org/images/default/intro_image_2.jpg",
   title : "Oomph Wellness: health and fitness for the elderly",
   categories:['Food and Shelter'],
   interactions:['Donate Materials','Monetary Donations','Volunteering','Research Agreements','Product collaboration','Brand Collaboration','Lecturing Opportunites']
@@ -522,15 +599,29 @@ Factory.create('project', {
   hline: 'Project 15',
   desc : "Project 15----------------------------------------",
   link : "http://www.clearlyso.com/our-clients/breezie-raised-angel-investment-and-crowdfunding-to-support-the-elderly/",
-  img : " http://www.clearlyso.com/wp-content/uploads/2015/02/EPC-black-and-white-logo-476x454.png",
+  img : "http://www.oomph-wellness.org/images/default/intro_image_2.jpg",
   title : "P15 - title",
-  categories:['Green Technology','Energy Management','Sustainable Transport',
+  categories:['Energy Management','Sustainable Transport',
   'Sustainable Products','Fitness','Mental Health','Rehabilitation',
   'Seniors','Special Needs','Education','Community','Employment',
   'Food and Shelter','Accessibility'],
   interactions:['Donate Materials','Monetary Donations','Volunteering','Research Agreements','Product collaboration','Brand Collaboration','Lecturing Opportunites']
 });
 
+// 16
+Factory.create('project', {
+  ownerId : 'S21',
+  hline: 'Insulate homes near Imperial College London',
+  desc : "Q-bot is working with low income housing in west london, needs funding to progress...q-bot develops intelligent tools for the built environment, that turn difficult, disruptive and dirty jobs into clean, efficient and safe processes.",
+  link : "http://www.q-bot.co",
+  img : "http://www.q-bot.co/images/home/suveybot_1.jpg",
+  title : "Q-bot insulation project",
+  categories:['Green Technology','Energy Management','Sustainable Transport',
+  'Sustainable Products','Fitness','Mental Health','Rehabilitation',
+  'Seniors','Special Needs','Education','Community','Employment',
+  'Food and Shelter','Accessibility'],
+  interactions:['Donate Materials','Monetary Donations','Volunteering','Research Agreements','Product collaboration','Brand Collaboration','Lecturing Opportunites']
+});
 
 // ['Green Technology','Energy Management','Sustainable Transport',
 // 'Sustainable Products','Fitness','Mental Health','Rehabilitation',

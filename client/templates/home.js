@@ -74,6 +74,10 @@ Template.home.helpers({
 'linkCompany': function() {
   return Companies.findOne({"cid":this.ownerId});
 },
+//TODO - refine this...  functional code, called each field & iteration
+'linkRepresentative': function() {
+  return UserProfiles.findOne({"contact_mail":this.rep_email});
+},
 
 showSubCause : function(){
   return (Session.get('cause') == '') ? false : true;

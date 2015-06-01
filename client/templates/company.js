@@ -13,6 +13,9 @@ Template.company.helpers({
         {return true;}
         else
         {return false;}
-      }
+      },
 
+  'linkRepresentative': function() {
+        return UserProfiles.findOne({"contact_mail":this.rep_email});
+      }
 });

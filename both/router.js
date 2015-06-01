@@ -20,7 +20,7 @@ Router.map(function() {
 
   this.route('/admin', {path: '/admin',template: 'admin'});
 
-  this.route('/leaderboard', {path: '/leaderboard',template: 'leaderboard'});
+  this.route('/impact', {path: '/impact',template: 'impact'});
 
   this.route('/addStartup', {
     path: '/addStartup',
@@ -124,23 +124,23 @@ Router.map(function() {
 
 
 
-  
-  
-  this.route('/messages', {path: '/messages',template: 'messages', data: 
+
+
+  this.route('/messages', {path: '/messages',template: 'messages', data:
 				function() {
 				var my_cids = Companies.find().map(function(p) { return p.cid }); //TODO
 
 
-					
+
 					 //     varUserID = Meteor.user().emails[0].address
 					//	 Companies.find({rep_email:varUserID})
 				//	var msg = Collaborations.find({$or: [{corp_cid:{$in:companyIds}} , {startup_cid:{$in:companyIds}}] });
                   //  return {messages:msg}
-					
+
 					var from = Collaborations.find({corp_cid:{$in:my_cids}});
 					var to = Collaborations.find({startup_cid:{$in:my_cids}});
 
-					
+
 					var fromData = [];
 					var count = 0;
 					from.forEach(function(row){
@@ -154,7 +154,7 @@ Router.map(function() {
 						count++;
 					});
 
-					
+
 					var toData = [];
 					count = 0;
 					to.forEach(function(row){
@@ -166,12 +166,12 @@ Router.map(function() {
 								};
 						count++;
 					});
-					
+
 					console.log(fromData);
 					console.log(toData);
 					return {from:fromData,to:toData}
-					
+
                 }
 			});
-  
+
 });

@@ -2,62 +2,135 @@
 
   <div class='container'>
 
-    <div class='col-md-6'>
-      <img src={{img}} style='width:20%;height:auto'>
-      <h3>title:{{title}}</h3>
+    <br>
+
+      <div class='col-md-6'>
+
+      <h5>{{interactions}} project in conjunction with...<a href='/company/{{ownerId}}'>{{linkCompany.name}}</a></h5>
+
+      <img src={{img}} style='width:200;height:auto'>
+      <!-- <h3>Project title:</h3> -->
+      <h3>{{title}}</h3>
       <br>
-      <h4>Headline:{{hline}}</h4>
+      <h4>Project headline:</h4>
+      <h4>{{hline}}</h4>
       <br>
-      <h5>Projects:{{desc}}</h5>
-      <!--a href='/edit/{{_id}}'>Edit</a-->
+      <h5>Project Description:</h5>
+      <h5>{{desc}}</h5>
+
+      <h5>Location: {{location}}</h5>
+      <br>
+      <a href='/company/{{ownerId}}'> more initiatives within: {{linkCompany.name}}</a>
+      <br>
 
       <br>
+      <h6>----------Impact----------------</h6>
+      <h5>Environment: {{impact_e}}</h5>
+      <h5>Health: {{impact_h}}</h5>
+      <h5>Humanity: {{impact_r}}</h5>
+      <h6>--------------------------------</h6>
+      <br>
 
+
+      <br>
+      <h6>----------Side Panel------------</h6>
+
+      <h5>Start Date: {{startDate}}</h5>
+      <h5>End Date: {{endDate}}</h5>
+      <h5>Duration: {{duration}}</h5>
+      <h5>Cause(s): {{categories}}</h5>
+      <h5>Industry: {{linkCompany.industry}}</h5>
+      <h5>Function(s): {{interactions}}</h5>
+      <h6>--------------------------------</h6>
+      <br>
+
+      {{#with linkCompany}}
+      <h6>----------About Parent Company: {{name}}------------</h6>
+      <h5>Headline: {{hline}}</h5>
+      <h5>About: {{about}}</h5>
+      {{/with}}
+      <h6>--------------------------------</h6>
+      <br>
+
+
+      {{#if isOwned}}
       {{> autoformModals}}
       {{#afModal class="btn btn-primary" collection="Projects" operation="update" doc=_id}}
         Edit
       {{/afModal}}
+      {{/if}}
 
-
-	   <div class='btn btn-primary' id='contact_btn'>Contact</div>
+      {{#if isRegistered}}
+	     <div class='btn btn-primary' id='contact_btn'>Contact</div>
+       <div class='btn btn-primary active' id='callback_btn'>Request Callback</div>
+      {{else}}
+       <div class='btn btn-primary disabled' id='contact_btn'>Contact</div>
+       <div class='btn btn-primary disabled' id='callback_btn'>Request Callback</div>
+      {{/if}}
 
 		<br>
-	   {{#if showContactForm}}
-	    <h2>Send Collaboration Request</h2>
-		  <div style="border: 1px solid black">
-		  From: <select id='collaboration_from'>
-		   {{#each myCompanies}}
-				<option value="{{cid}}">{{name}}</option>
-		   {{/each}}
-		  </select>
-		  <br>
-		  Message (optional):
-		  <br>
-		  <textarea rows='4' cols='50' maxLength='256' id='collaboration_message'></textarea>
-		  <br>
-		  <div class='btn btn-primary' id='collaboration_send_btn'>Send</div>
-		</div>
-		  {{/if}}
 
-	  {{#if showMessagesLink}}
-		  <div>
-		  You have already contacted this startup regarding this project.<br>
-		  Click <a class='btn btn-primary' href='/messages/'>messages</a> to see you communications.
-		</div>
-		  {{/if}}
+      <!-- {{> contactForm}} -->
+
+      {{#if showContactForm}}
+       <h2>Send Collaboration Request</h2>
+       <div style="border: 1px solid black">
+       From: <select id='collaboration_from'>
+        {{#each myCompanies}}
+         <option value="{{cid}}">{{name}}</option>
+        {{/each}}
+       </select>
+       <br>
+       Message (optional):
+       <br>
+       <textarea rows='4' cols='50' maxLength='256' id='collaboration_message'></textarea>
+       <br>
+       <div class='btn btn-primary' id='collaboration_send_btn'>Send</div>
+     </div>
+       {{/if}}
+
+     {{#if showMessagesLink}}
+       <div>
+       You have already contacted this startup regarding this project.<br>
+       Click <a class='btn btn-primary' href='/messages/'>messages</a> to see you communications.
+     </div>
+       {{/if}}
 
     </div>
 
     <br>
 
-    <div class='col-sm-5' style="border: 1px solid black">
-
-      <h5>an initiative within company: {{ownerId}}</h5>
-      <a href='/company/{{ownerId}}'> >> Company Page</a>
-
-    </div>
 
   </div>
 
+
+</template>
+
+
+<template name='contactForm'>
+
+  {{#if showContactForm}}
+   <h2>Send Collaboration Request</h2>
+   <div style="border: 1px solid black">
+   From: <select id='collaboration_from'>
+    {{#each myCompanies}}
+     <option value="{{cid}}">{{name}}</option>
+    {{/each}}
+   </select>
+   <br>
+   Message (optional):
+   <br>
+   <textarea rows='4' cols='50' maxLength='256' id='collaboration_message'></textarea>
+   <br>
+   <div class='btn btn-primary' id='collaboration_send_btn'>Send</div>
+ </div>
+   {{/if}}
+
+ {{#if showMessagesLink}}
+   <div>
+   You have already contacted this startup regarding this project.<br>
+   Click <a class='btn btn-primary' href='/messages/'>messages</a> to see you communications.
+ </div>
+   {{/if}}
 
 </template>

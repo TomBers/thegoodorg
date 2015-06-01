@@ -6,13 +6,18 @@
 
   <!-- {{#if isRegistered.isActive = true}} -->
   {{#if isRegistered}}
+    {{#with isRegistered}}
     <h4>My Details:</h4>
-    <h6>Login ID:{{isRegistered.loginID}}</h6>
-    <h6>Login email:{{isRegistered.loginEmail}}</h6>
-    <h6>Registered As:{{isRegistered.registerAs}}</h6>
-    <h6>Contact Me?:{{isRegistered.contact_bool}}</h6>
-    <h6>Telephone:{{isRegistered.contact_num}}</h6>
-    <h6>Email:{{isRegistered.contact_mail}}</h6>
+    <h6>Name:{{name}}</h6>    
+    <img src="{{user_photo}}" class="img-circle" alt="{{contact_name}}" width="100" height="100">
+    <h6>Login ID:{{loginID}}</h6>
+    <h6>Login email:{{loginEmail}}</h6>
+    <h6>Registered As:{{registerAs}}</h6>
+    <h6>Contact Me?:{{contact_bool}}</h6>
+    <h6>Telephone:{{contact_num}}</h6>
+    <h6>Email:{{contact_mail}}</h6>
+
+    {{/with}}
 
     {{> autoformModals}}
     {{#afModal class="btn btn-primary" collection="UserProfiles" operation="update" doc=isRegistered._id}}

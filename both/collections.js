@@ -38,6 +38,7 @@ UserProfiles.allow({
 UserProfiles.attachSchema(new SimpleSchema({
   loginID:   {type: String,label: "Login ID", max: 200, optional: true },
   loginEmail:   {type: String,label: "Login mail", max: 200, optional: true },
+  name:   {type: String,label: "Full Name", max: 200, optional: true, defaultValue:'First Name, Last Name' },
 
   registerAs:  {type: String, label: "Register As:", optional: false, defaultValue:'Individual',
               allowedValues: [
@@ -49,6 +50,9 @@ UserProfiles.attachSchema(new SimpleSchema({
   contact_num:  {type: String,label: "Contact Telephone", max: 200, optional: true },
   contact_mail:  {type: String,label: "Contact email", max: 200, optional: true },
 
+  user_photo:{type:String, label:"profile photo URL", optional:true, defaultValue:"...add link to profile pic..."},
+  user_title:{type:String, label:"add role within company", optional:true, defaultValue:"...current role..."},
+  user_headline:{type:String, label:"personal headline", optional:true, max:140, defaultValue:"...in 140 characters or less..."},
 
   // other ...
   mailout_monthly:  {type: Boolean, label: "Receive Monthly Mailout ?", defaultValue: true},
@@ -128,6 +132,8 @@ Companies.attachSchema(new SimpleSchema({
   img:    {type: String, label: "Image Url",  optional:true, defaultValue:'(...URL link to company picture(s)...)'},
   projects:{type: [String], optional:true, max:10},
 
+  news: {type: String, optional:true,defaultValue:'...recent company news here...'},
+
   createdAt: {
     autoform: {omit: true},
     type: Date,
@@ -171,7 +177,11 @@ Projects.attachSchema(new SimpleSchema({
   link:     {type: String, optional: true, label: "URL",    regEx: SimpleSchema.RegEx.Url,
     autoform: {type: "url"} },
 
-  tframe:   {type: String, optional: true, label: "Time Frame", defaultValue:'4W'},
+  location:   {type: String, optional: true, label: "Location", defaultValue:'...SW7 2AZ...'},
+
+  duration:   {type: String, optional: true, label: "Duration", defaultValue:'4W'},
+  startDate:   {type: String, optional: true, label: "Start Date", defaultValue:'Today' },
+  expiryDate:   {type: String, optional: true, label: "Expiry Date", defaultValue:'T+4W' },
   status:   {type: String, optional: true, label: "Status" ,defaultValue:'100%'},
   active:   {type: Boolean, label: "Active", defaultValue: true},
 
@@ -193,6 +203,11 @@ Projects.attachSchema(new SimpleSchema({
       }
    }
   },
+  impact_e:   {type: String, optional: true, label: "Impact E", defaultValue:'...5...'},
+  impact_h:   {type: String, optional: true, label: "Impact H", defaultValue:'...10...'},
+  impact_r:   {type: String, optional: true, label: "Impact R", defaultValue:'...20...'},
+
+
   interactions: {type: [String],optional: true,
    autoform: {
      type: "select-multiple",
