@@ -123,6 +123,13 @@ Router.map(function() {
     });
 
 
+    this.route('/callbacks',
+      {path: '/callbacks', template: 'displayCallbacks'
+      // ,
+      // data: function() {
+      //     return {companies:Companies.find()};
+      //   }
+      });
 
 
 

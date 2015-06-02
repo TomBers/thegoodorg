@@ -65,3 +65,18 @@
 //
 //
 // AutoForm.addHooks('makeContactReq', postHooks);
+
+Template.displayCallbacks.helpers({
+  callbackReqsOut: function() {
+    var user = Meteor.user();
+    if (user && user.emails)
+      return ContactReqs.find({from_id:user.emails[0].address});
+  },
+
+  callbackReqsIn: function() {
+    var user = Meteor.user();
+    if (user && user.emails)
+      return ContactReqs.find({to_id:user.emails[0].address});
+  }
+
+});
