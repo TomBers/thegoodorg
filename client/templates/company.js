@@ -23,20 +23,3 @@ Template.company.helpers({
         return UserProfiles.findOne({"contact_mail":this.rep_email});
       }
 });
-
-var postHooks = {
-  before: {
-    insert: function(doc) {
-      // console.log(doc);
-      // console.log(Session.get('ownerId'));
-      doc.ownerId = Session.get('ownerId');
-      return doc;
-    }
-  },
-  onSuccess: function(operation, result, template) {
-    // alert('Thank you for your inquiry! We will get back to you shortly.');
-  }
-}
-
-
-AutoForm.addHooks('makeProject', postHooks);
