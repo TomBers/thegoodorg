@@ -1,6 +1,10 @@
 var user = Meteor.user();
-Template.admin.rendered = function(){
+
+Template.company.rendered = function(){
   Meteor.subscribe('UserProfiles');
+  // console.log(this.data);
+  Session.set('ownerId', this.data.company.cid);
+  // console.log(this.data.company.cid);
 }
 
 Template.company.helpers({
@@ -19,3 +23,20 @@ Template.company.helpers({
         return UserProfiles.findOne({"contact_mail":this.rep_email});
       }
 });
+
+var postHooks = {
+  before: {
+    insert: function(doc) {
+      // console.log(doc);
+      // console.log(Session.get('ownerId'));
+      doc.ownerId = Session.get('ownerId');
+      return doc;
+    }
+  },
+  onSuccess: function(operation, result, template) {
+    // alert('Thank you for your inquiry! We will get back to you shortly.');
+  }
+}
+
+
+AutoForm.addHooks('makeProject', postHooks);

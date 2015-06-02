@@ -42,14 +42,14 @@
     </div>
 
       <br>
-      <!-- {{#if isOwned}}
+      <!-- {{#if isOwned}} -->
 
         {{> autoformModals}}
-        {{#afModal class="btn btn-primary" collection="Companies" operation="update" doc=_id}}
-          Edit Company
+        {{#afModal class="btn btn-primary" collection="Projects" operation="insert" omitFields="ownerId" formId="makeProject"}}
+          Add Project
         {{/afModal}}
 
-      {{/if}} -->
+      <!-- {{/if}} -->
       <br>
 
     {{/with}}

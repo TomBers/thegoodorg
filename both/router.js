@@ -70,7 +70,7 @@ Router.map(function() {
   this.route('/company', {
     path: '/company/:_id',
     template: 'company',
-    // waitOn: function() {  },
+    // waitOn: function() { return Meteor.subscribe('Companies'); },
     data: function() {
       // console.log(Startups.find({_id:this.params._id}).fetch());
     return {company:Companies.findOne({cid:this.params._id}),projects:Projects.find({ownerId:this.params._id})};
