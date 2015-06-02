@@ -68,6 +68,15 @@
     <h5> description: {{desc}} </h5>
     <h5> location: {{loc}} </h5>
     <h5>Created: {{createdAt}}</h5>
+
+    <br>
+
+    {{#each myProjects}}
+      {{> admin_listProjects}}
+    {{/each}}
+
+    <br>
+
     {{> autoformModals}}
     {{#afModal class="btn btn-primary" collection="Projects" operation="insert" omitFields="ownerId" formId="makeProject"}}
       Add Project
@@ -81,11 +90,37 @@
     <!-- {{> quickRemoveButton collection="Companies" _id=this._id}}  -->
     {{> quickRemoveButton collection="Companies" _id=this._id onError=onError onSuccess=onSuccess beforeRemove=beforeRemove class="btn btn-danger"}}
 
+
     <br><br>
 
   </div>
 
 </template>
+
+<template name='admin_listProjects'>
+
+  <div class ='container'>
+
+    <div class='col-sm-3'>
+      <img src="{{img}}" class="img-circle" width="100" height="auto">
+    </div>
+    <div class='col-sm-3'><h6>{{title}}</h6></div>
+    <div class='col-sm-3'><h6>{{hline}}</h6></div>
+    <div class='col-sm-3'>
+      {{> autoformModals}}
+      {{#afModal class="btn btn-primary" collection="Projects" operation="update" omitFields="ownerId" doc=_id}}
+        Edit Project
+      {{/afModal}}
+
+      {{> quickRemoveButton collection="Projects" _id=this._id onError=onError onSuccess=onSuccess beforeRemove=beforeRemove class="btn btn-danger"}}
+
+      <br>
+    </div>
+
+  </div>
+
+</template>
+
 
 
 <template name='admin_housekeeping'>

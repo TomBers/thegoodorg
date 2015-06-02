@@ -53,6 +53,11 @@ Template.home.helpers({
       return null;
     }
   },
+
+  allProjects: function(){
+      return Projects.find();
+  },
+
   showSubCause : function(){
     return (Session.get('cause').length == 0) ? false : true;
   },

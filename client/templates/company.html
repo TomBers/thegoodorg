@@ -76,7 +76,9 @@
       <img src="{{img}}" class="img-rounded" href='/project/{{_id}}' alt="click me" width="100%" height=auto>
       <h6></h6>
       <a type="button" class="btn btn-success" href='/project/{{_id}}'>Learn more</a>
-
+      {{#if isRegistered}}
+	     {{> callback}}
+      {{/if}}
     </div>
     <div class='col-sm-3'><h6>{{desc}}</h6></div>
     <div class='col-sm-3'><h6>{{interactions}}</h6></div>

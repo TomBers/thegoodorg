@@ -2,6 +2,9 @@
 
 Template.project.rendered = function(){
 	Session.set('showContactClicked',false);
+	Session.set('from_id','');
+	Session.set('to_id','');
+	Session.set('project_id','')
 	Meteor.subscribe('UserProfiles');
 	Meteor.subscribe('Companies');
 }
@@ -67,17 +70,21 @@ Template.project.helpers({
 
 	myCompanies: function(){
 		var user = Meteor.user();
-		var mail = UserProfiles.findOne({loginID:user.emails[0].address});
+		var mail = UserProfiles.findOne({loginID:Meteor.user().emails[0].address});
 		return Companies.find({rep_email:mail.contact_mail}); //TODO -done- return companies based on current user
 	},
 
 	'linkCompany': function() {
-	  return Companies.findOne({"cid":this.ownerId});
+		var user = Meteor.user();
+		Session.set('from_id', user.emails[0].address);
+		Session.set('to_id', Companies.findOne({"cid":this.ownerId}).rep_email);
+		Session.set('project_id', this._id)
+    return Companies.findOne({"cid":this.ownerId});
 	},
 
 	isOwned: function(){
 		var user = Meteor.user();
-		var mail = UserProfiles.findOne({loginID:user.emails[0].address});
+		var mail = UserProfiles.findOne({loginID:Meteor.user().emails[0].address});
 		var cmpy = Companies.find({cid:this.ownerId});
 		if (cmpy.rep_email == mail.contact_mail)
 		{return true;}
@@ -88,7 +95,7 @@ Template.project.helpers({
 	isRegistered: function(){
 		var user = Meteor.user();
 		try{
-			return UserProfiles.findOne({loginID:user.emails[0].address});
+			return UserProfiles.findOne({loginID:Meteor.user().emails[0].address});
 		}catch(e){
 			return null;
 		}
@@ -96,3 +103,24 @@ Template.project.helpers({
 	}
 
 });
+
+
+var postHooks = {
+  before: {
+    insert: function(doc) {
+
+      doc.from_id = Session.get('from_id');
+      doc.to_id = Session.get('to_id');
+      doc.projectId = Session.get('project_id');
+      doc.status = 'Requested';
+      console.log(doc);
+      return doc;
+    }
+  },
+  onSuccess: function(operation, result, template) {
+    // alert('Thank you for your inquiry! We will get back to you shortly.');
+  }
+}
+
+
+AutoForm.addHooks('makeContactReq', postHooks);

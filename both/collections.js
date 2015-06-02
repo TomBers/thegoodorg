@@ -7,6 +7,8 @@ UserProfiles = new Mongo.Collection("userprofiles")
 Categories = new Mongo.Collection("categories");
 
 Collaborations = new Mongo.Collection("collaborations");
+ContactReqs = new Mongo.Collection("contactreqs");
+
 
 
 /*  Project attribute object collections   */
@@ -255,5 +257,47 @@ Collaborations.attachSchema(new SimpleSchema({
               "Accepted",
 			  "Rejected",
 			  "Cancelled"]}
+
+}));
+
+
+ContactReqs.allow({
+  insert: function () { return true; },
+  update: function () { return true; },
+  remove: function () { return true; }
+});
+
+
+ContactReqs.attachSchema(new SimpleSchema({
+  projectId: {type: String, optional: true, label: "Project ID", defaultValue:'Project Name'},
+  from_id: {type: String, optional: true, label: "From ID", defaultValue:'Me'},
+  to_id: {type: String, optional: true, label: "To ID", defaultValue:'You'},
+  about: {type: [String],optional: true,label: "Select what you'd like to talk about...",
+    autoform: {
+      type: "select-multiple",
+      options: function () {
+        var tmp = [
+           {label:'Donate Materials',value:'Donate Materials'},
+           {label:'Monetary Donations',value:'Monetary Donations'},
+           {label:'Volunteering',value:'Volunteering'},
+           {label:'Research Agreements',value:'Research Agreements'},
+           {label:'Product collaboration',value:'Product collaboration'},
+           {label:'Brand Collaboration',value:'Brand Collaboration'},
+           {label:'Lecturing Opportunites',value:'Lecturing Opportunites'}
+           ];
+           return tmp;
+         }
+      }
+    },
+  message: {type: String, optional: false, label: "Message", defaultValue:'Please add a brief message...',min:10, autoform: {rows: 5}   },
+
+  status:   {type: String, label: "Status", optional: false, defaultValue:'Requested',
+            allowedValues: [
+              "Requested",
+              "Accepted",
+			        "Rejected",
+			        "Cancelled"]}
+
+
 
 }));

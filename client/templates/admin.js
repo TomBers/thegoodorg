@@ -43,6 +43,8 @@ Template.admin.helpers({
     }
 
 
+
+
     ,checkActive: function(){
       var user = Meteor.user();
       if (UserProfiles.find({loginID:user.emails[0].address}, {isActive: true}).limit(1))
@@ -51,20 +53,19 @@ Template.admin.helpers({
       {return false;}
     }
 
-  // ,  myUserDetails: function(){
-  //       return Companies.find({rep_email:varUserID})
-  //   },
-  //
-  //
-  // isUserAdmin : function(){
-  //   var adminEmail = Meteor.user().emails[0].address;
-  //   if( adminEmail === "j@da1e.com"){
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
+
 });
+
+
+Template.admin_listCompanies.helpers({
+  myProjects: function(){
+
+    return Projects.find({ownerId:this.cid});
+    }
+
+});
+
+
 
 var postHooks = {
   before: {

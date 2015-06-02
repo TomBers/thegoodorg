@@ -9,7 +9,22 @@
       <h5>{{interactions}} project in conjunction with...<a href='/company/{{ownerId}}'>{{linkCompany.name}}</a></h5>
 
       <img src={{img}} style='width:200;height:auto'>
-      <!-- <h3>Project title:</h3> -->
+
+      {{#if isRegistered}}
+        <!-- {{ callbackDetails project}} -->
+
+        {{> autoformModals}}
+
+        {{#afModal class="btn btn-primary" collection="ContactReqs" operation="insert" omitFields="projectId,from_id,to_id,status" formId="makeContactReq"}}
+          Request Callback
+        {{/afModal}}
+
+
+        <!-- {{> callback}} -->
+      {{else}}
+       <div class='btn btn-primary disabled' id='callback_btn'>Register to contact</div>
+      {{/if}}
+
       <h3>{{title}}</h3>
       <br>
       <h4>Project headline:</h4>
@@ -60,13 +75,7 @@
       {{/afModal}}
       {{/if}}
 
-      {{#if isRegistered}}
-	     <div class='btn btn-primary' id='contact_btn'>Contact</div>
-       <div class='btn btn-primary active' id='callback_btn'>Request Callback</div>
-      {{else}}
-       <div class='btn btn-primary disabled' id='contact_btn'>Contact</div>
-       <div class='btn btn-primary disabled' id='callback_btn'>Request Callback</div>
-      {{/if}}
+
 
 		<br>
 
