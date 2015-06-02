@@ -7,14 +7,11 @@
     {{#with company}}
 
       <div class='container'>
-        <!-- <img src='http://placehold.it/300&text={{title}}' style='width:100%;height:auto'>  -->
-        <!-- <img src= {{logo}} style='width:100%;height:auto'> -->
 
       <img src="{{logo}}" class="img-thumbnail" href={{url}} alt={{name}} width="100" height="auto">
 
 
       <!-- Company elements -->
-      <!-- <h6>company name: {{name}}</h6> -->
       {{#with linkRepresentative}}
       <div class='col-sm-3'>
         <img src="{{user_photo}}" class="img-circle" alt={{contact_name}} width="100" height="auto">
@@ -32,6 +29,7 @@
         <h5>Headline: {{hline}}</h5>
         <h5>About: {{about}}</h5>
         <a href='{{url}}'> our website  >> {{url}}</a>
+        fk knows why this won't href correctly... here's the url ->> {{url}}
         <br>
 
         <h6>-------------------------------------------</h6>
@@ -42,17 +40,18 @@
     </div>
 
       <br>
-      <!-- {{#if isOwned}} -->
+
+      {{#if isOwned}}
 
         {{> autoformModals}}
         {{#afModal class="btn btn-primary" collection="Projects" operation="insert" omitFields="ownerId" formId="makeProject"}}
           Add Project
         {{/afModal}}
 
-      <!-- {{/if}} -->
+      {{/if}}
       <br>
 
-    {{/with}}
+ {{/with}}
 
   </div>
 

@@ -388,7 +388,7 @@ Factory.create('userprofile', {
         hline: 'q-bot develops intelligent tools for the built environment, that turn difficult, disruptive and dirty jobs into clean, efficient and safe processes.',
         logo:'http://www.q-bot.co/images/logo/qbot.jpg',
         about : "q-bot develops intelligent tools for the built environment, that turn difficult, disruptive and dirty jobs into clean, efficient and safe processes. Our tools allow installers and contractors to: Access hard to reach areas where it would otherwise be too difficult or disruptive, for a human operator to do so.",
-        url: 'https://www.q-bot.co/' ,
+        url: 'www.q-bot.co/' ,
         rep_email:'admin@tgo.com',
         type:'StartUp'  });
 

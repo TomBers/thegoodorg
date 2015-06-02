@@ -21,13 +21,15 @@
     <div class='col-sm-3'><h2>About</h2></div>
     <div class='col-sm-3'><h2>Msg</h2></div>
     <div class='col-sm-3'><h2>Status</h2></div>
-    
+
   </div>
 
-  {{#each callbackReqsOut}}
+  {{#each callbackReqsIn}}
   <div class ='container'>
 
-    <div class='col-sm-3'><h6>{{from_id}}</h6></div>
+    <div class='col-sm-3'><h6>{{from_id}}</h6>
+      {{> quickRemoveButton collection="ContactReqs" _id=this._id onError=onError onSuccess=onSuccess beforeRemove=beforeRemove class="btn btn-danger"}}
+    </div>
     <div class='col-sm-3'><h6>{{about}}</h6></div>
     <div class='col-sm-3'><h6>{{message}}</h6></div>
     <div class='col-sm-3'><h6>{{status}}</h6></div>
@@ -45,12 +47,14 @@
     <div class='col-sm-3'><h2>Msg</h2></div>
     <div class='col-sm-3'><h2>Status</h2></div>
 
-  </div>
+    </div>
 
   {{#each callbackReqsOut}}
   <div class ='container'>
 
-    <div class='col-sm-3'><h6>{{to_id}}</h6></div>
+    <div class='col-sm-3'><h6>{{to_id}}</h6>
+      {{> quickRemoveButton collection="ContactReqs" _id=this._id onError=onError onSuccess=onSuccess beforeRemove=beforeRemove class="btn btn-danger"}}
+    </div>
     <div class='col-sm-3'><h6>{{about}}</h6></div>
     <div class='col-sm-3'><h6>{{message}}</h6></div>
     <div class='col-sm-3'><h6>{{status}}</h6></div>

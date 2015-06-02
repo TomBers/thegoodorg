@@ -4,7 +4,7 @@ Template.project.rendered = function(){
 	Session.set('showContactClicked',false);
 	Session.set('from_id','');
 	Session.set('to_id','');
-	Session.set('project_id','')
+	Session.set('project_id','');
 	Meteor.subscribe('UserProfiles');
 	Meteor.subscribe('Companies');
 }
@@ -70,21 +70,18 @@ Template.project.helpers({
 
 	myCompanies: function(){
 		var user = Meteor.user();
-		var mail = UserProfiles.findOne({loginID:Meteor.user().emails[0].address});
+		var mail = UserProfiles.findOne({loginID:user.emails[0].address});
 		return Companies.find({rep_email:mail.contact_mail}); //TODO -done- return companies based on current user
 	},
 
-	'linkCompany': function() {
+	linkCompany: function() {
 		var user = Meteor.user();
-		Session.set('from_id', user.emails[0].address);
-		Session.set('to_id', Companies.findOne({"cid":this.ownerId}).rep_email);
-		Session.set('project_id', this._id)
     return Companies.findOne({"cid":this.ownerId});
 	},
 
 	isOwned: function(){
 		var user = Meteor.user();
-		var mail = UserProfiles.findOne({loginID:Meteor.user().emails[0].address});
+		var mail = UserProfiles.findOne({loginID:user.emails[0].address});
 		var cmpy = Companies.find({cid:this.ownerId});
 		if (cmpy.rep_email == mail.contact_mail)
 		{return true;}
@@ -94,8 +91,11 @@ Template.project.helpers({
 	,
 	isRegistered: function(){
 		var user = Meteor.user();
+		Session.set('from_id', user.emails[0].address);
+		Session.set('to_id', Companies.findOne({"cid":this.ownerId}).rep_email);
+		Session.set('project_id', this._id);
 		try{
-			return UserProfiles.findOne({loginID:Meteor.user().emails[0].address});
+			return UserProfiles.findOne({loginID:user.emails[0].address});
 		}catch(e){
 			return null;
 		}
@@ -113,7 +113,7 @@ var postHooks = {
       doc.to_id = Session.get('to_id');
       doc.projectId = Session.get('project_id');
       doc.status = 'Requested';
-      console.log(doc);
+      //console.log(doc);
       return doc;
     }
   },
