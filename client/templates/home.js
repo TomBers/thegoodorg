@@ -62,7 +62,7 @@ Template.home.helpers({
     if(Session.get('subcause').length > 0 && Session.get('interaction').length > 0){
       return Projects.find({categories:{$in:Session.get('subcause')},interactions:{$in:Session.get('interaction')}})
     }else{
-      return Projects.find({}, {limit: 2});
+      return Projects.find({}, {limit: 20});
     }
   },
 
