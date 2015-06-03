@@ -6,6 +6,18 @@ Template.home.rendered = function(){
   Meteor.subscribe('Projects');
   Meteor.subscribe('UserProfiles');
   }
+
+  Template.home.events({
+    'click .seeAll' :function(e,template){},
+    'click .reset' :function(e,template){
+      Session.set('cause', []);
+      Session.set('subcause', []);
+      Session.set('interaction', []);
+      template.$( ".interaction.checked" ).removeClass( "checked" );
+      template.$( ".subcause.checked" ).removeClass( "checked" );
+      template.$( ".cause.checked" ).removeClass( "checked" );
+    }
+  })
 Template.cause.events({
   'click .cause' :function(e,template){
     $( ".cause.checked" ).removeClass( "checked" );
@@ -36,8 +48,7 @@ Template.interaction.events({
       Session.set('interaction',tmp);
       e.currentTarget.className = 'interaction checked';
     }
-
-  },
+  }
 })
 
 
