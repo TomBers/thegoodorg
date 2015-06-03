@@ -8,7 +8,8 @@ Template.home.rendered = function(){
   }
 
   Template.home.events({
-    'click .seeAll' :function(e,template){},
+    // 'click .seeAll' :function(e,template){
+    // },
     'click .reset' :function(e,template){
       Session.set('cause', []);
       Session.set('subcause', []);
@@ -61,7 +62,7 @@ Template.home.helpers({
     if(Session.get('subcause').length > 0 && Session.get('interaction').length > 0){
       return Projects.find({categories:{$in:Session.get('subcause')},interactions:{$in:Session.get('interaction')}})
     }else{
-      return null;
+      return Projects.find({}, {limit: 2});
     }
   },
 
