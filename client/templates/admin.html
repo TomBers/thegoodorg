@@ -82,12 +82,10 @@
       Add Project
     {{/afModal}}
     <br>
-    <!-- <h5>Last updated: {{updatedAt}}</h5> -->
     {{#afModal class="btn btn-primary" collection="Companies" operation="update" doc=_id}}
       Edit Company
     {{/afModal}}
 
-    <!-- {{> quickRemoveButton collection="Companies" _id=this._id}}  -->
     {{> quickRemoveButton collection="Companies" _id=this._id onError=onError onSuccess=onSuccess beforeRemove=beforeRemove class="btn btn-danger"}}
 
 
@@ -155,20 +153,3 @@
     Add New Company
   {{/afModal}}
 </template>
-
-
-
-<!-- <template name="login_admin">
-  {{#if currentUser}}
-
-  {{#if isUserAdmin}}
-    hello admin
-  {{/if}}
-
-  {{ else }}
-
-  pls login
-  {{loginButtons}}
-
-  {{/if}}
-</template> -->

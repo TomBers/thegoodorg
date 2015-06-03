@@ -1,3 +1,6 @@
+// collection object schemas & interactions defined here...
+
+
 /*  Institution object collections   */
 Companies = new Mongo.Collection("companies");
 Projects = new Mongo.Collection("projects");
@@ -8,7 +11,6 @@ Categories = new Mongo.Collection("categories");
 
 Collaborations = new Mongo.Collection("collaborations");
 ContactReqs = new Mongo.Collection("contactreqs");
-
 
 
 /*  Project attribute object collections   */

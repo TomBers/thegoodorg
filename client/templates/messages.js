@@ -1,3 +1,4 @@
+// js handling for direct messaging code
 
 
 Template.messages.rendered = function(){

@@ -1,9 +1,7 @@
+// router code - defines paths etc
+
 Router.configure({
 layoutTemplate: 'layout',
-// waitOn: function() {  },
-// data: function() {
-//   return {debates : Debates.find().fetch()}
-// }
 });
 
 Router.map(function() {
@@ -25,9 +23,6 @@ Router.map(function() {
   this.route('/addStartup', {
     path: '/addStartup',
     template: 'addStartup',
-  //   data: function() {
-  //   return {category:Categories.find()};
-  // }
   });
 
   this.route('/addCorporate', {path: '/addCorporate',template: 'addCorporate'});
@@ -60,9 +55,7 @@ Router.map(function() {
   this.route('/project', {
     path: '/project/:_id',
     template: 'project',
-    // waitOn: function() {  },
     data: function() {
-      // console.log(Startups.find({_id:this.params._id}).fetch());
     return Projects.findOne({_id:this.params._id});
   }
   });
@@ -70,9 +63,7 @@ Router.map(function() {
   this.route('/company', {
     path: '/company/:_id',
     template: 'company',
-    // waitOn: function() { return Meteor.subscribe('Companies'); },
     data: function() {
-      // console.log(Startups.find({_id:this.params._id}).fetch());
     return {company:Companies.findOne({cid:this.params._id}),projects:Projects.find({ownerId:this.params._id})};
   }
   });
@@ -80,9 +71,7 @@ Router.map(function() {
   this.route('/startup', {
     path: '/startup/:_id',
     template: 'startup',
-    // waitOn: function() {  },
     data: function() {
-      // console.log(Startups.find({_id:this.params._id}).fetch());
     return Startups.findOne({_id:this.params._id});
   }
   });
@@ -92,7 +81,6 @@ Router.map(function() {
   this.route('/edit', {
     path: '/edit/:_id',
     template: 'edit',
-    // waitOn: function() {  },
     data: function() {
       console.log( Startups.findOne({_id:this.params._id}));
     return Startups.findOne({_id:this.params._id});
@@ -102,9 +90,7 @@ Router.map(function() {
   this.route('/list', {
     path: '/list',
     template: 'list',
-    // waitOn: function() {  },
     data: function() {
-      // console.log(Startups.find().fetch());
     return {startups:Startups.find()};
   }
   });
@@ -125,10 +111,6 @@ Router.map(function() {
 
     this.route('/callbacks',
       {path: '/callbacks', template: 'displayCallbacks'
-      // ,
-      // data: function() {
-      //     return {companies:Companies.find()};
-      //   }
       });
 
 
@@ -137,12 +119,6 @@ Router.map(function() {
 				function() {
 				var my_cids = Companies.find().map(function(p) { return p.cid }); //TODO
 
-
-
-					 //     varUserID = Meteor.user().emails[0].address
-					//	 Companies.find({rep_email:varUserID})
-				//	var msg = Collaborations.find({$or: [{corp_cid:{$in:companyIds}} , {startup_cid:{$in:companyIds}}] });
-                  //  return {messages:msg}
 
 					var from = Collaborations.find({corp_cid:{$in:my_cids}});
 					var to = Collaborations.find({startup_cid:{$in:my_cids}});

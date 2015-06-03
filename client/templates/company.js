@@ -2,12 +2,9 @@
 Template.company.rendered = function(){
   Meteor.subscribe('UserProfiles');
   var user = Meteor.user();
-  // console.log(this.data);
-  // Session.set('ownerId', this.data.company.cid);
   Session.set('from_id','');
   Session.set('to_id','');
   Session.set('project_id','');
-  // console.log(this.data.company.cid);
 }
 
 Template.company.helpers({
@@ -29,10 +26,6 @@ Template.company.helpers({
 
 Template.projectSummary.rendered = function(){
   Meteor.subscribe('UserProfiles');
-  // console.log(this.data);
-  // Session.set('from_id','');
-  // Session.set('to_id','');
-  // Session.set('project_id','');
 }
 Template.projectSummary.helpers({
 

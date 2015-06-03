@@ -1,15 +1,10 @@
-//var currentUserID = Meteor.user().emails[0].address;
-//Session.set('currentUserID','');
 var user = Meteor.user();
 Template.admin.rendered = function(){
-  // Meteor.subscribe('UserProfiles');
-  // currentUserID = Meteor.user().emails[0].address;
   Session.set('ownerId');
 }
 
 Template.admin_listCompanies.events({
   'click .btn-primary' :function(e,template){
-    // console.log(template.data.cid);
     Session.set('ownerId', template.data.cid);
   }
 })
@@ -19,9 +14,7 @@ Template.admin.helpers({
   userMailAddress: function() {
     var user = Meteor.user();
     if (user && user.emails)
-  //    var userMail = user.emails[0].address;
-  //    Session.set('currentUserID',varUserMail);
-      //console.log("test");
+
       return user.emails[0].address;
   }
 
@@ -43,8 +36,6 @@ Template.admin.helpers({
     }
 
 
-
-
     ,checkActive: function(){
       var user = Meteor.user();
       if (UserProfiles.find({loginID:user.emails[0].address}, {isActive: true}).limit(1))
@@ -52,7 +43,6 @@ Template.admin.helpers({
       else
       {return false;}
     }
-
 
 });
 

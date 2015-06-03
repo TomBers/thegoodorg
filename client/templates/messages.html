@@ -1,8 +1,10 @@
+<!-- html handling for direct messaging code -->
+
 <template name='messages'>
 
 	Corp view (projects I want to give to):<br>
 	  <table style="width:100%" border="1">
-	  
+
 	  <tr>
 		  <th>Project</th>
 		  <th>Company</th>
@@ -11,10 +13,10 @@
 		  <th>Message</th>
 		  <th>Action</th>
 	  </tr>
-	  
+
 	   {{#each from}}
 	  <tr>
-		<td> 
+		<td>
 			<div project="{{project._id}}" title="{{project.hline}}
 			Click here for more details." onclick="location.href='/project/{{project._id}}';">
 				<img src='{{project.img}}' style='width:10%;height:10%'>
@@ -22,7 +24,7 @@
 				<h4 style='margin-bottom: 0px;'>{{project.title}}</h4>
 			</div>
 		</td>
-		<td> 
+		<td>
 			<div startup="{{startup.cid}}" title="{{startup.hline}}
 			Click here for more details." onclick="location.href='/company/{{startup.cid}}';">
 				<img src='{{startup.logo}}' style='width:10%;height:10%'>
@@ -33,7 +35,7 @@
 		<td>
 			{{collaboration.status}}
 		</td>
-		<td> 
+		<td>
 			<div startup="{{corp.cid}}" title="{{corp.hline}}
 			Click here for more details." onclick="location.href='/company/{{corp.cid}}';">
 				<img src='{{corp.logo}}' style='width:10%;height:10%'>
@@ -52,14 +54,14 @@
 	  </tr>
 	   {{/each}}
 	  </table>
-	  
-	  
-	  
+
+
+
 	  <br><br>
-	  
+
 	  startup view (my projects):<br>
 	   <table style="width:100%" border="1">
-	  
+
 	  <tr>
 		  <th>Project</th>
 		  <th>Company</th>
@@ -68,10 +70,10 @@
 		  <th>Message</th>
 		  <th>Action</th>
 	  </tr>
-	  
+
 	   {{#each to}}
 	  <tr>
-		<td> 
+		<td>
 			<div project="{{project._id}}" title="{{project.hline}}
 			Click here for more details." onclick="location.href='/project/{{project._id}}';">
 				<img src='{{project.img}}' style='width:10%;height:10%'>
@@ -79,7 +81,7 @@
 				<h4 style='margin-bottom: 0px;'>{{project.title}}</h4>
 			</div>
 		</td>
-		<td> 
+		<td>
 			<div startup="{{startup.cid}}" title="{{startup.hline}}
 			Click here for more details." onclick="location.href='/company/{{startup.cid}}';">
 				<img src='{{startup.logo}}' style='width:10%;height:10%'>
@@ -90,7 +92,7 @@
 		<td>
 			{{collaboration.status}}
 		</td>
-		<td> 
+		<td>
 			<div startup="{{corp.cid}}" title="{{corp.hline}}
 			Click here for more details." onclick="location.href='/company/{{corp.cid}}';">
 				<img src='{{corp.logo}}' style='width:10%;height:10%'>
@@ -110,6 +112,6 @@
 	  </tr>
 	   {{/each}}
 	  </table>
-	  
-	  
+
+
 </template>

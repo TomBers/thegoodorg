@@ -1,3 +1,5 @@
+<!-- menu items etc -->
+
 <template name="layout">
   <head>
     <title>The Good.org</title>
@@ -17,9 +19,6 @@
             <li class="active"><a href="/impact">Impact</a></li>
 
 
-            <!-- {{> layout_displayItems}} -->
-
-
             {{#if currentUser}}
               {{> layout_loggedin}}
             {{else}}
@@ -29,12 +28,8 @@
             <li style='padding-top:14px'>{{> loginButtons}}</li>
 
 
-
           </ul>
 
-          <!-- <ul class="nav navbar-nav navbar-right">
-
-        </ul> -->
       </div>
     </div>
   </nav>
@@ -52,7 +47,6 @@
         <li><a href="/admin">My Settings</a></li>
         <li><a href="/messages">My Notifications</a></li>
         <li><a href="/callbacks">My Requests</a></li>
-        <!-- <li><a href="#">Company Profile</a></li> -->
 
       </ul>
     </li>

@@ -1,14 +1,6 @@
-//
-// if(Meteor.isServer){
-//   projects.upsert({
-//     _id : "E9e1iLDTDpsWcdoXj",
-//     desc : "TEST ClearlySo raised £1.25m debt investment for the London Early Years Foundation, a charity over 100 years old, using an innovative cross-subsidy model where profits from established nurseries support free spaces in deprived areas.",
-//     link : "http://www.clearlyso.com/our-clients/1-25m-invested-into-leyf/",
-//     img : "http://www.clearlyso.com/wp-content/uploads/2015/03/LEFTTT-857x490.jpg",
-//     title : "London Early Years Foundation: a charity raising investment"
-//   });
-//
-// }
+// here we are defining default objects that are built & populated on startup
+// existing object collections are purged
+
 Meteor.startup(function(){
 
   Companies.remove({});
