@@ -40,7 +40,7 @@ Template.project.helpers({
 
 
 	showContactForm: function(){
-
+		return true;
 		var var_projectID = Template.currentData()._id ;
 
 		var my_cids = Companies.find().map(function(p) { return p.cid }); //TODO
@@ -54,7 +54,7 @@ Template.project.helpers({
 	},
 
 	showMessagesLink: function(){
-
+		return true;
 		var var_projectID = Template.currentData()._id ;
 
 

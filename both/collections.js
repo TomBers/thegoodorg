@@ -271,9 +271,6 @@ ContactReqs.allow({
 
 
 ContactReqs.attachSchema(new SimpleSchema({
-  projectId: {type: String, optional: true, label: "Project ID", defaultValue:'Project Name'},
-  from_id: {type: String, optional: true, label: "From ID", defaultValue:'Me'},
-  to_id: {type: String, optional: true, label: "To ID", defaultValue:'You'},
   about: {type: [String],optional: true,label: "Select what you'd like to talk about...",
     autoform: {
       type: "select-multiple",
@@ -292,13 +289,17 @@ ContactReqs.attachSchema(new SimpleSchema({
       }
     },
   message: {type: String, optional: false, label: "Message", defaultValue:'Please add a brief message...',min:10, autoform: {rows: 5}   },
+  from: {type: String, optional: false, label: "From ID"},
+  to: {type: String, optional: false, label: "To ID"},
+  project: {type: String, optional: false, label: "Project ID"}
 
-  status:   {type: String, label: "Status", optional: false, defaultValue:'Requested',
-            allowedValues: [
-              "Requested",
-              "Accepted",
-			        "Rejected",
-			        "Cancelled"]}
+
+  // status:   {type: String, label: "Status", optional: false, defaultValue:'Requested',
+  //           allowedValues: [
+  //             "Requested",
+  //             "Accepted",
+	// 		        "Rejected",
+	// 		        "Cancelled"]}
 
 
 

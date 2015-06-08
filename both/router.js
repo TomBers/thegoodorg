@@ -60,6 +60,16 @@ Router.map(function() {
   }
   });
 
+  this.route('/nproject', {
+    path: '/nproject/:_id',
+    template: 'nproject',
+    data: function() {
+      console.log(Projects.findOne({_id:this.params._id}));
+    return Projects.findOne({_id:this.params._id});
+  }
+  });
+
+
   this.route('/company', {
     path: '/company/:_id',
     template: 'company',
