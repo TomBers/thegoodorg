@@ -1,5 +1,4 @@
 Template.interest.rendered = function(){
-  console.log(this);
   Meteor.subscribe("findMyReqs", this.data.cid);
 }
 
@@ -7,15 +6,21 @@ Template.interest.rendered = function(){
 Template.interest.helpers({
   msgs:function(){
     return ContactReqs.find();
-  },
+  }
+});
+
+Template.msg.helpers({
   project:function(){
-    console.log(this);
     return Projects.findOne({_id:this.project});
   }
 });
 
-// Template.name.events({
-//   "click #foo": function(event, template){
-//
-//   }
-// });
+Template.msg.events({
+  "click .btn-success": function(event, template){
+    alert('Accept Connection from : ' + template.data.from);
+    console.log(template.data.from);
+  },
+  "click .btn-danger": function(event, template){
+    alert('Reject Connection from : ' + template.data.from);
+  },
+});

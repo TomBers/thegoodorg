@@ -9,8 +9,7 @@ Template.home.rendered = function(){
   }
 
   Template.home.events({
-    // 'click .seeAll' :function(e,template){
-    // },
+
     'click .reset' :function(e,template){
       Session.set('cause', []);
       Session.set('subcause', []);
