@@ -9,6 +9,9 @@ Router.map(function() {
   this.route('/', {
    path: '/',
    template: 'home',
+   waitOn:function(){
+    return Meteor.subscribe("Categories");
+  },
      data: function() {
      return {category:Categories.find()};
    }
@@ -63,8 +66,10 @@ Router.map(function() {
   this.route('/nproject', {
     path: '/nproject/:_id',
     template: 'nproject',
+    waitOn:function(){
+     return Meteor.subscribe("Projects");
+   },
     data: function() {
-      console.log(Projects.findOne({_id:this.params._id}));
     return Projects.findOne({_id:this.params._id});
   }
   });
@@ -123,6 +128,16 @@ Router.map(function() {
       {path: '/callbacks', template: 'displayCallbacks'
       });
 
+      this.route('/interest', {
+        path: '/interest/',
+        template: 'interest',
+        waitOn:function(){
+          return Meteor.subscribe("Companies");
+        },
+        data: function() {
+        return Companies.findOne({employees: {$in : [''+Meteor.user()._id]}});
+      }
+      });
 
 
   this.route('/messages', {path: '/messages',template: 'messages', data:

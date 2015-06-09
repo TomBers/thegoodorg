@@ -168,6 +168,7 @@ Factory.create('userprofile', {
       cid:'S2',
       name : 'LEYF',
       hline: 'support for nurseries',
+      employees : ['DgLQPTQHJPgeJYTPy'],
       logo:' http://www.clearlyso.com/wp-content/uploads/2015/02/left-bnw-474x454.jpg',
       about : 'ClearlySo raised £1.25m investment for LEYF, where profits from established nurseries support free spaces in deprived areas.',
       url:'https://www.leyf.org.uk',

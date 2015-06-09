@@ -103,6 +103,16 @@ Companies.attachSchema(new SimpleSchema({
             allowedValues: [
               "StartUp",
               "Corporate"]},
+
+  employees:{
+    type: [String],
+    optional: true,
+    autoform: {
+      afFieldInput: {
+        type: "text"
+      }
+    }
+  },
   industry: {
         type: Array,
         minCount: 1,

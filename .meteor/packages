@@ -5,7 +5,6 @@
 # but you can also edit it by hand.
 
 meteor-platform
-autopublish
 insecure
 iron:router
 nemo64:bootstrap
@@ -22,3 +21,4 @@ accounts-base
 msavin:jetsetter
 msavin:mongol
 pauli:accounts-linkedin
+reywood:publish-composite

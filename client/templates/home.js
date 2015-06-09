@@ -5,6 +5,7 @@ var interactions = ['Donate Materials','Monetary Donations','Volunteering','Rese
 Template.home.rendered = function(){
   Meteor.subscribe('Projects');
   Meteor.subscribe('UserProfiles');
+  Meteor.subscribe("Companies");
   }
 
   Template.home.events({
