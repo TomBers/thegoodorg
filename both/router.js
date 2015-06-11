@@ -19,6 +19,8 @@ Router.map(function() {
 
   this.route('/about', {path: '/about',template: 'about'});
 
+  this.route('/map', {path: '/map',template: 'map'});
+
   this.route('/admin', {path: '/admin',template: 'admin'});
 
   this.route('/impact', {path: '/impact',template: 'impact'});

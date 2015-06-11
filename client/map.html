@@ -1,0 +1,8 @@
+<template name='map'>
+<h1>{{loc.lat}},{{loc.lng}}</h1>
+
+  <div id="map" style='width:100%;min-height:500px;border:1px solid red'></div>
+  {{#if error}}
+    <p>Error: {{error.message}}</p>
+  {{/if}}
+</template>
