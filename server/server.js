@@ -7,6 +7,17 @@ Meteor.methods({
   rejectIntro: function(id){
     // Questions.update({_id:qn},{$set:{visible:show}});
     return Contract.Reqs.update({_id:id},{$set:{status:'declined'}});
+  },
+  getLatLngfromAddress:function(postcode){
+    // return postcode;
+    var url = 'http://api.postcodes.io/postcodes/'+postcode;
+    try{
+      var res =  HTTP.call("GET", url);
+      return {lat:res.data.result.latitude,lng:res.data.result.longitude};
+    } catch(e){
+      console.log(e);
+      return false;
+    }
   }
 
 });

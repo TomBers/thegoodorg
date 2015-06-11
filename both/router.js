@@ -20,6 +20,7 @@ Router.map(function() {
   this.route('/about', {path: '/about',template: 'about'});
 
   this.route('/map', {path: '/map',template: 'map'});
+  this.route('/fll', {path: '/fll',template: 'fll'});
 
   this.route('/admin', {path: '/admin',template: 'admin'});
 
@@ -108,31 +109,34 @@ Router.map(function() {
   }
   });
 
-  this.route('/list', {
-    path: '/list',
-    template: 'list',
-    data: function() {
-    return {startups:Startups.find()};
-  }
-  });
-
-  this.route('/list2', {path: '/list2', template: 'list2',
-    data: function() {
-        return {corporates:Corporates.find()};
-      }
-    });
+  // this.route('/list', {
+  //   path: '/list',
+  //   template: 'list',
+  //   data: function() {
+  //   return {startups:Startups.find()};
+  // }
+  // });
+  //
+  // this.route('/list2', {path: '/list2', template: 'list2',
+  //   data: function() {
+  //       return {corporates:Corporates.find()};
+  //     }
+  //   });
 
   this.route('/listCompanies',
     {path: '/listCompanies', template: 'listCompanies',
+    waitOn:function(){
+      return Meteor.subscribe("Companies");
+    },
     data: function() {
         return {companies:Companies.find()};
       }
     });
 
 
-    this.route('/callbacks',
-      {path: '/callbacks', template: 'displayCallbacks'
-      });
+    // this.route('/callbacks',
+    //   {path: '/callbacks', template: 'displayCallbacks'
+    //   });
 
       this.route('/interest', {
         path: '/interest/',

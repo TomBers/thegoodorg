@@ -82,7 +82,7 @@
       Add Project
     {{/afModal}}
     <br>
-    {{#afModal class="btn btn-primary" collection="Companies" operation="update" doc=_id}}
+    {{#afModal class="btn btn-primary" collection="Companies" id="editcmpny" operation="update" doc=_id}}
       Edit Company
     {{/afModal}}
 
@@ -149,7 +149,7 @@
 <template name='admin_AddCompany'>
   {{> autoformModals}}
 
-  {{#afModal class="btn btn-primary" collection="Companies" operation="insert"}}
+  {{#afModal class="btn btn-primary" collection="Companies" id="addCmp" operation="insert"}}
     Add New Company
   {{/afModal}}
 </template>
