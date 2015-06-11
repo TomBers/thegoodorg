@@ -78,6 +78,10 @@ Router.map(function() {
   this.route('/company', {
     path: '/company/:_id',
     template: 'company',
+    waitOn:function(){
+    Meteor.subscribe("Companies");
+     return Meteor.subscribe("Projects");
+   },
     data: function() {
     return {company:Companies.findOne({cid:this.params._id}),projects:Projects.find({ownerId:this.params._id})};
   }
@@ -135,51 +139,55 @@ Router.map(function() {
           return Meteor.subscribe("Companies");
         },
         data: function() {
+          if(Meteor.user()){
         return Companies.findOne({employees: {$in : [''+Meteor.user()._id]}});
+      }else{
+        return null;
+      }
+
       }
       });
+    });
 
-
-  this.route('/messages', {path: '/messages',template: 'messages', data:
-				function() {
-				var my_cids = Companies.find().map(function(p) { return p.cid }); //TODO
-
-
-					var from = Collaborations.find({corp_cid:{$in:my_cids}});
-					var to = Collaborations.find({startup_cid:{$in:my_cids}});
-
-
-					var fromData = [];
-					var count = 0;
-					from.forEach(function(row){
-						var newRow = {
-								collaboration:row,
-								project:Projects.findOne({_id:row.projectId}),
-								corp:Companies.findOne({cid:row.corp_cid}),
-								startup:Companies.findOne({cid:row.startup_cid})
-								};
-						fromData[count] = newRow;
-						count++;
-					});
-
-
-					var toData = [];
-					count = 0;
-					to.forEach(function(row){
-						toData[count] = {
-								collaboration:row,
-								project:Projects.findOne({_id:row.projectId}),
-								corp:Companies.findOne({cid:row.corp_cid}),
-								startup:Companies.findOne({cid:row.startup_cid})
-								};
-						count++;
-					});
-
-					console.log(fromData);
-					console.log(toData);
-					return {from:fromData,to:toData}
-
-                }
-			});
-
-});
+//   this.route('/messages', {path: '/messages',template: 'messages', data:
+// 				function() {
+// 				var my_cids = Companies.find().map(function(p) { return p.cid }); //TODO
+//
+//
+// 					var from = Collaborations.find({corp_cid:{$in:my_cids}});
+// 					var to = Collaborations.find({startup_cid:{$in:my_cids}});
+//
+//
+// 					var fromData = [];
+// 					var count = 0;
+// 					from.forEach(function(row){
+// 						var newRow = {
+// 								collaboration:row,
+// 								project:Projects.findOne({_id:row.projectId}),
+// 								corp:Companies.findOne({cid:row.corp_cid}),
+// 								startup:Companies.findOne({cid:row.startup_cid})
+// 								};
+// 						fromData[count] = newRow;
+// 						count++;
+// 					});
+//
+//
+// 					var toData = [];
+// 					count = 0;
+// 					to.forEach(function(row){
+// 						toData[count] = {
+// 								collaboration:row,
+// 								project:Projects.findOne({_id:row.projectId}),
+// 								corp:Companies.findOne({cid:row.corp_cid}),
+// 								startup:Companies.findOne({cid:row.startup_cid})
+// 								};
+// 						count++;
+// 					});
+//
+// 					console.log(fromData);
+// 					console.log(toData);
+// 					return {from:fromData,to:toData}
+//
+//                 }
+// 			});
+//

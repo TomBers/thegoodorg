@@ -1,11 +1,12 @@
 <template name="interest">
 
-<div class='container'>
+<div class='container' style='border:1px solid red'>
   <div class='row'>
-  <div class='col-sm-2'>Project</div>
+    <div class='col-sm-2'>Company</div>
+  <div class='col-sm-2'>Regarding</div>
   <div class='col-sm-3'>Message</div>
   <div class='col-sm-3'>Needs</div>
-  <div class='col-sm-4'>Accept /  Reject</div>
+  <div class='col-sm-2'>Accept /  Reject</div>
   </div>
   {{#each msgs}}
   {{> msg}}
@@ -16,6 +17,7 @@
 
 <template name="msg">
   <div class='row'>
+  <div class='col-sm-2'>{{company.name}} <a href="/company/{{company.cid}}" target="_blank">More</a></div>
   <div class='col-sm-2'>{{project.hline}}</div>
   <div class='col-sm-3'>{{message}}</div>
   <div class='col-sm-3'>
@@ -23,7 +25,7 @@
     {{this}}
     {{/each}}
   </div>
-  <div class='col-sm-4'><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></div>
+  <div class='col-sm-2'><button type="button" class="btn btn-success">Accept</button> <button type="button" class="btn btn-danger">Reject</button></div>
 </div>
 
 </template>

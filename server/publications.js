@@ -26,18 +26,13 @@ Meteor.publishComposite('findMyReqs', function (comp){
         find: function(reqs){
           return Projects.find({_id:reqs.project},{limit:1});
         }
+      },
+      {
+        find: function(reqs){
+          return Companies.find({employees: {$in: [''+reqs.from] }});
+        }
       }
+
     ]
   }
 });
-
-
-
-// Meteor.publish("findMyReqs", function (me) {
-//   var company = Companies.findOne({employees: {$in : [''+me]}});
-//   var reqs = ContactReqs.find({to:company.cid});
-//   var tpid = reqs.project;
-//   var project = Projects.findOne({_id:tpid});
-//
-//   return ContactReqs.find({to:company.cid});
-// });
