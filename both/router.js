@@ -17,6 +17,18 @@ Router.map(function() {
    }
  });
 
+ this.route('/nhome', {
+  path: '/nhome',
+  template: 'nhome',
+  waitOn:function(){
+   return Meteor.subscribe("Categories");
+ },
+    data: function() {
+    return {category:Categories.find()};
+  }
+});
+
+
   this.route('/about', {path: '/about',template: 'about'});
 
   this.route('/map', {path: '/map',template: 'map'});

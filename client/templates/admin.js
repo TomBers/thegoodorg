@@ -2,6 +2,7 @@ var user = Meteor.user();
 Template.admin.rendered = function(){
   Meteor.subscribe("Companies");
   Meteor.subscribe('Projects');
+  Meteor.subscribe('UserProfiles');
   Session.set('ownerId');
 }
 
@@ -57,33 +58,33 @@ Template.admin_listCompanies.helpers({
 
 });
 
-if (Meteor.isClient) {
-AutoForm.hooks({
-  makeProject: {
-    before: {
-      insert: function(doc, template) {
-        doc.ownerId = Session.get('ownerId');
-        return doc;
-      }
-    }
-  },
-  addCmp:{
-    after:{
-      update: function(a,b,c){
-        console.log('UPDATE');
-      }
-    }
-  },
-  editcmpny:{
-    before:{
-      update: function(a,b,c){
-        console.log('UPDATE');
-      }
-    }
-  }
-});
-
-}
+// if (Meteor.isClient) {
+// AutoForm.hooks({
+//   makeProject: {
+//     before: {
+//       insert: function(doc, template) {
+//         doc.ownerId = Session.get('ownerId');
+//         return doc;
+//       }
+//     }
+//   },
+//   addCmp:{
+//     after:{
+//       update: function(a,b,c){
+//         console.log('UPDATE');
+//       }
+//     }
+//   },
+//   editcmpny:{
+//     before:{
+//       update: function(a,b,c){
+//         console.log('UPDATE');
+//       }
+//     }
+//   }
+// });
+//
+// }
 // var postHooks = {
 //   before: {
 //     insert: function(doc) {
@@ -98,3 +99,13 @@ AutoForm.hooks({
 // }
 // AutoForm.addHooks('makeProject', postHooks);
 //
+
+var postHooks = {
+  after: {
+    update: function(doc) {
+      console.log('Update!!');
+      // return doc;
+    }
+  }
+}
+AutoForm.addHooks('editcmpny', postHooks);
