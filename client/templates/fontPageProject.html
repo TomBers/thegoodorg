@@ -1,0 +1,39 @@
+<template name="frontPageProject">
+  <div class='col-sm-4 companyBox'>
+
+    <!-- project linked back to company object for company level fields -->
+    {{#with linkCompany}}
+    <img src="{{logo}}" class="img-thumbnail" href={{url}} alt={{name}} width="100" height="auto">
+
+
+    <!-- company linked back to owner / rep object for user profile fields -->
+    {{#with linkRepresentative}}
+
+    <img src="{{user_photo}}" class="img-circle" alt={{contact_name}} width="100" height="auto">
+    <h6>rep name: {{name}}</h6>
+    <h6>rep role: {{user_title}}</h6>
+    {{/with}}
+    <br>
+    {{/with}}
+    <a href='/company/{{ownerId}}'>{{name}}</a>
+
+    <h6>-----------------------------</h6>
+
+    <!-- Project elements -->
+    <img src="{{img}}" class="img-rounded" href='/project/{{_id}}' alt="{{linkCompany.name}}" width="150" height=auto>
+
+    <h5 style='margin-bottom: 0px;'>Project: {{title}}</h5>
+    <h6>project headline: {{hline}}</h6>
+    <h6>opportunities: {{interactions}}</h6>
+    <h6>----------Impact----------------</h6>
+    <h6>Environment: {{impact_e}}</h6>
+    <h6>Health: {{impact_h}}</h6>
+    <h6>Humanity: {{impact_r}}</h6>
+
+    <a type="button" class="btn btn-success" href='/nproject/{{_id}}'>Learn more</a>
+    <h6>-----------------------------</h6>
+    <h6>location: {{location}}</h6>
+    <h6></h6>
+  </div>
+
+</template>

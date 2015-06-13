@@ -1,7 +1,36 @@
-Template.nhome.rendered = function(){
-  // alert('here');
+Session.set('cause', '');
+Session.set('interest', []);
 
-  // JavaScript Document
+
+
+Template.nhome.helpers({
+  cause: function(){
+      return Session.get('cause');
+  },
+  interest: function(){
+      return Session.get('interest');
+  },
+  visibleProjects: function(){
+    var cause = [''+Session.get('cause')];
+    if(Session.get('cause') != '' && Session.get('interaction').length > 0){
+      return Projects.find({categories:{$in:cause},interactions:{$in:Session.get('interest')}});
+    }
+      else if(Session.get('cause') != '' && Session.get('interaction').length == 0){
+        return Projects.find({categories:{$in:cause}});
+    }else{
+      return Projects.find({}, {limit: 20});
+    }
+  }
+});
+
+
+
+
+Template.nhome.rendered = function(){
+  Meteor.subscribe('Projects');
+  Meteor.subscribe('UserProfiles');
+  Meteor.subscribe("Companies");
+
 
 $('document').ready(function(){
 
@@ -10,31 +39,33 @@ $('document').ready(function(){
 
 /*  -------------------------------------------------------------------- PROJECT NAVIGATION IMAGES */
 $(".project-nav-one-img-one").on("click",function(){
-
+  // alert('bob');
+  addInterest('Donate Materials');
  $(this).css("background-image", "url(images/project-nav-one-img-one.png)");
 });
 $(".project-nav-one-img-two").on("click",function(){
-
+  addInterest('Monetary Donations');
  $(this).css("background-image", "url(images/project-nav-one-img-two.png)");
 });
 $(".project-nav-one-img-three").on("click",function(){
+  addInterest('Volunteering');
 
  $(this).css("background-image", "url(images/project-nav-one-img-three.png)");
 });
 $(".project-nav-one-img-four").on("click",function(){
-
+  addInterest('Research Agreements');
  $(this).css("background-image", "url(images/project-nav-one-img-four.png)");
 });
 $(".project-nav-one-img-five").on("click",function(){
-
+  addInterest('Product Collaboration');
  $(this).css("background-image", "url(images/project-nav-one-img-five.png)");
 });
 $(".project-nav-one-img-six").on("click",function(){
-
+  addInterest('Brand Collaboration');
  $(this).css("background-image", "url(images/project-nav-one-img-six.png)");
 });
 $(".project-nav-one-img-seven").on("click",function(){
-
+  addInterest('Lecturing Opportunities');
  $(this).css("background-image", "url(images/project-nav-one-img-seven.png)");
 });
 /* PROJECT NAVIGATION IMAGES END */
@@ -76,6 +107,8 @@ $(".projectOne-img-two").on("click",function(){
 
 $(".projectOne-img-three").on("click",function(){
 	 res();
+   Session.set('cause',"Sustainable Products");
+
 	 $('.project-nav-one').css("display", "block");
 	 $('.project-one-msg').css("display", "block");
 	 $('.project-one-msg-triangle').css("top", "160px");
@@ -91,6 +124,7 @@ $(".projectOne-img-three").on("click",function(){
 
 $(".projectOne-img-four").on("click",function(){
 	 res();
+   Session.set('cause',"Green Technology");
 	 $('.project-nav-one').css("display", "block");
 	 $('.project-one-msg').css("display", "block");
 	 $('.project-one-msg-triangle').css("top", "160px");
@@ -346,14 +380,16 @@ $("map#projectThree").mouseout(function(){
 
 
 /*  --------------------------------------------------------------------PROJECT THREE IMAGES END */
-
-
-
-
 });
+}
 
-
-
-
+function addInterest(interest){
+  var tmp = Session.get('interest');
+  if ($.inArray(interest, tmp) != -1) {
+    Session.set('interest', _.without(tmp, interest) )
+  }else{
+    tmp.push(interest);
+    Session.set('interest',tmp);
+  }
 
 }

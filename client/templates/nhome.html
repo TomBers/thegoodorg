@@ -6,7 +6,7 @@
 
   <!-- <body> -->
 
-  <div class="main_nav">
+  <!-- <div class="main_nav">
   	<div class="fcontainer">
 
        <div class="search">
@@ -21,11 +21,16 @@
               </ul>
           </div>
       </div>
-  </div>
+  </div> -->
 
 
   <div class="main_body">
       <div class="container relative textAlignCenter">
+        <h1>Cause : {{cause}}</h1>
+        <h1>Interest : {{#each interest}}
+        {{this}}
+        {{/each}}
+        </h1>
 
 
           <div class="project-nav-msg-triangle">
@@ -114,5 +119,9 @@
 
       </div>
       <div class="clear"></div>
+      {{#each visibleProjects}}
+      {{> frontPageProject}}
+      {{/each}}
+
   </div>
 </template>
