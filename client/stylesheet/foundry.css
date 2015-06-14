@@ -125,7 +125,9 @@ a { text-decoration:none; color:#fc663b; }
 .main_body-project { width:100%; background-color:#f4f4f4; margin-top:10px; min-height:400px; text-align:center; }
 .main_body-project h1 { text-align:left; font-weight:300; }
 .main_body-project h3 { text-align:left; }
-.image { width:100%; min-height:400px; background-color:#535353; }
+.image { width:100%; height:auto;
+  /*min-height:400px; */
+  background-color:#535353; }
 .call-back { margin-top:10px; background-color:#0004a1; color:#fff; width:130px; height:40px; border:5px; border-radius:5px; }
 
 .left-side-panel { float:left; display:inline-block; width:20%;  }

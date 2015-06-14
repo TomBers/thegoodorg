@@ -1,143 +1,60 @@
 <template name='project'>
+  <div class="main_body-project">
+      <div class="container relative">
+      <h1>Product Collaboration</h1>
+      <h3><a href="#">with {{linkCompany.name}}</a></h3>
 
-  <div class='container'>
+      <div class="left-side-panel">
+      	<div class="project-info">
+          <img src="/images/Product Collaboraiton.png" />
+         <br  /> <strong>30 Days left to apply</strong>
+        <br  />  Function: <strong>Collaboration</strong>
+         <br  /> Industry: <strong>Construction</strong>
 
-    <br>
+         <br  /> Start Date: <strong>{{startDate}}</strong>
+          <br  />Duration: <strong>4 Months </strong>
+          </div>
+      </div>
+      <div class="center-side-panel">
+      <div class="image"><img style="width:100%; height:auto;" src="{{img}}"></div>
 
-      <div class='col-md-6'>
+      <div class="info-box">
+      <img src="/images/proj_headline.png" /><h2>Description</h2>
+      <span>{{desc}}</span>
+      </div>
 
-      <h5>{{interactions}} project in conjunction with...<a href='/company/{{ownerId}}'>{{linkCompany.name}}</a></h5>
+         <div class="info-box">
+      <img src="/images/proj_impact.png" /><h2>Impact</h2>
+  	<div class="img"></div> <span>Environment : {{impact_e}} <br>Health : {{impact_h}}<br>Rights : {{impact_r}}</span>
+      </div>
 
-      <img src={{img}} style='width:200;height:auto'>
 
-      {{#if isRegistered}}
+             <div class="info-box">
+      <img src="/images/proj_location.png" /><h2>Project Location</h2>
+  	<div class="img"></div>
+      <div ><iframe width="600" height="337" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=51.5033630,-0.1276250&hl=es;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed" style="color:#0000FF;text-align:left" target="_blank">See map bigger</a></small></div>
+      <div class="clear"></div>
+      </div>
 
+
+          <div class="info-box">
+      <img src="/images/proj_owner.png" /><h2>About {{linkCompany.name}}</h2>
+      <span>{{linkCompany.about}}</span>
+      </div>
+
+
+      </div>
+      <div class="right-side-panel">
         {{> autoformModals}}
 
-        {{#afModal class="btn btn-primary" collection="ContactReqs" operation="insert" omitFields="projectId,from_id,to_id,status" formId="makeContactReq"}}
+        {{#afModal class="btn btn-default" collection="ContactReqs" operation="insert" omitFields="project,from,to" formId="makeContactReq"}}
           Request Callback
         {{/afModal}}
+      </div>
 
 
-      {{else}}
-       <div class='btn btn-primary disabled' id='callback_btn'>Register to contact</div>
-      {{/if}}
+  	</div> <!--container -->
+  </div> <!--main_body-->
 
-      <h3>{{title}}</h3>
-      <br>
-      <h4>Project headline:</h4>
-      <h4>{{hline}}</h4>
-      <br>
-      <h5>Project Description:</h5>
-      <h5>{{desc}}</h5>
-
-      <h5>Location: {{location}}</h5>
-      <br>
-      <a href='/company/{{ownerId}}'> more initiatives within: {{linkCompany.name}}</a>
-      <br>
-
-      <br>
-      <h6>----------Impact----------------</h6>
-      <h5>Environment: {{impact_e}}</h5>
-      <h5>Health: {{impact_h}}</h5>
-      <h5>Humanity: {{impact_r}}</h5>
-      <h6>--------------------------------</h6>
-      <br>
-
-
-      <br>
-      <h6>----------Side Panel------------</h6>
-
-      <h5>Start Date: {{startDate}}</h5>
-      <h5>End Date: {{endDate}}</h5>
-      <h5>Duration: {{duration}}</h5>
-      <h5>Cause(s): {{categories}}</h5>
-      <h5>Industry: {{linkCompany.industry}}</h5>
-      <h5>Function(s): {{interactions}}</h5>
-      <h6>--------------------------------</h6>
-      <br>
-
-      {{#with linkCompany}}
-      <h6>----------About Parent Company: {{name}}------------</h6>
-      <h5>Headline: {{hline}}</h5>
-      <h5>About: {{about}}</h5>
-      {{/with}}
-      <h6>--------------------------------</h6>
-      <br>
-
-
-      {{#if isOwned}}
-      {{> autoformModals}}
-      {{#afModal class="btn btn-primary" collection="Projects" operation="update" doc=_id}}
-        Edit
-      {{/afModal}}
-      {{/if}}
-
-
-
-		<br>
-
-      <!-- {{> contactForm}} -->
-
-      {{#if showContactForm}}
-       <h2>Send Collaboration Request</h2>
-       <div style="border: 1px solid black">
-       From: <select id='collaboration_from'>
-        {{#each myCompanies}}
-         <option value="{{cid}}">{{name}}</option>
-        {{/each}}
-       </select>
-       <br>
-       Message (optional):
-       <br>
-       <textarea rows='4' cols='50' maxLength='256' id='collaboration_message'></textarea>
-       <br>
-       <div class='btn btn-primary' id='collaboration_send_btn'>Send</div>
-     </div>
-       {{/if}}
-
-     {{#if showMessagesLink}}
-       <div>
-       You have already contacted this startup regarding this project.<br>
-       Click <a class='btn btn-primary' href='/messages/'>messages</a> to see you communications.
-     </div>
-       {{/if}}
-
-    </div>
-
-    <br>
-
-
-  </div>
-
-
-</template>
-
-
-<template name='contactForm'>
-
-  {{#if showContactForm}}
-   <h2>Send Collaboration Request</h2>
-   <div style="border: 1px solid black">
-   From: <select id='collaboration_from'>
-    {{#each myCompanies}}
-     <option value="{{cid}}">{{name}}</option>
-    {{/each}}
-   </select>
-   <br>
-   Message (optional):
-   <br>
-   <textarea rows='4' cols='50' maxLength='256' id='collaboration_message'></textarea>
-   <br>
-   <div class='btn btn-primary' id='collaboration_send_btn'>Send</div>
- </div>
-   {{/if}}
-
- {{#if showMessagesLink}}
-   <div>
-   You have already contacted this startup regarding this project.<br>
-   Click <a class='btn btn-primary' href='/messages/'>messages</a> to see you communications.
- </div>
-   {{/if}}
 
 </template>

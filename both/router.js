@@ -8,7 +8,7 @@ Router.map(function() {
 
   this.route('/', {
    path: '/',
-   template: 'home',
+   template: 'nhome',
    waitOn:function(){
     return Meteor.subscribe("Categories");
   },
@@ -73,6 +73,9 @@ Router.map(function() {
   this.route('/project', {
     path: '/project/:_id',
     template: 'project',
+    waitOn:function(){
+     return Meteor.subscribe("Projects");
+   },
     data: function() {
     return Projects.findOne({_id:this.params._id});
   }
