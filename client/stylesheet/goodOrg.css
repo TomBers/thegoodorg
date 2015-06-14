@@ -4,3 +4,34 @@ p{
   word-break:break-all;
   font-size:2.5em;
 }
+
+/*SEARCH*/
+
+
+#search-box {
+  padding: 10px;
+  width: 600px;
+  border: 1px solid #eee;
+  outline: 0;
+  font-size: 15px;
+}
+
+#search-result {
+  margin: 20px 0 100px 0;
+}
+
+#search-meta {
+  font-size: 13px;
+  color: #666;
+  height: 15px;
+}
+
+.project {
+  width: 600px;
+  border-bottom: 1px solid #eee;
+  padding: 8px 0;
+}
+
+.project .name {
+  font-weight: 400;
+}

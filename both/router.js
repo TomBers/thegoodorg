@@ -28,6 +28,8 @@ Router.map(function() {
   }
 });
 
+this.route('/search', {path: '/search',template: 'search'});
+
 
   this.route('/about', {path: '/about',template: 'about'});
 

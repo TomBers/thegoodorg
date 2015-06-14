@@ -1,0 +1,19 @@
+<template name="search">
+  <input type="text" id="search-box" placeholder="search here" />
+  {{> searchResult}}
+</template>
+
+<template name="searchResult">
+  <div id='search-result'>
+    {{#each getProjects}}
+    <div class="project">
+      <h4 class="name">
+        <a href="/project/{{_id}}" target="_blank">{{title}}</a>
+      </h4>
+      <div class="description">
+        {{desc}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</template>
