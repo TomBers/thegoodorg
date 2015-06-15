@@ -1,7 +1,16 @@
 Session.set('cause', '');
 Session.set('interest', []);
 
+function addInterest(interest){
+  var tmp = Session.get('interest');
+  if ($.inArray(interest, tmp) != -1) {
+    Session.set('interest', _.without(tmp, interest) )
+  }else{
+    tmp.push(interest);
+    Session.set('interest',tmp);
+  }
 
+}
 
 Template.nhome.helpers({
   cause: function(){
@@ -30,10 +39,12 @@ Template.nhome.rendered = function(){
   Meteor.subscribe('Projects');
   Meteor.subscribe('UserProfiles');
   Meteor.subscribe("Companies");
+}
 
+
+  Template.foundryMain.rendered = function(){
 
 $('document').ready(function(){
-
 
 
 
@@ -381,15 +392,4 @@ $("map#projectThree").mouseout(function(){
 
 /*  --------------------------------------------------------------------PROJECT THREE IMAGES END */
 });
-}
-
-function addInterest(interest){
-  var tmp = Session.get('interest');
-  if ($.inArray(interest, tmp) != -1) {
-    Session.set('interest', _.without(tmp, interest) )
-  }else{
-    tmp.push(interest);
-    Session.set('interest',tmp);
-  }
-
 }
