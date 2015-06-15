@@ -42,6 +42,10 @@ Template.projectSummary.helpers({
 	}
   });
 
+
+
+
+
 // var postHooks = {
 //   before: {
 //     insert: function(doc) {

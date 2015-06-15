@@ -97,7 +97,8 @@ this.route('/search', {path: '/search',template: 'search'});
 
   this.route('/company', {
     path: '/company/:_id',
-    template: 'company',
+    // template: 'company',
+    template: 'companyFoundry',
     waitOn:function(){
     Meteor.subscribe("Companies");
      return Meteor.subscribe("Projects");
@@ -106,6 +107,10 @@ this.route('/search', {path: '/search',template: 'search'});
     return {company:Companies.findOne({cid:this.params._id}),projects:Projects.find({ownerId:this.params._id})};
   }
   });
+
+
+
+
 
   this.route('/startup', {
     path: '/startup/:_id',
