@@ -1,34 +1,7 @@
 <template name="nhome">
   <div class="main_body">
 
-  {{> foundryMain}}
-
-  <br>
-  <h6>Cause : {{cause}}</h6>
-  <h6>Interest : {{#each interest}}
-    {{this}}
-    {{/each}}
-  </h6>
-
-  <div class="clear"></div>
-
-
-  <div class="main-projects">
-    <div class="container relative">
-      {{#each visibleProjects}}
-      {{> tmpfrontPageProject}}
-      {{/each}}
-    </div>
-
-  </div><!-- container end -->
-
-</div>
-
-
-</template>
-
-
-<template name="foundryMain">
+  <!-- {{> foundryMain}} -->
   <!-- <link href='http://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'> -->
   <!-- <title>Home | ThegoodOrg</title> -->
 
@@ -136,4 +109,31 @@
 
 
 
+
+  <br>
+  <h6>Cause : {{cause}}</h6>
+  <h6>Interest : {{#each interest}}
+    {{this}}
+    {{/each}}
+  </h6>
+
+  <div class="clear"></div>
+
+
+  <div class="main-projects">
+    <div class="container relative">
+      {{#each visibleProjects}}
+      {{> tmpfrontPageProject}}
+      {{/each}}
+    </div>
+
+  </div><!-- container end -->
+
+</div>
+
+
+</template>
+
+
+<template name="foundryMain">
 </template>

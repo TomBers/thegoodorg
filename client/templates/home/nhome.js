@@ -39,10 +39,6 @@ Template.nhome.rendered = function(){
   Meteor.subscribe('Projects');
   Meteor.subscribe('UserProfiles');
   Meteor.subscribe("Companies");
-}
-
-
-  Template.foundryMain.rendered = function(){
 
 $('document').ready(function(){
 
