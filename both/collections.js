@@ -94,69 +94,69 @@ Companies.allow({
 Companies.attachSchema(new SimpleSchema({
   cid:    {type: String, label: "Company Ref Number", max: 200, defaultValue:'...CRN: Company Reference Number...'},
   name:   {type: String, label: "Company Name", max: 200, optional:true ,defaultValue:'...Company Name...'},
-  // hline:  {type: String, label: "Headline", max: 200 ,optional:true, defaultValue:'(...company headline...)'},
-  // about:   {type: String, label: "About", max: 1000 ,optional:true, defaultValue:'(...company description...)'},
-  // url:    {type: String, label: "Website", max: 200, optional:true, defaultValue:'(...URL link to website...)'},
-  // logo:   {type: String, label: "Logo", max: 200, optional:true, defaultValue:'(...URL link to logo...)'},
-  //
-  // type:   {type: String, label: "Company Type", optional: false, defaultValue:'StartUp',
-  //           allowedValues: [
-  //             "StartUp",
-  //             "Corporate"]},
+  hline:  {type: String, label: "Headline", max: 200 ,optional:true, defaultValue:'(...company headline...)'},
+  about:   {type: String, label: "About", max: 1000 ,optional:true, defaultValue:'(...company description...)'},
+  url:    {type: String, label: "Website", max: 200, optional:true, defaultValue:'(...URL link to website...)'},
+  logo:   {type: String, label: "Logo", max: 200, optional:true, defaultValue:'(...URL link to logo...)'},
 
-  // employees:{
-  //   type: [String],
-  //   optional: true,
-  //   autoform: {
-  //     afFieldInput: {
-  //       type: "text"
-  //     }
-  //   }
-  // },
-  // industry: {
-  //       type: Array,
-  //       minCount: 1,
-  //       maxCount: 5,
-  //       label: "Select Industry segment(s)",
-  //       optional: true,
-  //       defaultValue: ["TBD"],
-  //       autoform: {
-  //          options: [
-  //             {label: "Financial",value: "financial"},
-  //             {label: "Construction",value: "construction"},
-  //             {label: "Manufacturing",value: "manufacturing"},
-  //             {label: "Transport",value: "transport"},
-  //             {label: "Education",value: "education"},
-  //             {label: "(Other)",value: "other"},
-  //             {label: "TBD",value: "tbd"}
-  //           ]}
-  //       },
-  //    "industry.$": {
-  //       type: String
-  //    },
-  //
-  // loc:    {type: String, label: "Postcode", max: 10, optional:true, defaultValue:'(XXX XXXX)'},
-  // addr:   {type: String, label: "Address", max: 1000 ,optional:true, defaultValue:'(...company address...)'},
-  //
-  // rep_name:    {type: String, label: "Company representative", max: 200, optional:true,defaultValue:'(...firstname lastname...)' },
-  // rep_role:    {type: String, label: "contact role in company", max: 200, optional:true,defaultValue:'(... community dept rep ...)' },
-  // rep_email:   {type: String, label: "contact email", max: 200, optional:true,defaultValue:'(...name@company.com...)' },
-  // rep_tel:     {type: String, label: "contact telephone #", max: 200, optional:true,defaultValue:'(...+44 #### ### ####...)' },
-  //
-  // img:    {type: String, label: "Image Url",  optional:true, defaultValue:'(...URL link to company picture(s)...)'},
-  // // projects:{type: [String], optional:true, max:10},
-  //
-  // news: {type: String, optional:true,defaultValue:'...recent company news here...'},
-  //
-  // createdAt: {
-  //   autoform: {omit: true},
-  //   type: Date,
-  //   autoValue: function() {
-  //     if (this.isInsert) {return new Date;}
-  //     else if (this.isUpsert) {return {$setOnInsert: new Date};}
-  //     else {        this.unset();      }
-  //     }
-  //   }
+  type:   {type: String, label: "Company Type", optional: false, defaultValue:'StartUp',
+            allowedValues: [
+              "StartUp",
+              "Corporate"]},
+
+  employees:{
+    type: [String],
+    optional: true,
+    autoform: {
+      afFieldInput: {
+        type: "text"
+      }
+    }
+  },
+  industry: {
+        type: Array,
+        minCount: 1,
+        maxCount: 5,
+        label: "Select Industry segment(s)",
+        optional: true,
+        defaultValue: ["TBD"],
+        autoform: {
+           options: [
+              {label: "Financial",value: "financial"},
+              {label: "Construction",value: "construction"},
+              {label: "Manufacturing",value: "manufacturing"},
+              {label: "Transport",value: "transport"},
+              {label: "Education",value: "education"},
+              {label: "(Other)",value: "other"},
+              {label: "TBD",value: "tbd"}
+            ]}
+        },
+     "industry.$": {
+        type: String
+     },
+
+  loc:    {type: String, label: "Postcode", max: 10, optional:true, defaultValue:'(XXX XXXX)'},
+  addr:   {type: String, label: "Address", max: 1000 ,optional:true, defaultValue:'(...company address...)'},
+
+  rep_name:    {type: String, label: "Company representative", max: 200, optional:true,defaultValue:'(...firstname lastname...)' },
+  rep_role:    {type: String, label: "contact role in company", max: 200, optional:true,defaultValue:'(... community dept rep ...)' },
+  rep_email:   {type: String, label: "contact email", max: 200, optional:true,defaultValue:'(...name@company.com...)' },
+  rep_tel:     {type: String, label: "contact telephone #", max: 200, optional:true,defaultValue:'(...+44 #### ### ####...)' },
+
+  img:    {type: String, label: "Image Url",  optional:true, defaultValue:'(...URL link to company picture(s)...)'},
+  // projects:{type: [String], optional:true, max:10},
+
+  news: {type: String, optional:true,defaultValue:'...recent company news here...'},
+
+  createdAt: {
+    autoform: {omit: true},
+    type: Date,
+    autoValue: function() {
+      if (this.isInsert) {return new Date;}
+      else if (this.isUpsert) {return {$setOnInsert: new Date};}
+      else {        this.unset();      }
+      }
+    }
 
     // updatedAt: {
     //   type: Date,
