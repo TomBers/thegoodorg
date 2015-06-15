@@ -20,15 +20,20 @@ Template.nhome.helpers({
       return Session.get('interest');
   },
   visibleProjects: function(){
+    console.log(Session.get('cause'));
     var cause = [''+Session.get('cause')];
-    if(Session.get('cause') != '' && Session.get('interaction').length > 0){
+    try{
+    if(Session.get('cause') != '' && Session.get('interest').length > 0){
       return Projects.find({categories:{$in:cause},interactions:{$in:Session.get('interest')}});
     }
-      else if(Session.get('cause') != '' && Session.get('interaction').length == 0){
+      else if(Session.get('cause') != '' && Session.get('interest').length == 0){
         return Projects.find({categories:{$in:cause}});
     }else{
       return Projects.find({}, {limit: 20});
     }
+  }catch(e){
+
+  }
   }
 });
 
@@ -99,6 +104,7 @@ $(".projectOne-img-one").on("click",function(){
 
 $(".projectOne-img-two").on("click",function(){
 	 res();
+   Session.set('cause',"Sustainable Transport");
 	 $('.project-nav-one').css("display", "block");
 	 $('.project-one-msg').css("display", "block");
 	 $('.project-one-msg-triangle').css("top", "160px")
