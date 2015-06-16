@@ -17,3 +17,18 @@
     {{/each}}
   </div>
 </template>
+
+
+
+<!-- front page search bar -->
+<template name="searchMenu2">
+  <input type="text" id="search-box2" placeholder="search here"/>
+  <!-- {{> searchResult2}} -->
+</template>
+
+<!-- front page search results output -->
+<template name="searchResult2">
+    {{#each getProjects}}
+      {{> tmpfrontPageProject}}
+    {{/each}}
+</template>

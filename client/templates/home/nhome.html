@@ -1,4 +1,10 @@
 <template name="nhome">
+
+  <!-- Add search bar... -->
+  <div align="right">
+    {{> searchMenu2}}
+  </div>
+
   <div class="main_body">
 
   <!-- {{> foundryMain}} -->
@@ -111,16 +117,24 @@
 
 
   <br>
-  <h6>Cause : {{cause}}</h6>
-  <h6>Interest : {{#each interest}}
-    {{this}}
-    {{/each}}
-  </h6>
+
+  <div id="queryElements-box">
+    Cause : {{cause}} <br>
+    Interest : {{#each interest}}    {{this}}    {{/each}}
+  </div>
+
 
   <div class="clear"></div>
 
 
+
+
+
   <div class="main-projects">
+
+    {{> searchResult2}}
+
+
     <div class="container relative">
       {{#each visibleProjects}}
       {{> tmpfrontPageProject}}

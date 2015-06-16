@@ -16,6 +16,22 @@ p{
   font-size: 15px;
 }
 
+#search-box2 {
+  padding: 5px;
+  width: 300px;
+  border: 1px solid #eee;
+  outline: 0;
+  font-size: 10px;
+}
+
+#queryElements-box {
+  padding: 5px;
+  width: 400px;
+  border: 1px solid #eee;
+  outline: 0;
+  font-size: 10px;
+}
+
 #search-result {
   margin: 20px 0 100px 0;
 }
