@@ -8,7 +8,8 @@ Router.map(function() {
 
   this.route('/', {
    path: '/',
-   template: 'nhome',
+   template: 'home',
+  //  template: 'nhome',
    waitOn:function(){
     return Meteor.subscribe("Categories");
   },
@@ -17,9 +18,12 @@ Router.map(function() {
    }
  });
 
- this.route('/nhome', {
-  path: '/nhome',
-  template: 'nhome',
+ this.route('/home', {
+  path: '/home',
+  template: 'home',
+  // this.route('/nhome', {
+  //  path: '/nhome',
+  //  template: 'nhome',
   waitOn:function(){
    return Meteor.subscribe("Categories");
  },
