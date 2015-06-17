@@ -1,4 +1,5 @@
-Session.set('cause', '');
+// Session.set('cause', '');
+Session.set('arrCause', []);
 Session.set('interest', []);
 
 function addInterest(interest){
@@ -12,22 +13,52 @@ function addInterest(interest){
 
 }
 
+
+function addCause(causeIn){
+  var tmp = Session.get('arrCause');
+  if ($.inArray(causeIn, tmp) != -1) {
+    Session.set('arrCause', _.without(tmp, causeIn) )
+  }else{
+    tmp.push(causeIn);
+    Session.set('arrCause',tmp);
+  }
+
+}
+
+
+
 Template.home.helpers({
   cause: function(){
-      return Session.get('cause');
+      return Session.get('arrCause');
   },
   interest: function(){
       return Session.get('interest');
   },
+  // visibleProjects: function(){
+  //   console.log(Session.get('cause'));
+  //   var cause = [''+Session.get('cause')];
+  //   try{
+  //   if(Session.get('cause') != '' && Session.get('interest').length > 0){
+  //     return Projects.find({categories:{$in:cause},interactions:{$in:Session.get('interest')}});
+  //   }
+  //     else if(Session.get('cause') != '' && Session.get('interest').length == 0){
+  //       return Projects.find({categories:{$in:cause}});
+  //   }else{
+  //     return Projects.find({}, {limit: 20});
+  //   }
+  // }catch(e){
+  //
+  // }
+  // }
   visibleProjects: function(){
-    console.log(Session.get('cause'));
-    var cause = [''+Session.get('cause')];
+    // console.log(Session.get('cause'));
+    var causeList = Session.get('arrCause');
     try{
-    if(Session.get('cause') != '' && Session.get('interest').length > 0){
-      return Projects.find({categories:{$in:cause},interactions:{$in:Session.get('interest')}});
+    if(Session.get('arrCause') != '' && Session.get('interest').length > 0){
+      return Projects.find({categories:{$in:causeList},interactions:{$in:Session.get('interest')}});
     }
-      else if(Session.get('cause') != '' && Session.get('interest').length == 0){
-        return Projects.find({categories:{$in:cause}});
+      else if(Session.get('arrCause') != '' && Session.get('interest').length == 0){
+        return Projects.find({categories:{$in:causeList}});
     }else{
       return Projects.find({}, {limit: 20});
     }
@@ -35,6 +66,7 @@ Template.home.helpers({
 
   }
   }
+
 });
 
 
@@ -98,7 +130,8 @@ $('document').ready(function(){
   });
   $(".projectOne-img-two").on("click",function(){
   	 res();
-     Session.set('cause',"Sustainable Transport");
+     addCause('Sustainable Transport');
+    //  Session.set('cause',"Sustainable Transport");
   	 $('.project-nav-one').css("display", "block");
   	 $('.project-one-msg-triangle').css("display", "block");
   	 $(".projectOne-img-two").css("background-image", "url(images/projectOne-img-two.png)");
@@ -109,7 +142,8 @@ $('document').ready(function(){
   });
   $(".projectOne-img-three").on("click",function(){
   	 res();
-     Session.set('cause',"Sustainable Products");
+     addCause('Sustainable Products');
+    //  Session.set('cause',"Sustainable Products");
   	 $('.project-nav-one').css("display", "block");
   	 $('.project-one-msg-triangle').css("display", "block");
   	 $(".projectOne-img-three").css("background-image", "url(images/projectOne-img-three.png)");
@@ -121,7 +155,8 @@ $('document').ready(function(){
   });
   $(".projectOne-img-four").on("click",function(){
   	 res();
-     Session.set('cause',"Green Technology");
+     addCause('Green Technology');
+    //  Session.set('cause',"Green Technology");
   	 $('.project-nav-one').css("display", "block");
   	 $('.project-one-msg-triangle').css("display", "block");
   	 $(".projectOne-img-four").css("background-image", "url(images/projectOne-img-four.png)");
@@ -133,7 +168,8 @@ $('document').ready(function(){
   });
   $(".projectOne-img-five").on("click",function(){
   	 res();
-     Session.set('cause',"Energy Management");
+     addCause('Energy Management');
+    //  Session.set('cause',"Energy Management");
   	 $('.project-nav-one').css("display", "block");
   	 $('.project-one-msg-triangle').css("display", "block");
   	 $(".projectOne-img-five").css("background-image", "url(images/projectOne-img-five.png)");

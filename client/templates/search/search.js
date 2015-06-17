@@ -4,6 +4,8 @@ var options = {
 };
 var fields = ['title', 'desc'];
 
+var searchActive = false;
+
 projectSearch = new SearchSource('projects', fields, options);
 
 Template.searchResult.helpers({
@@ -25,7 +27,8 @@ Template.searchResult.helpers({
 
 Template.searchResult.rendered = function() {
 
-  projectSearch.search('');
+  // projectSearch.search('');
+  projectSearch.cleanHistory();
 };
 
 Template.search.events({
