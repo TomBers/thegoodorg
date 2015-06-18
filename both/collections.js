@@ -12,6 +12,58 @@ Categories = new Mongo.Collection("categories");
 Collaborations = new Mongo.Collection("collaborations");
 ContactReqs = new Mongo.Collection("contactreqs");
 
+/* jd test */
+Admin1 = new Mongo.Collection("admin1");
+Admin2 = new Mongo.Collection("admin2");
+Admin3 = new Mongo.Collection("admin3");
+
+Admin1.allow({
+  insert: function () { return true; },
+  update: function () { return true; },
+  remove: function () { return true; }
+});
+Admin2.allow({
+  insert: function () { return true; },
+  update: function () { return true; },
+  remove: function () { return true; }
+});
+Admin3.allow({
+  insert: function () { return true; },
+  update: function () { return true; },
+  remove: function () { return true; }
+});
+
+
+Admin1.attachSchema(new SimpleSchema({
+  f1: {type: String,label: "Admin 1", max: 200 },
+  f2: {type: String,label: "Admin 1", max: 200 },
+  f3: {type: String,label: "Admin 1", max: 200 }
+}));
+
+Admin2.attachSchema(new SimpleSchema({
+  f1: {type: String,label: "Admin 2", max: 200 },
+  f2: {type: String,label: "Admin 2", max: 200 },
+  f3: {type: String,label: "Admin 2", max: 200 }
+}));
+
+Admin3.attachSchema(new SimpleSchema({
+  f1: {type: String,label: "Admin 3", max: 200 },
+  f2: {type: String,label: "Admin 3", max: 200 },
+  f3: {type: String,label: "Admin 3", max: 200 }
+}));
+
+
+
+Categories.attachSchema(new SimpleSchema({
+  cat: {type: String,label: "Category Name", max: 200 },
+  subcat :{
+    type: [String],
+   optional: true
+  }
+}));
+
+
+
 
 /*  Project attribute object collections   */
 

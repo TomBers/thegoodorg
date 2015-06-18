@@ -69,37 +69,6 @@ Template.home.helpers({
 
 });
 
-Template.projectCard.helpers({
-
-  linkCompany: function() {
-		var user = Meteor.user();
-    return Companies.findOne({"cid":this.ownerId});
-	}
-
-  ,  linkCompanyOwner: function() {
-    var cmpy = Companies.findOne({"cid":this.ownerId});
-    return UserProfiles.findOne({"contact_mail":cmpy.rep_email});
-  	}
-
-    ,  getInterestPic: function() {
-
-      var projIcons = [];
-      var tmp = this.interactions;
-
-      if($.inArray("Donate Materials", tmp) != -1){ projIcons.push('images/project-nav-one-img-one.png'); }
-      if($.inArray("Monetary Donations", tmp) != -1){ projIcons.push('images/project-nav-one-img-two.png'); }
-      if($.inArray("Volunteering", tmp) != -1){ projIcons.push('images/project-nav-one-img-three.png'); }
-      if($.inArray("Research Agreements", tmp) != -1){ projIcons.push('images/project-nav-one-img-four.png'); }
-      if($.inArray("Product Collaboration", tmp) != -1){ projIcons.push('images/project-nav-one-img-five.png'); }
-      if($.inArray("Brand Collaboration", tmp) != -1){ projIcons.push('images/project-nav-one-img-six.png'); }
-      if($.inArray("Lecturing Opportunites", tmp) != -1){ projIcons.push('images/project-nav-one-img-seven.png'); }
-      // images/project-nav-one-img-five.png
-
-      return projIcons;
-}
-
-});
-
 
 
 
@@ -107,12 +76,8 @@ Template.home.rendered = function(){
   Meteor.subscribe('Projects');
   Meteor.subscribe('UserProfiles');
   Meteor.subscribe("Companies");
-  Session.set('ownerId', this.data.ownerId);
-  Session.set('projectId', this.data._id);
 
 $('document').ready(function(){
-
-
 
 
 
@@ -154,8 +119,7 @@ $('document').ready(function(){
 
   $(".projectOne-img-one").on("click",function(){
   	 res();
-     addCause('Wildlife & Habitat');
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+  	 $('.project-nav-one').css("display", "block");
   	 $('.project-one-msg-triangle').css("display", "block");
   	 $(".projectOne-img-one").css("background-image", "url(images/projectOne-img-one.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -167,7 +131,8 @@ $('document').ready(function(){
   $(".projectOne-img-two").on("click",function(){
   	 res();
      addCause('Sustainable Transport');
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+    //  Session.set('cause',"Sustainable Transport");
+  	 $('.project-nav-one').css("display", "block");
   	 $('.project-one-msg-triangle').css("display", "block");
   	 $(".projectOne-img-two").css("background-image", "url(images/projectOne-img-two.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -178,7 +143,8 @@ $('document').ready(function(){
   $(".projectOne-img-three").on("click",function(){
   	 res();
      addCause('Sustainable Products');
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+    //  Session.set('cause',"Sustainable Products");
+  	 $('.project-nav-one').css("display", "block");
   	 $('.project-one-msg-triangle').css("display", "block");
   	 $(".projectOne-img-three").css("background-image", "url(images/projectOne-img-three.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -190,7 +156,8 @@ $('document').ready(function(){
   $(".projectOne-img-four").on("click",function(){
   	 res();
      addCause('Green Technology');
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+    //  Session.set('cause',"Green Technology");
+  	 $('.project-nav-one').css("display", "block");
   	 $('.project-one-msg-triangle').css("display", "block");
   	 $(".projectOne-img-four").css("background-image", "url(images/projectOne-img-four.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -202,7 +169,8 @@ $('document').ready(function(){
   $(".projectOne-img-five").on("click",function(){
   	 res();
      addCause('Energy Management');
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+    //  Session.set('cause',"Energy Management");
+  	 $('.project-nav-one').css("display", "block");
   	 $('.project-one-msg-triangle').css("display", "block");
   	 $(".projectOne-img-five").css("background-image", "url(images/projectOne-img-five.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -253,7 +221,7 @@ $('document').ready(function(){
 
   $(".projectTwo-img-one").on("click",function(){
   	 res();
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+  	 $('.project-nav-one').css("display", "block");
   	 $('.project-two-msg-triangle').css("display", "block");
   	 $(".projectTwo-img-one").css("background-image", "url(images/project-two-optionOne.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -265,7 +233,7 @@ $('document').ready(function(){
 
   $(".projectTwo-img-two").on("click",function(){
   	 res();
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+  	 $('.project-nav-one').css("display", "block");
   	 $('.project-two-msg-triangle').css("display", "block");
   	 $(".projectTwo-img-two").css("background-image", "url(images/project-two-optionTwo.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -277,7 +245,7 @@ $('document').ready(function(){
 
   $(".projectTwo-img-three").on("click",function(){
   	 res();
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+  	 $('.project-nav-one').css("display", "block");
   	 $('.project-two-msg-triangle').css("display", "block");
   	 $(".projectTwo-img-three").css("background-image", "url(images/project-two-optionThree.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -289,7 +257,7 @@ $('document').ready(function(){
 
   $(".projectTwo-img-four").on("click",function(){
   	 res();
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+  	 $('.project-nav-one').css("display", "block");
   	  $('.project-two-msg-triangle').css("display", "block");
   	 $(".projectTwo-img-four").css("background-image", "url(images/project-two-optionFour.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -305,7 +273,7 @@ $('document').ready(function(){
 
   $(".projectTwo-img-five").on("click",function(){
   	 res();
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+  	 $('.project-nav-one').css("display", "block");
   	  $('.project-two-msg-triangle').css("display", "block");
   	 $(".projectTwo-img-five").css("background-image", "url(images/project-two-optionFive.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -358,7 +326,7 @@ $('document').ready(function(){
 
   $(".projectThree-img-one").on("click",function(){
   	 res();
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+  	 $('.project-nav-one').css("display", "block");
   	 $('.project-three-msg-triangle').css("display", "block");
   	 $(".projectThree-img-one").css("background-image", "url(images/project-three-one.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -369,7 +337,7 @@ $('document').ready(function(){
 
   $(".projectThree-img-two").on("click",function(){
   	 res();
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+  	 $('.project-nav-one').css("display", "block");
   	 $('.project-three-msg-triangle').css("display", "block");
   	 $(".projectThree-img-two").css("background-image", "url(images/project-three-two.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -380,7 +348,7 @@ $('document').ready(function(){
 
   $(".projectThree-img-three").on("click",function(){
   	 res();
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+  	 $('.project-nav-one').css("display", "block");
   	 $('.project-three-msg-triangle').css("display", "block");
   	 $(".projectThree-img-three").css("background-image", "url(images/project-three-three.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -391,7 +359,7 @@ $('document').ready(function(){
 
   $(".projectThree-img-four").on("click",function(){
   	 res();
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+  	 $('.project-nav-one').css("display", "block");
   	  $('.project-three-msg-triangle').css("display", "block");
   	 $(".projectThree-img-four").css("background-image", "url(images/project-three-four.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -402,7 +370,7 @@ $('document').ready(function(){
 
   $(".projectThree-img-five").on("click",function(){
   	 res();
-  	 $('.project-nav-one').css("display", "block"); fadeElements();
+  	 $('.project-nav-one').css("display", "block");
   	  $('.project-three-msg-triangle').css("display", "block");
   	 $(".projectThree-img-five").css("background-image", "url(images/project-three-five.png)");
   	 $('.project-nav-msg-triangle').css("display", "block");
@@ -456,16 +424,7 @@ $('document').ready(function(){
   });
   });
 
-  function fadeElements(){
-  $('.project-nav-project:first-of-type').fadeIn(700);
-  $('.project-nav-project:nth-child(2)').fadeIn(1400);
-  $('.project-nav-project:nth-child(3)').fadeIn(2100);
-  $('.project-nav-project:nth-child(4)').fadeIn(2800);
-  $('.project-nav-project:nth-child(5)').fadeIn(3500);
-  $('.project-nav-project:nth-child(6)').fadeIn(4200);
-  $('.project-nav-project:nth-child(7)').fadeIn(4900);
 
-  }
 
   function res(){
 
@@ -637,7 +596,6 @@ $('document').ready(function(){
   });
   }
   $(window).bind('resize',positionPopupCall);
-
 
 
 

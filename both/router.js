@@ -55,6 +55,8 @@ this.route('/search', {path: '/search',template: 'search'});
 
   this.route('/addFeedback', {path: '/addFeedback',template: 'addFeedback'});
 
+  this.route('/newAdmin', {path: '/newAdmin',template: 'newAdmin'});
+
 
   this.route('/addReq1', {path: '/addReq1',template: 'addReq1', data: function() {
                 return {req_types:Req_Types.find()};}

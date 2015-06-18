@@ -1,0 +1,173 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="style/style.css" />
+<link href='http://fonts.googleapis.com/css?family=Lato:400,300,700' rel='stylesheet' type='text/css'>
+
+<title>Home | ThegoodOrg</title>
+
+</head>
+
+<body>
+
+<div class="main_nav">
+	<div class="container">
+    
+     <div class="search">
+        <div class="login">
+            <ul>
+                <a id="login" href="#"><li>Login</li></a>
+            </ul>
+        </div>
+    	<input type="text" class="search"  placeHolder="Search" ><button type="button"></button>
+    </div>
+        <div class="nav">
+            <ul>
+            <li>BROWSE</li>
+            <li>IMPACT</li>
+            <li>ABOUT</li>
+            </ul>       
+        </div>
+    </div>
+</div>
+
+<!-- SIGN IN FORM -->
+<div id="login_form" class="signInForm" style="display:none;">
+<h1>Welcome !</h1>
+<h3>Please sign in to your account</h3>
+
+  <div class="login">    
+   	<input type="text" placeHolder="Email" />       
+        <input type="text" placeHolder="Password" />
+        <button><label>SIGN IN</label></button>
+        <span><a href="#">Forgot your password?</a></span>        
+   		<h3>or <a href="registration.html">SIGN UP</a> - Its FREE</h3>
+     	<a href=""><img src="images/linkedInSignIn.png" /></a>
+        <span>Please sign in here if you're a <a href="#">startup</a></span>
+        <a href="#" id="close" >Close</a>
+    </div><!-- login end -->
+</div><!-- signInForm end -->
+<!-- SIGN IN FORM ENDS -->
+
+
+<div class="main_body">
+    <div class="container relative textAlignCenter">
+    
+        <div class="project-one">
+            <div class="projectOne-img-one">
+            </div>
+            <div class="projectOne-img-two">
+            </div>
+            <div class="projectOne-img-three">
+            </div>
+            <div class="projectOne-img-four">
+            </div>
+            <div class="projectOne-img-five">
+            </div>
+            
+            <div class="project-one-msg-triangle">
+                <div class="project-one-msg-close"><img id="close-button-one" src="images/close.gif"></div>
+                <div class="">There are 5 projects<br /> in Green Technology<br />that need your help </div>
+            </div>
+            <div id="ProjectOneLabel">PLANET</div>
+        </div>
+    
+    
+         <div class="project-two">
+            <div class="projectTwo-img-one">
+            </div>
+            <div class="projectTwo-img-two">
+            </div>
+            <div class="projectTwo-img-three">
+            </div>
+            <div class="projectTwo-img-four">
+            </div>
+            <div class="projectTwo-img-five">
+            </div>        
+            <div class="project-two-msg-triangle">
+                <div class="project-one-msg-close"><img id="close-button-two" src="images/close.gif"></div>
+            <div>There are 5 projects<br /> in Green Technology<br />that need your help </div>
+            </div>
+                  <div id="ProjectTwoLabel">HEALTH</div>          
+         </div>
+         
+         
+         <div class="project-three">
+            <div class="projectThree-img-one">
+            </div>
+            <div class="projectThree-img-two">
+            </div>
+            <div class="projectThree-img-three">
+            </div>
+            <div class="projectThree-img-four">
+            </div>
+            <div class="projectThree-img-five">
+            </div>
+            <div class="project-three-msg-triangle">
+                <div class="project-one-msg-close"><img id="close-button-three" src="images/close.gif"></div>
+                <div>There are 5 projects<br /> in Green Technology<br />that need your help </div>
+            </div>
+            <div id="ProjectThreeLabel">RIGHTS</div> 
+         </div>   
+
+    <div class="clear"></div>
+    
+      <div class="project-nav-one">
+        <div class="project-nav-project"><div class="project-nav-one-img-one"></div><span>Donate<br /> Materials</span></div>
+        <div class="project-nav-project"><div class="project-nav-one-img-two"></div><span>Monetary <br /> Donations</span></div>
+        <div class="project-nav-project"><div class="project-nav-one-img-three"></div><span>Volunteering</span></div>
+        <div class="project-nav-project"><div class="project-nav-one-img-four"></div><span>Research <br />Agreements</span></div>
+        <div class="project-nav-project"><div class="project-nav-one-img-five"></div><span>Product<br /> Collaboration</span></div>
+        <div class="project-nav-project"><div class="project-nav-one-img-six"></div><span>Brand <br />Collaboration</span></div>
+        <div class="project-nav-project project-nav-project-last"><div class="project-nav-one-img-seven"></div><span>Lecturing <br />Opportunities</span></div>
+        <div class="project-nav-msg-triangle">
+            <div class="project-nav-msg-close"><img id="close-button-nav" src="images/close.gif"></div>
+            <div>You can refine<br />  your search by how you'd<br /> like to collaborate</div>
+        </div>
+    </div>
+    
+    <div class="clear"></div>
+    </div>
+
+  <div class="container container-smaller">
+  
+<div class="index-project-one left">
+    	<img class="profile-pic" src="images/profile-pic-one.jpg">
+        <h6>Matthew Holloway
+      <br />Managing director</h6>
+        <img class="project-icon" src="images/project-nav-one-img-five.png" />
+        <img src="images/project-images/card-one.png" border="0" class="absolute-project-image" />
+  <h5>Q-bot</h5>
+        <span>We're looking for a product collaboration opportunity with a company interested in Construction and Refurbishments.</span>
+        <img class="icon" src="images/icons/icon_E-impact.png"  /><span class="green">0.2 tCO2</span>
+        <img class="icon" src="images/icons/icon-R-impact.png" /><span class="yellow">22 helped </span>
+        <a class="learn-more-button" href="project-collaboration.html"> Learn More</a>
+        <div class="clear"></div>
+        <div class="location">London</div>
+    </div>
+     
+    <div class="index-project-one left">
+        <img class="profile-pic" src="images/profile-pic-two.jpg">
+        <h6>Benjamin Kott
+      	<br />CEO</h6>
+        <img class="project-icon" src="images/project-nav-one-img-four.png" />
+        <img class="absolute-project-image" src="images/project-images/card-two.png" />
+        <h5>EnergyDeck</h5>
+        <span>We'd like to agree a research agreement with your company so we can test our solution in an office environment. The avarage benefit for a 1000m2 office is a 1.3 reduction in CO2 emmisions</span>
+      <span style="color:green"><img class="icon" src="images/icons/icon_E-impact.png"  /><1.3 tCO2
+
+      <a class="learn-more-button" href="project-collaboration.html"> Learn More</a></span>
+        <div class="location">London</div>
+    </div>
+  </div> 
+
+</div><!-- container -->
+    <div class="clear"></div>    
+</div>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/home-nav.js"></script>
+
+</body>
+
+</html>

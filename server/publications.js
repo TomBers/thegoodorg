@@ -14,6 +14,15 @@ Meteor.publish("UserProfiles", function () {
   return UserProfiles.find();
 });
 
+Meteor.publish("Admin1", function () {
+  return Admin1.find();
+});
+Meteor.publish("Admin2", function () {
+  return Admin2.find();
+});
+Meteor.publish("Admin3", function () {
+  return Admin3.find();
+});
 
 
 Meteor.publishComposite('findMyReqs', function (comp){
