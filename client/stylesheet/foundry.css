@@ -156,7 +156,8 @@ a { text-decoration:none; color:#fc663b; }
 
 
 
-.index-project-one { max-width:430px; width:100%; display:block; position:relative; background-color:#fff; padding-top:15px;  margin:100px 20px; }
+.index-project-one { max-width:430px; width:100%; display:block; position:relative; background-color:#fff; padding-top:15px;  margin:10px 20px; }
+/*.index-project-one { max-width:430px; width:100%; display:block; position:relative; background-color:#fff; padding-top:15px;  margin:100px 20px; }*/
 .index-project-one img.profile-pic { display:inline-block; float:left; padding-left:10px; }
 .index-project-one h6 { display:block; float:left; margin:15px 0 10px 10px; }
 .index-project-one img.project-icon { display:inline-block; float:right; width:45px; height:45px; margin-right:10px;}
@@ -184,7 +185,7 @@ span.blue { float:left; display:inline-block; color:#ccd300;width:100px; margin:
 .right-side-panel { float:right; display:inline-block; width:15%;  }
 .center-side-panel {  display:inline-block; width:60%; margin:auto; }
 
-.project-info { width:100%; min-height:1px; background-color:#FFF; padding:10px; text-align:left;  }
+.project-info { width:100%; min-height:1px; background-color:#FFF; padding:10px; text-align:middle;  }
 .project-info img { margin:auto; }
 .button { width:100%; min-height:1px; padding:10px; background:#fff; margin-top:20px; }
 .button img{ width:25px; height:25px; float:left; }

@@ -51,3 +51,54 @@ p{
 .project .name {
   font-weight: 400;
 }
+
+.image-50x50 {
+  width:50px;
+  height:50px; }
+
+.image-30x30 {
+  width:30px;
+  height:30px; }
+
+
+  .project-card { max-width:430px; width:100%; display:block; position:relative; background-color:#fff; padding-top:15px;  margin:20px 20px; }
+  .project-card img.profile-pic { display:inline-block; float:left; padding-left:10px; }
+  .project-card img.50x50 { height:50px; width:50px;}
+  .project-card h6 { display:block; float:left; margin:15px 0 10px 10px; }
+  .project-card img.project-icon { display:inline-block; float:right; width:45px; height:45px; margin-right:10px;}
+  .project-card h5 { display:block; width:95%; margin:20px auto; padding-top:5px; }
+  .project-card span { display:block; width:90%; margin:20px auto;  }
+  .project-card .location { background-color:#c4c4c4; text-align:center; width:100%; margin-top:15px; padding:3px 0;}
+  .project-card .learn-more-button { border:1px solid #000; background:#f2f2f2; float:right; color:#000; font-size:12px; padding:2px 8px; margin-right:10px;}
+  .project-card .learn-more-button:hover { background:#ccc; }
+
+  .main_body_custom { width:100%; background-color:#fff; margin-top:5px; min-height:100px;max-height:150px; padding-bottom:5px; }
+  .main_body_custom .row{ }
+
+
+  .info-box_custom { display:block; min-height:50px; margin:25px 0; background-color:#fff; padding:15px; }
+  .info-box_custom img { width:30px; height:30px; float:left; display:inline-block;  }
+  .info-box_custom h2 {  display:inline-block; font-weight:300;  margin:0; padding:0; text-align:left; margin-bottom:25px; }
+  .info-box_custom span { display:block; width:100%;  }
+
+  .main_body-project_custom { width:100%; background-color:#f4f4f4; margin-top:10px; min-height:400px; }
+  .main_body-project_custom h1 { text-align:left; font-weight:300; }
+  .main_body-project_custom h3 { text-align:left; }
+
+  .custombox { width:100%; background-color:#fff; font-family:Lato; min-height: 50px;
+    padding-bottom:5px;
+    padding-top:5px;
+    margin:5px;margin-top:5px;margin-bottom:5px;}
+  .customboxHeader { width:100%; background-color:#fff; margin-top:5px; padding-bottom:5px; font-family:Lato; margin:5px;min-height:90px;}
+
+  .main_body-company { width:100%; background-color:#fff; margin-top:5px; min-height:150px; text-align:center; font-family:Lato; }
+  .main_body-company h1 { text-align:left; font-weight:300; font-family: Lato;}
+  .main_body-company h3 { text-align:left; font-family: Lato;}
+
+
+  hdr1{font-size:1em;font-family: Lato;}
+  hdr2{font-size:2em;font-family: Lato;}
+  hdr3{font-size:3em;font-family: Lato;}
+  hdr4{font-size:4em;font-family: Lato;}
+
+  text1{font-size:1em;}

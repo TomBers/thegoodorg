@@ -1,42 +1,12 @@
 
 <template name="company2">
+	<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+	{{> companyHeader}}
+	{{> companyAbout}}
+	{{> companyNews}}
 
 	<body>
-
-		<div class="main_body main_body-bck">
-			<div class="container relative grey-background">
-				<div class="grey-background">
-					<div class="col-1">
-						<div class="row-1-col">
-							{{#with linkRepresentative}}
-							<div class="profile-pic"><img src="{{user_photo}}" height="50px"  /></div>
-							<div class="company">
-								{{name}}<br />
-								{{user_title}}
-							</div>
-							{{/with}}
-							<div class="company-logo"><img src="{{company.logo}}"  /></div>
-							<div class="clear"></div>
-						</div>
-						<div class="row-2-col"><img src="/images/profiles/news.png"  /><span>#1 news: {{company.news}}</span></div>
-					</div><!--end coll 1-->
-
-
-					<div class="col-2">
-						<div class="row-1-col"><span>{{company.about}}</span>
-							<span><img src='/images/profiles/location-icon.png' />{{company.loc}}</span>
-						</div>
-						<div class="row-2-col"><img src="/images/profiles/twitter.png"  /> <span>#2 news: {{company.news}}</span></div>
-					</div>
-
-					<div class="col-3"><iframe width="314" height="211" src="https://www.youtube.com/embed/BcGdsdqiJXcDo8" frameborder="0" allowfullscreen></iframe></div>
-					<!-- <div class="col-3"><iframe width="314" height="211" src="{{company.youtubeLink}}" frameborder="0" allowfullscreen></iframe></div> -->
-				</div>
-
-			<br>
-		</div>
-
-		<div class="clear"></div>
 
 		<div class="main-projects">
 			<div class="container relative">
@@ -49,7 +19,98 @@
 		</div>
 
 		<div class="clear"></div>
+
+	</body>
+
+</template>
+
+
+<template name="companyHeader">
+
+	<div class="custombox">
+
+		<div class="container">
+
+			<div class="col-sm-2" align = 'middle'>
+				<center>
+					<img src="{{company.logo}}" width ='150px' height='auto' align='middle'/>
+				</center>
+			</div>
+
+			<div class="col-sm-6" text-align='left'>
+				<h3>Name: {{company.name}}</h3>
+				<span>Headline: {{company.hline}}</span>
+			</div>
+
+
+			{{#with linkRepresentative}}
+			<div class="col-sm-1">
+
+				<img src="{{user_photo}}" height="50px"  align='right'/>
+
+			</div>
+			<div class="col-sm-3" text-align='left'>
+
+				<strong>{{name}}</strong><br>
+				{{user_title}}
+
+			</div>
+			{{/with}}
+
+		</div>
 	</div>
-</body>
+
+</template>
+
+
+
+<template name="companyAbout">
+
+	<div class="custombox" min-height='200px'>
+
+		<div class="container">
+
+			<div class="col-sm-8">
+
+				<img src="/images/proj_headline.png" height="20px" width="auto" align="left"/><text1 align="left"><sup><strong>About Us:</strong></sup> </text1><br>
+				<span>{{company.about}}</span><br>
+				<h6><a href="{{company.url}}">More on our website...</a></h6>
+			</div>
+
+			<div class="col-sm-4">
+				<iframe width="314" height="211" src="https://www.youtube.com/embed/BcGdsdqiJXcDo8" frameborder="0" allowfullscreen ></iframe>
+			</div>
+
+		</div>
+	</div>
+
+</template>
+
+
+
+<template name="companyNews">
+	<div class="custombox">
+
+		<div class="container">
+
+			<div class="col-sm-5">
+				<img src="/images/proj_location.png" height="20px" width="auto" align="left"/><sup><strong>Where we are: </strong></sup><br>
+				<div class="img"></div>
+				<div ><iframe width="380" height="auto" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=51.5033630,-0.1276250&hl=es;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed" style="color:#0000FF;text-align:left" target="_blank">See map bigger</a></small></div>
+				<div class="clear"></div>
+			</div>
+
+			<div class="col-sm-1"></div>
+
+			<div class="col-sm-6">
+				<br>
+				<img class="image-30x30" src="/images/profiles/news.png"/>
+				<span>#1 news: {{company.news}}</span>				<br>
+				<img class="image-30x30" src="/images/profiles/twitter.png" />
+				<span>#2 news: {{company.news}}</span>
+			</div>
+
+		</div>
+	</div>
 
 </template>

@@ -5,21 +5,22 @@ layoutTemplate: 'layout',
 
 templateNameConverter: "upperCamelCase",
 routeControllerNameConverter: "upperCamelCase",
-layoutTemplate: "layout",
-notFoundTemplate: "notFound",
-loadingTemplate: "loading"
+layoutTemplate: "layout"
+// ,
+// notFoundTemplate: "notFound",
+// loadingTemplate: "loading"
 
 });
 
-Router.onBeforeAction(function() {
-	// loading indicator here
-	if(!this.ready()) {
-		$("body").addClass("wait");
-	} else {
-		$("body").removeClass("wait");
-		this.next();
-	}
-});
+// Router.onBeforeAction(function() {
+// 	// loading indicator here
+// 	if(!this.ready()) {
+// 		$("body").addClass("wait");
+// 	} else {
+// 		$("body").removeClass("wait");
+// 		this.next();
+// 	}
+// });
 
 Router.map(function() {
 

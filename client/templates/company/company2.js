@@ -23,3 +23,13 @@ Template.company2.helpers({
         return UserProfiles.findOne({"contact_mail":this.company.rep_email});
       }
 });
+
+Template.companyHeader.rendered = function(){
+  Meteor.subscribe('UserProfiles');}
+
+Template.companyHeader.helpers({
+
+  linkRepresentative: function() {
+        return UserProfiles.findOne({"contact_mail":this.company.rep_email});
+      }
+});
