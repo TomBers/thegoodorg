@@ -91,7 +91,7 @@
       {{/if}}
 	  {{#if isOwned}}
 		{{> autoformModals}}
-        {{#afModal class="btn btn-primary" collection="Projects" operation="update" omitFields="ownerId" formId="updateProject"}}
+        {{#afModal class="btn btn-primary" collection="Projects" doc=this._id operation="update" omitFields="ownerId" formId="updateProject"}}
           Update
         {{/afModal}}
 	{{/if}}
