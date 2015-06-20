@@ -1,0 +1,24 @@
+<template name="mySettings">
+
+{{> quickForm collection="UserProfiles" id="UserProfiles" type="update" doc=this.user omitFields="loginID,loginEmail,contact_mail" autosave=true autosaveOnKeyup=true}}
+
+<br>
+
+
+{{> autoformModals}}
+        {{#afModal class="btn btn-primary" collection="Companies" operation="insert" omitFields="employees" formId="makeCompney"}}
+          Add Compney
+        {{/afModal}}
+
+
+<br>
+<br>
+<br>
+<h3>my Companies</h3>
+<br>
+  {{#each companies}}
+	<a href='/companyedit/{{cid}}'> edit:  {{name}}</a>
+	<br>
+  {{/each}}
+		
+</template>

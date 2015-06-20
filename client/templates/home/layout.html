@@ -12,9 +12,8 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <!-- <a class="navbar-brand" href="/">The Good.org</a> -->
-        </div>
-        <div>
-          <ul class="nav navbar-nav">
+  
+          <ul class="nav navbar-nav" style="max-width:100%">
             <li class="active"><a href="/">Browse</a></li>
             <li class="active"><a href="/search">Search</a></li>
             <li class="active"><a href="/map">Map</a></li>
@@ -43,20 +42,16 @@
 </template>
 
 <template name="layout_loggedin">
-  <!-- <li class="active"><a href="/interest">Messages</a></li> -->
+	<li class="active"><a href="/mySettings">my settings</a></li>
+	<li class="active"><a href="/admin">admin</a></li>
+    <li class="active"><a href="/newAdmin">newAdmin</a></li>
+  <!-- <li class="active"><a href="/interest">Messages</a></li> >
 
-
-  <li class="dropdown-submenu">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
-      <span class="caret"></span></a>
-      <ul class="dropdown-menu">
         <li><a href="/admin">My Settings</a></li>
         <li><a href="/newAdmin">Admin</a></li>
-        <!-- <li><a href="/messages">My Notifications</a></li>
+        <! <li><a href="/messages">My Notifications</a></li>
         <li><a href="/callbacks">My Requests</a></li> -->
 
-      </ul>
-    </li>
 
   </template>
 

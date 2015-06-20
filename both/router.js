@@ -115,7 +115,18 @@ this.route('/search', {path: '/search',template: 'search'});
   });
 
 
-
+ this.route('/companyEdit', {
+    path: '/companyEdit/:_id',
+    // template: 'company',
+    template: 'companyEdit',
+    waitOn:function(){
+    Meteor.subscribe("Companies");
+     return Meteor.subscribe("Projects");
+   },
+    data: function() {
+    return {company:Companies.findOne({cid:this.params._id}),projects:Projects.find({ownerId:this.params._id})};
+  }
+  });
 
 
   this.route('/startup', {
@@ -162,6 +173,28 @@ this.route('/search', {path: '/search',template: 'search'});
     });
 
 
+	this.route('/mySettings',
+    {path: '/mySettings', template: 'mySettings',
+    waitOn:function(){
+	Meteor.subscribe("Companies");
+      return Meteor.subscribe("UserProfiles");
+    },
+    data: function() {
+		var cccc = Meteor.user();
+		
+		var userEmail = ''+Meteor.user().emails[0].address;
+		var user = UserProfiles.findOne({loginEmail:userEmail});
+		if(!user){
+			UserProfiles.insert({loginEmail:userEmail,loginID:userEmail, conatact_mail:userEmail});
+			user = UserProfiles.findOne({loginEmail:userEmail});
+		}
+		
+		var c = Companies.find({employees: {$in : [userEmail]}});
+		console.log(c);
+        return {user:user,companies:c};
+      }
+    });
+	
     // this.route('/callbacks',
     //   {path: '/callbacks', template: 'displayCallbacks'
     //   });
