@@ -1,23 +1,42 @@
 <template name='project'>
   <div class="main_body-project">
       <div class="container relative">
-      <h1>Product Collaboration</h1>
-      <!-- <h3><a href="#">with {{linkCompany.name}}</a></h3> -->
-      <h3><a href="/company/{{ownerId}}">with {{linkCompany.name}}</a></h3>
+
+      <div class = 'row'>
+        <div class='col-sm-5'>
+          <h4>Title: {{title}} </h4>
+        </div>
+        <div class='col-sm-3'>
+          <h5>Headline: {{hline}} </h5>
+        </div>
+
+        <!-- <div class='col-sm-1'> -->
+          <img src="{{linkCompany.logo}}" height='100px' align='right' max-width='150px'/>
+        <!-- </div> -->
+      </div>
+
+      <h3><a href="/company2/{{ownerId}}">with {{linkCompany.name}}</a></h3>
 
       <div class="left-side-panel">
-      	<div class="project-info">
-          <img src="/images/Product Collaboraiton.png" />
-         <br  /> <strong>30 Days left to apply</strong>
-        <br  />  Function: <strong>Collaboration</strong>
-         <br  /> Industry: <strong>Construction</strong>
+        <br  /> <strong> End Date: {{endDate}}</strong>
+        <br  /> Industry: <strong>{{linkCompany.industry}}</strong>
 
-         <br  /> Start Date: <strong>{{startDate}}</strong>
-          <br  />Duration: <strong>4 Months </strong>
-          </div>
+        <br  /> Start Date: <strong>{{startDate}}</strong>
+        <br  />Duration: <strong> {{duration}} </strong>
+        <div class="clear"> </div>
+        <br>
+        <div class="project-info">
+          {{#each interactions}}
+          <img src="{{getInterestPic this}}" />
+          <br><strong>{{this}}</strong>
+          {{/each}}
+        </div>
       </div>
+
+
+
       <div class="center-side-panel">
-      <div class="image"><img style="width:100%; height:auto;" src="{{img}}"></div>
+      <div class="image"><img style="width:100%; height:auto;" src="{{img}}" height='auto'></div>
 
       <div class="info-box">
       <img src="/images/proj_headline.png" /><h2>Description</h2>
@@ -33,7 +52,8 @@
              <div class="info-box">
       <img src="/images/proj_location.png" /><h2>Project Location</h2>
   	<div class="img"></div>
-      <div ><iframe width="600" height="337" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=51.5033630,-0.1276250&hl=es;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed" style="color:#0000FF;text-align:left" target="_blank">See map bigger</a></small></div>
+      <!-- <div ><iframe width="600" height="337" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=51.5033630,-0.1276250&hl=es;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed" style="color:#0000FF;text-align:left" target="_blank">See map bigger</a></small></div> -->
+      <div ><iframe width="500" height="auto" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=51.5033630,-0.1276250&hl=es;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed" style="color:#0000FF;text-align:left" target="_blank">See map bigger</a></small></div>
       <div class="clear"></div>
       </div>
 

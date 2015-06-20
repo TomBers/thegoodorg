@@ -195,7 +195,8 @@ Companies.attachSchema(new SimpleSchema({
   rep_email:   {type: String, label: "contact email", max: 200, optional:true,defaultValue:'(...name@company.com...)' },
   rep_tel:     {type: String, label: "contact telephone #", max: 200, optional:true,defaultValue:'(...+44 #### ### ####...)' },
 
-  img:    {type: String, label: "Image Url",  optional:true, defaultValue:'(...URL link to company picture(s)...)'},
+  img:         {type: String, label: "Image Url",  optional:true, defaultValue:'(...URL link to company picture(s)...)'},
+  youtubeLink: {type: String, label: "Image Url",  optional:true, defaultValue:'(...Add YouTube URL(s)...)'},
   // projects:{type: [String], optional:true, max:10},
 
   news: {type: String, optional:true,defaultValue:'...recent company news here...'},
@@ -283,7 +284,7 @@ Projects.attachSchema(new SimpleSchema({
          {label:'Monetary Donations',value:'Monetary Donations'},
          {label:'Volunteering',value:'Volunteering'},
          {label:'Research Agreements',value:'Research Agreements'},
-         {label:'Product collaboration',value:'Product collaboration'},
+         {label:'Product Collaboration',value:'Product collaboration'},
          {label:'Brand Collaboration',value:'Brand Collaboration'},
          {label:'Lecturing Opportunites',value:'Lecturing Opportunites'}
          ];

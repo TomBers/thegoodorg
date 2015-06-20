@@ -125,28 +125,28 @@
     <div class="index-project-one left">
       {{#with linkCompanyOwner}}
 
-      <img class="profile-pic" src="{{user_photo}}" height="50px">
+      <img class="profile-pic" src="{{user_photo}}" height="50px" >
       <h6>{{name}}
         <br />{{user_title}}</h6>
       {{/with}}
 
         <div class = "row">
           {{#each getInterestPic}}
-          <img class="project-icon" src="{{this}}" />
+          <img class="project-icon" src="{{this}}" align='middle'/>
           {{/each}}
         </div>
 
         <!-- <img src="{{img}}" border="0" class="absolute-project-image"/> -->
         <center>
-        <img src="{{img}}" border="0" height='auto' width='400px' display='block' margin='auto' align='middle'/>
-      </center>
+          <img src="{{img}}" border="0" height='auto' width='400px' display='block' margin='auto' align='middle'/>
+        </center>
         <h5>{{linkCompany.name}}</h5>
         <span>{{hline}}</span>
 
         <!-- <div class = "row" > -->
-          <img class="icon" src="images/icons/icon_E-impact.png"  /><span class="green">{{impact_e}}</span>
-          <img class="icon" src="images/icons/icon-H-impact.png" /><span class="blue">{{impact_h}}</span>
-          <img class="icon" src="images/icons/icon-R-impact.png" /><span class="yellow">{{impact_r}}</span>
+          <img class="icon" src="/images/icons/icon_E-impact.png"  /><span class="green">{{impact_e}}</span>
+          <img class="icon" src="/images/icons/icon-H-impact.png" /><span class="blue">{{impact_h}}</span>
+          <img class="icon" src="/images/icons/icon-R-impact.png" /><span class="yellow">{{impact_r}}</span>
         <!-- </div> -->
         <a class="learn-more-button" href="/project/{{_id}}"> Learn More</a>
 
@@ -168,7 +168,7 @@
     <h5>{{title}}</h5>
       <img src="{{img}}" border="0" class="absolute-project-image" />
         <span>{{hline}}</span>
-        <span><img class="icon" src="images/icons/icon_E-impact.png"/>  {{impact_e}} <img class="icon" src="images/icons/icon-R-impact.png" />{{impact_r}} <a class="learn-more-button" href="/project/{{_id}}"> Learn More</a></span>
+        <span><img class="icon" src="/images/icons/icon_E-impact.png"/>  {{impact_e}} <img class="icon" src="/images/icons/icon-R-impact.png" />{{impact_r}} <a class="learn-more-button" href="/project/{{_id}}"> Learn More</a></span>
       <div class="location">{{location}}</div>
   </div>
 </template>

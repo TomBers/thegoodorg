@@ -1,0 +1,55 @@
+
+<template name="company2">
+
+	<body>
+
+		<div class="main_body main_body-bck">
+			<div class="container relative grey-background">
+				<div class="grey-background">
+					<div class="col-1">
+						<div class="row-1-col">
+							{{#with linkRepresentative}}
+							<div class="profile-pic"><img src="{{user_photo}}" height="50px"  /></div>
+							<div class="company">
+								{{name}}<br />
+								{{user_title}}
+							</div>
+							{{/with}}
+							<div class="company-logo"><img src="{{company.logo}}"  /></div>
+							<div class="clear"></div>
+						</div>
+						<div class="row-2-col"><img src="/images/profiles/news.png"  /><span>#1 news: {{company.news}}</span></div>
+					</div><!--end coll 1-->
+
+
+					<div class="col-2">
+						<div class="row-1-col"><span>{{company.about}}</span>
+							<span><img src='/images/profiles/location-icon.png' />{{company.loc}}</span>
+						</div>
+						<div class="row-2-col"><img src="/images/profiles/twitter.png"  /> <span>#2 news: {{company.news}}</span></div>
+					</div>
+
+					<div class="col-3"><iframe width="314" height="211" src="https://www.youtube.com/embed/BcGdsdqiJXcDo8" frameborder="0" allowfullscreen></iframe></div>
+					<!-- <div class="col-3"><iframe width="314" height="211" src="{{company.youtubeLink}}" frameborder="0" allowfullscreen></iframe></div> -->
+				</div>
+
+			<br>
+		</div>
+
+		<div class="clear"></div>
+
+		<div class="main-projects">
+			<div class="container relative">
+
+				{{#each projects}}
+				{{> projectCard}}
+				{{/each}}
+
+			</div>
+		</div>
+
+		<div class="clear"></div>
+	</div>
+</body>
+
+</template>

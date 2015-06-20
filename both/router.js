@@ -2,6 +2,23 @@
 
 Router.configure({
 layoutTemplate: 'layout',
+
+templateNameConverter: "upperCamelCase",
+routeControllerNameConverter: "upperCamelCase",
+layoutTemplate: "layout",
+notFoundTemplate: "notFound",
+loadingTemplate: "loading"
+
+});
+
+Router.onBeforeAction(function() {
+	// loading indicator here
+	if(!this.ready()) {
+		$("body").addClass("wait");
+	} else {
+		$("body").removeClass("wait");
+		this.next();
+	}
 });
 
 Router.map(function() {
@@ -32,6 +49,21 @@ Router.map(function() {
   }
 });
 
+
+// jd test
+
+// this.route("home", {path: "/", controller: "HomeController"});
+this.route("cool_page", {path: "/cool_page", controller: "CoolPageController"});
+this.route("cool_page.sub_page_a", {path: "/cool_page/sub_page_a", controller: "CoolPageSubPageAController"});
+this.route("cool_page.sub_page_b", {path: "/cool_page/sub_page_b", controller: "CoolPageSubPageBController"});
+this.route("cool_page.sub_page_b.sub_page_b_1", {path: "/cool_page/sub_page_b/sub_page_b_1", controller: "CoolPageSubPageBSubPageB1Controller"});
+this.route("cool_page.sub_page_b.sub_page_b_2", {path: "/cool_page/sub_page_b/sub_page_b_2", controller: "CoolPageSubPageBSubPageB2Controller"});
+
+// <> jd test
+
+
+
+
 this.route('/search', {path: '/search',template: 'search'});
 
 
@@ -56,6 +88,7 @@ this.route('/search', {path: '/search',template: 'search'});
   this.route('/addFeedback', {path: '/addFeedback',template: 'addFeedback'});
 
   this.route('/newAdmin', {path: '/newAdmin',template: 'newAdmin'});
+  this.route('/alt', {path: '/alt',template: 'CoolPage'});
 
 
   this.route('/addReq1', {path: '/addReq1',template: 'addReq1', data: function() {
@@ -114,7 +147,18 @@ this.route('/search', {path: '/search',template: 'search'});
   }
   });
 
-
+	this.route('/company2', {
+    path: '/company2/:_id',
+    // template: 'company',
+    template: 'company2',
+    waitOn:function(){
+    Meteor.subscribe("Companies");
+     return Meteor.subscribe("Projects");
+   },
+    data: function() {
+    return {company:Companies.findOne({cid:this.params._id}),projects:Projects.find({ownerId:this.params._id})};
+  }
+  });
 
 
 
