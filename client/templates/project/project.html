@@ -4,18 +4,22 @@
 
       <div class = 'row'>
         <div class='col-sm-2'>
-          <img src="{{linkCompany.logo}}" max-height='100px' align='right' max-width='150px'/>
+          <div class="imgDiv">
+
+            <img src="{{linkCompany.logo}}" width='100'>
+
+          </div>
         </div>
 
-        <div class='col-sm-8'>
-          <h3 text-align ='left'>Project Title: {{title}} </h3>
-          <h6 text-align ='left'>Project Headline: {{hline}} </h6>
+        <div class='col-sm-8' text-align='middle'>
+          <hdr2>Project Title: {{title}} </hdr2><br>
+          <hdr1>Project Headline: {{hline}} </hdr1>
         </div>
 
         <div class='col-sm-2'>
           <h5><strong><a href="/company2/{{ownerId}}">Explore {{linkCompany.name}}</a></strong></h5>
         </div>
-        
+
       </div>
 
 
