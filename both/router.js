@@ -166,6 +166,7 @@ this.route('/search', {path: '/search',template: 'search'});
     // template: 'company',
     template: 'companyEdit',
     waitOn:function(){
+	Meteor.subscribe("Categories");
     Meteor.subscribe("Companies");
      return Meteor.subscribe("Projects");
    },

@@ -257,16 +257,17 @@ Projects.attachSchema(new SimpleSchema({
       type: "select-multiple",
       options: function () {
         var opts = [];
-        var cats = Categories.find().fetch();
-        if(cats == []){return null;}
-        else{
-          cats.forEach(function(c){
-            c.subcat.forEach(function(e){
-              opts.push({label:e,value:e});
-            })
-          });
+		 console.log(Categories.find().fetch());
+         Categories.find().forEach(function(c){
+		 console.log(c);
+		 var index;
+		 for (index = 0; index < c.subcat.length; index++) {
+			var str = c.subcat[index] + " - " + c.subcat[index]
+			opts.push({label:str,value:c.subcat[index]});
+          }
+		});
         return opts;
-        }
+        
       }
    }
   },

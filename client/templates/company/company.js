@@ -12,7 +12,6 @@ Template.company.helpers({
   isOwned: function(){
       var user = Meteor.user();
       var mail = user.emails[0].address;
-	  console.log('dddd');
 	Session.set('companey_cid', this.cid); //hacky
         if (this.employees.indexOf(mail)>-1)
         {return true;}
@@ -34,10 +33,6 @@ Template.projectSummary.helpers({
       var user = Meteor.user();
       var mail = user.emails[0].address;
 
-	  var cccc = Companies.find({"cid":this.ownerId}).fetch();
-	   var eeeee = Companies.find({employees: {$in : [mail]}}).fetch();
-	  
-	  console.log(eeeee);
         if (Companies.findOne({"cid":this.ownerId , employees: {$in : [mail]}}))
         {return true;}
         else
@@ -88,7 +83,7 @@ var postHooksProjectInsert = {
   before: {
     insert: function(doc) {
 	  doc.ownerId = Session.get('companey_cid'); //hacky
-      console.log(doc.ownerId);
+
       return doc;
     }
   }
