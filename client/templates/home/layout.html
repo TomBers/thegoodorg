@@ -1,3 +1,4 @@
+<!-- menu items etc -->
 
 <template name="layout">
   <head>
@@ -11,25 +12,24 @@
       <div class="container-fluid">
         <div class="navbar-header">
           <!-- <a class="navbar-brand" href="/">The Good.org</a> -->
-        </div>
-        <div>
-          <ul class="nav navbar-nav">
+  
+          <ul class="nav navbar-nav" style="max-width:100%">
             <li class="active"><a href="/">Browse</a></li>
-            <!-- <li class="active"><a href="/search">Search</a></li> -->
-            <!-- <li class="active"><a href="/map">Map</a></li> -->
-            <!-- <li class="active"><a href="/about">About</a></li> -->
+            <li class="active"><a href="/search">Search</a></li>
+            <li class="active"><a href="/map">Map</a></li>
+            <li class="active"><a href="/about">About</a></li>
             <li class="active"><a href="/impact">Impact</a></li>
 
-            <li class="active"><a href="/alt">Test</a></li>
+			<li class="active"><a href="/alt">Test</a></li>
             <li class="active"><a href="/admin">Settings</a></li>
             <!-- <li class="active"><a href="/newAdmin">Admin</a></li> -->
-
-
-            <!-- {{#if currentUser}}
+			
+			
+            {{#if currentUser}}
               {{> layout_loggedin}}
             {{else}}
               {{> layout_loggedout}}
-            {{/if}} -->
+            {{/if}}
 
             <li style='padding-top:14px'>{{> loginButtons}}</li>
 
@@ -45,35 +45,37 @@
 </body>
 </template>
 
-<!-- <template name="layout_loggedin">
+<template name="layout_loggedin">
+	<li class="active"><a href="/mySettings">my settings</a></li>
+	<li class="active"><a href="/admin">admin</a></li>
+    <li class="active"><a href="/newAdmin">newAdmin</a></li>
+  <!-- <li class="active"><a href="/interest">Messages</a></li> >
 
-  <li class="dropdown-submenu">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin
-      <span class="caret"></span></a>
-      <ul class="dropdown-menu">
         <li><a href="/admin">My Settings</a></li>
         <li><a href="/newAdmin">Admin</a></li>
-
-      </ul>
-    </li>
-
-  </template> -->
-
-  <!-- <template name="layout_loggedout">
-    <li class="disabled"><a href="/messages">Messages</a></li>
-
-  </template> -->
+        <! <li><a href="/messages">My Notifications</a></li>
+        <li><a href="/callbacks">My Requests</a></li> -->
 
 
-  <!-- <template name="layout_displayItems">
+  </template>
+
+  <template name="layout_loggedout">
+    <!-- <li class="disabled"><a href="/messages">Messages</a></li> -->
+
+  </template>
+
+
+  <template name="layout_displayItems">
 
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">Display
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="/alt">'Test'</a></li>
-          <li><a href="/admin">My Settings</a></li>
-          <li><a href="/newAdmin">Admin</a></li>
+          <li><a href="/leaderboard">'Leaderboard'</a></li>
+          <li><a href="/list">All</a></li>
+          <li><a href="/list2">All Corporates</a></li>
+          <li><a href="/listCompanies">All Companies</a></li>
+          <li><a href="/listReqConfig">All Config Items</a></li>
         </ul>
       </li>
-    </template> -->
+    </template>

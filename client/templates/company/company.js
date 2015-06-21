@@ -11,9 +11,10 @@ Template.company.helpers({
 
   isOwned: function(){
       var user = Meteor.user();
-      var mail = UserProfiles.findOne({loginID:user.emails[0].address});
-
-        if (this.rep_email == mail.contact_mail)
+      var mail = user.emails[0].address;
+	  console.log('dddd');
+	Session.set('companey_cid', this.cid); //hacky
+        if (this.employees.indexOf(mail)>-1)
         {return true;}
         else
         {return false;}
@@ -29,6 +30,20 @@ Template.projectSummary.rendered = function(){
 }
 Template.projectSummary.helpers({
 
+ isOwned: function(){
+      var user = Meteor.user();
+      var mail = user.emails[0].address;
+
+	  var cccc = Companies.find({"cid":this.ownerId}).fetch();
+	   var eeeee = Companies.find({employees: {$in : [mail]}}).fetch();
+	  
+	  console.log(eeeee);
+        if (Companies.findOne({"cid":this.ownerId , employees: {$in : [mail]}}))
+        {return true;}
+        else
+        {return false;}
+      },
+	  
   isRegistered: function(){
 		var user = Meteor.user();
     Session.set('from_id', user.emails[0].address);
@@ -65,3 +80,19 @@ Template.projectSummary.helpers({
 //
 //
 // AutoForm.addHooks('makeContactReq2', postHooks);
+
+
+
+
+var postHooksProjectInsert = {
+  before: {
+    insert: function(doc) {
+	  doc.ownerId = Session.get('companey_cid'); //hacky
+      console.log(doc.ownerId);
+      return doc;
+    }
+  }
+}
+
+
+AutoForm.addHooks('makeProject', postHooksProjectInsert);

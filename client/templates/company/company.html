@@ -89,6 +89,12 @@
         {{/afModal}}
 
       {{/if}}
+	  {{#if isOwned}}
+		{{> autoformModals}}
+        {{#afModal class="btn btn-primary" collection="Projects" doc=this._id operation="update" omitFields="ownerId" formId="updateProject"}}
+          Update
+        {{/afModal}}
+	{{/if}}
     </div>
     <div class='col-sm-3'><h6>{{desc}}</h6></div>
     <div class='col-sm-3'><h6>{{interactions}}</h6></div>
@@ -98,7 +104,8 @@
       <h6>Humanity: {{impact_r}}</h6>
     </div>
 
-
+	
+	
   </div>
 
 </template>
