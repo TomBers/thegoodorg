@@ -89,6 +89,7 @@ p{
     padding-bottom:5px;
     padding-top:5px;
     margin:5px;margin-top:5px;margin-bottom:5px;}
+
   .customboxHeader { width:100%; background-color:#fff; margin-top:5px; padding-bottom:5px; font-family:Lato; margin:5px;min-height:90px;}
 
   .main_body-company { width:100%; background-color:#fff; margin-top:5px; min-height:150px; text-align:center; font-family:Lato; }
@@ -102,3 +103,12 @@ p{
   hdr4{font-size:4em;font-family: Lato;}
 
   text1{font-size:1em;}
+  text2{font-size:2em;}
+  text3{font-size:3em;}
+  text4{font-size:4em;}
+
+
+  #imgDiv {height:80px;width:140px;}
+  #imgDiv img {max-width:100%; max-height:100%;margin:auto;display:block;}
+
+  .imgHdr {      display: block;      max-width:150px;      max-height:90px;      width: auto;      height: auto; }
