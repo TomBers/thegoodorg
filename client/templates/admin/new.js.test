@@ -1,7 +1,7 @@
 Template.newAdmin.rendered = function(){
 	 Meteor.subscribe('Admin1');
 	//  Meteor.subscribe('Admin2');
-	// Session.set('ownerId', this.data.ownerId);
+	// Session.set('company_id', this.data.company_id);
 	// Session.set('projectId', this.data._id);
 }
 

@@ -1,7 +1,7 @@
 Template.project.rendered = function(){
 	Meteor.subscribe('UserProfiles');
 	Meteor.subscribe('Companies');
-	Session.set('ownerId', this.data.ownerId);
+	Session.set('company_id', this.data.company_id);
 	Session.set('projectId', this.data._id);
 }
 
@@ -11,7 +11,7 @@ Template.project.events({
 Template.project.helpers({
 	linkCompany: function() {
 		var user = Meteor.user();
-    return Companies.findOne({"cid":this.ownerId});
+    return Companies.findOne({"_id":this.company_id});
 	},
 
 	getInterestPic: function(e) {
@@ -49,7 +49,7 @@ var requestHook = {
   before: {
     insert: function(doc) {
 			doc.from = Meteor.user()._id;
-			doc.to = Session.get('ownerId');
+			doc.to = Session.get('company_id');
 			doc.project = Session.get('projectId');
 			console.log(doc);
       return doc;

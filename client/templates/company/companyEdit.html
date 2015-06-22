@@ -1,7 +1,7 @@
 <template name='companyEdit'>
 <div class="col-md-6">
   {{#if isOwned}}
-{{> quickForm collection="Companies" id="editcmpny" type="update" doc=this.company omitFields="cid,type,employees" autosave=true autosaveOnKeyup=true}}
+{{> quickForm collection="Companies" id="editcmpny" type="update" doc=this.company omitFields="employees,isActive" autosave=true autosaveOnKeyup=true}}
 {{/if}}
 </div>
 <div class="col-md-6">

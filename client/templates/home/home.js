@@ -73,12 +73,13 @@ Template.projectCard.helpers({
 
   linkCompany: function() {
 		var user = Meteor.user();
-    return Companies.findOne({"cid":this.ownerId});
+    return Companies.findOne({"_id":this.company_id});
 	}
 
   ,  linkCompanyOwner: function() {
-    var cmpy = Companies.findOne({"cid":this.ownerId});
-    return UserProfiles.findOne({"contact_mail":cmpy.rep_email});
+    var cmpy = Companies.findOne({"_id":this.company_id});
+	console.log(cmpy);
+    return UserProfiles.findOne({"loginEmail":cmpy.employees[0]});
   	}
 
     ,  getInterestPic: function() {
@@ -108,7 +109,7 @@ Template.home.rendered = function(){
   Meteor.subscribe('Projects');
   Meteor.subscribe('UserProfiles');
   Meteor.subscribe("Companies");
-  Session.set('ownerId', this.data.ownerId);
+  Session.set('company_id', this.data.company_id);
   Session.set('projectId', this.data._id);
 
 $('document').ready(function(){

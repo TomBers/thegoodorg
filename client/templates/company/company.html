@@ -48,7 +48,7 @@
 
         <!-- pop up form -->
         {{> autoformModals}}
-        {{#afModal class="btn btn-primary" collection="Projects" operation="insert" omitFields="ownerId" formId="makeProject"}}
+        {{#afModal class="btn btn-primary" collection="Projects" operation="insert" omitFields="company_id" formId="makeProject"}}
           Add Project
         {{/afModal}}
 
@@ -91,7 +91,7 @@
       {{/if}}
 	  {{#if isOwned}}
 		{{> autoformModals}}
-        {{#afModal class="btn btn-primary" collection="Projects" doc=this._id operation="update" omitFields="ownerId" formId="updateProject"}}
+        {{#afModal class="btn btn-primary" collection="Projects" doc=this._id operation="update" omitFields="company_id" formId="updateProject"}}
           Update
         {{/afModal}}
 	{{/if}}

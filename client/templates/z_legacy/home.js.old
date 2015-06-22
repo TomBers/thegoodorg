@@ -89,11 +89,11 @@
 //
 // //TODO - refine this...  functional code, called each field & iteration
 // 'linkCompany': function() {
-//   return Companies.findOne({"cid":this.ownerId});
+//   return Companies.findOne({"_id":this.company_id});
 // },
 // //TODO - refine this...  functional code, called each field & iteration
 // 'linkRepresentative': function() {
-//   return UserProfiles.findOne({"contact_mail":this.rep_email});
+//   return UserProfiles.findOne({"loginEmail":this.employees});
 // },
 //
 // showSubCause : function(){

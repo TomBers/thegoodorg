@@ -13,14 +13,16 @@ Template.company2.helpers({
       var user = Meteor.user();
       var mail = UserProfiles.findOne({loginID:user.emails[0].address});
 
-        if (this.rep_email == mail.contact_mail)
+        if (this.employees[0] == mail.loginEmail)
         {return true;}
         else
         {return false;}
       },
 
   linkRepresentative: function() {
-        return UserProfiles.findOne({"contact_mail":this.company.rep_email});
+  console.log("rrrrrr");
+   console.log(this.company.employees[0])
+        return UserProfiles.findOne({"loginEmail":this.company.employees[0]});
       }
 });
 
@@ -30,6 +32,6 @@ Template.companyHeader.rendered = function(){
 Template.companyHeader.helpers({
 
   linkRepresentative: function() {
-        return UserProfiles.findOne({"contact_mail":this.company.rep_email});
+        return UserProfiles.findOne({"loginEmail":this.company.employees});
       }
 });

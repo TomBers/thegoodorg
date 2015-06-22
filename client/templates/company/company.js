@@ -12,7 +12,7 @@ Template.company.helpers({
   isOwned: function(){
       var user = Meteor.user();
       var mail = user.emails[0].address;
-	Session.set('companey_cid', this.cid); //hacky
+	Session.set('company_id', this._id); //hacky
         if (this.employees.indexOf(mail)>-1)
         {return true;}
         else
@@ -20,7 +20,7 @@ Template.company.helpers({
       },
 
   linkRepresentative: function() {
-        return UserProfiles.findOne({"contact_mail":this.rep_email});
+        return UserProfiles.findOne({"loginEmail":this.employees});
       }
 });
 
@@ -33,7 +33,7 @@ Template.projectSummary.helpers({
       var user = Meteor.user();
       var mail = user.emails[0].address;
 
-        if (Companies.findOne({"cid":this.ownerId , employees: {$in : [mail]}}))
+        if (Companies.findOne({"_id":this.company_id , employees: {$in : [mail]}}))
         {return true;}
         else
         {return false;}
@@ -42,7 +42,7 @@ Template.projectSummary.helpers({
   isRegistered: function(){
 		var user = Meteor.user();
     Session.set('from_id', user.emails[0].address);
-    Session.set('to_id', Companies.findOne({"cid":this.ownerId}).rep_email);
+    Session.set('to_id', Companies.findOne({"_id":this.company_id}).employees[0]); //FIXME
     Session.set('project_id', this._id);
 		try{
 			return UserProfiles.findOne({loginID:user.emails[0].address});
@@ -82,7 +82,7 @@ Template.projectSummary.helpers({
 var postHooksProjectInsert = {
   before: {
     insert: function(doc) {
-	  doc.ownerId = Session.get('companey_cid'); //hacky
+	  doc.company_id = Session.get('company_id'); //hacky
 
       return doc;
     }

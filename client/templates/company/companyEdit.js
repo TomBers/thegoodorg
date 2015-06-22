@@ -10,6 +10,6 @@ Template.companyEdit.helpers({
       },
 
   linkRepresentative: function() {
-        return UserProfiles.findOne({"contact_mail":this.rep_email});
+        return UserProfiles.findOne({"loginEmail":this.employees[0]});
       }
 });

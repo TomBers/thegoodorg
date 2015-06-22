@@ -1,58 +1,8 @@
-// collection object schemas & interactions defined here...
-
-
-/*  Institution object collections   */
-Companies = new Mongo.Collection("companies");
-Projects = new Mongo.Collection("projects");
-UserProfiles = new Mongo.Collection("userprofiles")
-
 /*  Classification object collections   */
+
+
+/*  Categories */
 Categories = new Mongo.Collection("categories");
-
-Collaborations = new Mongo.Collection("collaborations");
-ContactReqs = new Mongo.Collection("contactreqs");
-
-/* jd test */
-Admin1 = new Mongo.Collection("admin1");
-Admin2 = new Mongo.Collection("admin2");
-Admin3 = new Mongo.Collection("admin3");
-
-Admin1.allow({
-  insert: function () { return true; },
-  update: function () { return true; },
-  remove: function () { return true; }
-});
-Admin2.allow({
-  insert: function () { return true; },
-  update: function () { return true; },
-  remove: function () { return true; }
-});
-Admin3.allow({
-  insert: function () { return true; },
-  update: function () { return true; },
-  remove: function () { return true; }
-});
-
-
-Admin1.attachSchema(new SimpleSchema({
-  f1: {type: String,label: "Admin 1", max: 200 },
-  f2: {type: String,label: "Admin 1", max: 200 },
-  f3: {type: String,label: "Admin 1", max: 200 }
-}));
-
-Admin2.attachSchema(new SimpleSchema({
-  f1: {type: String,label: "Admin 2", max: 200 },
-  f2: {type: String,label: "Admin 2", max: 200 },
-  f3: {type: String,label: "Admin 2", max: 200 }
-}));
-
-Admin3.attachSchema(new SimpleSchema({
-  f1: {type: String,label: "Admin 3", max: 200 },
-  f2: {type: String,label: "Admin 3", max: 200 },
-  f3: {type: String,label: "Admin 3", max: 200 }
-}));
-
-
 
 Categories.attachSchema(new SimpleSchema({
   cat: {type: String,label: "Category Name", max: 200 },
@@ -61,12 +11,6 @@ Categories.attachSchema(new SimpleSchema({
    optional: true
   }
 }));
-
-
-
-
-/*  Project attribute object collections   */
-
 
 Categories.allow({
   insert: function () { return true; },
@@ -74,25 +18,17 @@ Categories.allow({
   remove: function () { return true; }
 });
 
-
-Categories.attachSchema(new SimpleSchema({
-  cat: {type: String,label: "Category Name", max: 200 },
-  subcat :{
-    type: [String],
-   optional: true
-  }
-}));
+/*  end Categories */
 
 
+/*  UserProfiles */
+UserProfiles = new Mongo.Collection("userprofiles")
 UserProfiles.allow({
   insert: function () { return true; },
   update: function () { return true; },
   remove: function () { return true; }
 });
-
-
 UserProfiles.attachSchema(new SimpleSchema({
-  loginID:   {type: String,label: "Login ID", max: 200, optional: true },
   loginEmail:   {type: String,label: "Login mail", max: 200, optional: true },
   name:   {type: String,label: "Full Name", max: 200, optional: true, defaultValue:'First Name, Last Name' },
 
@@ -102,21 +38,22 @@ UserProfiles.attachSchema(new SimpleSchema({
                 "StartUp Rep",
                 "Corporate Rep"]},
 
+	// flag for admin so can edit (administrate) anything 
+  is_admin:  {type: Boolean, label: "is Admin?", defaultValue: false, autoform: {omit: true} },
+  
   contact_bool:  {type: Boolean, label: "Contact Me ?", defaultValue: true},
   contact_num:  {type: String,label: "Contact Telephone", max: 200, optional: true },
-  contact_mail:  {type: String,label: "Contact email", max: 200, optional: true },
 
-  user_photo:{type:String, label:"profile photo URL", optional:true, defaultValue:"...add link to profile pic..."},
-  user_title:{type:String, label:"add role within company", optional:true, defaultValue:"...current role..."},
-  user_headline:{type:String, label:"personal headline", optional:true, max:140, defaultValue:"...in 140 characters or less..."},
+  //used on project cards
+  user_photo:{type:String, label:"Profile photo URL", optional:true, defaultValue:"...add link to profile pic..."},
+  user_title:{type:String, label:"Your role within company", optional:true, defaultValue:"...current role..."},
+  user_headline:{type:String, label:"Personal headline", optional:true, max:140, defaultValue:"...in 140 characters or less..."},
 
-  // other ...
-  mailout_monthly:  {type: Boolean, label: "Receive Monthly Mailout ?", defaultValue: true},
-  mailout_updates:  {type: Boolean, label: "Receive weekly update on project matches ?", defaultValue: true},
+  // other ... added for future functionality
+  mailout_monthly:  {type: Boolean, label: "Receive Monthly Mailout ?", defaultValue: false},
+  mailout_updates:  {type: Boolean, label: "Receive weekly update on project matches ?", defaultValue: false},
 
-  //Hidden fields...
-  userType: {type:String, label: "User Type", optional:true ,autoform: {omit: true}} ,
-
+  
   // CRUD...
   createdAt: {
     autoform: {omit: true},
@@ -129,13 +66,16 @@ UserProfiles.attachSchema(new SimpleSchema({
     },
 
     // perhaps let's not delete anything... set to inactive instead
-    isActive: {type: Boolean, label: "User Active ?", defaultValue: true ,autoform: {omit: true}}
+    isActive: {type: Boolean, label: "Active ?", defaultValue: true ,autoform: {omit: true}}
 
 }));
 
 
+/*  END UserProfiles */
 
 
+/* Companies*/
+Companies = new Mongo.Collection("companies");
 Companies.allow({
   insert: function () { return true; },
   update: function () { return true; },
@@ -144,28 +84,38 @@ Companies.allow({
 
 
 Companies.attachSchema(new SimpleSchema({
-  cid:    {type: String, label: "Company Ref Number", max: 200, defaultValue:'...CRN: Company Reference Number...'},
-  name:   {type: String, label: "Company Name", max: 200, optional:true ,defaultValue:'...Company Name...'},
+  name:   {type: String, label: "Company Name", max: 200, optional:false ,defaultValue:'...Company Name...'},
+  cid:    {type: String, label: "Companies House Reference Number", max: 200, defaultValue:'...CRN: Company Reference Number...'},
+
   hline:  {type: String, label: "Headline", max: 200 ,optional:true, defaultValue:'(...company headline...)'},
-  about:   {type: String, label: "About", max: 1000 ,optional:true, defaultValue:'(...company description...)'},
+  about:   {type: String, label: "About (max 500 chars)", max: 500 ,optional:true, defaultValue:'(...company description...)'},
+
   url:    {type: String, label: "Website", max: 200, optional:true, defaultValue:'(...URL link to website...)'},
   logo:   {type: String, label: "Logo", max: 200, optional:true, defaultValue:'(...URL link to logo...)'},
 
-  type:   {type: String, label: "Company Type", optional: false, defaultValue:'StartUp',
+/* remove 
+	type:   {type: String, label: "Company Type", optional: false, defaultValue:'StartUp',
             allowedValues: [
               "StartUp",
               "Corporate"]},
 
-  employees:{
+*/
+
+/* link to UserProfiles.loginEmail*/
+ employees:{
     type: [String],
+    label: 'Company representatives (email)',
     optional: true,
     autoform: {
       afFieldInput: {
-        type: "text"
+        type: "text",
+        defaultValue:'...Email...'
       }
     }
   },
-  industry: {
+
+
+industry: {
         type: Array,
         minCount: 1,
         maxCount: 5,
@@ -180,7 +130,6 @@ Companies.attachSchema(new SimpleSchema({
               {label: "Transport",value: "transport"},
               {label: "Education",value: "education"},
               {label: "(Other)",value: "other"},
-              {label: "TBD",value: "tbd"}
             ]}
         },
      "industry.$": {
@@ -188,19 +137,19 @@ Companies.attachSchema(new SimpleSchema({
      },
 
   loc:    {type: String, label: "Postcode", max: 10, optional:true, defaultValue:'(XXX XXXX)'},
-  addr:   {type: String, label: "Address", max: 1000 ,optional:true, defaultValue:'(...company address...)'},
+  addr:   {type: String, label: "Address", max: 1000 ,optional:false, defaultValue:'(...company address...)', autoform: {rows: 5}},
 
-  rep_name:    {type: String, label: "Company representative", max: 200, optional:true,defaultValue:'(...firstname lastname...)' },
-  rep_role:    {type: String, label: "contact role in company", max: 200, optional:true,defaultValue:'(... community dept rep ...)' },
-  rep_email:   {type: String, label: "contact email", max: 200, optional:true,defaultValue:'(...name@company.com...)' },
-  rep_tel:     {type: String, label: "contact telephone #", max: 200, optional:true,defaultValue:'(...+44 #### ### ####...)' },
-
-  img:         {type: String, label: "Image Url",  optional:true, defaultValue:'(...URL link to company picture(s)...)'},
+  
+  img:    {type: String, label: "Cover image for your company (URL / link)",  optional:true, defaultValue:'(...URL link to company picture(s)...)'},
   youtubeLink: {type: String, label: "Image Url",  optional:true, defaultValue:'(...Add YouTube URL(s)...)'},
-  // projects:{type: [String], optional:true, max:10},
-
-  news: {type: String, optional:true,defaultValue:'...recent company news here...'},
-
+  
+  /* links to external feeds */
+  twitter: {type: String, optional:true,label: 'Twitter id', defaultValue:'@Twitter'},
+  newslinks: {type: String, optional:true,label:'News link(s)',defaultValue:'...www.info-here.co...'},
+  
+  
+  
+  // CRUD...
   createdAt: {
     autoform: {omit: true},
     type: Date,
@@ -209,9 +158,12 @@ Companies.attachSchema(new SimpleSchema({
       else if (this.isUpsert) {return {$setOnInsert: new Date};}
       else {        this.unset();      }
       }
-    }
+    },
 
-    // updatedAt: {
+    // perhaps let's not delete anything... set to inactive instead
+    isActive: {type: Boolean, label: "Active ?", defaultValue: true, autoform: {omit: true}}
+  
+      // updatedAt: {
     //   type: Date,
     //   autoValue: function() {
     //     //if (this.isUpdate) { return new Date();}
@@ -222,11 +174,15 @@ Companies.attachSchema(new SimpleSchema({
     //   //denyInsert: false,
     //   optional: true
     // }
+  
 }));
 
+/* END Companies */
 
 
 
+/* Projects */
+Projects = new Mongo.Collection("projects");  
 Projects.allow({
   insert: function () { return true; },
   update: function () { return true; },
@@ -235,24 +191,30 @@ Projects.allow({
 
 
 Projects.attachSchema(new SimpleSchema({
-  ownerId:  {type: String, optional: true, label: "ID of Owning company", max: 200 },
+/* links to Company._id*/
+  company_id:  {type: String, optional: false, label: "Company._id", autoform: {omit: true}  },
+  
   title:    {type: String, optional: true, label: "Project Title", max: 200 },
-  hline:    {type: String, optional: true, label: "Headline", max: 200 },
-  desc:     {type: String, optional: true, min: 20, max: 1000,
-    autoform: {rows: 5}   },
-  img:      {type: String, optional: true, label: "URL of image"   },
-  link:     {type: String, optional: true, label: "URL",    regEx: SimpleSchema.RegEx.Url,
-    autoform: {type: "url"} },
-
+  hline:    {type: String, optional: true, label: "Headline (max 200 chars)", max: 200 },
+  desc:     {type: String, optional: true, label: "Description (min 20 chars max 10000 chars)", min: 20, max: 1000, autoform: {rows: 5}   },
+  img:      {type: String, optional: true, label: "URL link to project picture(s)"   },
+  link:     {type: String, optional: true, label: "Link to project on your website",    regEx: SimpleSchema.RegEx.Url, autoform: {type: "url"} },
   location:   {type: String, optional: true, label: "Location", defaultValue:'...SW7 2AZ...'},
+  
+  
+  startDate: {type: Date, optional: true, label: 'Start Date (approx)',
+    autoform: {type: "bootstrap-datepicker"}},
 
-  duration:   {type: String, optional: true, label: "Duration", defaultValue:'4W'},
-  startDate:   {type: String, optional: true, label: "Start Date", defaultValue:'Today' },
-  expiryDate:   {type: String, optional: true, label: "Expiry Date", defaultValue:'T+4W' },
-  status:   {type: String, optional: true, label: "Status" ,defaultValue:'100%'},
+  endDate: {type: Date, optional: true, label: 'End Date (approx)',
+      autoform: {type: "bootstrap-datepicker"}},
+
+  timeframe: {type: String, optional: true, label: "Timeframe (notes)"},
+  
+
+  status:   {type: String, optional: true, label: "Current Completion Level of Project" ,defaultValue:'0%'},
   active:   {type: Boolean, label: "Active", defaultValue: true},
 
-  categories: {type: [String], optional: true,
+  categories: {type: [String], optional: true, label:'Cause(s) your project serves : (multi-select: CTRL+SELECT)',
     autoform: {
       type: "select-multiple",
       options: function () {
@@ -262,21 +224,17 @@ Projects.attachSchema(new SimpleSchema({
 		 console.log(c);
 		 var index;
 		 for (index = 0; index < c.subcat.length; index++) {
-			var str = c.subcat[index] + " - " + c.subcat[index]
+			var str = c.cat + " - " + c.subcat[index]
 			opts.push({label:str,value:c.subcat[index]});
           }
 		});
         return opts;
-        
       }
    }
   },
-  impact_e:   {type: String, optional: true, label: "Impact E", defaultValue:'...5...'},
-  impact_h:   {type: String, optional: true, label: "Impact H", defaultValue:'...10...'},
-  impact_r:   {type: String, optional: true, label: "Impact R", defaultValue:'...20...'},
 
 
-  interactions: {type: [String],optional: true,
+  interactions: {type: [String],optional: true, label: 'Initiaitves(s) your project serves : (multi-select: CTRL+SELECT)',
    autoform: {
      type: "select-multiple",
      options: function () {
@@ -292,41 +250,37 @@ Projects.attachSchema(new SimpleSchema({
        return tmp;
      }
    }
- }
+ },
+ 
+  impact_e:   {type: String, optional: true, label: "Environmental Impact", defaultValue:'eg. How many CO2 emissions can this project help reduce, or how many trees will you help plant'},
+  impact_h:   {type: String, optional: true, label: "Health Impact", defaultValue:'eg. How many people will you be able to help with this project?'},
+  impact_r:   {type: String, optional: true, label: "Rights Impact", defaultValue:'eg. How many people will you be able to reach out to?'},
+
+  impact_how: {type: String, optional:true,label:'Impact - How ?', defaultValue:'Please explain how you will achieve the impact measures with this project',  autoform: {rows: 5}   },
+
+   // CRUD...
+  createdAt: {
+    autoform: {omit: true},
+    type: Date,
+    autoValue: function() {
+      if (this.isInsert) {return new Date;}
+      else if (this.isUpsert) {return {$setOnInsert: new Date};}
+      else {        this.unset();      }
+      }
+    },
+
+    // perhaps let's not delete anything... set to inactive instead
+    isActive: {type: Boolean, label: "Active ?", defaultValue: true ,autoform: {omit: true}}
+  
 }));
 
 
+/* END Projects */
 
 
-// Collaborations.allow({
-//   insert: function () { return true; },
-//   update: function () { return true; },
-//   remove: function () { return true; }
-// });
-//
-//
-// Collaborations.attachSchema(new SimpleSchema({
-//   projectId: {type: String},
-//   corp_cid: {type: String},
-//   startup_cid: {type: String},
-//   corp_message: {type: String, optional: true},
-//   /*
-//   ,
-//   corp_message: {type: String},
-//   startup_message: {type: String},
-//   corp_requestedAt: {type: Date},
-//   startup_responceAt: {type: Date},
-//   */
-//   status:   {type: String, label: "Status", optional: false, defaultValue:'Requested',
-//             allowedValues: [
-//               "Requested",
-//               "Accepted",
-// 			  "Rejected",
-// 			  "Cancelled"]}
-//
-// }));
 
-
+/* ContactReqs */
+ContactReqs = new Mongo.Collection("contactReqs");  
 ContactReqs.allow({
   insert: function () { return true; },
   update: function () { return true; },
@@ -353,9 +307,9 @@ ContactReqs.attachSchema(new SimpleSchema({
       }
     },
   message: {type: String, optional: false, label: "Message", defaultValue:'Please add a brief message...',min:10, autoform: {rows: 5}   },
-  from: {type: String, optional: false, label: "From ID"},
-  to: {type: String, optional: false, label: "To ID"},
-  project: {type: String, optional: false, label: "Project ID"}
+  from: {type: String, optional: false, label: "From ID"}, /* UserProfiles.loginEmail */
+  to: {type: String, optional: false, label: "To ID"}, /* UserProfiles.loginEmail */
+  project: {type: String, optional: false, label: "Project ID"}, /* Projects._ID*/
 
 
   // status:   {type: String, label: "Status", optional: false, defaultValue:'Requested',
@@ -366,5 +320,17 @@ ContactReqs.attachSchema(new SimpleSchema({
 	// 		        "Cancelled"]}
 
 
+	// CRUD...
+	createdAt: {
+    autoform: {omit: true},
+    type: Date,
+    autoValue: function() {
+      if (this.isInsert) {return new Date;}
+      else if (this.isUpsert) {return {$setOnInsert: new Date};}
+      else {        this.unset();      }
+      }
+    }
+
 
 }));
+

@@ -1,0 +1,50 @@
+// here we are defining default objects that are built & populated on startup
+// existing object collections are purged
+
+Meteor.startup(function(){
+
+  Categories.remove({});
+  
+  UserProfiles.remove({});
+  Companies.remove({});
+  
+  Projects.remove({});
+  ContactReqs.remove({});
+
+  
+  /*   ALL Categories */
+    Factory.define('categories', Categories, {
+		cat:'',
+		subcat:['']
+	});
+  
+   Factory.create('categories', {
+	cat : 'PLANET',
+	subcat : ['Wildlife & Habitat','Sustainable Products','Green Technology','Energy Management']
+   });
+  
+  Factory.create('categories', {
+	cat : 'HEALTH',
+	subcat : ['Senior Health','Rehabilitation','Fitness & Excercise','Special Needs','Mental Health']
+   });
+   
+   Factory.create('categories', {
+	cat : 'RIGHTS',
+	subcat : ['Food & Shelter','Accessibility','Community','Skills & Employment','Education']
+   });
+  /*   END ALL Categories */
+
+});
+
+
+
+ /*  Admin user*/
+    Factory.define('userprofiles', UserProfiles, {
+		loginEmail:'',
+		is_admin:true
+	});
+  
+   Factory.create('userprofiles', {
+		loginEmail:'admin@admin.com',
+		is_admin:true
+	});

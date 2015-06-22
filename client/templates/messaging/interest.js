@@ -1,5 +1,5 @@
 Template.interest.rendered = function(){
-  Meteor.subscribe("findMyReqs", this.data.cid);
+  Meteor.subscribe("findMyReqs", this.data._id);
 
 }
 

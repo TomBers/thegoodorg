@@ -144,7 +144,7 @@ this.route('/search', {path: '/search',template: 'search'});
      return Meteor.subscribe("Projects");
    },
     data: function() {
-    return {company:Companies.findOne({cid:this.params._id}),projects:Projects.find({ownerId:this.params._id})};
+    return {company:Companies.findOne({_id:this.params._id}),projects:Projects.find({company_id:this.params._id})};
   }
   });
 
@@ -157,7 +157,7 @@ this.route('/search', {path: '/search',template: 'search'});
      return Meteor.subscribe("Projects");
    },
     data: function() {
-    return {company:Companies.findOne({cid:this.params._id}),projects:Projects.find({ownerId:this.params._id})};
+    return {company:Companies.findOne({_id:this.params._id}),projects:Projects.find({company_id:this.params._id})};
   }
   });
 
@@ -171,7 +171,7 @@ this.route('/search', {path: '/search',template: 'search'});
      return Meteor.subscribe("Projects");
    },
     data: function() {
-    return {company:Companies.findOne({cid:this.params._id}),projects:Projects.find({ownerId:this.params._id})};
+    return {company:Companies.findOne({_id:this.params._id}),projects:Projects.find({company_id:this.params._id})};
   }
   });
 
@@ -230,12 +230,12 @@ this.route('/search', {path: '/search',template: 'search'});
 		var userEmail = ''+Meteor.user().emails[0].address;
 		var user = UserProfiles.findOne({loginEmail:userEmail});
 		if(!user){
-			UserProfiles.insert({loginEmail:userEmail,loginID:userEmail, conatact_mail:userEmail});
+			UserProfiles.insert({loginEmail:userEmail});
 			user = UserProfiles.findOne({loginEmail:userEmail});
 		}
 		
 		var c = Companies.find({employees: {$in : [userEmail]}});
-		console.log(c);
+//		console.log(c);
         return {user:user,companies:c};
       }
     });

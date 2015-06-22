@@ -15,7 +15,7 @@
     <h6>Registered As:{{registerAs}}</h6>
     <h6>Contact Me?:{{contact_bool}}</h6>
     <h6>Telephone:{{contact_num}}</h6>
-    <h6>Email:{{contact_mail}}</h6>
+    <h6>Email:{{loginEmail}}</h6>
 
     {{/with}}
 
@@ -78,7 +78,7 @@
     <br>
 
     {{> autoformModals}}
-    {{#afModal class="btn btn-primary" collection="Projects" operation="insert" omitFields="ownerId" formId="makeProject"}}
+    {{#afModal class="btn btn-primary" collection="Projects" operation="insert" omitFields="company_id" formId="makeProject"}}
       Add Project
     {{/afModal}}
     <br>
@@ -106,7 +106,7 @@
     <div class='col-sm-3'><h6>{{hline}}</h6></div>
     <div class='col-sm-3'>
       {{> autoformModals}}
-      {{#afModal class="btn btn-primary" collection="Projects" operation="update" omitFields="ownerId" doc=_id}}
+      {{#afModal class="btn btn-primary" collection="Projects" operation="update" omitFields="company_id" doc=_id}}
         Edit Project
       {{/afModal}}
 

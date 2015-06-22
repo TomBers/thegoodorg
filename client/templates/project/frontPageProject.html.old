@@ -15,7 +15,7 @@
     {{/with}}
     <br>
     {{/with}}
-    <a href='/company/{{ownerId}}'>{{name}}</a>
+    <a href='/company/{{company_id}}'>{{name}}</a>
 
     <h6>-----------------------------</h6>
 

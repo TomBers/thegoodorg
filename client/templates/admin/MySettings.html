@@ -1,23 +1,39 @@
 <template name="mySettings">
 
-{{> quickForm collection="UserProfiles" id="UserProfiles" type="update" doc=this.user omitFields="loginID,loginEmail,contact_mail" autosave=true autosaveOnKeyup=true}}
 
+<div class="row" style="text-align:left">
+<div class="col-md-6">
+{{> quickForm collection="UserProfiles" id="UserProfiles" type="update" doc=this.user omitFields="loginEmail,isAdmin" autosave=true autosaveOnKeyup=true}}
+</div>
+<div class="col-md-6">
+	<h4>My Details:</h4>
+    <h6>Name: {{user.name}}</h6>
+    <img src="{{user.user_photo}}" class="img-circle" alt="{{user.name}}" width="100" height="100">
+    <h6>Email: {{user.loginID}}</h6>
+    <h6>Registered As: {{user.registerAs}}</h6>
+    <h6>Contact Me?: {{user.contact_bool}}</h6>
+    <h6>Telephone: {{user.contact_num}}</h6>
+    <h6>Role: {{user.user_title}}</h6>
+    <h6>Headline: {{user.user_headline}}</h6>
+ 
+ </div>
+ </div>
 <br>
 
 
 {{> autoformModals}}
-        {{#afModal class="btn btn-primary" collection="Companies" operation="insert" omitFields="employees" formId="makeCompney"}}
-          Add Company
+        {{#afModal class="btn btn-primary" collection="Companies" operation="insert" omitFields="employees,isActive" formId="makeCompney"}}
+          Add New Company
         {{/afModal}}
 
 
 <br>
 <br>
 <br>
-<h3>my Companies</h3>
+<h3>My Companies</h3>
 <br>
   {{#each companies}}
-	<a href='/companyedit/{{cid}}'> edit:  {{name}}</a>
+	<a href='/companyedit/{{_id}}'> edit:  {{name}}</a>
 	<br>
   {{/each}}
 		
