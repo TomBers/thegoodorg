@@ -1,4 +1,12 @@
 // Session.set('cause', '');
+
+Template.layout.rendered = function(){
+
+$('document').ready(function(){
+
+});
+}
+
 Session.set('arrCause', []);
 Session.set('interest', []);
 
@@ -24,6 +32,8 @@ function addCause(causeIn){
   }
 
 }
+
+
 
 
 

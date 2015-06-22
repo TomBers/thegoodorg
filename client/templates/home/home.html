@@ -1,5 +1,9 @@
 
 <template name="home">
+  <head>
+    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  </head>
+
 <body>
 
   <!-- Add search bar... -->
@@ -8,7 +12,9 @@
   </div>
 
 
-  <div class="main_body">
+  <div class="main_body" align='middle'>
+    <!-- <span> -->
+    <div class="container-smaller" align = 'middle'>
       <div class="container relative textAlignCenter">
 
           <div class="project-one">
@@ -85,18 +91,25 @@
       </div>
 
     </div>
+</div>
+<!-- </span> -->
   </div>
 
   <br>
-  <div id="queryElements-box">
+  <div name="queryElements-box">
+    <div class="custombox">
+
     Cause : {{cause}} <br>
     Interest : {{interest}}
     <!-- Interest : {{#each interest}}    {{this}}    {{/each}} -->
+    </div>
   </div>
 
       <div class="clear"></div>
 
       <!-- <div class="container container-smaller"> -->
+
+    </body>
 
       <div class="main-projects">
 
@@ -113,79 +126,5 @@
 
     <!-- </div> -->
 
-
-</body>
-</template>
-
-
-
-<template name="projectCard">
-  <!-- <div class="container container-smaller"> -->
-
-    <div class="index-project-one left">
-      {{#with linkCompanyOwner}}
-
-      <img class="profile-pic" src="{{user_photo}}" height="50px" >
-      <h6>{{name}}
-        <br />{{user_title}}</h6>
-      {{/with}}
-
-        <div class = "row">
-          {{#each getInterestPic}}
-          <img class="project-icon" src="{{this}}" align='middle'/>
-          {{/each}}
-        </div>
-
-        <!-- <img src="{{img}}" border="0" class="absolute-project-image"/> -->
-        <center>
-          <img src="{{img}}" border="0" height='auto' width='400px' display='block' margin='auto' align='middle'/>
-        </center>
-        <h5>{{linkCompany.name}}</h5>
-        <span>{{hline}}</span>
-
-        <!-- <div class = "row" > -->
-          <img class="icon" src="/images/icons/icon_E-impact.png"  /><span class="green">{{impact_e}}</span>
-          <img class="icon" src="/images/icons/icon-H-impact.png" /><span class="blue">{{impact_h}}</span>
-          <img class="icon" src="/images/icons/icon-R-impact.png" /><span class="yellow">{{impact_r}}</span>
-        <!-- </div> -->
-        <a class="learn-more-button" href="/project/{{_id}}"> Learn More</a>
-
-        <div class="clear"></div>
-        <div class="location">{{location}}</div>
-      </div>
-
-
-    <!-- </div> -->
-  </template>
-
-<template name="projectCardOld">
-
-  <div class="profile-project-one left">
-    <!-- {{#with linkCompany}} -->
-      <img class="absolute-project-logo" src="images/Product Collaboraiton.png" />
-    <!-- {{/with}} -->
-      <div class="project-image-big"></div>
-    <h5>{{title}}</h5>
-      <img src="{{img}}" border="0" class="absolute-project-image" />
-        <span>{{hline}}</span>
-        <span><img class="icon" src="/images/icons/icon_E-impact.png"/>  {{impact_e}} <img class="icon" src="/images/icons/icon-R-impact.png" />{{impact_r}} <a class="learn-more-button" href="/project/{{_id}}"> Learn More</a></span>
-      <div class="location">{{location}}</div>
-  </div>
-</template>
-
-
-
-<template name="tmpfrontPageProject">
-  <div class="profile-project-one left">
-    {{#with linkCompany}}
-      <img class="absolute-project-logo" src="{{logo}}" />
-      {{/with}}
-      <div class="project-image-big"></div>
-      <h5>{{title}}</h5>
-      <img src="{{img}}" border="0" class="absolute-project-image" /><span>{{hline}}
-      </span>
-      <span><img class="icon" src="images/image.png"  />0.2 tCO2 <img class="icon" src="images/image.png" />22 helped <a href="/project/{{_id}}" class="btn btn-default">Learn More</a></span>
-      <div class="location">London</div>
-      </div>
 
 </template>

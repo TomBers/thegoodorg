@@ -4,8 +4,11 @@
 body { margin:0; padding:0; background-color:#f0f0f0; font-family: 'Lato', sans-serif; }
 a { text-decoration:none; color:#fc663b; }
 .clear {  height:0; clear:both;  }
-.container { max-width:1000px; width:100%; display:block; margin:auto; }
-.container-smaller { max-width:940px; }
+/*.container { max-width:1000px; width:100%; display:block; margin:auto; }*/
+.container { max-width:1500px; width:100%; display:block; margin:auto; }
+/*.container-smaller { max-width:940px; }*/
+.container-smaller { max-width:1000px; }
+.container-smaller2 { max-width:1000px;  width:100%; display:block; margin:auto;}
 .relative { POSITION:relative; }
 .dLine { width:100%; height:1px; border-bottom:1px dotted #000; margin:10px 0; }
 .textAlignCenter { text-align:center; }
@@ -82,7 +85,8 @@ a { text-decoration:none; color:#fc663b; }
 #ProjectOneLabel { position:absolute; max-width:300px; width:100%; color:green; font-size:18px; display:block; bottom:-40px; left:0; }
 
 
-.project-two { display:inline-block; min-height:280px; max-width:300px; width:100%; float:left; background-image:url(../images/project-two.png); position:relative; margin-bottom:60px; margin-top:20px;}
+.project-two { display:inline-block; min-height:280px; max-width:300px; width:100%; float:none; background-image:url(../images/project-two.png); position:relative; margin-bottom:60px; margin-top:20px;}
+/*.project-two { display:inline-block; min-height:280px; max-width:300px; width:100%; float:left; background-image:url(../images/project-two.png); position:relative; margin-bottom:60px; margin-top:20px;}*/
 .projectTwo-img-one { position:absolute; width:103px; height:117px; bottom:84px; right:14px; z-index:10; }
 .projectTwo-img-one:hover {  background-image:url(../images/project-two-optionOne.png); }
 .projectTwo-img-two { position:absolute; width:95px; height:119px; bottom:77px; right:107px; }
@@ -94,7 +98,7 @@ a { text-decoration:none; color:#fc663b; }
 .projectTwo-img-five { position:absolute; width:122px; height:91px; bottom:3px; right:81px; }
 .projectTwo-img-five:hover {  background-image:url(../images/project-two-optionFive.png); }
 .project-two-msg { display:none; position:absolute; left:300px; z-index:10; width:150px; height:100px; font-size:11px; top:300px; }
-.project-two { float:none; position:relative; margin:auto;  }
+/*.project-two { float:none; position:relative; margin:auto;  }*/
 #ProjectTwoLabel { position:absolute; max-width:300px; width:100%; color:#b1c6e6; font-size:18px; display:block; bottom:-40px; left:0; }
 
 

@@ -6,6 +6,7 @@ Template.project.rendered = function(){
 }
 
 Template.project.events({
+
 })
 
 Template.project.helpers({
