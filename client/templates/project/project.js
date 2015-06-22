@@ -11,6 +11,7 @@ Template.project.events({
 Template.project.helpers({
 	linkCompany: function() {
 		var user = Meteor.user();
+		Meteor.subscribe('Companies');
     return Companies.findOne({"_id":this.company_id});
 	},
 
