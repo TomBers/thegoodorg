@@ -2,24 +2,13 @@ Template.companyEdit2.rendered = function(){
 //  Meteor.subscribe('Projects');
 //  Meteor.subscribe('UserProfiles');
 //  Meteor.subscribe("Companies");
-	Session.set("editingProject",null);
+//	Session.set("editingProject",null);
 
-	console.log("asdwfcv");
-	console.log(this);
-	console.log(this.data.company._id);
 	Session.set('company_id',this.data.company._id); //hacky
 	$('document').ready(function(){
 	
-	  
-		//apply opacity to this div
-		$("div .canDarkOut").mouseover(function(e){
-			$(e.currentTarget).addClass("darkOut");
-		});
+	  initGrayOut();
 		
-		// aggressively remove opacity on mouse out on ALL divs
-		$("div .canDarkOut").mouseout(function(){
-			$("div .canDarkOut").removeClass("darkOut");
-		});
 		
 		/*	
 		$("div .editProject").click(function(e){
@@ -76,7 +65,14 @@ var postHooksProjectInsert = {
   onSuccess: function(formType, result) {
   
 	console.log("form called");
-	$("div .canDarkOut").mouseover(function(e){
+	initGrayOut();
+  },
+}
+
+
+var initGrayOut = function(){
+	//apply opacity to this div
+		$("div .canDarkOut").mouseover(function(e){
 			$(e.currentTarget).addClass("darkOut");
 		});
 		
@@ -84,7 +80,6 @@ var postHooksProjectInsert = {
 		$("div .canDarkOut").mouseout(function(){
 			$("div .canDarkOut").removeClass("darkOut");
 		});
-  },
 }
 
 
