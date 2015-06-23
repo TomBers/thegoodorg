@@ -44,7 +44,7 @@ p{
 
 /* really hacky way to bet autoform working*/
 .projectEditor .modal-content .modal-header .modal-title,
-.projectEditor .modal-title .tooltip 
+.projectEditor .modal-title .tooltip
 {
   width:0px;
   height:0px;
@@ -88,18 +88,20 @@ p{
   .project-card h6 { display:block; float:left; margin:15px 0 10px 10px; }
   .project-card h5 { display:block; width:95%; margin:20px auto; padding-top:5px; }
   /*.project-card span { display:block; width:90%; margin:20px auto;  }*/
-  .project-card .location { background-color:#c4c4c4; color:white; text-align:center; width:100%; margin-top:5px; padding:3px 0;}
+  .project-card .location { background-color:#c4c4c4; color:white; text-align:center;
+                          width:100%; margin-top:5px; margin:5px 0 0 0; padding: 0 0 1px;}
   .project-card .learn-more-button { border:1px solid #000; background:#f2f2f2; float:right; color:#000; font-size:12px; padding:2px 8px; margin-right:10px;}
   .project-card .learn-more-button:hover { background:#ccc; }
 
-  .project-card span.goals{ display:block; width:100%; margin:5px 5px 5px,5px;  }
+  .project-card span.goals{ display:block; width:100%; margin:0 5px 0 5px;  }
   .project-card span.green { float:left; display:inline-block; color:green;  margin:0;}
   .project-card span.yellow { float:left; display:inline-block; color:#ccd300; margin:0; }
   .project-card span.blue { float:left; display:inline-block; color:#4682B4; margin:0; }
 
   .project-card div.fadeout{
     width: 430px;
-    margin: 5px 5px 0 5px;
+    padding: 5px 5px 0 5px;
+    /*margin: 5px 5px 0 5px;*/
     /*border-bottom: 3px solid #777;*/
     height:100px;
     overflow:hidden;
@@ -113,7 +115,7 @@ p{
     position:absolute;
     left:0;
     top:0;
-    background:linear-gradient(transparent 50px, white);}
+    background:linear-gradient(transparent 20px, white);}
 
 
   div.headerbox { height:50; width:400; }

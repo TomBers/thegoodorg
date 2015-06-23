@@ -38,9 +38,9 @@ UserProfiles.attachSchema(new SimpleSchema({
                 "StartUp Rep",
                 "Corporate Rep"]},
 
-	// flag for admin so can edit (administrate) anything 
+	// flag for admin so can edit (administrate) anything
   is_admin:  {type: Boolean, label: "is Admin?", defaultValue: false, autoform: {omit: true} },
-  
+
   contact_bool:  {type: Boolean, label: "Contact Me ?", defaultValue: true},
   contact_num:  {type: String,label: "Contact Telephone", max: 200, optional: true },
 
@@ -53,7 +53,7 @@ UserProfiles.attachSchema(new SimpleSchema({
   mailout_monthly:  {type: Boolean, label: "Receive Monthly Mailout ?", defaultValue: false},
   mailout_updates:  {type: Boolean, label: "Receive weekly update on project matches ?", defaultValue: false},
 
-  
+
   // CRUD...
   createdAt: {
     autoform: {omit: true},
@@ -93,7 +93,7 @@ Companies.attachSchema(new SimpleSchema({
   url:    {type: String, label: "Website", max: 200, optional:true, defaultValue:'(...URL link to website...)'},
   logo:   {type: String, label: "Logo", max: 200, optional:true, defaultValue:'(...URL link to logo...)'},
 
-/* remove 
+/* remove
 	type:   {type: String, label: "Company Type", optional: false, defaultValue:'StartUp',
             allowedValues: [
               "StartUp",
@@ -139,16 +139,16 @@ industry: {
   loc:    {type: String, label: "Postcode", max: 10, optional:true, defaultValue:'(XXX XXXX)'},
   addr:   {type: String, label: "Address", max: 1000 ,optional:false, defaultValue:'(...company address...)', autoform: {rows: 5}},
 
-  
+
   img:    {type: String, label: "Cover image for your company (URL / link)",  optional:true, defaultValue:'(...URL link to company picture(s)...)'},
   youtubeLink: {type: String, label: "Image Url",  optional:true, defaultValue:'(...Add YouTube URL(s)...)'},
-  
+
   /* links to external feeds */
   twitter: {type: String, optional:true,label: 'Twitter id', defaultValue:'@Twitter'},
   newslinks: {type: String, optional:true,label:'News link(s)',defaultValue:'...www.info-here.co...'},
-  
-  
-  
+
+
+
   // CRUD...
   createdAt: {
     autoform: {omit: true},
@@ -162,7 +162,7 @@ industry: {
 
     // perhaps let's not delete anything... set to inactive instead
     isActive: {type: Boolean, label: "Active ?", defaultValue: true, autoform: {omit: true}}
-  
+
       // updatedAt: {
     //   type: Date,
     //   autoValue: function() {
@@ -174,7 +174,7 @@ industry: {
     //   //denyInsert: false,
     //   optional: true
     // }
-  
+
 }));
 
 /* END Companies */
@@ -182,7 +182,7 @@ industry: {
 
 
 /* Projects */
-Projects = new Mongo.Collection("projects");  
+Projects = new Mongo.Collection("projects");
 Projects.allow({
   insert: function () { return true; },
   update: function () { return true; },
@@ -193,15 +193,18 @@ Projects.allow({
 Projects.attachSchema(new SimpleSchema({
 /* links to Company._id*/
   company_id:  {type: String, optional: false, label: "Company._id", autoform: {omit: true}  },
-  
-  title:    {type: String, optional: true, label: "Project Title", max: 200 },
+
+  // title:    {type: String, optional: true, label: "Project Title", max: 200 },
   hline:    {type: String, optional: true, label: "Headline (max 200 chars)", max: 200 },
   desc:     {type: String, optional: true, label: "Description (min 20 chars max 10000 chars)", min: 20, max: 1000, autoform: {rows: 5}   },
   img:      {type: String, optional: true, label: "URL link to project picture(s)"   },
   link:     {type: String, optional: true, label: "Link to project on your website",    regEx: SimpleSchema.RegEx.Url, autoform: {type: "url"} },
-  location:   {type: String, optional: true, label: "Location", defaultValue:'...SW7 2AZ...'},
-  
-  
+
+  city:   {type: String, optional: true, label: "City / Region", defaultValue:'...London...'},
+  country:   {type: String, optional: true, label: "Country", defaultValue:'UK'},
+  postcode:   {type: String, optional: true, label: "Postcode", defaultValue:''},
+
+
   startDate: {type: Date, optional: true, label: 'Start Date (approx)',
     autoform: {type: "bootstrap-datepicker"}},
 
@@ -209,7 +212,7 @@ Projects.attachSchema(new SimpleSchema({
       autoform: {type: "bootstrap-datepicker"}},
 
   timeframe: {type: String, optional: true, label: "Timeframe (notes)"},
-  
+
 
   status:   {type: String, optional: true, label: "Current Completion Level of Project" ,defaultValue:'0%'},
   active:   {type: Boolean, label: "Active", defaultValue: true},
@@ -251,12 +254,12 @@ Projects.attachSchema(new SimpleSchema({
      }
    }
  },
- 
+
   impact_e:   {type: String, optional: true, label: "Environmental Impact", defaultValue:'eg. How many CO2 emissions can this project help reduce, or how many trees will you help plant'},
   impact_h:   {type: String, optional: true, label: "Health Impact", defaultValue:'eg. How many people will you be able to help with this project?'},
   impact_r:   {type: String, optional: true, label: "Rights Impact", defaultValue:'eg. How many people will you be able to reach out to?'},
 
-  impact_how: {type: String, optional:true,label:'Impact - How ?', defaultValue:'Please explain how you will achieve the impact measures with this project',  autoform: {rows: 5}   },
+  // impact_how: {type: String, optional:true,label:'Impact - How ?', defaultValue:'Please explain how you will achieve the impact measures with this project',  autoform: {rows: 5}   },
 
    // CRUD...
   createdAt: {
@@ -271,7 +274,7 @@ Projects.attachSchema(new SimpleSchema({
 
     // perhaps let's not delete anything... set to inactive instead
     isActive: {type: Boolean, label: "Active ?", defaultValue: true ,autoform: {omit: true}}
-  
+
 }));
 
 
@@ -280,7 +283,7 @@ Projects.attachSchema(new SimpleSchema({
 
 
 /* ContactReqs */
-ContactReqs = new Mongo.Collection("contactReqs");  
+ContactReqs = new Mongo.Collection("contactReqs");
 ContactReqs.allow({
   insert: function () { return true; },
   update: function () { return true; },
@@ -333,4 +336,3 @@ ContactReqs.attachSchema(new SimpleSchema({
 
 
 }));
-

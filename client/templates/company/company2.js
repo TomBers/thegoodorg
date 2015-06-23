@@ -32,6 +32,6 @@ Template.companyHeader.rendered = function(){
 Template.companyHeader.helpers({
 
   linkRepresentative: function() {
-        return UserProfiles.findOne({"loginEmail":this.company.employees});
+        return UserProfiles.findOne({"loginEmail":this.company.employees[0]});
       }
 });
