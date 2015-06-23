@@ -219,9 +219,9 @@ Projects.attachSchema(new SimpleSchema({
       type: "select-multiple",
       options: function () {
         var opts = [];
-		 console.log(Categories.find().fetch());
+	//	 console.log(Categories.find().fetch());
          Categories.find().forEach(function(c){
-		 console.log(c);
+	//	 console.log(c);
 		 var index;
 		 for (index = 0; index < c.subcat.length; index++) {
 			var str = c.cat + " - " + c.subcat[index]

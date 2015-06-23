@@ -1,8 +1,8 @@
 Template.companyEdit2.rendered = function(){
-  Meteor.subscribe('Projects');
-  Meteor.subscribe('UserProfiles');
-  Meteor.subscribe("Companies");
-
+//  Meteor.subscribe('Projects');
+//  Meteor.subscribe('UserProfiles');
+//  Meteor.subscribe("Companies");
+	Session.set("editingProject",null);
 
 	$('document').ready(function(){
 	
@@ -39,7 +39,13 @@ Template.companyEdit2.rendered = function(){
 Template.companyEdit2.helpers({
 
 	editingProject: function(){
+	console.log("eeee");
 		return Session.get("editingProject");
+	},
+	
+	getProjectDoc:function(){
+		console.log("zzzz");
+		return "1";
 	},
 
   isOwned: function(){

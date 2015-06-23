@@ -1,21 +1,22 @@
 <template name='companyEdit2'>
 <div class="row">
-<!--
-{{#if editingProject}}
-{{> quickForm collection="Projects" id="editprojects2" type="update" doc=editingProject omitFields="company_id" autosave=true autosaveOnKeyup=true}}
-{{/if}}
--->
-</div>
-
-<div class="row scroll">
-
-	<div id="view_company" disabled="true" class="canDarkOut" data-toggle="tooltip" title="Click to edit">
-    {{> companyHeader}}
-	{{> companyAbout}}
-	{{> companyNews}}
+<div class="col-md-4">
+	{{#if isOwned}}
+	{{> quickForm collection="Companies" id="editcmpny" type="update" doc=this.company omitFields="employees,isActive" autosave=true autosaveOnKeyup=true}}
+	{{/if}}
+	</div>
+	<div class="col-md-8">
+		<!--div id="view_company" disabled="true" class="canDarkOut" data-toggle="tooltip" title="Click to edit"-->
+		<div id="view_company" disabled="true" class="canDarkOut" data-toggle="tooltip" title="Edit me on the left.">
+			{{> companyHeader}}
+			{{> companyAbout}}
+			{{> companyNews}}
+		</div>
 	</div>
 	
-	<body>
+</div>
+
+<div class="row">
 
 		<div class="main-projects">
 			<div class="container relative">
@@ -31,8 +32,7 @@
 
 		<div class="clear"></div>
 
-	</body>
-
 </div>
+
 </template>
 
