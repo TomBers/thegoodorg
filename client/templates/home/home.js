@@ -51,7 +51,8 @@ Template.home.helpers({
   // }
   // }
   visibleProjects: function(){
-    // console.log(Session.get('cause'));
+     console.log(Session.get('arrCause'));
+	 console.log(Session.get('interest'));
     var causeList = Session.get('arrCause');
     try{
     if(Session.get('arrCause') != '' && Session.get('interest').length > 0){
@@ -78,7 +79,7 @@ Template.projectCard.helpers({
 
   ,  linkCompanyOwner: function() {
     var cmpy = Companies.findOne({"_id":this.company_id});
-	console.log(cmpy);
+//	console.log(cmpy);
     return UserProfiles.findOne({"loginEmail":cmpy.employees[0]});
   	}
 

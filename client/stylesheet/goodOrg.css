@@ -42,7 +42,13 @@ p{
   height: 15px;
 }
 
-
+.darkOut
+{
+    filter:alpha(opacity=50); /* IE */
+    opacity: 0.5; /* Safari, Opera */
+    -moz-opacity:0.50; /* FireFox */
+    z-index: 100;
+}
 
 .project {
   width: 600px;

@@ -175,6 +175,22 @@ this.route('/search', {path: '/search',template: 'search'});
   }
   });
 
+  
+  this.route('/companyEdit2', {
+    path: '/companyEdit2/:_id',
+    // template: 'company',
+    template: 'companyEdit2',
+    waitOn:function(){
+	Meteor.subscribe("Categories");
+    Meteor.subscribe("Companies");
+     return Meteor.subscribe("Projects");
+   },
+    data: function() {
+    return {company:Companies.findOne({_id:this.params._id}),projects:Projects.find({company_id:this.params._id})};
+  }
+  });
+  
+  
   this.route('/startup', {
     path: '/startup/:_id',
     template: 'startup',
