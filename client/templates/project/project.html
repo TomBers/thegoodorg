@@ -107,16 +107,13 @@
 <template name="projectCard">
 
       <div class="project-card left">
-
-
-
-
+        <div style="width:430px;height:50px;">
 
         <row padding-top='5px' padding-bottom='5px'>
             {{#with linkCompanyOwner}}
                 <img class="profile-pic" src="{{user_photo}}" margin-bottom='5px' >
 
-              <div class="col-sm-4">
+              <div class="col-sm-6">
 
                   {{name}}
                   <br>{{user_title}}
@@ -130,27 +127,55 @@
               </div>
 
         </row>
+      </div>
+
 
         <!-- <img src="{{img}}" border="0" class="absolute-project-image"/> -->
 
 
+        <div div style="width:430px;height:200px;">
+
         <center>
           <!-- <img src="{{img}}" border="0" display='block' margin='auto' align='middle'/> -->
 
-          <img src="{{img}}" border="0" height='auto' width='400px' display='block' margin='auto' align='middle'/>
-
+          <!-- <img src="{{img}}" border="0" height='auto' width='400px' display='block' margin='auto' align='middle'/> -->
+          <img class='photobox' src="{{img}}" height ='100%' width='auto'/>
 
         </center>
+        </div>
 
 
         <!-- <text1>{{linkCompany.name}}</text1> -->
-        <span>{{hline}}</span>
 
-        <span>
-        <!-- <div margin-left='20px'> -->
-        <img class="icon" src="/images/icons/icon-H-impact.png" /><span class="blue" >{{impact_h}}</span>
+        <!-- <div class="read-more" style="width:430px;height:200px;"> -->
+            <!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. -->
+          <div class="fadeout">
+            <!-- <div class="fadeout" style="height:100px;"> -->
+                <!-- style="width:430px;height:100px;padding-left:5px; padding-right:5px;overflow:hidden;background:linear-gradient(transparent 80px, white);"> -->
+            {{desc}}
+
+          </div>
+        <!-- </div> -->
+
+
+        <span class='goals' style="height:20px">
+
+        {{#if impact_h}}
+          <img class="icon" src="/images/icons/icon-H-impact.png" /><span class="blue" >{{impact_h}}</span>
+        {{/if}}
+
+        {{#if impact_e}}
         <img class="icon" src="/images/icons/icon_E-impact.png"  /><span class="green">{{impact_e}}</span>
+        {{/if}}
+
+        {{#if impact_r}}
         <img class="icon" src="/images/icons/icon-R-impact.png" /><span class="yellow">{{impact_r}}</span>
+        {{/if}}
+
+        <!-- <div margin-left='20px'> -->
+        <!-- <img class="icon" src="/images/icons/icon-H-impact.png" /><span class="blue" >{{impact_h}}</span>
+        <img class="icon" src="/images/icons/icon_E-impact.png"  /><span class="green">{{impact_e}}</span>
+        <img class="icon" src="/images/icons/icon-R-impact.png" /><span class="yellow">{{impact_r}}</span> -->
         <!-- </div> -->
         </span>
 
@@ -158,7 +183,9 @@
 
         <div  padding-bottom='3px'>
 
-        <div class="location"> With: {{linkCompany.name}} in <strong>{{location}}</strong> </div>
+        <div class="location">
+          With: {{linkCompany.name}} in <strong>{{location}}</strong>
+        </div>
           <a type="button" class="btn btn-info btn-xs btn-block" id='moreInfo' href="/project/{{_id}}">Learn More</a>
         <!-- <a class="learn-more-button" href="/project/{{_id}}"> Learn More</a> -->
         </div>
