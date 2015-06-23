@@ -42,8 +42,17 @@ p{
   height: 15px;
 }
 
-.darkOut
+/* really hacky way to bet autoform working*/
+.projectEditor .modal-content .modal-header .modal-title,
+.projectEditor .modal-title .tooltip 
 {
+  width:0px;
+  height:0px;
+  visibility: hidden !important;
+  position: absolute !important;
+}
+
+.darkOut{
     filter:alpha(opacity=50); /* IE */
     opacity: 0.5; /* Safari, Opera */
     -moz-opacity:0.50; /* FireFox */

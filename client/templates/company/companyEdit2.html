@@ -6,7 +6,6 @@
 	{{/if}}
 	</div>
 	<div class="col-md-8">
-		<!--div id="view_company" disabled="true" class="canDarkOut" data-toggle="tooltip" title="Click to edit"-->
 		<div id="view_company" disabled="true" class="canDarkOut" data-toggle="tooltip" title="Edit me on the left.">
 			{{> companyHeader}}
 			{{> companyAbout}}
@@ -16,17 +15,22 @@
 	
 </div>
 
-<div class="row">
-
+<div class="row projectEditor">
+{{> autoformModals}}
+		{{#afModal class="btn btn-primary" collection="Projects" operation="insert" omitFields="company_id" formId="makeProject"}}
+          Create new Project
+        {{/afModal}}
+		<br>
+		
 		<div class="main-projects">
 			<div class="container relative">
-
 				{{#each projects}}
-				<div disabled="true" class="canDarkOut editProject" data-toggle="tooltip" title="Click to edit" projectID="{{_id}}">
-				{{> projectCard}}
-				</div>
+					{{#afModal collection="Projects" doc=_id operation="update" omitFields="company_id" formId="updateProject"}}
+						<div disabled="true" class="canDarkOut editProject" data-toggle="tooltip" title="Click to edit" projectID="{{_id}}">
+							{{> projectCard}}
+						</div>
+					{{/afModal}}
 				{{/each}}
-
 			</div>
 		</div>
 
