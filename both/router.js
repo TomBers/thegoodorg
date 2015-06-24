@@ -252,7 +252,23 @@ this.route('/search', {path: '/search',template: 'search'});
 		
 		var c = Companies.find({employees: {$in : [userEmail]}});
 //		console.log(c);
-        return {user:user,companies:c};
+
+
+		// format data to work with template:
+		
+		var cData = [];
+		var count = 0;
+		
+		c.forEach(function(row){
+			var newRow = {
+						company:row,
+						project_count:Projects.find({company_id:row._id}).count()
+//						startup:Companies.findOne({cid:row.startup_cid})
+						};
+ 			cData[count] = newRow;
+		});
+//console.log(cData);
+        return {user:user,companies:cData};
       }
     });
 

@@ -1,42 +1,41 @@
 <template name='companyEdit2'>
-<div class="row">
-<div class="col-md-4">
-	{{#if isOwned}}
-	{{> quickForm collection="Companies" id="editcmpny" type="update" doc=this.company omitFields="employees,isActive" autosave=true autosaveOnKeyup=true}}
-	{{/if}}
-	</div>
-	<div class="col-md-8">
-		<div id="view_company" disabled="true" class="canDarkOut" data-toggle="tooltip" title="Edit me on the left.">
-			{{> companyHeader}}
-			{{> companyAbout}}
-			{{> companyNews}}
+{{#if isOwned}}
+	<div class="row">
+		<div class="col-md-4">
+		{{> quickForm collection="Companies" id="editcmpny" type="update" doc=this.company omitFields="employees,isActive" autosave=true autosaveOnKeyup=true}}
 		</div>
-	</div>
-	
-</div>
-
-<div class="row projectEditor">
-{{> autoformModals}}
-		{{#afModal class="btn btn-primary" collection="Projects" operation="insert" omitFields="company_id" formId="makeProject"}}
-          Create new Project
-        {{/afModal}}
-		<br>
-		
-		<div class="main-projects">
-			<div class="container relative">
-				{{#each projects}}
-					{{#afModal collection="Projects" doc=_id operation="update" omitFields="company_id" formId="updateProject"}}
-						<div disabled="true" class="canDarkOut editProject" data-toggle="tooltip" title="Click to edit" projectID="{{_id}}">
-							{{> projectCard}}
-						</div>
-					{{/afModal}}
-				{{/each}}
+		<div class="col-md-8">
+			<div id="view_company" disabled="true" class="canDarkOut" data-toggle="tooltip" title="Edit me on the left.">
+				{{> companyHeader}}
+				{{> companyAbout}}
+				{{> companyNews}}
 			</div>
 		</div>
+	</div>
 
-		<div class="clear"></div>
-
-</div>
+	<div class="row projectEditor">
+		{{> autoformModals}}
+			{{#afModal class="btn btn-primary" collection="Projects" operation="insert" omitFields="company_id" formId="makeProject"}}
+			  Create new Project
+			{{/afModal}}
+			<br>
+			
+			<div class="main-projects">
+				<div class="container relative">
+					{{#each projects}}
+						{{#afModal collection="Projects" doc=_id operation="update" omitFields="company_id" formId="updateProject"}}
+							<div disabled="true" class="canDarkOut editProject" data-toggle="tooltip" title="Click to edit" projectID="{{_id}}">
+								{{> projectCard}}
+							</div>
+						{{/afModal}}
+					{{/each}}
+				</div>
+			</div>
+			<div class="clear"></div>
+	</div>
+{{else}}
+	<div class="Unauthorised">You are not authorised to access this page!<br>Please contact support if this is incorrect.</div>
+{{/if}}
 
 </template>
 
