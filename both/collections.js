@@ -140,8 +140,8 @@ industry: {
   addr:   {type: String, label: "Address", max: 1000 ,optional:false, defaultValue:'(...company address...)', autoform: {rows: 5}},
 
 
-  img:    {type: String, label: "Cover image for your company (URL / link)",  optional:true, defaultValue:'(...URL link to company picture(s)...)'},
-  youtubeLink: {type: String, label: "Image Url",  optional:true, defaultValue:'(...Add YouTube URL(s)...)'},
+  img:    {type: String, label: "Cover image for your company (URL / link)",  optional:true, defaultValue:'(...URL link to company picture(...)'},
+  youtubeLink: {type: String, label: "YouTube Url",  optional:true, defaultValue:'(...Add YouTube URL...)'},
 
   /* links to external feeds */
   twitter: {type: String, optional:true,label: 'Twitter id', defaultValue:'@Twitter'},

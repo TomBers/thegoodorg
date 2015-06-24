@@ -19,24 +19,28 @@
  </div>
  </div>
 <br>
-
-<h3>Manage my Companies</h3>
-
+<div class="row editCompaniesHeader">
+<h3><div class="col-md-6" align="left">Manage My Companies:  </div>
+<div class="col-md-6" align="right">
 		{{> autoformModals}}
         {{#afModal class="btn btn-primary" collection="Companies" operation="insert" omitFields="employees,isActive" formId="makeCompney"}}
           Add New Company
         {{/afModal}}
-
+</div>
+</h3>
+</div>
 <br>
   {{#each companies}}
 
 	<a href='/companyedit2/{{company._id}}' class="canDarkOut editCompany" data-toggle="tooltip" title="Click to edit">
-	<div class="col-md-8">
-		{{> companyHeader}}
-	</div>
-	<div class="col-md-4" style="height:100%">
-		Project Count:<br>
-		{{project_count}}
+	<div class="row custombox">
+		<div class="col-md-10">
+			{{> companyHeader}}
+		</div>
+		<div class="col-md-1 customboxInner">
+			Project Count:<br>
+			{{project_count}}
+		</div>
 	</div>
 	</a>
 	<br>

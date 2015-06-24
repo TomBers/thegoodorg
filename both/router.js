@@ -266,6 +266,7 @@ this.route('/search', {path: '/search',template: 'search'});
 //						startup:Companies.findOne({cid:row.startup_cid})
 						};
  			cData[count] = newRow;
+			count++;
 		});
 //console.log(cData);
         return {user:user,companies:cData};
