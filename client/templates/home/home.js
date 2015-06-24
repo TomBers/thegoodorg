@@ -6,9 +6,11 @@ function addInterest(interest){
   var tmp = Session.get('interest');
   if ($.inArray(interest, tmp) != -1) {
     Session.set('interest', _.without(tmp, interest) )
+	return false;
   }else{
     tmp.push(interest);
     Session.set('interest',tmp);
+	return true;
   }
 
 }
@@ -116,38 +118,27 @@ Template.home.rendered = function(){
 $('document').ready(function(){
 
 
-
-
-
-
   /*  -------------------------------------------------------------------- PROJECT NAVIGATION IMAGES */
-  $(".project-nav-one-img-one").on("click",function(){
-    addInterest('Donate Materials');
-   $(this).css("background-image", "url(images/project-nav-one-img-one.png)");
-  });
-  $(".project-nav-one-img-two").on("click",function(){
-    addInterest('Monetary Donations');
-   $(this).css("background-image", "url(images/project-nav-one-img-two.png)");
-  });
-  $(".project-nav-one-img-three").on("click",function(){
-    addInterest('Volunteering');
-   $(this).css("background-image", "url(images/project-nav-one-img-three.png)");
-  });
-  $(".project-nav-one-img-four").on("click",function(){
-    addInterest('Research Agreements');
-   $(this).css("background-image", "url(images/project-nav-one-img-four.png)");
-  });
-  $(".project-nav-one-img-five").on("click",function(){
-    addInterest('Product Collaboration');
-   $(this).css("background-image", "url(images/project-nav-one-img-five.png)");
-  });
-  $(".project-nav-one-img-six").on("click",function(){
-    addInterest('Brand Collaboration');
-   $(this).css("background-image", "url(images/project-nav-one-img-six.png)");
-  });
-  $(".project-nav-one-img-seven").on("click",function(){
-    addInterest('Lecturing Opportunities');
-   $(this).css("background-image", "url(images/project-nav-one-img-seven.png)");
+var interest_map = {};
+interest_map["Donate Materials"] = {img_class:".project-nav-one-img-one", background_image:"url(images/project-nav-one-img-one.png)"};
+interest_map["Monetary Donations"] = {img_class:".project-nav-one-img-two", background_image:"url(images/project-nav-one-img-two.png)"};
+interest_map["Volunteering"] = {img_class:".project-nav-one-img-three", background_image:"url(images/project-nav-one-img-three.png)"};
+interest_map["Research Agreements"] = {img_class:".project-nav-one-img-four", background_image:"url(images/project-nav-one-img-four.png)"};
+interest_map["Product collaboration"] = {img_class:".project-nav-one-img-five", background_image:"url(images/project-nav-one-img-five.png)"};
+interest_map["Brand Collaboration"] = {img_class:".project-nav-one-img-six", background_image:"url(images/project-nav-one-img-six.png)"};
+interest_map["Lecturing Opportunities"] = {img_class:".project-nav-one-img-seven", background_image:"url(images/project-nav-one-img-seven.png)"};
+
+  $(".project-nav-project").on("click",function(){
+  console.log("nav...");
+	var interest = $(this).attr('interest');
+	var obj = interest_map[interest];
+	if(obj){
+    if(addInterest(interest)){
+			$(obj.img_class).css("background-image", obj.background_image);
+	   }else{
+			$(obj.img_class).css("background-image", "");
+	   }
+   }
   });
   /* PROJECT NAVIGATION IMAGES END */
 
