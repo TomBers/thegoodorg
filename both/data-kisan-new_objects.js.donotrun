@@ -19,17 +19,17 @@ Meteor.startup(function(){
 	});
   
    Factory.create('categories', {
-	cat : 'PLANET',
-	subcat : ['Wildlife & Habitat','Sustainable Products','Green Technology','Energy Management']
+	cat : 'Environment',
+	subcat : ['Wildlife & Habitat','Sustainable Transport', 'Sustainable Products', 'Green Technology','Energy Management']
    });
   
   Factory.create('categories', {
-	cat : 'HEALTH',
-	subcat : ['Senior Health','Rehabilitation','Fitness & Excercise','Special Needs','Mental Health']
+	cat : 'Health',
+	subcat : ['Senior Health','Rehabilitation','Fitness & Exercise','Special Needs','Mental Health']
    });
    
    Factory.create('categories', {
-	cat : 'RIGHTS',
+	cat : 'Human Rights',
 	subcat : ['Food & Shelter','Accessibility','Community','Skills & Employment','Education']
    });
   /*   END ALL Categories */

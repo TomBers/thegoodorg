@@ -109,9 +109,9 @@ a { text-decoration:none; color:#fc663b; }
 .projectThree-img-two:hover {  background-image:url(../images/project-three-two.png); }
 .projectThree-img-three { position:absolute; width:144px; height:123px; bottom:0; right:28px; }
 .projectThree-img-three:hover {  background-image:url(../images/project-three-three.png); }
-.projectThree-img-four { position:absolute; width:102px; height:88; bottom:21px; left:31px; }
+.projectThree-img-four { position:absolute; width:102px; height:88px; bottom:21px; left:31px; }
 .projectThree-img-four:hover {  background-image:url(../images/project-three-four.png); }
-.projectThree-img-five { position:absolute; width:104px; height:153; top:20px; left:16px; }
+.projectThree-img-five { position:absolute; width:104px; height:153px; top:20px; left:16px; }
 .projectThree-img-five:hover {  background-image:url(../images/project-three-five.png); }
 .project-one-msg { display:none; position:absolute; left:300px; z-index:10; width:150px; height:100px; font-size:11px; top:300px; }
 #ProjectThreeLabel { position:absolute; max-width:300px; width:100%; color:#f5bf3f; font-size:18px; display:block; bottom:-40px; left:0; }
