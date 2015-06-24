@@ -1,4 +1,4 @@
-Template.companyEdit2.rendered = function(){
+Template.editCompany.rendered = function(){
 //  Meteor.subscribe('Projects');
 //  Meteor.subscribe('UserProfiles');
 //  Meteor.subscribe("Companies");
@@ -30,7 +30,7 @@ Template.companyEdit2.rendered = function(){
 };
 
 
-Template.companyEdit2.helpers({
+Template.editCompany.helpers({
 /*
 	editingProject: function(){
 		return Session.get("editingProject");

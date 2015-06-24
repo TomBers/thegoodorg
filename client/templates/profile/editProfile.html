@@ -1,4 +1,4 @@
-<template name="mySettings">
+<template name="editProfile">
 
 
 <div class="row" style="text-align:left">
@@ -32,7 +32,7 @@
 <br>
   {{#each companies}}
 
-	<a href='/companyedit2/{{company._id}}' class="canDarkOut editCompany" data-toggle="tooltip" title="Click to edit">
+	<a href='/editCompany/{{company._id}}' class="canDarkOut editCompany" data-toggle="tooltip" title="Click to edit">
 	<div class="row custombox">
 		<div class="col-md-10">
 			{{> companyHeader}}

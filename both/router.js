@@ -161,6 +161,7 @@ this.route('/search', {path: '/search',template: 'search'});
   }
   });
 
+  /*   --- old
 	this.route('/companyEdit', {
     path: '/companyEdit/:_id',
     // template: 'company',
@@ -174,12 +175,11 @@ this.route('/search', {path: '/search',template: 'search'});
     return {company:Companies.findOne({_id:this.params._id}),projects:Projects.find({company_id:this.params._id})};
   }
   });
-
+*/
   
-  this.route('/companyEdit2', {
-    path: '/companyEdit2/:_id',
-    // template: 'company',
-    template: 'companyEdit2',
+  this.route('/editCompany', {
+    path: '/editCompany/:_id',
+    template: 'editCompany',
     waitOn:function(){
 	Meteor.subscribe("Categories");
     Meteor.subscribe("Companies");
@@ -235,8 +235,8 @@ this.route('/search', {path: '/search',template: 'search'});
     });
 
 	
-	this.route('/mySettings',
-    {path: '/mySettings', template: 'mySettings',
+	this.route('/editProfile',
+    {path: '/editProfile', template: 'editProfile',
     waitOn:function(){
 	Meteor.subscribe("Companies");
       return Meteor.subscribe("UserProfiles");
@@ -251,7 +251,7 @@ this.route('/search', {path: '/search',template: 'search'});
 		}
 		
 		var c = Companies.find({employees: {$in : [userEmail]}});
-//		console.log(c);
+		//console.log(c);
 
 
 		// format data to work with template:
@@ -263,12 +263,11 @@ this.route('/search', {path: '/search',template: 'search'});
 			var newRow = {
 						company:row,
 						project_count:Projects.find({company_id:row._id}).count()
-//						startup:Companies.findOne({cid:row.startup_cid})
 						};
  			cData[count] = newRow;
 			count++;
 		});
-//console.log(cData);
+		//console.log(cData);
         return {user:user,companies:cData};
       }
     });

@@ -145,7 +145,7 @@ industry: {
 
   /* links to external feeds */
   twitter: {type: String, optional:true,label: 'Twitter id', defaultValue:'@Twitter'},
-  newslinks: {type: String, optional:true,label:'News link(s)',defaultValue:'...www.info-here.co...'},
+  newslinks: {type: String, optional:true,label:'News link',defaultValue:'...www.info-here.co...'},
 
 
 
@@ -197,7 +197,7 @@ Projects.attachSchema(new SimpleSchema({
   // title:    {type: String, optional: true, label: "Project Title", max: 200 },
   hline:    {type: String, optional: true, label: "Headline (max 200 chars)", max: 200 },
   desc:     {type: String, optional: true, label: "Description (min 20 chars max 10000 chars)", min: 20, max: 1000, autoform: {rows: 5}   },
-  img:      {type: String, optional: true, label: "URL link to project picture(s)"   },
+  img:      {type: String, optional: true, label: "URL link to project picture"   },
   link:     {type: String, optional: true, label: "Link to project on your website",    regEx: SimpleSchema.RegEx.Url, autoform: {type: "url"} },
 
   city:   {type: String, optional: true, label: "City / Region", defaultValue:'...London...'},
@@ -206,6 +206,7 @@ Projects.attachSchema(new SimpleSchema({
 
 
   startDate: {type: Date, optional: true, label: 'Start Date (approx)',
+    autoform: {type: "bootstrap-datepicker"}},
     autoform: {type: "bootstrap-datepicker"}},
 
   endDate: {type: Date, optional: true, label: 'End Date (approx)',

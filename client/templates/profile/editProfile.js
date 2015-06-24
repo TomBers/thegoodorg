@@ -1,4 +1,4 @@
-Template.mySettings.rendered = function(){
+Template.editProfile.rendered = function(){
 //  Meteor.subscribe('Projects');
 //  Meteor.subscribe('UserProfiles');
 //  Meteor.subscribe("Companies");
