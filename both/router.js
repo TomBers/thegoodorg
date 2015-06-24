@@ -1,11 +1,12 @@
 // router code - defines paths etc
 
 Router.configure({
+// layoutTemplate:'splash',
 layoutTemplate: 'layout',
-
 templateNameConverter: "upperCamelCase",
-routeControllerNameConverter: "upperCamelCase",
-layoutTemplate: "layout"
+routeControllerNameConverter: "upperCamelCase"
+// layoutTemplate: "layout"
+
 // ,
 // notFoundTemplate: "notFound",
 // loadingTemplate: "loading"
@@ -26,7 +27,8 @@ Router.map(function() {
 
   this.route('/', {
    path: '/',
-   template: 'home',
+   template: 'splash',
+  //  template: 'home',
   //  template: 'nhome',
    waitOn:function(){
     return Meteor.subscribe("Categories");
@@ -176,7 +178,7 @@ this.route('/search', {path: '/search',template: 'search'});
   }
   });
 */
-  
+
   this.route('/editCompany', {
     path: '/editCompany/:_id',
     template: 'editCompany',
@@ -189,8 +191,8 @@ this.route('/search', {path: '/search',template: 'search'});
     return {company:Companies.findOne({_id:this.params._id}),projects:Projects.find({company_id:this.params._id})};
   }
   });
-  
-  
+
+
   this.route('/startup', {
     path: '/startup/:_id',
     template: 'startup',
@@ -234,7 +236,7 @@ this.route('/search', {path: '/search',template: 'search'});
       }
     });
 
-	
+
 	this.route('/editProfile',
     {path: '/editProfile', template: 'editProfile',
     waitOn:function(){
@@ -242,23 +244,23 @@ this.route('/search', {path: '/search',template: 'search'});
       return Meteor.subscribe("UserProfiles");
     },
     data: function() {
-	
+
 		var userEmail = ''+Meteor.user().emails[0].address;
 		var user = UserProfiles.findOne({loginEmail:userEmail});
 		if(!user){
 			UserProfiles.insert({loginEmail:userEmail});
 			user = UserProfiles.findOne({loginEmail:userEmail});
 		}
-		
+
 		var c = Companies.find({employees: {$in : [userEmail]}});
 		//console.log(c);
 
 
 		// format data to work with template:
-		
+
 		var cData = [];
 		var count = 0;
-		
+
 		c.forEach(function(row){
 			var newRow = {
 						company:row,

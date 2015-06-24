@@ -6,6 +6,10 @@ Template.admin.rendered = function(){
   Session.set('company_id');
 }
 
+Template.splash.rendered = function(){
+
+}
+
 Template.admin_listCompanies.events({
   'click .btn-primary' :function(e,template){
     Session.set('_id', template.data.company_id);

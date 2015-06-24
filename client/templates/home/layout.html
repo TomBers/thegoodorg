@@ -2,7 +2,7 @@
 
 <template name="layout">
   <head>
-    <title>The Good.org</title>
+    <title>(...title pending...)</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
@@ -14,11 +14,9 @@
           <!-- <a class="navbar-brand" href="/">The Good.org</a> -->
 
           <ul class="nav navbar-nav" style="max-width:100%">
-            <li class="active"><a href="/">Browse</a></li>
-            <li class="active"><a href="/search">Search</a></li>
-            <li class="active"><a href="/map">Map</a></li>
+            <li class="active"><a href="/">*</a></li>
+            <li class="active"><a href="/home">Browse</a></li>
             <li class="active"><a href="/about">About</a></li>
-            <li class="active"><a href="/impact">Impact</a></li>
 
 			      <!-- <li class="active"><a href="/alt">Test</a></li>
             <li class="active"><a href="/admin">Settings</a></li> -->
@@ -39,28 +37,22 @@
       </div>
     </div>
   </nav>
-  <div class='container'>
+
+  <!-- <div class='container'> -->
   {{> yield}}
-</div>
+  <!-- </div> -->
+
 </body>
 </template>
 
-<template name="layout_loggedin">
-	<li class="active"><a href="/editProfile">My Profile</a></li>
-	<!-- <li class="active"><a href="/admin">admin</a></li>
-    <li class="active"><a href="/newAdmin">newAdmin</a></li> -->
-  <!-- <li class="active"><a href="/interest">Messages</a></li> >
-
-        <li><a href="/admin">My Settings</a></li>
-        <li><a href="/newAdmin">Admin</a></li>
-        <! <li><a href="/messages">My Notifications</a></li>
-        <li><a href="/callbacks">My Requests</a></li> -->
-
-
+  <template name="layout_loggedin">
+	   <li class="active"><a href="/search">Search</a></li>
+     <li class="active"><a href="/map">Map</a></li>
+     <li class="active"><a href="/impact">Impact</a></li>
+     <li class="active"><a href="/editProfile">My Profile</a></li>
   </template>
 
   <template name="layout_loggedout">
-    <!-- <li class="disabled"><a href="/messages">Messages</a></li> -->
 
   </template>
 
@@ -71,11 +63,7 @@
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">Display
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="/leaderboard">'Leaderboard'</a></li>
-          <li><a href="/list">All</a></li>
-          <li><a href="/list2">All Corporates</a></li>
-          <li><a href="/listCompanies">All Companies</a></li>
-          <li><a href="/listReqConfig">All Config Items</a></li>
+          <!-- ... -->
         </ul>
       </li>
     </template>

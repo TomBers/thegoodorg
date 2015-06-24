@@ -147,7 +147,7 @@ p{
     padding-top:5px;
     margin:5px;margin-top:5px;margin-bottom:5px;}
 
-  
+
   .main_body-company { width:100%; background-color:#fff; margin-top:5px; min-height:150px; text-align:center; font-family:Lato; }
   .main_body-company h1 { text-align:left; font-weight:300; font-family: Lato;}
   .main_body-company h3 { text-align:left; font-family: Lato;}
@@ -175,6 +175,9 @@ p{
   .container-3col left {  width:130;    float: left;}
   .container-3col centre { width:130;    float: left;}
   .container-3col right {   width:130; float: left;}
+
+  .splashMain { max-width:1500px; width:100%; display:block; position:relative; padding-top:0;  margin:0 0 0; }
+
 
 
   * {

@@ -1,6 +1,0 @@
-
-Template.tmpfrontPageProject.helpers({
-  'linkCompany': function() {
-    return Companies.findOne({"_id":this.company_id});
-  }
-});
