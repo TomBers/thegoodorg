@@ -98,10 +98,9 @@
   <br>
   <div name="queryElements-box">
     <div class="custombox">
-
-    Cause : {{cause}} <br>
-    Interest : {{interest}}
-    <!-- Interest : {{#each interest}}    {{this}}    {{/each}} -->
+	Cause : {{#each cause}}  <span class="filter_tag">  {{this}}   <img class="remove-filter" src="/images/close-tag.png" title="Remove" remove-cause="{{this}}">  </span> {{/each}} 
+    <br>
+	Interest : {{#each interest}}  <span class="filter_tag">  {{this}}   <img class="remove-filter" src="/images/close-tag.png" title="Remove" remove-interest="{{this}}">  </span> {{/each}}    
     </div>
   </div>
 

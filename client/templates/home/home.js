@@ -2,19 +2,25 @@
 Session.set('arrCause', []);
 Session.set('interest', []);
 
-function addInterest(interest){
-  var tmp = Session.get('interest');
-  if ($.inArray(interest, tmp) != -1) {
-    Session.set('interest', _.without(tmp, interest) )
-	return false;
-  }else{
-    tmp.push(interest);
-    Session.set('interest',tmp);
-	return true;
-  }
+/*  Cause selection functions */
+var cause_map = {};
+cause_map["Wildlife & Habitat"] = {img_class:".projectOne-img-one", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-one.png)"};  
+cause_map["Sustainable Transport"] = {img_class:".projectOne-img-two", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-two.png)"};  
+cause_map["Sustainable Products"] = {img_class:".projectOne-img-three", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-three.png)"};  
+cause_map["Green Technology"] = {img_class:".projectOne-img-four", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-four.png)"};  
+cause_map["Energy Management"] = {img_class:".projectOne-img-five", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-five.png)"};  
 
-}
+cause_map["Senior Health"] = {img_class:".projectTwo-img-one", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionOne.png)"};  
+cause_map["Rehabilitation"] = {img_class:".projectTwo-img-two", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionTwo.png)"};      
+cause_map["Fitness & Exercise"] = {img_class:".projectTwo-img-three", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionThree.png)"};      
+cause_map["Special Needs"] = {img_class:".projectTwo-img-four", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionFour.png)"};      
+cause_map["Mental Health"] = {img_class:".projectTwo-img-five", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionFive.png)"};      
 
+cause_map["Food & Shelter"] = {img_class:".projectThree-img-one", label:"#ProjectThreeLabel", background_image:"url(images/project-three-one.png)"};      
+cause_map["Accessibility"] = {img_class:".projectThree-img-two", label:"#ProjectThreeLabel", background_image:"url(images/project-three-two.png)"};      
+cause_map["Community"] = {img_class:".projectThree-img-three", label:"#ProjectThreeLabel", background_image:"url(images/project-three-three.png)"};      
+cause_map["Skills & Employment"] = {img_class:".projectThree-img-four", label:"#ProjectThreeLabel", background_image:"url(images/project-three-four.png)"};      
+cause_map["Education"] = {img_class:".projectThree-img-five", label:"#ProjectThreeLabel", background_image:"url(images/project-three-five.png)"};      
 
 function addCause(causeIn){
   var tmp = Session.get('arrCause');
@@ -29,7 +35,85 @@ function addCause(causeIn){
 
 }
 
+function toggleCause(causeIn){
 
+var obj = cause_map[causeIn];
+	if(obj){
+		if(addCause(causeIn)){
+			$(obj.img_class).css("background-image", obj.background_image);
+			fadeElements();
+	    }else{
+			$(obj.img_class).css("background-image", "");
+	    }
+    }
+}
+
+function resLabel() {
+	  $('#ProjectOneLabel').html("Environment");
+	  $('#ProjectTwoLabel').html("Health");
+	  $('#ProjectThreeLabel').html("Human Rights");
+   }
+   
+/* end cause functions */
+
+
+/*  interest functions */
+var interest_map = {};
+interest_map["Donate Materials"] = {img_class:".project-nav-one-img-one", background_image:"url(images/project-nav-one-img-one.png)"};
+interest_map["Monetary Donations"] = {img_class:".project-nav-one-img-two", background_image:"url(images/project-nav-one-img-two.png)"};
+interest_map["Volunteering"] = {img_class:".project-nav-one-img-three", background_image:"url(images/project-nav-one-img-three.png)"};
+interest_map["Research Agreements"] = {img_class:".project-nav-one-img-four", background_image:"url(images/project-nav-one-img-four.png)"};
+interest_map["Product collaboration"] = {img_class:".project-nav-one-img-five", background_image:"url(images/project-nav-one-img-five.png)"};
+interest_map["Brand Collaboration"] = {img_class:".project-nav-one-img-six", background_image:"url(images/project-nav-one-img-six.png)"};
+interest_map["Lecturing Opportunites"] = {img_class:".project-nav-one-img-seven", background_image:"url(images/project-nav-one-img-seven.png)"};
+
+function addInterest(interest){
+  var tmp = Session.get('interest');
+  if ($.inArray(interest, tmp) != -1) {
+    Session.set('interest', _.without(tmp, interest) )
+	return false;
+  }else{
+    tmp.push(interest);
+    Session.set('interest',tmp);
+	return true;
+  }
+}
+
+function toggleInterest(interest){
+	var obj = interest_map[interest];
+		if(obj){
+		if(addInterest(interest)){
+				$(obj.img_class).css("background-image", obj.background_image);
+		   }else{
+				$(obj.img_class).css("background-image", "");
+		   }
+	   }
+}
+
+
+/*  end interest functions */
+
+var isFirstClick = true;
+  function fadeElements(){  
+//console.log("fade");  
+	if(isFirstClick){
+		  $('.project-nav-one').css("display", "block");
+		  $('.project-nav-project:first-of-type').fadeIn(700);
+		  $('.project-nav-project:nth-child(2)').fadeIn(1400);
+		  $('.project-nav-project:nth-child(3)').fadeIn(2100);
+		  $('.project-nav-project:nth-child(4)').fadeIn(2800);
+		  $('.project-nav-project:nth-child(5)').fadeIn(3500);
+		  $('.project-nav-project:nth-child(6)').fadeIn(4200);
+		  $('.project-nav-project:nth-child(7)').fadeIn(4900);
+		  $('.project-nav-msg-triangle').css("display", "block");
+		  isFirstClick = false;
+	}
+  }
+
+
+  
+   
+   
 
 Template.home.helpers({
   cause: function(){
@@ -93,6 +177,20 @@ Template.projectCard.helpers({
 });
 
 
+// note uses event rather than render>$('document').ready as this element is dynamic (so not in dom at start)
+Template.home.events({
+  "click [remove-cause]": function(event, template){
+	var cause = $(event.target).attr('remove-cause');
+   // console.log(cause);
+	toggleCause(cause);
+  },
+   "click [remove-interest]": function(event, template){
+	var interest = $(event.target).attr('remove-interest');
+   // console.log(interest);
+	toggleInterest(interest);
+  }
+  
+});
 
 
 Template.home.rendered = function(){
@@ -106,66 +204,22 @@ $('document').ready(function(){
 
 
   /*  -------------------------------------------------------------------- PROJECT NAVIGATION IMAGES */
-var interest_map = {};
-interest_map["Donate Materials"] = {img_class:".project-nav-one-img-one", background_image:"url(images/project-nav-one-img-one.png)"};
-interest_map["Monetary Donations"] = {img_class:".project-nav-one-img-two", background_image:"url(images/project-nav-one-img-two.png)"};
-interest_map["Volunteering"] = {img_class:".project-nav-one-img-three", background_image:"url(images/project-nav-one-img-three.png)"};
-interest_map["Research Agreements"] = {img_class:".project-nav-one-img-four", background_image:"url(images/project-nav-one-img-four.png)"};
-interest_map["Product collaboration"] = {img_class:".project-nav-one-img-five", background_image:"url(images/project-nav-one-img-five.png)"};
-interest_map["Brand Collaboration"] = {img_class:".project-nav-one-img-six", background_image:"url(images/project-nav-one-img-six.png)"};
-interest_map["Lecturing Opportunites"] = {img_class:".project-nav-one-img-seven", background_image:"url(images/project-nav-one-img-seven.png)"};
 
   $(".project-nav-project").on("click",function(){
-  console.log("nav...");
+  //console.log("nav...");
   hideCollaborateHelpPopup();
 	var interest = $(this).attr('interest');
-	var obj = interest_map[interest];
-	if(obj){
-    if(addInterest(interest)){
-			$(obj.img_class).css("background-image", obj.background_image);
-	   }else{
-			$(obj.img_class).css("background-image", "");
-	   }
-   }
+	toggleInterest(interest);
   });
   /* PROJECT NAVIGATION IMAGES END */
 
  
 
   /* Causes actions */
-
-  
-var cause_map = {};
-cause_map["Wildlife & Habitat"] = {label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-one.png)"};  
-cause_map["Sustainable Transport"] = {label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-two.png)"};  
-cause_map["Sustainable Products"] = {label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-three.png)"};  
-cause_map["Green Technology"] = {label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-four.png)"};  
-cause_map["Energy Management"] = {label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-five.png)"};  
-
-cause_map["Senior Health"] = {label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionOne.png)"};  
-cause_map["Rehabilitation"] = {label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionTwo.png)"};      
-cause_map["Fitness & Exercise"] = {label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionThree.png)"};      
-cause_map["Special Needs"] = {label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionFour.png)"};      
-cause_map["Mental Health"] = {label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionFive.png)"};      
-
-cause_map["Food & Shelter"] = {label:"#ProjectThreeLabel", background_image:"url(images/project-three-one.png)"};      
-cause_map["Accessibility"] = {label:"#ProjectThreeLabel", background_image:"url(images/project-three-two.png)"};      
-cause_map["Community"] = {label:"#ProjectThreeLabel", background_image:"url(images/project-three-three.png)"};      
-cause_map["Skills & Employment"] = {label:"#ProjectThreeLabel", background_image:"url(images/project-three-four.png)"};      
-cause_map["Education"] = {label:"#ProjectThreeLabel", background_image:"url(images/project-three-five.png)"};      
-
    $("[cause]").on("click",function(){
-	var me = $(this);
-	var cause = me.attr('cause');
-	var obj = cause_map[cause];
-	if(obj){
-    if(addCause(cause)){
-			me.css("background-image", obj.background_image);
-			fadeElements();
-	   }else{
-			me.css("background-image", "");
-	   }
-   }
+
+	var cause = $(this).attr('cause');
+	toggleCause(cause);
    });
   
    $("[cause]").on("mouseover",function(){
@@ -195,29 +249,7 @@ cause_map["Education"] = {label:"#ProjectThreeLabel", background_image:"url(imag
 	$('.project-nav-msg-triangle').css("display", "none");
   }
   
-  var isFirstClick = true;
-  function fadeElements(){  
-console.log("fade");  
-	if(isFirstClick){
-		  $('.project-nav-one').css("display", "block");
-		  $('.project-nav-project:first-of-type').fadeIn(700);
-		  $('.project-nav-project:nth-child(2)').fadeIn(1400);
-		  $('.project-nav-project:nth-child(3)').fadeIn(2100);
-		  $('.project-nav-project:nth-child(4)').fadeIn(2800);
-		  $('.project-nav-project:nth-child(5)').fadeIn(3500);
-		  $('.project-nav-project:nth-child(6)').fadeIn(4200);
-		  $('.project-nav-project:nth-child(7)').fadeIn(4900);
-		  $('.project-nav-msg-triangle').css("display", "block");
-		  isFirstClick = false;
-	}
-  }
-
-
-  function resLabel() {
-	  $('#ProjectOneLabel').html("Environment");
-	  $('#ProjectTwoLabel').html("Health");
-	  $('#ProjectThreeLabel').html("Human Rights");
-   }
+  
 
   
 
@@ -286,10 +318,6 @@ console.log("fade");
   });
   }
   $(window).bind('resize',positionPopupCall);
-
-
-
-
 
   });
 }

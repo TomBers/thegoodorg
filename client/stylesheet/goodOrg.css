@@ -59,6 +59,20 @@ p{
     z-index: 100;
 }
 
+.remove-filter:hover{
+	transform: scale(1.2);
+}
+
+.filter_tag{
+    background-color: #e0edf5;
+    border-radius: 3px;
+    color: #2f5d92;
+    line-height: 28px;
+    margin: 3px 8px 6px 3px;
+    padding: 3px 1px 3px 8px;
+    white-space: nowrap;
+}
+
 .project {
   width: 600px;
   border-bottom: 1px solid #eee;
