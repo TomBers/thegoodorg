@@ -1,24 +1,24 @@
 
 <template name="company2">
-
+	<body style="margin:60px 15px 0px 15px;">
 
 	{{> companyHeader}}
 	{{> companyAbout}}
 	{{> companyNews}}
 
-	<body>
 
 		<div class="main-projects">
-			<div class="container relative">
+			<!-- <div class="container relative"> -->
 
 				{{#each projects}}
 				{{> projectCard}}
 				{{/each}}
 
-			</div>
+			<!-- </div> -->
 		</div>
 
 		<div class="clear"></div>
+
 
 	</body>
 
@@ -42,8 +42,8 @@
 			</div>
 
 			<div class="col-sm-6" text-align='left'>
-				<h3>Name: {{company.name}}</h3>
-				<span>Headline: {{company.hline}}</span>
+				<hdr2>{{company.name}}</hdr2> <br>
+				<hdr1>{{company.hline}}</hdr1>
 			</div>
 
 
@@ -80,7 +80,7 @@
 				<span>{{company.about}}</span><br>
 				<h6><a href="{{company.url}}">More on our website...</a></h6>
 
-				<img src="{{company.img}}" height="100px" width="auto" align="left"/>
+				<img src="{{#if company.img}}{{company.img}}{{else}}{{company.logo}}{{/if}}" height="100px" width="auto" align="left"/>
 
 			</div>
 

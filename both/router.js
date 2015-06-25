@@ -27,13 +27,13 @@ Router.map(function() {
 
   this.route('/', {
    path: '/',
-   template: 'splash',
-   waitOn:function(){
-    return Meteor.subscribe("Categories");
-  },
-     data: function() {
-     return {category:Categories.find()};
-   }
+   template: 'splash'
+  //  waitOn:function(){
+  //   return Meteor.subscribe("Categories");
+  // },
+  //    data: function() {
+  //    return {category:Categories.find()};
+  //  }
  });
 
  this.route('/home', {
@@ -61,7 +61,7 @@ this.route("cool_page.sub_page_b.sub_page_b_2", {path: "/cool_page/sub_page_b/su
 
 
   this.route('/search', {path: '/search',template: 'search'});
-  
+
   this.route('/about', {path: '/about',template: 'about'});
 
   this.route('/map', {path: '/map',template: 'map'});
@@ -69,7 +69,7 @@ this.route("cool_page.sub_page_b.sub_page_b_2", {path: "/cool_page/sub_page_b/su
 
   this.route('/impact', {path: '/impact',template: 'impact'});
 
- 
+
   this.route('/project', {
     path: '/project/:_id',
     template: 'project',
@@ -94,7 +94,7 @@ this.route("cool_page.sub_page_b.sub_page_b_2", {path: "/cool_page/sub_page_b/su
   }
   });
 
-  
+
   this.route('/editCompany', {
     path: '/editCompany/:_id',
     template: 'editCompany',

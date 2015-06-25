@@ -1,5 +1,6 @@
 <template name='editCompany'>
 {{> autoformModals}}
+<body style="margin:60px 15px 0px 15px;">
 
 {{#if isOwned}}
 	<div class="row">
@@ -22,15 +23,15 @@
 	<div class="row projectEditor">
 	<h3><div class="col-md-6" align="left">Company projects:  </div>
 <div class="col-md-6" align="right">
-		
+
 			{{#afModal class="btn btn-primary" collection="Projects" operation="insert" omitFields="company_id" formId="makeProject"}}
 			  Create new Project
 			{{/afModal}}
-			
+
 	</div>
 		</h3>
 		</div>
-		<br>	
+		<br>
 			<div class="main-projects">
 				<div class="container relative">
 					{{#each projects}}
@@ -43,10 +44,9 @@
 				</div>
 			</div>
 			<div class="clear"></div>
-	
+
 {{else}}
 	<div class="Unauthorised">You are not authorised to access this page!<br>Please contact support if this is incorrect.</div>
 {{/if}}
-
+</body>
 </template>
-

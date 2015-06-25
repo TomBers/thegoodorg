@@ -1,4 +1,6 @@
 <template name="editProfile">
+	<body style="margin:60px 15px 0px 15px;">
+
 {{> autoformModals}}
 <div class="row">
 <h3><div class="col-md-6" align="left">My Profile:</div></h3>
@@ -18,14 +20,14 @@
     <h6>Telephone: {{user.contact_num}}</h6>
     <h6>Role: {{user.user_title}}</h6>
     <h6>Headline: {{user.user_headline}}</h6>
- 
+
  </div>
  </div>
 <br>
 <div class="row editCompaniesHeader">
 <h3><div class="col-md-6" align="left">Manage My Companies:  </div>
 <div class="col-md-6" align="right">
-		
+
         {{#afModal class="btn btn-primary" collection="Companies" operation="insert" omitFields="employees,isActive" formId="makeCompney"}}
           Add New Company
         {{/afModal}}
@@ -48,5 +50,5 @@
 	</a>
 	<br>
   {{/each}}
-		
+</body>
 </template>

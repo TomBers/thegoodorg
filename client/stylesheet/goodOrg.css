@@ -174,7 +174,7 @@ p{
   .custombox { width:100%; background-color:#fff; font-family:Lato; min-height: 50px;
     padding-bottom:5px;
     padding-top:5px;
-    margin:5px;margin-top:5px;margin-bottom:5px;}
+    margin:0;margin-top:5px;margin-bottom:5px;}
 
   .customboxHeader { width:100%; background-color:#fff; margin-top:5px; padding-bottom:5px; font-family:Lato; margin:5px;min-height:90px;}
 
