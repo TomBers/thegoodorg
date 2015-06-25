@@ -38,22 +38,7 @@ Template.home.helpers({
   interest: function(){
       return Session.get('interest');
   },
-  // visibleProjects: function(){
-  //   console.log(Session.get('cause'));
-  //   var cause = [''+Session.get('cause')];
-  //   try{
-  //   if(Session.get('cause') != '' && Session.get('interest').length > 0){
-  //     return Projects.find({categories:{$in:cause},interactions:{$in:Session.get('interest')}});
-  //   }
-  //     else if(Session.get('cause') != '' && Session.get('interest').length == 0){
-  //       return Projects.find({categories:{$in:cause}});
-  //   }else{
-  //     return Projects.find({}, {limit: 20});
-  //   }
-  // }catch(e){
-  //
-  // }
-  // }
+
   visibleProjects: function(){
   //   console.log(Session.get('arrCause'));
 //	 console.log(Session.get('interest'));

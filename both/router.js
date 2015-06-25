@@ -28,8 +28,6 @@ Router.map(function() {
   this.route('/', {
    path: '/',
    template: 'splash',
-  //  template: 'home',
-  //  template: 'nhome',
    waitOn:function(){
     return Meteor.subscribe("Categories");
   },
@@ -41,9 +39,6 @@ Router.map(function() {
  this.route('/home', {
   path: '/home',
   template: 'home',
-  // this.route('/nhome', {
-  //  path: '/nhome',
-  //  template: 'nhome',
   waitOn:function(){
    return Meteor.subscribe("Categories");
  },
@@ -65,55 +60,16 @@ this.route("cool_page.sub_page_b.sub_page_b_2", {path: "/cool_page/sub_page_b/su
 // <> jd test
 
 
-
-
-this.route('/search', {path: '/search',template: 'search'});
-
-
+  this.route('/search', {path: '/search',template: 'search'});
+  
   this.route('/about', {path: '/about',template: 'about'});
 
   this.route('/map', {path: '/map',template: 'map'});
   this.route('/fll', {path: '/fll',template: 'fll'});
 
-  this.route('/admin', {path: '/admin',template: 'admin'});
-
   this.route('/impact', {path: '/impact',template: 'impact'});
 
-  this.route('/addStartup', {
-    path: '/addStartup',
-    template: 'addStartup',
-  });
-
-  this.route('/addCorporate', {path: '/addCorporate',template: 'addCorporate'});
-
-  this.route('/addCompany', {path: '/addCompany',template: 'addCompany'});
-
-  this.route('/addFeedback', {path: '/addFeedback',template: 'addFeedback'});
-
-  this.route('/newAdmin', {path: '/newAdmin',template: 'newAdmin'});
-  this.route('/alt', {path: '/alt',template: 'CoolPage'});
-
-
-  this.route('/addReq1', {path: '/addReq1',template: 'addReq1', data: function() {
-                return {req_types:Req_Types.find()};}
-                });
-
-  this.route('/addReq2', {path: '/addReq2',template: 'addReq2', data: function() {
-                return {req_amounts:Req_Amounts.find()};}
-                });
-
-  this.route('/addReq3', {path: '/addReq3',template: 'addReq3', data: function() {
-                return {req_timeframes:Req_TimeFrames.find()};}
-                });
-
-  this.route('/addCat', {path: '/addCat',template: 'addCat', data: function() {
-                return {categories:Categories.find()};}
-                });
-
-  this.route('/addSubCat', {path: '/addSubCat',template: 'addSubCat', data: function() {
-                return {subcategories:SubCategories.find()};}
-                });
-
+ 
   this.route('/project', {
     path: '/project/:_id',
     template: 'project',
@@ -122,31 +78,6 @@ this.route('/search', {path: '/search',template: 'search'});
    },
     data: function() {
     return Projects.findOne({_id:this.params._id});
-  }
-  });
-
-  this.route('/nproject', {
-    path: '/nproject/:_id',
-    template: 'nproject',
-    waitOn:function(){
-     return Meteor.subscribe("Projects");
-   },
-    data: function() {
-    return Projects.findOne({_id:this.params._id});
-  }
-  });
-
-
-  this.route('/company', {
-    path: '/company/:_id',
-    // template: 'company',
-    template: 'companyFoundry',
-    waitOn:function(){
-    Meteor.subscribe("Companies");
-     return Meteor.subscribe("Projects");
-   },
-    data: function() {
-    return {company:Companies.findOne({_id:this.params._id}),projects:Projects.find({company_id:this.params._id})};
   }
   });
 
@@ -163,22 +94,7 @@ this.route('/search', {path: '/search',template: 'search'});
   }
   });
 
-  /*   --- old
-	this.route('/companyEdit', {
-    path: '/companyEdit/:_id',
-    // template: 'company',
-    template: 'companyEdit',
-    waitOn:function(){
-	Meteor.subscribe("Categories");
-    Meteor.subscribe("Companies");
-     return Meteor.subscribe("Projects");
-   },
-    data: function() {
-    return {company:Companies.findOne({_id:this.params._id}),projects:Projects.find({company_id:this.params._id})};
-  }
-  });
-*/
-
+  
   this.route('/editCompany', {
     path: '/editCompany/:_id',
     template: 'editCompany',
@@ -191,50 +107,6 @@ this.route('/search', {path: '/search',template: 'search'});
     return {company:Companies.findOne({_id:this.params._id}),projects:Projects.find({company_id:this.params._id})};
   }
   });
-
-
-  this.route('/startup', {
-    path: '/startup/:_id',
-    template: 'startup',
-    data: function() {
-    return Startups.findOne({_id:this.params._id});
-  }
-  });
-
-
-
-  this.route('/edit', {
-    path: '/edit/:_id',
-    template: 'edit',
-    data: function() {
-      console.log( Startups.findOne({_id:this.params._id}));
-    return Startups.findOne({_id:this.params._id});
-  }
-  });
-
-  // this.route('/list', {
-  //   path: '/list',
-  //   template: 'list',
-  //   data: function() {
-  //   return {startups:Startups.find()};
-  // }
-  // });
-  //
-  // this.route('/list2', {path: '/list2', template: 'list2',
-  //   data: function() {
-  //       return {corporates:Corporates.find()};
-  //     }
-  //   });
-
-  this.route('/listCompanies',
-    {path: '/listCompanies', template: 'listCompanies',
-    waitOn:function(){
-      return Meteor.subscribe("Companies");
-    },
-    data: function() {
-        return {companies:Companies.find()};
-      }
-    });
 
 
 	this.route('/editProfile',
