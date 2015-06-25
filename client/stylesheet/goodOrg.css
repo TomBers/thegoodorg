@@ -67,7 +67,17 @@ p{
 	/*position:static;*/
 	max-width:calc(100% - 1px);
 	float:none;
-	min-height:calc(100% - 1px);
+	min-height:100%;
+}
+
+.navbar-nav{
+	background-color: black;
+}
+
+.bodyContent{
+	padding-top:55px;
+	padding-left:15px;
+	padding-right:15px;
 }
 
 #login-dropdown-list{

@@ -1,5 +1,11 @@
 <template name='editCompany'>
+{{> autoformModals}}
+
 {{#if isOwned}}
+	<div class="row">
+		<h3><div class="col-md-6" align="left">Company details:</div></h3>
+	</div>
+	<br>
 	<div class="row">
 		<div class="col-md-4">
 		{{> quickForm collection="Companies" id="editcmpny" type="update" doc=this.company omitFields="employees,isActive" autosave=true autosaveOnKeyup=true}}
@@ -14,12 +20,17 @@
 	</div>
 
 	<div class="row projectEditor">
-		{{> autoformModals}}
+	<h3><div class="col-md-6" align="left">Company projects:  </div>
+<div class="col-md-6" align="right">
+		
 			{{#afModal class="btn btn-primary" collection="Projects" operation="insert" omitFields="company_id" formId="makeProject"}}
 			  Create new Project
 			{{/afModal}}
-			<br>
 			
+	</div>
+		</h3>
+		</div>
+		<br>	
 			<div class="main-projects">
 				<div class="container relative">
 					{{#each projects}}
@@ -32,7 +43,7 @@
 				</div>
 			</div>
 			<div class="clear"></div>
-	</div>
+	
 {{else}}
 	<div class="Unauthorised">You are not authorised to access this page!<br>Please contact support if this is incorrect.</div>
 {{/if}}

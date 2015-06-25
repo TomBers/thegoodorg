@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <nav class="navbar navbar" display="none" style="padding:0; margin-bottom:0;">
+    <nav class="navbar navbar-fixed-top" display="none" style="padding:0; margin-bottom:0;">
     <!-- <nav class="navbar navbar-inverse" display="none"> -->
         <div class="navbar-header">
           <!-- <a class="navbar-brand" href="/">The Good.org</a> -->
 
-          <ul class="nav navbar-nav" style="max-width:100%">
+          <ul class="nav navbar-nav">
             <li class="active"><a href="/">*</a></li>
             <li class="active"><a href="/home">Browse</a></li>
             <li class="active"><a href="/about">About</a></li>
@@ -36,9 +36,9 @@
       </div>
   </nav>
 
-  <!-- <div class='container'> -->
+  <div class='bodyContent'>
   {{> yield}}
-  <!-- </div> -->
+  </div>
 
 </body>
 </template>

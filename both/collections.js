@@ -88,7 +88,7 @@ Companies.attachSchema(new SimpleSchema({
   cid:    {type: String, label: "Companies House Reference Number", max: 200, defaultValue:'...CRN: Company Reference Number...'},
 
   hline:  {type: String, label: "Headline", max: 200 ,optional:true, defaultValue:'(...company headline...)'},
-  about:   {type: String, label: "About (max 500 chars)", max: 500 ,optional:true, defaultValue:'(...company description...)'},
+  about:   {type: String, label: "About (max 500 chars)", max: 500 ,optional:true, defaultValue:'(...company description...)', autoform: {rows: 3}},
 
   url:    {type: String, label: "Website", max: 200, optional:true, defaultValue:'(...URL link to website...)'},
   logo:   {type: String, label: "Logo", max: 200, optional:true, defaultValue:'(...URL link to logo...)'},

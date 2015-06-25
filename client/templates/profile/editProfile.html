@@ -1,6 +1,9 @@
 <template name="editProfile">
-
-
+{{> autoformModals}}
+<div class="row">
+<h3><div class="col-md-6" align="left">My Profile:</div></h3>
+</div>
+<br>
 <div class="row" style="text-align:left">
 <div class="col-md-6">
 {{> quickForm collection="UserProfiles" id="UserProfiles" type="update" doc=this.user omitFields="loginEmail,isAdmin" autosave=true autosaveOnKeyup=true}}
@@ -22,7 +25,7 @@
 <div class="row editCompaniesHeader">
 <h3><div class="col-md-6" align="left">Manage My Companies:  </div>
 <div class="col-md-6" align="right">
-		{{> autoformModals}}
+		
         {{#afModal class="btn btn-primary" collection="Companies" operation="insert" omitFields="employees,isActive" formId="makeCompney"}}
           Add New Company
         {{/afModal}}
