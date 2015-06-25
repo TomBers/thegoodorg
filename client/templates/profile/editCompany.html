@@ -1,5 +1,7 @@
 <template name='editCompany'>
+<div class="projectEditor">
 {{> autoformModals}}
+</div>
 <body style="margin:60px 15px 0px 15px;">
 
 {{#if isOwned}}
@@ -35,7 +37,7 @@
 			<div class="main-projects">
 				<div class="container relative">
 					{{#each projects}}
-						{{#afModal collection="Projects" doc=_id operation="update" omitFields="company_id" formId="updateProject"}}
+						{{#afModal collection="Projects" doc=_id operation="update" omitFields="company_id" formId="updateProject" title="Edit project"}}
 							<div disabled="true" class="canDarkOut editProject" data-toggle="tooltip" title="Click to edit" projectID="{{_id}}">
 								{{> projectCard}}
 							</div>
