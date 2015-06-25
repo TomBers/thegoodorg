@@ -9,7 +9,6 @@
   <body>
     <nav class="navbar navbar" display="none" style="padding:0; margin-bottom:0;">
     <!-- <nav class="navbar navbar-inverse" display="none"> -->
-      <div class="container-fluid">
         <div class="navbar-header">
           <!-- <a class="navbar-brand" href="/">The Good.org</a> -->
 
@@ -29,13 +28,12 @@
               {{> layout_loggedout}}
             {{/if}}
 
-            <li style='padding-top:14px'>{{> loginButtons}}</li>
+            <li style='padding-top:14px;padding-right:25px; float:right;'>{{> loginButtons}}</li>
 
 
           </ul>
 
       </div>
-    </div>
   </nav>
 
   <!-- <div class='container'> -->
@@ -56,14 +54,15 @@
 
   </template>
 
-
+<!--
   <template name="layout_displayItems">
 
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#">Display
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <!-- ... -->
+          <!-- ... - ->
         </ul>
       </li>
     </template>
+-->

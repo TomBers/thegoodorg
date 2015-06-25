@@ -63,6 +63,16 @@ p{
 	transform: scale(1.2);
 }
 
+.nav{
+	/*position:static;*/
+	max-width:calc(100% - 1px);
+	float:none;
+	min-height:calc(100% - 1px);
+}
+
+#login-dropdown-list{
+	left:-175px;
+}
 .filter_tag{
     background-color: #e0edf5;
     border-radius: 3px;
