@@ -96,7 +96,7 @@ function toggleInterest(interest){
 var isFirstClick = true;
   function fadeElements(){  
 //console.log("fade");  
-	if(isFirstClick){
+//console.log(isFirstClick);	
 		  $('.project-nav-one').css("display", "block");
 		  $('.project-nav-project:first-of-type').fadeIn(700);
 		  $('.project-nav-project:nth-child(2)').fadeIn(1400);
@@ -105,6 +105,7 @@ var isFirstClick = true;
 		  $('.project-nav-project:nth-child(5)').fadeIn(3500);
 		  $('.project-nav-project:nth-child(6)').fadeIn(4200);
 		  $('.project-nav-project:nth-child(7)').fadeIn(4900);
+	if(isFirstClick){
 		  $('.project-nav-msg-triangle').css("display", "block");
 		  isFirstClick = false;
 	}
@@ -194,6 +195,9 @@ Template.home.events({
 
 
 Template.home.rendered = function(){
+Session.set('arrCause', []);
+Session.set('interest', []);
+
   Meteor.subscribe('Projects');
   Meteor.subscribe('UserProfiles');
   Meteor.subscribe("Companies");

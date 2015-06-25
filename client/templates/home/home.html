@@ -4,16 +4,22 @@
     <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   </head>
 
-<body>
-
-  <!-- Add search bar... -->
-  <div align="right">
-    {{> searchMenu2}}
-  </div>
+  <div class="container">
+    <body>
 
 
-  <div class="main_body" align='middle'>
+
+  <div class="main_body" align='middle' style="margin-bottom:5px;">
+
+    <!-- Add search bar... -->
+    <div align="right" style="margin-top:5px;padding-top:5px;margin-right:5px;">
+      {{> searchMenu2}}
+    </div>
+
+
     <!-- <span> -->
+
+
     <div class="container-smaller" align = 'middle'>
       <div class="container relative textAlignCenter">
 
@@ -84,7 +90,7 @@
           <div class="project-nav-project" interest="Product collaboration"><div class="project-nav-one-img-five"></div><span>Product<br /> Collaboration</span></div>
           <div class="project-nav-project" interest="Brand Collaboration"><div class="project-nav-one-img-six"></div><span>Brand <br />Collaboration</span></div>
           <div class="project-nav-project project-nav-project-last" interest="Lecturing Opportunites"><div class="project-nav-one-img-seven"></div><span>Lecturing <br />Opportunities</span></div>
-          <div class="project-nav-msg-triangle">
+          <div class="project-nav-msg-triangle" style="display: none;">
               <div class="project-nav-msg-close"><img id="close-button-nav" src="images/close.gif"></div>
               <div>You can refine<br />  your search by how you'd<br /> like to collaborate</div>
           </div>
@@ -95,9 +101,8 @@
 <!-- </span> -->
   </div>
 
-  <br>
   <div name="queryElements-box">
-    <div class="custombox">
+    <div class="custombox" style ="padding:0; margin:0;padding-left:5px;">
 	Cause : {{#each cause}}  <span class="filter_tag">  {{this}}   <img class="remove-filter" src="/images/close-tag.png" title="Remove" remove-cause="{{this}}">  </span> {{/each}} 
     <br>
 	Interest : {{#each interest}}  <span class="filter_tag">  {{this}}   <img class="remove-filter" src="/images/close-tag.png" title="Remove" remove-interest="{{this}}">  </span> {{/each}}    
@@ -125,5 +130,6 @@
 
     <!-- </div> -->
 
+    </div>
 
 </template>
