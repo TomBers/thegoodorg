@@ -47,7 +47,7 @@ UserProfiles.attachSchema(new SimpleSchema({
   //used on project cards
   user_photo:{type:String, label:"Profile photo URL", optional:true, defaultValue:"...add link to profile pic..."},
   user_title:{type:String, label:"Your role within company", optional:true, defaultValue:"...current role..."},
-  user_headline:{type:String, label:"Personal headline", optional:true, max:140, defaultValue:"...in 140 characters or less..."},
+  /*user_headline:{type:String, label:"Personal headline", optional:true, max:140, defaultValue:"...in 140 characters or less..."},*/
 
   // other ... added for future functionality
   mailout_monthly:  {type: Boolean, label: "Receive Monthly Mailout ?", defaultValue: false},
@@ -87,7 +87,7 @@ Companies.attachSchema(new SimpleSchema({
   name:   {type: String, label: "Company Name", max: 200, optional:false ,defaultValue:'...Company Name...'},
   cid:    {type: String, label: "Companies House Reference Number", max: 200, defaultValue:'...CRN: Company Reference Number...'},
 
-  hline:  {type: String, label: "Headline", max: 200 ,optional:true, defaultValue:'(...company headline...)'},
+  hline:  {type: String, label: "Headline (max 200 chars)", max: 200 ,optional:true, defaultValue:'(...company headline...)'},
   about:   {type: String, label: "About (max 500 chars)", max: 500 ,optional:true, defaultValue:'(...company description...)', autoform: {rows: 3}},
 
   url:    {type: String, label: "Website", max: 200, optional:true, defaultValue:'(...URL link to website...)'},
@@ -205,11 +205,11 @@ Projects.attachSchema(new SimpleSchema({
   postcode:   {type: String, optional: true, label: "Postcode", defaultValue:''},
 
 
-  startDate: {type: Date, optional: true, label: 'Start Date (approx) - YYYY-MM-DD',
+  startDate: {type: Date, optional: true, label: 'Start Date (approx)',/* - YYYY-MM-DD', odd but different format if using datepicker!*/
     autoform: {type: "bootstrap-datepicker"}
 	},
 
-  endDate: {type: Date, optional: true, label: 'End Date (approx) - YYYY-MM-DD',
+  endDate: {type: Date, optional: true, label: 'End Date (approx)', /* - YYYY-MM-DD',*/
       autoform: {type: "bootstrap-datepicker"}
 	  },
 

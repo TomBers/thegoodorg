@@ -49,6 +49,11 @@ p{
     z-index: 100;
 }
 
+.editCompany .row, .editProject  .project-card{
+	color:black;
+	text-align:left;
+}
+
 .remove-filter:hover{
 	transform: scale(1.2);
 }

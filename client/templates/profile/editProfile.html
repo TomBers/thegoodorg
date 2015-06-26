@@ -19,7 +19,6 @@
     <h6>Contact Me?: {{user.contact_bool}}</h6>
     <h6>Telephone: {{user.contact_num}}</h6>
     <h6>Role: {{user.user_title}}</h6>
-    <h6>Headline: {{user.user_headline}}</h6>
 
  </div>
  </div>
@@ -28,7 +27,7 @@
 <h3><div class="col-md-6" align="left">Manage My Companies:  </div>
 <div class="col-md-6" align="right">
 
-        {{#afModal class="btn btn-primary" collection="Companies" operation="insert" omitFields="employees,isActive" formId="makeCompney"}}
+        {{#afModal class="btn btn-primary" collection="Companies" operation="insert" omitFields="cid,employees,isActive" formId="makeCompney"}}
           Add New Company
         {{/afModal}}
 </div>
