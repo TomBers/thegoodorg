@@ -206,11 +206,11 @@ Projects.attachSchema(new SimpleSchema({
 
 
   startDate: {type: Date, optional: true, label: 'Start Date (approx) - YYYY-MM-DD',
-    /*autoform: {type: "bootstrap-datepicker"}*/
+    autoform: {type: "bootstrap-datepicker"}
 	},
 
   endDate: {type: Date, optional: true, label: 'End Date (approx) - YYYY-MM-DD',
-      /*autoform: {type: "bootstrap-datepicker"}*/
+      autoform: {type: "bootstrap-datepicker"}
 	  },
 
   timeframe: {type: String, optional: true, label: "Timeframe (notes)"},
