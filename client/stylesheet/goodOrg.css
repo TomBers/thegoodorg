@@ -42,6 +42,16 @@ p{
   height: 15px;
 }
 
+/* really hacky way to bet autoform working*/
+.projectEditor .modal-content .modal-header .modal-title,
+.projectEditor .modal-title .tooltip
+{
+  width:0px;
+  height:0px;
+  visibility: hidden !important;
+  position: absolute !important;
+}
+
 .darkOut{
     filter:alpha(opacity=50); /* IE */
     opacity: 0.5; /* Safari, Opera */
@@ -58,16 +68,8 @@ p{
 	transform: scale(1.2);
 }
 
-.nav{
-	/*position:static;*/
-	max-width:calc(100% - 1px);
-	float:none;
-	min-height:100%;
-}
 
-.navbar-nav{
-	background-color: black;
-}
+
 
 .bodyContent{
 	padding-top:55px;
@@ -112,7 +114,7 @@ p{
     border-top: 1px solid #4682B4}
   /*.project-card img { display:inline-block; float:left; padding-left:5px; }*/
   .project-card img.50x50 { height:50px; width:50px;}
-  .project-card img.profile-pic { display:inline-block; float:left; margin:5px 0 5px 5px; height:40px; width:auto; }
+  .project-card img.profile-pic { display:inline-block; float:left; margin:2px 0 2px 5px; height:50px; width:auto; }
   .project-card img.project-icon { display:inline-block; float:right; width:35px; height:35px; margin-right:3px;align:right;}
   .project-card img.photobox { max-height:200px; max-width:420px; height:auto; width:auto; align:middle;}
 
@@ -208,3 +210,8 @@ p{
   .container-3col right {   width:130; float: left;}
 
   .splashMain { max-width:1500px; width:100%; display:block; position:relative; padding-top:0;  margin:0 0 0; }
+
+  img.splash {
+    min-height: 100%;    min-width: 1024px;
+    width: 100%;    height: auto;
+    position: fixed; top: 0;    left: 0;}

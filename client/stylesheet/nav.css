@@ -1,0 +1,35 @@
+.main_nav { position:relative; width:100%; display:block;  background-color:#4682B4; min-height:30px; }
+/*.main_nav { position:relative; width:100%; display:block;  background-color:#FFF; min-height:40px; }*/
+/*.nav { max-width:500px; width:100%; position:absolute; bottom:0; }*/
+
+
+.nav{	max-width:calc(100% - 1px);	float:none;	min-height:100%;}
+.nav ul { list-style-type:none; display:block; }
+.nav ul li { border-bottom:2px solid #fff; float:left; display:inline-block; max-width:100px; width:100%; font-size:14px; font-weight:700; text-align:center; padding:5px; color:#c3c3c3; }
+.nav ul li:hover { border-bottom:2px solid #c3c3c3; color:#000; }
+
+.navbar {    min-height: 30px;    margin-bottom: 0;    border: 1px solid transparent;}
+/*.navbar {    position: relative;    min-height: 30px;    margin-bottom: 0;    border: 1px solid transparent;}*/
+.navbar-brand {    float: left;    padding: 5px;    font-size: 16px;    line-height: 20px;    height: 40px;}
+
+
+/*.navbar-nav{
+	background-color: black;
+}*/
+
+
+.navbar-trans {	  }
+/*.navbar-trans {	background-color:#279ddd;    color:#fff;}*/
+
+.navbar-trans li>a:hover,.navbar-trans li>a:focus,.navbar-trans li.active {
+	background-color:#38afef;}
+
+/*.navbar-trans a{    color:#fefefe;}*/
+.navbar-trans a{    color:#c4c4c4;}
+
+.navbar-trans .form-control:focus {
+	border-color: #eee;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(100,100,100,0.6);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(100,100,100,0.6);
+}

@@ -1,25 +1,124 @@
 <!-- menu items etc -->
+<template name="nBar">
+  <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><i>...Thrive !</i></a>
+    </div>
+    <div class="navbar-collapse collapse" id="navbar-collapsible">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="#section1">What</a></li>
+        <li><a href="#section2">When</a></li>
+        <li><a href="#section3">How</a></li>
+        <li><a href="#section4">Four</a></li>
+        <li><a href="#section5">Five</a></li>
+        <li><a href="#section6">Why</a></li>
+        <li><a href="#section7">Who</a></li>
+        <li>&nbsp;</li>
+      </ul>
+      <form class="navbar-form">
+        <div class="form-group" style="display:inline; float:right;">
+          <div class="input-group">
+            <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
+              <ul class="dropdown-menu">
+                <li><a href="#">Category 1</a></li>
+                <li><a href="#">Category 2</a></li>
+                <li><a href="#">Category 3</a></li>
+                <li><a href="#">Category 4</a></li>
+                <li><a href="#">Category 5</a></li>
+              </ul>
+            </div>
+            <input type="text" class="form-control" placeholder="search" style="width:300px">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+</template>
+
+<template name="layout2">
+  {{> nBar}}
+  <!-- {{> layout2}} -->
+</template>
 
 <template name="layout">
   <head>
-    <title>(...title pending...)</title>
+    <title>(...Thrive !)</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <nav class="navbar navbar-fixed-top" display="none" style="padding:0; margin-bottom:0;">
-    <!-- <nav class="navbar navbar-inverse" display="none"> -->
+
+    <nav class="navbar navbar-trans navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#" style='color:#c4c4c4;'><i> THRV </i></a>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar-collapsible">
+        <ul class="nav navbar-nav navbar-left">
+
+          <li><a style='color:#c4c4c4;' href="/home">Browse</a></li>
+          <li><a style='color:#c4c4c4;' href="/about">About</a></li>
+
+
+          {{#if currentUser}}
+            {{> layout_loggedin}}
+          {{else}}
+            {{> layout_loggedout}}
+          {{/if}}
+
+          <li style='padding-top:14px;padding-right:15px; padding-left:15px; float:right;'>{{> loginButtons}}</li>
+
+          <li>&nbsp;</li>
+        </ul>
+        <form class="navbar-form">
+          <div class="form-group" style="display:inline; float:right;">
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                <ul class="dropdown-menu">
+                  <li><a href="#">London</a></li>
+                  <li><a href="#">Edinburgh</a></li>
+                  <li><a href="#">Cardiff</a></li>
+                  <li><a href="#">Birmingham</a></li>
+                  <li><a href="#">Newcastle</a></li>
+                  <li><a href="#">...</a></li>
+                </ul>
+              </div>
+              <input type="text" class="form-control" id='search-boxmenu' placeholder="search" style="width:300px">
+              <!-- <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span> -->
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+    <!-- <nav class="navbar navbar-fixed-top" display="none" style="padding:0; margin-bottom:0;">
+    <nav class="navbar navbar-inverse" display="none">
         <div class="navbar-header">
-          <!-- <a class="navbar-brand" href="/">The Good.org</a> -->
+          <a class="navbar-brand" href="/">The Good.org</a>
 
           <ul class="nav navbar-nav">
             <li class="active"><a href="/">*</a></li>
             <li class="active"><a href="/home">Browse</a></li>
             <li class="active"><a href="/about">About</a></li>
-
-			      <!-- <li class="active"><a href="/alt">Test</a></li>
-            <li class="active"><a href="/admin">Settings</a></li> -->
-            <!-- <li class="active"><a href="/newAdmin">Admin</a></li> -->
 
 
             {{#if currentUser}}
@@ -34,7 +133,7 @@
           </ul>
 
       </div>
-  </nav>
+  </nav> -->
 
   </body>
   <!-- <div class='bodyContent'> -->
@@ -44,10 +143,10 @@
 </template>
 
   <template name="layout_loggedin">
-	   <li class="active"><a href="/search">Search</a></li>
-     <li class="active"><a href="/map">Map</a></li>
-     <li class="active"><a href="/impact">Impact</a></li>
-     <li class="active"><a href="/editProfile">My Profile</a></li>
+	   <li><a style='color:#c4c4c4;' href="/search">Search</a></li>
+     <!-- <li><a href="/map">Map</a></li> -->
+     <!-- <li><a href="/impact">Impact</a></li> -->
+     <li><a style='color:#c4c4c4;' href="/editProfile">My Profile</a></li>
   </template>
 
   <template name="layout_loggedout">

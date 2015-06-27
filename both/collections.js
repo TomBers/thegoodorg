@@ -141,7 +141,7 @@ industry: {
 
 
   img:    {type: String, label: "Cover image for your company (URL / link)",  optional:true, defaultValue:'(...URL link to company picture(...)'},
-  youtubeLink: {type: String, label: "YouTube Url",  optional:true, defaultValue:'(...Add YouTube URL...)'},
+  youtubeLink: {type: String, label: "YouTube 'embed' Url",  optional:true, defaultValue:'(...in the format >> https://www.youtube.com/embed/xXxxXXxxxXXX pls)'},
 
   /* links to external feeds */
   twitter: {type: String, optional:true,label: 'Twitter id', defaultValue:'@Twitter'},
@@ -196,7 +196,7 @@ Projects.attachSchema(new SimpleSchema({
 
   // title:    {type: String, optional: true, label: "Project Title", max: 200 },
   hline:    {type: String, optional: true, label: "Headline (max 200 chars)", max: 200 },
-  desc:     {type: String, optional: true, label: "Description (min 20 chars max 10000 chars)", min: 20, max: 1000, autoform: {rows: 5}   },
+  desc:     {type: String, optional: true, label: "Description (min 20 chars max 1000 chars)", min: 20, max: 1000, autoform: {rows: 5}   },
   img:      {type: String, optional: true, label: "URL link to project picture"   },
   link:     {type: String, optional: true, label: "Link to project on your website",    regEx: SimpleSchema.RegEx.Url, autoform: {type: "url"} },
 
@@ -206,11 +206,11 @@ Projects.attachSchema(new SimpleSchema({
 
 
   startDate: {type: Date, optional: true, label: 'Start Date (approx)',/* - YYYY-MM-DD', odd but different format if using datepicker!*/
-    autoform: {type: "bootstrap-datepicker"}
+    autoform: {type: "bootstrap-datepicker", format: 'dd-mmm-yyyy'}
 	},
 
   endDate: {type: Date, optional: true, label: 'End Date (approx)', /* - YYYY-MM-DD',*/
-      autoform: {type: "bootstrap-datepicker"}
+      autoform: {type: "bootstrap-datepicker", format: 'dd-mmm-yyyy'}
 	  },
 
   timeframe: {type: String, optional: true, label: "Timeframe (notes)"},

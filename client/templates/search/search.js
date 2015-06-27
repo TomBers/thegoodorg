@@ -69,3 +69,26 @@ Template.searchMenu2.events({
     projectSearch.search(text);
   }, 200)
 });
+
+Template.layout.events({
+  "keyup #search-boxmenu": _.throttle(function(e) {
+    var text = $(e.target).val().trim();
+    projectSearch.search(text);
+  }, 200)
+});
+
+Template.layout.helpers({
+  getProjects: function() {
+
+    return projectSearch.getData({
+      transform: function(matchText, regExp) {
+        return matchText.replace(regExp, "$&")
+      },
+      sort: {isoScore: -1}
+    });
+  }
+
+  // isLoading: function() {
+  //   return projectSearch.getStatus().loading;
+  // }
+});

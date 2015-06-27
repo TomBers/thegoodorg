@@ -15,6 +15,11 @@ Template.project.helpers({
     return Companies.findOne({"_id":this.company_id});
 	},
 
+	formatDate: function(date) {
+	  // return moment(date).format('MM-DD-YYYY');
+		return date.toDateString();
+	},
+
 	getInterestPic: function(e) {
 
 		if($.inArray("Donate Materials", [e]) != -1){ return '/images/project-nav-one-img-one.png'; }
