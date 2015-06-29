@@ -108,10 +108,15 @@ var isFirstClick = true;
 	if(isFirstClick){
 		  $('.project-nav-msg-triangle').css("display", "block");
 		  isFirstClick = false;
+		  setTimeout(function(){hideCollaborateHelpPopup()},5000);
 	}
   }
 
-
+/* Causes actions */
+  
+  function hideCollaborateHelpPopup(){
+	$('.project-nav-msg-triangle').css("display", "none");
+  }
 
 
 
@@ -158,7 +163,13 @@ Template.home.events({
 	var interest = $(event.target).attr('remove-interest');
    // console.log(interest);
 	toggleInterest(interest);
-  }
+  },
+  
+  "click #close-button-nav":function(event, template){
+	event.preventDefault();
+  	//$('.project-nav-msg-triangle').attr("style", "display: none !important");
+	hideCollaborateHelpPopup();
+  },
 
 });
 
@@ -207,24 +218,6 @@ $('document').ready(function(){
    $("[cause]").on("mouseout",function(){
 	resLabel();
    });
-
-  /* Causes actions */
-
-  $("#close-button-nav").one('click',function(e){
-  $(this).on("click",function(ev){
-  	 ev.preventDefault();
-  	$('.project-nav-msg-triangle').attr("style", "display: none !important");
-  });
-  });
-
-
-  function hideCollaborateHelpPopup(){
-	$('.project-nav-msg-triangle').css("display", "none");
-  }
-
-
-
-
 
 
   //open popup
