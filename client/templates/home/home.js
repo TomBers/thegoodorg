@@ -4,23 +4,23 @@ Session.set('interest', []);
 
 /*  Cause selection functions */
 var cause_map = {};
-cause_map["Wildlife & Habitat"] = {img_class:".projectOne-img-one", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-one.png)"};  
-cause_map["Sustainable Transport"] = {img_class:".projectOne-img-two", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-two.png)"};  
-cause_map["Sustainable Products"] = {img_class:".projectOne-img-three", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-three.png)"};  
-cause_map["Green Technology"] = {img_class:".projectOne-img-four", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-four.png)"};  
-cause_map["Energy Management"] = {img_class:".projectOne-img-five", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-five.png)"};  
+cause_map["Wildlife & Habitat"] = {img_class:".projectOne-img-one", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-one.png)"};
+cause_map["Sustainable Transport"] = {img_class:".projectOne-img-two", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-two.png)"};
+cause_map["Sustainable Products"] = {img_class:".projectOne-img-three", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-three.png)"};
+cause_map["Green Technology"] = {img_class:".projectOne-img-four", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-four.png)"};
+cause_map["Energy Management"] = {img_class:".projectOne-img-five", label:"#ProjectOneLabel", background_image:"url(images/projectOne-img-five.png)"};
 
-cause_map["Senior Health"] = {img_class:".projectTwo-img-one", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionOne.png)"};  
-cause_map["Rehabilitation"] = {img_class:".projectTwo-img-two", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionTwo.png)"};      
-cause_map["Fitness & Exercise"] = {img_class:".projectTwo-img-three", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionThree.png)"};      
-cause_map["Special Needs"] = {img_class:".projectTwo-img-four", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionFour.png)"};      
-cause_map["Mental Health"] = {img_class:".projectTwo-img-five", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionFive.png)"};      
+cause_map["Senior Health"] = {img_class:".projectTwo-img-one", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionOne.png)"};
+cause_map["Rehabilitation"] = {img_class:".projectTwo-img-two", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionTwo.png)"};
+cause_map["Fitness & Exercise"] = {img_class:".projectTwo-img-three", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionThree.png)"};
+cause_map["Special Needs"] = {img_class:".projectTwo-img-four", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionFour.png)"};
+cause_map["Mental Health"] = {img_class:".projectTwo-img-five", label:"#ProjectTwoLabel", background_image:"url(images/project-two-optionFive.png)"};
 
-cause_map["Food & Shelter"] = {img_class:".projectThree-img-one", label:"#ProjectThreeLabel", background_image:"url(images/project-three-one.png)"};      
-cause_map["Accessibility"] = {img_class:".projectThree-img-two", label:"#ProjectThreeLabel", background_image:"url(images/project-three-two.png)"};      
-cause_map["Community"] = {img_class:".projectThree-img-three", label:"#ProjectThreeLabel", background_image:"url(images/project-three-three.png)"};      
-cause_map["Skills & Employment"] = {img_class:".projectThree-img-four", label:"#ProjectThreeLabel", background_image:"url(images/project-three-four.png)"};      
-cause_map["Education"] = {img_class:".projectThree-img-five", label:"#ProjectThreeLabel", background_image:"url(images/project-three-five.png)"};      
+cause_map["Food & Shelter"] = {img_class:".projectThree-img-one", label:"#ProjectThreeLabel", background_image:"url(images/project-three-one.png)"};
+cause_map["Accessibility"] = {img_class:".projectThree-img-two", label:"#ProjectThreeLabel", background_image:"url(images/project-three-two.png)"};
+cause_map["Community"] = {img_class:".projectThree-img-three", label:"#ProjectThreeLabel", background_image:"url(images/project-three-three.png)"};
+cause_map["Skills & Employment"] = {img_class:".projectThree-img-four", label:"#ProjectThreeLabel", background_image:"url(images/project-three-four.png)"};
+cause_map["Education"] = {img_class:".projectThree-img-five", label:"#ProjectThreeLabel", background_image:"url(images/project-three-five.png)"};
 
 function addCause(causeIn){
   var tmp = Session.get('arrCause');
@@ -53,7 +53,7 @@ function resLabel() {
 	  $('#ProjectTwoLabel').html("Health");
 	  $('#ProjectThreeLabel').html("Human Rights");
    }
-   
+
 /* end cause functions */
 
 
@@ -94,9 +94,9 @@ function toggleInterest(interest){
 /*  end interest functions */
 
 var isFirstClick = true;
-  function fadeElements(){  
-//console.log("fade");  
-//console.log(isFirstClick);	
+  function fadeElements(){
+//console.log("fade");
+//console.log(isFirstClick);
 		  $('.project-nav-one').css("display", "block");
 		  $('.project-nav-project:first-of-type').fadeIn(700);
 		  $('.project-nav-project:nth-child(2)').fadeIn(1400);
@@ -112,9 +112,9 @@ var isFirstClick = true;
   }
 
 
-  
-   
-   
+
+
+
 
 Template.home.helpers({
   cause: function(){
@@ -144,38 +144,7 @@ Template.home.helpers({
 
 });
 
-Template.projectCard.helpers({
 
-  linkCompany: function() {
-		var user = Meteor.user();
-    return Companies.findOne({"_id":this.company_id});
-	}
-
-  ,  linkCompanyOwner: function() {
-    var cmpy = Companies.findOne({"_id":this.company_id});
-//	console.log(cmpy);
-    return UserProfiles.findOne({"loginEmail":cmpy.employees[0]});
-  	}
-
-    ,  getInterestPic: function() {
-
-      var projIcons = [];
-      var tmp = this.interactions;
-
-      if($.inArray("Donate Materials", tmp) != -1){ projIcons.push('/images/project-nav-one-img-one.png'); }
-      if($.inArray("Monetary Donations", tmp) != -1){ projIcons.push('/images/project-nav-one-img-two.png'); }
-      if($.inArray("Volunteering", tmp) != -1){ projIcons.push('/images/project-nav-one-img-three.png'); }
-      if($.inArray("Research Agreements", tmp) != -1){ projIcons.push('/images/project-nav-one-img-four.png'); }
-      if($.inArray("Product Collaboration", tmp) != -1){ projIcons.push('/images/project-nav-one-img-five.png'); }
-      if($.inArray("Product collaboration", tmp) != -1){ projIcons.push('/images/project-nav-one-img-five.png'); }
-      if($.inArray("Brand Collaboration", tmp) != -1){ projIcons.push('/images/project-nav-one-img-six.png'); }
-      if($.inArray("Lecturing Opportunites", tmp) != -1){ projIcons.push('/images/project-nav-one-img-seven.png'); }
-      // images/project-nav-one-img-five.png
-
-      return projIcons;
-}
-
-});
 
 
 // note uses event rather than render>$('document').ready as this element is dynamic (so not in dom at start)
@@ -190,7 +159,7 @@ Template.home.events({
    // console.log(interest);
 	toggleInterest(interest);
   }
-  
+
 });
 
 
@@ -217,7 +186,7 @@ $('document').ready(function(){
   });
   /* PROJECT NAVIGATION IMAGES END */
 
- 
+
 
   /* Causes actions */
    $("[cause]").on("click",function(){
@@ -225,7 +194,7 @@ $('document').ready(function(){
 	var cause = $(this).attr('cause');
 	toggleCause(cause);
    });
-  
+
    $("[cause]").on("mouseover",function(){
 	var me = $(this);
 	var cause = me.attr('cause');
@@ -234,13 +203,13 @@ $('document').ready(function(){
 		$(obj.label).html(cause);
 	}
    });
-  
+
    $("[cause]").on("mouseout",function(){
 	resLabel();
    });
-  
+
   /* Causes actions */
-  
+
   $("#close-button-nav").one('click',function(e){
   $(this).on("click",function(ev){
   	 ev.preventDefault();
@@ -248,14 +217,14 @@ $('document').ready(function(){
   });
   });
 
-  
+
   function hideCollaborateHelpPopup(){
 	$('.project-nav-msg-triangle').css("display", "none");
   }
-  
-  
 
-  
+
+
+
 
 
   //open popup

@@ -2,6 +2,7 @@
 Template.company2.rendered = function(){
   Meteor.subscribe('UserProfiles');
   var user = Meteor.user();
+
   Session.set('from_id','');
   Session.set('to_id','');
   Session.set('project_id','');
@@ -35,3 +36,27 @@ Template.companyHeader.helpers({
         return UserProfiles.findOne({"loginEmail":this.company.employees[0]});
       }
 });
+
+Template.companyAbout.helpers({
+
+  linkRepresentative: function(e) {
+    Meteor.subscribe('UserProfiles');
+        return UserProfiles.findOne({"loginEmail":e});
+      }
+});
+
+Template.companyContact.rendered = function(){}
+
+Template.companyContact.helpers({
+
+  linkRepresentative: function(e) {
+    Meteor.subscribe('UserProfiles');
+        return UserProfiles.findOne({"loginEmail":e});
+      }
+});
+
+Template.companyVideo.rendered = function(){
+  // var video = Popcorn.youtube('#youtube-video', 'http://www.youtube.com/embed/lSAKFkxq4jA');
+
+  var video = Popcorn.youtube('#youtube-video', this.data.company.youtubeLink);
+  ;}

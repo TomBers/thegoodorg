@@ -5,35 +5,14 @@ Router.configure({
 layoutTemplate: 'layout',
 templateNameConverter: "upperCamelCase",
 routeControllerNameConverter: "upperCamelCase"
-// layoutTemplate: "layout"
-
-// ,
-// notFoundTemplate: "notFound",
-// loadingTemplate: "loading"
 
 });
-
-// Router.onBeforeAction(function() {
-// 	// loading indicator here
-// 	if(!this.ready()) {
-// 		$("body").addClass("wait");
-// 	} else {
-// 		$("body").removeClass("wait");
-// 		this.next();
-// 	}
-// });
 
 Router.map(function() {
 
   this.route('/', {
    path: '/',
    template: 'splash'
-  //  waitOn:function(){
-  //   return Meteor.subscribe("Categories");
-  // },
-  //    data: function() {
-  //    return {category:Categories.find()};
-  //  }
  });
 
  this.route('/home', {
@@ -46,19 +25,6 @@ Router.map(function() {
     return {category:Categories.find()};
   }
 });
-
-
-// jd test
-
-// this.route("home", {path: "/", controller: "HomeController"});
-this.route("cool_page", {path: "/cool_page", controller: "CoolPageController"});
-this.route("cool_page.sub_page_a", {path: "/cool_page/sub_page_a", controller: "CoolPageSubPageAController"});
-this.route("cool_page.sub_page_b", {path: "/cool_page/sub_page_b", controller: "CoolPageSubPageBController"});
-this.route("cool_page.sub_page_b.sub_page_b_1", {path: "/cool_page/sub_page_b/sub_page_b_1", controller: "CoolPageSubPageBSubPageB1Controller"});
-this.route("cool_page.sub_page_b.sub_page_b_2", {path: "/cool_page/sub_page_b/sub_page_b_2", controller: "CoolPageSubPageBSubPageB2Controller"});
-
-// <> jd test
-
 
   this.route('/search', {path: '/search',template: 'search'});
 
@@ -83,7 +49,6 @@ this.route("cool_page.sub_page_b.sub_page_b_2", {path: "/cool_page/sub_page_b/su
 
 	this.route('/company2', {
     path: '/company2/:_id',
-    // template: 'company',
     template: 'company2',
     waitOn:function(){
     Meteor.subscribe("Companies");
@@ -125,8 +90,6 @@ this.route("cool_page.sub_page_b.sub_page_b_2", {path: "/cool_page/sub_page_b/su
 		}
 
 		var c = Companies.find({employees: {$in : [userEmail]}});
-		//console.log(c);
-
 
 		// format data to work with template:
 
@@ -146,9 +109,6 @@ this.route("cool_page.sub_page_b.sub_page_b_2", {path: "/cool_page/sub_page_b/su
       }
     });
 
-    // this.route('/callbacks',
-    //   {path: '/callbacks', template: 'displayCallbacks'
-    //   });
 
       this.route('/interest', {
         path: '/interest/',
@@ -166,46 +126,3 @@ this.route("cool_page.sub_page_b.sub_page_b_2", {path: "/cool_page/sub_page_b/su
       }
       });
     });
-
-//   this.route('/messages', {path: '/messages',template: 'messages', data:
-// 				function() {
-// 				var my_cids = Companies.find().map(function(p) { return p.cid }); //TODO
-//
-//
-// 					var from = Collaborations.find({corp_cid:{$in:my_cids}});
-// 					var to = Collaborations.find({startup_cid:{$in:my_cids}});
-//
-//
-// 					var fromData = [];
-// 					var count = 0;
-// 					from.forEach(function(row){
-// 						var newRow = {
-// 								collaboration:row,
-// 								project:Projects.findOne({_id:row.projectId}),
-// 								corp:Companies.findOne({cid:row.corp_cid}),
-// 								startup:Companies.findOne({cid:row.startup_cid})
-// 								};
-// 						fromData[count] = newRow;
-// 						count++;
-// 					});
-//
-//
-// 					var toData = [];
-// 					count = 0;
-// 					to.forEach(function(row){
-// 						toData[count] = {
-// 								collaboration:row,
-// 								project:Projects.findOne({_id:row.projectId}),
-// 								corp:Companies.findOne({cid:row.corp_cid}),
-// 								startup:Companies.findOne({cid:row.startup_cid})
-// 								};
-// 						count++;
-// 					});
-//
-// 					console.log(fromData);
-// 					console.log(toData);
-// 					return {from:fromData,to:toData}
-//
-//                 }
-// 			});
-//

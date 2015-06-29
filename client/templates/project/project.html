@@ -1,107 +1,235 @@
+
 <template name='project'>
-<body style="margin:60px 15px 0px 15px;">
 
+  <body style="margin:60px 15px 0px 15px;">
 
-  <div class="main_body-project">
-    <div class="container relative">
+    <!-- <div class="main_body-project">
 
-      <div class = 'row'>
-        <div class='col-sm-2'>
-          <div class="imgDiv">
+        <div class="container relative"> -->
 
-            <img src="{{linkCompany.logo}}" width='100'>
+            {{> projectHeader this}}
+            {{> projectPanelLeft this}}
+            {{> projectPanelCentre this}}
+            <!-- {{> projectPanelRight this}} -->
 
-          </div>
-        </div>
+        <!-- </div>
 
-        <div class='col-sm-10' style='text-align:left;margin-bottom:10px;'>
-          <!-- <hdr2>Project Title: {{title}} </hdr2><br>
-          <hdr1>Project Headline: {{hline}} </hdr1> -->
-        <hdr2>{{hline}} </hdr2>
-        </div>
+      </div> -->
 
-      </div>
-
-
-      <div class="left-side-panel" width='200px'>
-        <div style='text-align:left;'>
-        <!-- <div class="container" text-align='left'> -->
-
-        <br  /> <strong style='color:blue;'> End Date: {{formatDate endDate}}</strong>
-        <br  /> Start Date: <strong>{{formatDate startDate}}</strong>
-        <br  />Duration: <strong> {{duration}} </strong>
-        <br>
-          <br  /> Industry: <strong>{{linkCompany.industry}}</strong>
-          <div class="clear"> </div>
-          <br>
-        </div>
-
-        {{#each interactions}}
-
-        <div class="project-info">
-          <center>
-            <img src="{{getInterestPic this}}" align='middle'/>
-          </center>
-          <h7>{{this}}</h7>
-
-        </div>
-
-        {{/each}}
-
-      </div>
-
-
-      <div class="center-side-panel">
-        <div class="image"><img style="width:100%; height:auto;" src="{{img}}" height='auto'></div>
-
-        <div class="info-box">
-          <img src="/images/proj_headline.png" /><h2>Description</h2>
-          <span>{{desc}}</span>
-        </div>
-
-        <div class="info-box">
-          <img src="/images/proj_impact.png" /><h2>Impact</h2>
-          <div class="img"></div> <span>Environment : {{impact_e}} <br>Health : {{impact_h}}<br>Rights : {{impact_r}}</span>
-        </div>
-
-
-        <div class="info-box">
-          <img src="/images/proj_location.png" /><h2>Project Location</h2>
-          <div class="img"></div>
-          <!-- <div ><iframe width="600" height="337" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=51.5033630,-0.1276250&hl=es;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed" style="color:#0000FF;text-align:left" target="_blank">See map bigger</a></small></div> -->
-          <div ><iframe width="500" height="auto" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=51.5033630,-0.1276250&hl=es;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed" style="color:#0000FF;text-align:left" target="_blank"></a></small></div>
-          <div class="clear"></div>
-        </div>
-
-
-        <div class="info-box">
-          <img src="/images/proj_owner.png" /><h2>About {{linkCompany.name}}</h2>
-          <span>{{linkCompany.about}}</span>
-        </div>
-
-
-      </div>
-      <div class="right-side-panel">
-
-        <!-- <h5><strong><a href="/company2/{{ownerId}}">Explore {{linkCompany.name}}</a></strong></h5> -->
-
-          <a type="button" class="btn btn-info btn-md btn-block" id='moreInfo' href="/company2/{{linkCompany._id}}">Explore {{linkCompany.name}}</a>
-
-          <br>
-
-        {{> autoformModals}}
-
-        {{#afModal class="btn btn-default" collection="ContactReqs" operation="insert" omitFields="project,from,to" formId="makeContactReq"}}
-        Request Callback
-        {{/afModal}}
-      </div>
-
-    </div>
-  </div>
-
-  </body>
+    </body>
 
 </template>
+
+
+
+
+
+<template name="projectHeader">
+
+  <div  class="custombox" align=left style="min-height:120px;display:inline-block; left:0; ">
+
+    <div class="col-sm-2">
+
+    <div  style='width:200px;min-height:120px; margin:0 0 0 0; display:inline-block;float:left; text-align:left;'>
+
+    <span class="glyphicon glyphicon-calendar" style='padding:0 10px 0 10px;color:#E56717;'></span><txt100 style="color:grey;">Project Dates:</txt100>
+    <br>
+    <txt75> End   : <strong style='color:grey;'>{{formatDate endDate}}</strong></txt75><br>
+    <txt75> Start : <strong style='color:grey;'>{{formatDate startDate}}</strong></txt75><br>
+    <txt75> (Notes): <strong> {{duration}} </strong></txt75>
+    <br>
+
+    <div class="clear"> </div>
+
+    </div>
+    </div>
+
+  <div class="col-sm-8">
+
+  <div style='width:auto; max-width:900px; min-height:120px; margin:0 0 0 0; display:inline-block;float:left'>
+  <!-- <div style='max-width:1000px; min-height:120px; margin:0 0 0 50px; display:inline-block;float:left'> -->
+  <center>
+    <txt200>      {{hline}}    </txt200>
+  </center>
+  </div>
+
+  </div>
+
+<div class="col-sm-2">
+
+<br>
+  <a type="button" class="btn btn-info btn-md btn-block" id='moreInfo' href="/company2/{{linkCompany._id}}">Explore {{linkCompany.name}}</a>
+
+<br>
+
+    {{> autoformModals}}
+
+    {{#afModal class="btn btn-success btn-block" collection="ContactReqs" operation="insert" omitFields="project,from,to" formId="makeContactReq"}}
+      <!-- <span class="glyphicon glyphicon-star" aria-hidden="true"></span> -->
+      Request Callback
+    {{/afModal}}
+
+  </div>
+
+  </div>
+</template>
+
+
+
+<template name="projectPanelLeft">
+<!-- <div class="col-md-2" style='margin:5px 0 0 5px; max-width:200px; padding:0 0 0 0; ' align='left'> -->
+<div class="custombox" style='min-height:1500px; max-width:200px; padding:0 0 0 0; float:left; background-color:#f0f0f0' align='left'>
+
+
+  <div class="project-info" style=" max-height:200px; margin:1px 1px 1px 1px;" align='left'>
+    <span class="glyphicon glyphicon-heart-empty" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Interactions:</txt150>
+  </div>
+
+    {{#each interactions}}
+
+    <div class="project-info" style=" max-height:200px; margin:1px 1px 1px 1px;" align='middle'>
+    <!-- <div class="project-info" style="max-width:150px; max-height:200px; margin:1px 1px 1px 1px;" align='middle'> -->
+      <center>
+        <img src="{{getInterestPic this}}" align='middle'/>
+      </center>
+      <h7>{{this}}</h7>
+
+    </div>
+
+    {{/each}}
+
+    <div class="project-info" style=" max-height:200px; display:inline-block; margin:1px 1px 1px 1px;right:0;right:0">
+      <span class="glyphicon glyphicon-cog" style='padding:0 10px 0 10px;color:#E56717;'></span><txt100 style="vertical-align:50%;">Industry:</txt100><br>
+      <txt100>{{linkCompany.industry}}</txt100>
+    </div>
+
+  </div>
+
+</template>
+
+<template name="projectPanelCentre">
+  <!-- <div class="center-side-panel"> -->
+  <!-- <div class="col-md-7" style='border:1px solid blue;'>
+
+    <div class="image"><img style="width:100%; height:auto;" src="{{img}}" height='auto'></div>
+
+  </div> -->
+
+  <div class="custombox" style='float:left;max-width:910px; min-height:200px;'>
+    <!-- <span class="glyphicon glyphicon-picture" style='padding:0 10px 0 10px;color:#E56717;'></span><span><strong><sup> </sup></strong>	</span><br> -->
+
+    <img src="{{#if img}}{{img}}{{else}}{{linkCompany.logo}}{{/if}}" style="width:100%; height:auto;" />
+
+  </div>
+
+    <div class="custombox" style='float:left;width:450px;min-height:200px;'>
+      <span class="glyphicon glyphicon-tags" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Project Description:</txt150><br>
+      <txt100>{{desc}}</txt100>
+
+    </div>
+
+    <div class="custombox" style='float:left;width:450px;min-height:200px;'>
+      <span class="glyphicon glyphicon-map-marker" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Project Location:</txt150><br>
+      <div ><iframe width="100%" height="auto" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=51.5033630,-0.1276250&hl=es;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed" style="color:#0000FF;text-align:left" target="_blank"></a></small></div>
+		<div class="clear"></div>
+    </div>
+
+    <div class="custombox" style='float:left;width:450px;min-height:200px;'>
+      <span class="glyphicon glyphicon-flash" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Impact:</txt150><br>
+      <span>
+      <txt100>
+        Environment : {{impact_e}} <br>
+        Health : {{impact_h}}<br>
+        Rights : {{impact_r}}
+      </txt100>
+      </span>
+    </div>
+
+
+    <div class="custombox" style='float:left;width:450px;min-height:200px;'>
+      <span class="glyphicon glyphicon-info-sign" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">About {{linkCompany.name}}:</txt150><br>
+
+        <txt100>
+          {{linkCompany.about}}
+        </txt100>
+        <br>
+
+        <img height="50px" src="{{linkCompany.logo}}"/>
+    </div>
+
+
+</template>
+
+<template name="projectPanelRight">
+
+<div class="col-md-3" style='max-width:400px; padding:0 0 0 0; border:1px solid blue; ' align='middle'>
+
+  <br>
+
+  {{#with linkCompanyOwner this}}
+
+    <row>
+
+      <img class="profile-pic" src="{{user_photo}}" style='margin-bottom:2px; max-width:100px;float:left;' >
+<br>
+      <div class="col-sm-6" style='float:right;'>
+        {{name}} <br>
+        {{user_title}}
+      </div>
+
+    </row>
+
+  {{/with}}
+
+</div>
+
+<br>
+<br>
+
+<div class="col-md-3" style='max-width:400px; padding:0 0 0 0; border:1px solid blue; ' align='middle'>
+
+<a type="button" class="btn btn-info btn-md btn-block" id='moreInfo' href="/company2/{{linkCompany._id}}">Explore {{linkCompany.name}}</a>
+</div>
+
+
+<!-- <div >
+
+  {{> autoformModals}}
+
+  {{#afModal class="btn btn-default" collection="ContactReqs" operation="insert" omitFields="project,from,to" formId="makeContactReq"}}
+    Request Callback
+  {{/afModal}}
+
+
+
+<br>
+<br>
+
+<div class="col-md-2" style='max-width:200px; border:1px solid blue;'>
+  <div class="imgDiv">
+    <img src="{{linkCompany.logo}}" width='100'>
+  </div>
+
+<br>
+
+</div>
+
+
+</div> -->
+
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+</template>
+
 
 
 
@@ -113,7 +241,7 @@
         <div style="width:430px;height:50px;">
 
         <row padding-top='5px' padding-bottom='5px'>
-            {{#with linkCompanyOwner}}
+            {{#with linkCompanyOwner this}}
                 <img class="profile-pic" src="{{user_photo}}" style='margin-bottom:2px' >
 
               <div class="col-sm-6">
@@ -124,7 +252,7 @@
             {{/with}}
 
                 <div>
-                  {{#each getInterestPic}}
+                  {{#each getInterestPics this}}
                   <img class="project-icon" src="{{this}}" align='middle'/>
                   {{/each}}
               </div>
@@ -179,38 +307,4 @@
       </div>
 
 
-
   </template>
-
-
-
-
-<!-- <template name="projectCardOld">
-
-  <div class="profile-project-one left">
-      <img class="absolute-project-logo" src="images/Product Collaboraiton.png" />
-      <div class="project-image-big"></div>
-    <h5>{{title}}</h5>
-      <img src="{{img}}" border="0" class="absolute-project-image" />
-        <span>{{hline}}</span>
-        <span><img class="icon" src="/images/icons/icon_E-impact.png"/>  {{impact_e}} <img class="icon" src="/images/icons/icon-R-impact.png" />{{impact_r}} <a class="learn-more-button" href="/project/{{_id}}"> Learn More</a></span>
-      <div class="location">{{location}}</div>
-  </div>
-</template> -->
-
-
-
-<!-- <template name="tmpfrontPageProject">
-  <div class="profile-project-one left">
-    {{#with linkCompany}}
-      <img class="absolute-project-logo" src="{{logo}}" />
-      {{/with}}
-      <div class="project-image-big"></div>
-      <h5>{{title}}</h5>
-      <img src="{{img}}" border="0" class="absolute-project-image" /><span>{{hline}}
-      </span>
-      <span><img class="icon" src="images/image.png"  />0.2 tCO2 <img class="icon" src="images/image.png" />22 helped <a href="/project/{{_id}}" class="btn btn-default">Learn More</a></span>
-      <div class="location">London</div>
-      </div>
-
-</template> -->

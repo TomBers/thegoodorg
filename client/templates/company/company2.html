@@ -4,21 +4,17 @@
 
 	{{> companyHeader}}
 	{{> companyAbout}}
+
+	{{> companyPhotos}}
+	{{> companyVideo}}
+
+	{{> companyLocation}}
+	<!-- {{> companyContact}} -->
 	{{> companyNews}}
 
-
-		<div class="main-projects">
-			<!-- <div class="container relative"> -->
-
-				{{#each projects}}
-				{{> projectCard}}
-				{{/each}}
-
-			<!-- </div> -->
-		</div>
-
-		<div class="clear"></div>
-
+	<br>
+	<hr>
+	{{> companyProjects}}
 
 	</body>
 
@@ -27,39 +23,127 @@
 
 <template name="companyHeader">
 
-	<div class="custombox">
+	<!-- <div class="custombox" style="height:250px;"> -->
+	<div class="custombox" style="display:inline-block; min-height:120px">
+
+		<div style='width:200px; display:inline-block;float:left; align:middle'>
+
+			<center>
+
+					<img src="{{company.logo}}" align=left style='height:100%; width:100%;'>
+					<!-- width ='150px' height='auto' align='middle'/> -->
+
+			</center>
+
+
+			</div>
+
+			<div style='max-width:800px; margin:0 0 0 50px; display:inline-block;float:left'>
+
+				<txt200>{{company.name}}</txt200> <br>
+				<txt100><i>{{company.hline}}</i></txt100>
+			</div>
+
+		</div>
+
+</template>
+
+
+<template name="companyContact">
+
+	<div class="custombox" style='float:left;width:450px;min-height:200px;'>
 
 		<div class="container">
 
-			<div class="col-sm-2">
-				<div class="imgDiv">
+			<span class="glyphicon glyphicon-user" style='padding:0 10px 0 10px;color:#E56717;'></span><span><strong><sup> Team: </sup></strong>	</span><br>
 
-					<img src="{{company.logo}}" width='100px'>
-					<!-- width ='150px' height='auto' align='middle'/> -->
+			{{#each company.employees}}
+			{{#with linkRepresentative this}}
 
-				</div>
-
+			<div>
+				<img src="{{user_photo}}" height="50px"  align='left'/>
 			</div>
 
-			<div class="col-sm-6" text-align='left'>
-				<hdr2>{{company.name}}</hdr2> <br>
-				<hdr1>{{company.hline}}</hdr1>
-			</div>
-
-
-			{{#with linkRepresentative}}
-			<div class="col-sm-1">
-
-				<img src="{{user_photo}}" height="50px"  align='right'/>
-
-			</div>
-			<div class="col-sm-3" text-align='left'>
-
+			<div text-align='left'>
 				<strong>{{name}}</strong><br>
 				{{user_title}}
+			</div>
+
+			{{/with}}
+			{{/each}}
+
+		</div>
+
+	</div>
+
+</template>
+
+
+
+
+
+<template name="companyProjects">
+
+	<div class="main-projects" >
+
+		<!-- Our Projects : <br> -->
+		<!-- <div class="container relative"> -->
+
+			{{#each projects}}
+			{{> projectCard}}
+			{{/each}}
+
+		<!-- </div> -->
+	</div>
+
+	<div class="clear"></div>
+
+</template>
+
+
+
+
+<template name="companyAbout">
+
+	<div class="custombox" style='float:left;width:910px; min-height:200px;'>
+
+		<div style='width:600px; display:inline-block;float:left'>
+
+				<span class="glyphicon glyphicon-info-sign" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">About Us:</txt150><br>
+					{{company.about}}<br>
+				<h6><a href="{{company.url}}">More on our website...</a></h6>
+
+		</div>
+
+		<div style='width:290px;display:inline-block;float:right;'>
+
+				<span class="glyphicon glyphicon-user" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Team:</txt150>
+
+				{{#each company.employees}}
+				{{#with linkRepresentative this}}
+
+				<div style='margin:5px 0 5px 0;'>
+					<img src="{{user_photo}}" height="50px"  align='left'> 		<strong>{{name}}</strong><br> {{user_title}}
+				</div>
+
+				{{/with}}
+				{{/each}}
 
 			</div>
-			{{/with}}
+
+
+	</div>
+
+</template>
+
+<template name="companyPhotos">
+
+	<div class="custombox" style='float:left;width:450px;min-height:200px;'>
+		<span class="glyphicon glyphicon-picture" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Photo(s):</txt150>
+
+		<div class="container">
+
+		<img src="{{#if company.img}}{{company.img}}{{else}}{{company.logo}}{{/if}}" align="left" style='height:100%;width:100%;'/>
 
 		</div>
 	</div>
@@ -67,28 +151,28 @@
 </template>
 
 
+<template name="companyVideo">
 
-<template name="companyAbout">
+	<div class="custombox" style='float:left;width:450px;min-height:200px;'>
 
-	<div class="custombox" min-height='200px'>
+		<!-- <div class="container"> -->
+			<span class="glyphicon glyphicon-facetime-video" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Video:</txt150>
+			<div id='youtube-video' frameborder='0' controls='false' style='margin:0 5px 0 5px;height:200px;width:100%'></div>
+		<!-- </div> -->
 
-		<div class="container">
+	</div>
 
-			<div class="col-sm-8">
+</template>
 
-				<img src="/images/proj_headline.png" height="20px" width="auto" align="left"/><text1 align="left"><sup><strong>About Us:</strong></sup> </text1><br>
-				<span>{{company.about}}</span><br>
-				<h6><a href="{{company.url}}">More on our website...</a></h6>
 
-				<img src="{{#if company.img}}{{company.img}}{{else}}{{company.logo}}{{/if}}" height="100px" width="auto" align="left"/>
+<template name="companyLocation">
 
-			</div>
+	<div class="custombox" style='float:left;width:450px;min-height:200px'>
 
-			<div class="col-sm-4">
-				<iframe width="314" height="211" src={{company.youtubeLink}} frameborder="0" allowfullscreen ></iframe>
-			</div>
+			<span class="glyphicon glyphicon-map-marker" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Where we are:</txt150>
+			<div ><iframe width="100%" height="auto" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=51.5033630,-0.1276250&hl=es;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed" style="color:#0000FF;text-align:left" target="_blank"></a></small></div>
+			<div class="clear"></div>
 
-		</div>
 	</div>
 
 </template>
@@ -96,28 +180,15 @@
 
 
 <template name="companyNews">
-	<div class="custombox">
+	<div class="custombox" style="float:left;width:450px;min-height:200px;">
 
-		<div class="container">
+		<span class="glyphicon glyphicon-bullhorn" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Our News:</txt150><br>
 
-			<div class="col-sm-5">
-				<img src="/images/proj_location.png" height="20px" width="auto" align="left"/><sup><strong>Where we are: </strong></sup><br>
-				<div class="img"></div>
-				<div ><iframe width="380" height="auto" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=51.5033630,-0.1276250&hl=es;z=14&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?q='+data.lat+','+data.lon+'&hl=es;z=14&amp;output=embed" style="color:#0000FF;text-align:left" target="_blank"></a></small></div>
-				<div class="clear"></div>
-			</div>
-
-			<div class="col-sm-1"></div>
-
-			<div class="col-sm-6">
-				<br>
 				<img class="image-30x30" src="/images/profiles/news.png"/>
 				<span>#1 news: {{company.news}}</span>				<br>
 				<img class="image-30x30" src="/images/profiles/twitter.png" />
 				<span>#2 news: {{company.news}}</span>
-			</div>
 
-		</div>
 	</div>
 
 </template>

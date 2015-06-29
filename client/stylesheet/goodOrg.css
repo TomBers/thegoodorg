@@ -5,6 +5,7 @@ p{
   font-size:2.5em;
 }
 
+
 /*SEARCH*/
 
 
@@ -168,10 +169,12 @@ p{
   .main_body-project_custom h1 { text-align:left; font-weight:300; }
   .main_body-project_custom h3 { text-align:left; }
 
-  .custombox { width:100%; background-color:#fff; font-family:Lato; min-height: 50px;
-    padding-bottom:5px;
-    padding-top:5px;
-    margin:0;margin-top:5px;margin-bottom:5px;}
+  .custombox { width:100%; background-color:#fff; font-family:Lato; min-height: 50px; display:block;
+    /*padding-bottom:5px; padding-top:5px;*/
+    padding: 5px 5px 5px 5px;    margin:5px 5px 5px 5px;}
+
+  .custombox .std {width:430; min-height:200; width:100%;
+      background-color:#fff; font-family:Lato; padding-bottom:5px 0 5px 0;    margin:5px 0 5px 0;}
 
   .customboxHeader { width:100%; background-color:#fff; margin-top:5px; padding-bottom:5px; font-family:Lato; margin:5px;min-height:90px;}
 
@@ -186,18 +189,33 @@ p{
   .main_body-company h3 { text-align:left; font-family: Lato;}
 
 
-  hdr1{font-size:1em;font-family: Lato;}
-  hdr2{font-size:2em;font-family: Lato;}
-  hdr3{font-size:3em;font-family: Lato;}
-  hdr4{font-size:4em;font-family: Lato;}
+  txt25{font-size:0.25em;font-family: Lato;}
+  txt50{font-size:0.5em;font-family: Lato;}
+  txt75{font-size:0.75em;font-family: Lato;}
+  txt100{font-size:1em;font-family: Lato;color:grey;}
+  txt200{font-size:2em;font-family: Lato;}
+  txt300{font-size:3em;font-family: Lato;}
+  txt400{font-size:4em;font-family: Lato;}
 
-  text10{font-size:10px;font-family: Lato}
-  text12{font-size:12px;font-family: Lato}
-  text14{font-size:14px;font-family: Lato}
-  text16{font-size:16px;font-family: Lato}
-  text18{font-size:18px;font-family: Lato}
-  text20{font-size:20px;font-family: Lato}
+  txt10px{font-size:10px;font-family: Lato}
+  txt12px{font-size:12px;font-family: Lato}
+  txt14px{font-size:14px;font-family: Lato}
+  txt16px{font-size:16px;font-family: Lato}
+  txt18px{font-size:18px;font-family: Lato}
+  txt20px{font-size:20px;font-family: Lato}
 
+  .glyphicon.glyphicon-tags { font-size: 25px;  }
+  /*.glyphicon.glyphicon-calendar { font-size: 25px;  }*/
+  .glyphicon.glyphicon-flash { font-size: 25px;  }
+  .glyphicon.glyphicon-heart-empty { font-size: 25px;  }
+  .glyphicon.glyphicon-map-marker { font-size: 25px;  }
+  .glyphicon.glyphicon-cog { font-size: 25px;  }
+  .glyphicon.glyphicon-info-sign { font-size: 25px;  }
+  .glyphicon.glyphicon-bullhorn { font-size: 25px;  }
+  .glyphicon.glyphicon-user { font-size: 25px;  }
+  .glyphicon.glyphicon-picture { font-size: 25px;  }
+  .glyphicon.glyphicon-facetime-video { font-size: 25px;  }
+  .glyphicon.glyphicon-eye-open { font-size: 25px;  }
 
   #imgDiv {height:80px;width:140px;}
   #imgDiv img {max-width:100%; max-height:100%;margin:auto;display:block;}
