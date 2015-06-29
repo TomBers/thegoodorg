@@ -114,12 +114,15 @@
 
         {{> searchResult2}}
 
-
+{{#if visibleProjects.count}}
         <!-- <div class="container relative"> -->
           {{#each visibleProjects}}
           {{> projectCard}}
           {{/each}}
         <!-- </div> -->
+{{else}}
+<div class='no-projects-msg'> There are currently no projects matching those requirements.</div>
+{{/if}}
 
       </div>
 
