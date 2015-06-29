@@ -62,13 +62,17 @@
 
 <br>
 
+	  {{#if user}}
+	  
     {{> autoformModals}}
 
     {{#afModal class="btn btn-success btn-block" collection="ContactReqs" operation="insert" omitFields="project,from,to" formId="makeContactReq"}}
       <!-- <span class="glyphicon glyphicon-star" aria-hidden="true"></span> -->
       Request Callback
     {{/afModal}}
-
+	{{else}}
+	<div class="btn btn-success btn-block">Please Sign in to Request Callback</div>
+	 {{/if}}
   </div>
 
   </div>

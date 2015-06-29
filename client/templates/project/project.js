@@ -92,6 +92,11 @@ Template.projectHeader.helpers({
 		var user = Meteor.user();
 		Meteor.subscribe('Companies');
     return Companies.findOne({"_id":this.company_id});
+	},
+	
+	user: function(){
+	var user = Meteor.user();
+    return user;
 	}
 });
 
