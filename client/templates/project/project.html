@@ -63,7 +63,7 @@
 <br>
 
 	  {{#if user}}
-	  
+
     {{> autoformModals}}
 
     {{#afModal class="btn btn-success btn-block" collection="ContactReqs" operation="insert" omitFields="project,from,to" formId="makeContactReq"}}
@@ -71,7 +71,7 @@
       Request Callback
     {{/afModal}}
 	{{else}}
-	<div class="btn btn-success btn-block">Please Sign in to Request Callback</div>
+	<div class="btn btn-success btn-block"><txt75>Please Sign in to Request Callback</txt75></div>
 	 {{/if}}
   </div>
 
@@ -136,7 +136,7 @@
 
     <div class="custombox" style='float:left;width:450px;min-height:200px;'>
       <span class="glyphicon glyphicon-map-marker" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Project Location:</txt150><br>
-      
+
 			{{#if lonLat}}
 				{{#with lonLat this}}
 				<div ><iframe width="100%" height="auto" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q={{this.lat}},{{this.lng}}&hl=es;z=14&amp;output=embed"></iframe></div>
@@ -148,7 +148,7 @@
 				{{company.loc}}
 				</div>
 			{{/if}}
-	  
+
 		<div class="clear"></div>
     </div>
 
