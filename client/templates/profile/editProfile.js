@@ -5,7 +5,6 @@ Template.editProfile.rendered = function(){
 
 	$('document').ready(function(){
 	
-	  initGrayOut();
 		
 		//looks shit
 	//	 $('[data-toggle="tooltip"]').tooltip(); 
@@ -25,16 +24,3 @@ var postHooksCompneyInsert = {
 
 
 AutoForm.addHooks('makeCompney', postHooksCompneyInsert);
-
-
-var initGrayOut = function(){
-	//apply opacity to this div
-		$("div .canDarkOut").mouseover(function(e){
-			$(e.currentTarget).addClass("darkOut");
-		});
-		
-		// aggressively remove opacity on mouse out on ALL divs
-		$("div .canDarkOut").mouseout(function(){
-			$("div .canDarkOut").removeClass("darkOut");
-		});
-}

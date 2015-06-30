@@ -6,26 +6,6 @@ Template.editCompany.rendered = function(){
 
 	Session.set('company_id',this.data.company._id); //hacky
 	$('document').ready(function(){
-	
-	  initGrayOut();
-		
-		
-		/*	
-		$("div .editProject").click(function(e){
-			var id = e.currentTarget.getAttribute('projectID');
-			console.log(id);
-			Session.set("editingProject",id);	
-			
-		});
-
-	
-		$("div .editBackground").click(function(e){
-			console.log("editBackground click");
-		});
-*/		
-		
-		//looks shit
-	//	 $('[data-toggle="tooltip"]').tooltip(); 
 	});
 };
 
@@ -63,24 +43,10 @@ var postHooksProjectInsert = {
     }
   },
   onSuccess: function(formType, result) {
-  
-	console.log("form called");
-	initGrayOut();
+
   },
 }
 
-
-var initGrayOut = function(){
-	//apply opacity to this div
-		$("div .canDarkOut").mouseover(function(e){
-			$(e.currentTarget).addClass("darkOut");
-		});
-		
-		// aggressively remove opacity on mouse out on ALL divs
-		$("div .canDarkOut").mouseout(function(){
-			$("div .canDarkOut").removeClass("darkOut");
-		});
-}
 
 
 AutoForm.addHooks('makeProject', postHooksProjectInsert);

@@ -53,14 +53,14 @@ p{
   position: absolute !important;
 }
 
-.darkOut{
+.darkOut-OnOver:hover{
     filter:alpha(opacity=50); /* IE */
     opacity: 0.5; /* Safari, Opera */
     -moz-opacity:0.50; /* FireFox */
     z-index: 100;
 }
 
-.editCompany .row, .editProject  .project-card{
+.editCompany , .editProject  .project-card{
 	color:black;
 	text-align:left;
 }
@@ -69,7 +69,11 @@ p{
 	transform: scale(1.2);
 }
 
-
+.my_row::before, .my_row::after {
+    content: " ";
+    display: table;
+	clear: both;
+}
 
 
 .bodyContent{

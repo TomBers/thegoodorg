@@ -10,6 +10,7 @@
 <body style="margin:60px 15px 0px 15px;">
 
 {{#if isOwned}}
+<div class="editCompany">
 	<div class="row">
 		<h3><div class="col-md-6" align="left">Company details:</div></h3>
 	</div>
@@ -19,7 +20,7 @@
 		{{> quickForm collection="Companies" id="editcmpny" type="update" doc=this.company omitFields="cid,employees" autosave=true autosaveOnKeyup=true}}
 		</div>
 		<div class="col-md-8">
-			<div id="view_company" disabled="true" class="canDarkOut" data-toggle="tooltip" title="Edit me on the left.">
+			<div id="view_company" disabled="true" class="editCompany darkOut-OnOver" data-toggle="tooltip" title="Edit me on the left.">
         {{> companyHeader}}
       	{{> companyAbout}}
 
@@ -33,6 +34,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 
 	<div class="row projectEditor">
 	<h3><div class="col-md-6" align="left">Company projects:  </div>
@@ -50,7 +52,7 @@
 				<div class="container relative">
 					{{#each projects}}
 						{{#afModal collection="Projects" doc=_id operation="update" omitFields="company_id" formId="updateProject" title="Edit project"}}
-							<div disabled="true" class="canDarkOut editProject" data-toggle="tooltip" title="Click to edit" projectID="{{_id}}">
+							<div disabled="true" class="darkOut-OnOver editProject" data-toggle="tooltip" title="Click to edit" projectID="{{_id}}">
 								{{> projectCard}}
 							</div>
 						{{/afModal}}

@@ -2,11 +2,11 @@
 	<body style="margin:60px 15px 0px 15px;">
 
 {{> autoformModals}}
-<div class="row">
+<div class="my_row">
 <h3><div class="col-md-6" align="left">My Profile:</div></h3>
 </div>
 <br>
-<div class="row" style="text-align:left">
+<div class="my_row" style="text-align:left">
 <div class="col-md-6">
 {{> quickForm collection="UserProfiles" id="UserProfiles" type="update" doc=this.user omitFields="loginEmail,isAdmin" autosave=true autosaveOnKeyup=true}}
 </div>
@@ -23,7 +23,7 @@
  </div>
  </div>
 <br>
-<div class="row editCompaniesHeader">
+<div class="my_row editCompaniesHeader">
 <h3><div class="col-md-6" align="left">Manage My Companies:  </div>
 <div class="col-md-6" align="right">
 
@@ -36,8 +36,8 @@
 <br>
   {{#each companies}}
 
-	<a href='/editCompany/{{company._id}}' class="canDarkOut editCompany" data-toggle="tooltip" title="Click to edit">
-	<div class="row custombox">
+	<a href='/editCompany/{{company._id}}' class="darkOut-OnOver editCompany" data-toggle="tooltip" title="Click to edit">
+	<div class="my_row custombox">
 		<div class="col-md-10">
 			{{> companyHeader}}
 		</div>
