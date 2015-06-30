@@ -43,6 +43,11 @@ p{
   height: 15px;
 }
 
+.causeLabel:hover{
+	background-color:#FCFCFC;
+	cursor:pointer;
+}
+
 /* really hacky way to bet autoform working*/
 .projectEditor .modal-content .modal-header .modal-title,
 .projectEditor .modal-title .tooltip

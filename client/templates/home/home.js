@@ -42,9 +42,12 @@ var obj = cause_map[causeIn];
 		if(addCause(causeIn)){
 			$(obj.img_class).css("background-image", obj.background_image);
 			fadeElements();
+			 cause_toggle_status[obj.label].count +=1;
 	    }else{
 			$(obj.img_class).css("background-image", "");
+			cause_toggle_status[obj.label].count -=1;
 	    }
+		updateToggleLabel(obj.label);
     }
 }
 
@@ -54,6 +57,59 @@ function resLabel() {
 	  $('#ProjectThreeLabel').html("Human Rights");
    }
 
+
+ //true  = all selected
+var cause_toggle_status = {
+	"#ProjectOneLabel":{count:0,status:false},
+	"#ProjectTwoLabel":{count:0,status:false},
+	"#ProjectThreeLabel":{count:0,status:false}
+ };
+ 
+function toggleAllCause(causeIn){
+	var currentStatus = cause_toggle_status[causeIn].status;
+	currentStatus = !currentStatus;
+	console.log(currentStatus);
+	 var tmp = Session.get('arrCause');
+	var x;
+	for (x in cause_map){
+		var obj = cause_map[x];
+		if(obj.label==causeIn){
+			  if ($.inArray(x, tmp) != -1) {
+				if(!currentStatus){
+					//remove
+					 tmp = _.without(tmp, x);
+					 $(obj.img_class).css("background-image", "");
+					 cause_toggle_status[causeIn].count -=1;
+				}
+			  }
+			  else{
+				if(currentStatus){
+					//add
+					 tmp.push(x);
+					$(obj.img_class).css("background-image", obj.background_image);
+					 cause_toggle_status[causeIn].count +=1;
+				}
+			  }
+		}
+	}
+	fadeElements();
+	updateToggleLabel(causeIn);
+	Session.set('arrCause',tmp);
+}
+ 
+
+function updateToggleLabel(labelIn){
+		if(cause_toggle_status[labelIn].count==5){
+			$(labelIn).attr('title','Click to deselect all');
+			cause_toggle_status[labelIn].status=true;
+		}
+		
+		if(cause_toggle_status[labelIn].count==0){
+			$(labelIn).attr('title','Click to select all');
+			cause_toggle_status[labelIn].status=false;
+		}
+}
+ 
 /* end cause functions */
 
 
@@ -170,7 +226,12 @@ Template.home.events({
   	//$('.project-nav-msg-triangle').attr("style", "display: none !important");
 	hideCollaborateHelpPopup();
   },
-
+  
+  "click .causeLabel": function(event, template){
+  
+	var cause = '#'+event.target.id;
+	toggleAllCause(cause);
+  },
 });
 
 
