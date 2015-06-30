@@ -10,6 +10,30 @@ Template.editCompany.rendered = function(){
 };
 
 
+function mapUpdate(){
+console.log("exe");
+var loc = $('.editCompany input[name="loc"]').val();
+console.log(loc);
+	Meteor.call("getLatLngfromAddress", loc, function(error, result){
+			   if(error){
+			    console.log("error");
+				Session.set('LatLng', false);
+				console.log(error);
+			   }
+
+			   Session.set('LatLng', result);
+		});
+}
+
+Template.editCompany.events = {
+
+  'keyup .editCompany input[name="loc"]': _.throttle(function(e, template) {
+    console.log("call");
+	//setTimeout(function(){},2000);
+		mapUpdate();
+  }, 3000, {leading: false, trailing: true})
+}
+
 Template.editCompany.helpers({
 /*
 	editingProject: function(){

@@ -108,13 +108,36 @@ Template.projectPanelLeft.helpers({
 	}
 });
 
+
+
+
+Template.projectPanelCentre.rendered = function(){
+	console.log("error");
+	Session.set('LatLng', false);
+	Meteor.call("getLatLngfromAddress", this.data.postcode, function(error, result){
+				   if(error){
+					console.log("error");
+					Session.set('LatLng', false);
+					console.log(error);
+				   }
+
+				   Session.set('LatLng', result);
+			});
+}
+
 Template.projectPanelCentre.helpers({
 	linkCompany: function() {
 		var user = Meteor.user();
 		Meteor.subscribe('Companies');
     return Companies.findOne({"_id":this.company_id});
-	}
+	},
+	
+	lonLat: function(e) {
+		return Session.get('LatLng')
+	},
 });
+
+
 
 Template.projectPanelRight.helpers({
 

@@ -60,3 +60,25 @@ Template.companyVideo.rendered = function(){
 
   var video = Popcorn.youtube('#youtube-video', this.data.company.youtubeLink);
   ;}
+
+  
+Template.companyLocation.rendered = function(){
+	Session.set('LatLng', false);
+	Meteor.call("getLatLngfromAddress", this.data.company.loc, function(error, result){
+				   if(error){
+					console.log("error");
+					Session.set('LatLng', false);
+					console.log(error);
+				   }
+
+				   Session.set('LatLng', result);
+			});
+}
+  
+Template.companyLocation.helpers({
+
+	lonLat: function(e) {
+		return Session.get('LatLng')
+	},
+	
+});
