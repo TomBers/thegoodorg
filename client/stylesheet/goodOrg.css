@@ -69,6 +69,12 @@ p{
 	padding-bottom: 5px;
 }
 
+
+.industry_div{
+	padding-left: 15px;
+	text-transform: capitalize;
+}
+
 .remove-filter:hover{
 	transform: scale(1.2);
 }

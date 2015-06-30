@@ -104,7 +104,9 @@
 
     <div class="project-info" style=" max-height:200px; display:inline-block; margin:1px 1px 1px 1px;right:0;right:0">
       <span class="glyphicon glyphicon-cog" style='padding:0 10px 0 10px;color:#E56717;'></span><txt100 style="vertical-align:50%;">Industry:</txt100><br>
-      <txt100>{{linkCompany.industry}}</txt100>
+	   {{#each linkCompany.industry}}
+      <div class="my_row industry_div"><txt100>{{this}}</txt100></div>
+	   {{/each}}
     </div>
 
   </div>
