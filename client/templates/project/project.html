@@ -258,17 +258,21 @@
 
         <div class='goals'>
 
-        {{#if impact_h}}
-          <div class='my_row goal'><div class="col-sm-2"><img class="icon" src="/images/icons/icon-H-impact.png" /></div><div class="blue col-sm-10 goal-fadeout" >{{impact_h}}</div></div>
-        {{/if}}
+        
 
         {{#if impact_e}}
           <div class='my_row goal'><div class="col-sm-2"><img class="icon" src="/images/icons/icon_E-impact.png" /></div><div class="green col-sm-10 goal-fadeout">{{impact_e}}</div></div>
-        {{/if}}
+        {{else}}
+			{{#if impact_h}}
+			  <div class='my_row goal'><div class="col-sm-2"><img class="icon" src="/images/icons/icon-H-impact.png" /></div><div class="blue col-sm-10 goal-fadeout" >{{impact_h}}</div></div>
+			{{else}}
+				{{#if impact_r}}
+				  <div class='my_row goal'><div class="col-sm-2"><img class="icon" src="/images/icons/icon-R-impact.png"/></div><div class="yellow col-sm-10 goal-fadeout">{{impact_r}}</div></div>
+				{{/if}}
+			{{/if}}
+		{{/if}}
 
-        {{#if impact_r}}
-          <div class='my_row goal'><div class="col-sm-2"><img class="icon" src="/images/icons/icon-R-impact.png"/></div><div class="yellow col-sm-10 goal-fadeout">{{impact_r}}</div></div>
-        {{/if}}
+        
 
         </div>
 
