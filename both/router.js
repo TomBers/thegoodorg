@@ -77,6 +77,7 @@ Router.map(function() {
 	this.route('/editProfile',
     {path: '/editProfile', template: 'editProfile',
     waitOn:function(){
+	Meteor.subscribe("Projects");
 	Meteor.subscribe("Companies");
       return Meteor.subscribe("UserProfiles");
     },
