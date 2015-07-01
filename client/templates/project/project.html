@@ -209,43 +209,8 @@
 <a type="button" class="btn btn-info btn-md btn-block" id='moreInfo' href="/company2/{{linkCompany._id}}">Explore {{linkCompany.name}}</a>
 </div>
 
-
-<!-- <div >
-
-  {{> autoformModals}}
-
-  {{#afModal class="btn btn-default" collection="ContactReqs" operation="insert" omitFields="project,from,to" formId="makeContactReq"}}
-    Request Callback
-  {{/afModal}}
-
-
-
 <br>
 <br>
-
-<div class="col-md-2" style='max-width:200px; border:1px solid blue;'>
-  <div class="imgDiv">
-    <img src="{{linkCompany.logo}}" width='100'>
-  </div>
-
-<br>
-
-</div>
-
-
-</div> -->
-
-<br>
-<br>
-
-
-
-
-
-
-
-
-
 </template>
 
 
@@ -291,21 +256,21 @@
           </div>
 
 
-        <span class='goals' style="height:20px">
+        <div class='goals'>
 
         {{#if impact_h}}
-          <img class="icon" src="/images/icons/icon-H-impact.png" /><span class="blue" >{{impact_h}}</span>
+          <div class='my_row goal'><div class="col-sm-2"><img class="icon" src="/images/icons/icon-H-impact.png" /></div><div class="blue col-sm-10" >{{impact_h}}</div></div>
         {{/if}}
 
         {{#if impact_e}}
-          <img class="icon" src="/images/icons/icon_E-impact.png"  /><span class="green">{{impact_e}}</span>
+          <div class='my_row goal'><div class="col-sm-2"><img class="icon" src="/images/icons/icon_E-impact.png"  /></div><div class="green col-sm-10">{{impact_e}}</div></div>
         {{/if}}
 
         {{#if impact_r}}
-          <img class="icon" src="/images/icons/icon-R-impact.png" /><span class="yellow">{{impact_r}}</span>
+          <div class='my_row goal'><div class="col-sm-2"><img class="icon" src="/images/icons/icon-R-impact.png" /></div><div class="yellow col-sm-10">{{impact_r}}</div></div>
         {{/if}}
 
-        </span>
+        </div>
 
         <div class="clear">      </div>
 

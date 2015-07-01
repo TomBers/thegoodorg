@@ -153,11 +153,23 @@ p{
   .project-card .learn-more-button { border:1px solid #000; background:#f2f2f2; float:right; color:#000; font-size:12px; padding:2px 8px; margin-right:10px;}
   .project-card .learn-more-button:hover { background:#ccc; }
 
-  .project-card span.goals{ display:block; width:100%; margin:0 5px 0 5px;  }
-  .project-card span.green { float:left; display:inline-block; color:green;  margin:0;}
-  .project-card span.yellow { float:left; display:inline-block; color:#ccd300; margin:0; }
-  .project-card span.blue { float:left; display:inline-block; color:#4682B4; margin:0; }
+  .project-card div.goals{ display:block; width:100%; margin:0 5px 0 5px;  }
+  .project-card div.green { float:left; display:inline-block; color:green;  margin:0;}
+  .project-card div.yellow { float:left; display:inline-block; color:#ccd300; margin:0; }
+  .project-card div.blue { float:left; display:inline-block; color:#4682B4; margin:0; }
 
+  
+  .goal .icon {
+	 width: 40px;
+	 height:40px;
+  }
+  .goal {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	font-size:1.2em;
+  }
+  
+  
   .project-card div.fadeout{
     width: 430px;
     padding: 5px 5px 0 5px;
