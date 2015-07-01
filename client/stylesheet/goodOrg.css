@@ -158,16 +158,20 @@ p{
   .project-card div.yellow { float:left; display:inline-block; color:#ccd300; margin:0; }
   .project-card div.blue { float:left; display:inline-block; color:#4682B4; margin:0; }
 
-  
-  .goal .icon {
+
+  .goal .icon, .impact_div .icon {
 	 width: 40px;
 	 height:40px;
+	 padding: 0px;
   }
-  .goal {
+  
+  .goal, .impact_div  {
 	padding-top: 5px;
 	padding-bottom: 5px;
+  }
+  
+  .goal{
 	font-size:1.2em;
-
   }
 
   .project-card div.goal-fadeout:before{ content:'';
