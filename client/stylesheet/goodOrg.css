@@ -167,8 +167,22 @@ p{
 	padding-top: 5px;
 	padding-bottom: 5px;
 	font-size:1.2em;
+
   }
+
+  .project-card div.goal-fadeout:before{ content:'';
+    width:95%;
+    height:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    background:linear-gradient(transparent 20px, white);}
   
+  .goal-fadeout{
+	max-height:75px;
+	overflow:hidden;
+    text-overflow: ellipsis;
+  }
   
   .project-card div.fadeout{
     width: 430px;
