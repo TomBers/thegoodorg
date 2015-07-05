@@ -1,0 +1,963 @@
+// here we are defining default objects that are built & populated on startup
+// existing object collections are purged
+
+Meteor.startup(function(){
+
+this is a sanity check... don't push this 'live' to modulus... 
+
+ Companies.remove({});
+ Projects.remove({});
+ UserProfiles.remove({});
+
+  Factory.define('userprofile', UserProfiles, {
+      "loginID" : "j@da1e.com",
+      "loginEmail" : "j@da1e.com",
+      "name" : "Jonathan Dale",
+      "registerAs" : "Corporate Rep",
+      "contact_bool" : true,
+      "contact_num" : "07958 906 906",
+      "contact_mail" : "j@da1e.com",
+      "mailout_monthly" : true,
+      "mailout_updates" : true,
+      "isActive" : true,
+      "user_photo" : "http://ecx.images-amazon.com/images/I/41i1BkKG0BL._SX258_BO1,204,203,200_.jpg",
+      "user_title" : "CTO & co founder",
+      "user_headline" : "...in 140 characters or less..."
+  });
+
+
+
+  Factory.create('userprofile',
+      {
+          "loginID" : "j@da1e.com",
+          "loginEmail" : "j@da1e.com",
+          "name" : "Jonathan Dale",
+          "registerAs" : "Corporate Rep",
+          "contact_bool" : true,
+          "contact_num" : "07958 906 906",
+          "contact_mail" : "j@da1e.com",
+          "mailout_monthly" : true,
+          "mailout_updates" : true,
+          "isActive" : true,
+          "user_photo" : "http://ecx.images-amazon.com/images/I/41i1BkKG0BL._SX258_BO1,204,203,200_.jpg",
+          "user_title" : "CTO & co founder",
+          "user_headline" : "...in 140 characters or less..."
+      });
+
+
+
+      Factory.create('userprofile',
+      {
+          "loginID" : "admin2@tgo.com",
+          "loginEmail" : "admin2@tgo.com",
+          "name" : "Web Monkey",
+          "registerAs" : "StartUp Rep",
+          "contact_bool" : true,
+          "contact_num" : "07958 000 000",
+          "contact_mail" : "admin2@tgo.com",
+          "mailout_monthly" : false,
+          "mailout_updates" : true,
+          "isActive" : true,
+          "user_photo" : "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/099/27b/3d60b56.jpg",
+          "user_title" : "co founder CTO",
+          "user_headline" : "hello there..."
+
+      });
+
+
+
+      Factory.create('userprofile',
+      {
+          "loginEmail" : "admin@admin.com",
+          "loginID" : "admin@admin.com",
+          "name" : "admin@admin.com",
+          "registerAs" : "Individual",
+          "contact_bool" : true,
+          "user_photo" : "http://bulldogdata.com/wp-content/uploads/2011/09/linux-logo.png",
+          "user_title" : "...current role...",
+          "user_headline" : "...in 140 characters or less...",
+          "mailout_monthly" : true,
+          "mailout_updates" : true,
+          "isActive" : true
+      });
+
+
+
+      Factory.create('userprofile',
+      {
+          "loginEmail" : "tomas@tomas.com",
+          "loginID" : "tomas@tomas.com",
+          "name" : "Tomas Selva",
+          "registerAs" : "StartUp Rep",
+          "contact_bool" : true,
+          "user_photo" : "...add link to profile pic...",
+          "user_title" : "...current role...",
+          "user_headline" : "...in 140 characters or less...",
+          "mailout_monthly" : true,
+          "mailout_updates" : true,
+          "isActive" : true
+
+      });
+
+
+
+      Factory.create('userprofile',
+      {
+          "loginEmail" : "energydeck@tgo.com",
+          "name" : "Benamin Kott",
+          "registerAs" : "StartUp Rep",
+          "is_admin" : false,
+          "contact_bool" : true,
+          "user_photo" : "http://sawapartners.com/thegood.org.uk/img/edeck_lnkdin.jpg",
+          "user_title" : "Founder and CEO",
+          "user_headline" : "Benjamin Kott is the founder and CEO of EnergyDeck, an innovative web-based platform that helps organisations save energy.",
+          "mailout_monthly" : false,
+          "mailout_updates" : true,
+          "isActive" : true,
+          "contact_num" : "-"
+      });
+
+
+
+      Factory.create('userprofile',
+      {
+          "loginEmail" : "mujo@tgo.com",
+          "registerAs" : "StartUp Rep",
+          "is_admin" : false,
+          "contact_bool" : true,
+          "user_title" : "Founder and Director",
+          "mailout_monthly" : false,
+          "mailout_updates" : true,
+          "isActive" : true,
+          "name" : "Douglas Higgins",
+          "user_photo" : "http://sawapartners.com/thegood.org.uk/img/mujo_lnkdin.jpg"
+      });
+
+
+
+      Factory.create('userprofile',
+      {
+          "loginEmail" : "SatH@tgo.com",
+          "name" : "Kelly Klein",
+          "registerAs" : "StartUp Rep",
+          "is_admin" : false,
+          "contact_bool" : true,
+          "user_photo" : "http://www.sawapartners.com/thegood.org.uk/img/SatH_lnkdin.jpg",
+          "user_title" : "CEO",
+          "mailout_monthly" : false,
+          "mailout_updates" : true,
+          "isActive" : true
+      });
+
+
+
+      Factory.create('userprofile',
+      {
+          "loginEmail" : "admin@admin.com",
+          "name" : "iopiojpo;lk",
+          "registerAs" : "Individual",
+          "is_admin" : false,
+          "contact_bool" : true,
+          "user_photo" : "http://evenesis.com/blog/wp-content/uploads/2012/11/hire-event-organizer.jpg",
+          "user_title" : "...current role...",
+          "mailout_monthly" : false,
+          "mailout_updates" : true,
+          "isActive" : true,
+          "contact_num" : "5656"
+      });
+
+
+
+      Factory.create('userprofile',
+      {
+          "loginEmail" : "j@da1e.com",
+          "name" : "Jonathan Dale",
+          "registerAs" : "StartUp Rep",
+          "is_admin" : false,
+          "contact_bool" : true,
+          "user_photo" : "https://media.licdn.com/mpr/mpr/shrink_100_100/p/1/005/099/27b/3d60b56.jpg",
+          "user_title" : "Co-founder & CTO",
+          "mailout_monthly" : false,
+          "mailout_updates" : false,
+          "isActive" : true,
+          "contact_num" : "07958 906 906"
+      });
+
+
+
+      Factory.create('userprofile',
+      {
+          "loginID" : "admin@tgo.com",
+          "loginEmail" : "admin@tgo.com",
+          "name" : "Mathew Holloway",
+          "registerAs" : "StartUp Rep",
+          "contact_bool" : true,
+          "contact_num" : "-",
+          "contact_mail" : "admin@tgo.com",
+          "mailout_monthly" : false,
+          "mailout_updates" : true,
+          "isActive" : true,
+          "user_photo" : "http://sawapartners.com/thegood.org.uk/img/qbot_lnkdin.jpg",
+          "user_headline" : "Mathew uses his technical skills (software, electrical and mechanical) combined with a systematic approach to innovation to lead multi-disci",
+          "user_title" : "Managing Director"
+      });
+
+
+
+      Factory.create('userprofile',
+      {
+          "loginEmail" : "latimer@tgo.com",
+          "name" : "Matt Hay",
+          "registerAs" : "StartUp Rep",
+          "is_admin" : false,
+          "contact_bool" : true,
+          "user_photo" : "http://www.sawapartners.com/thegood.org.uk/img/latimer_lnkdin.jpg",
+          "user_title" : "Founder",
+          "mailout_monthly" : false,
+          "mailout_updates" : true,
+          "isActive" : true
+      });
+
+
+
+      Factory.create('userprofile',
+      {
+          "loginID" : "qbot@tgo.com",
+          "loginEmail" : "qbot@tgo.com",
+          "name" : "Mathew Holloway",
+          "registerAs" : "StartUp Rep",
+          "contact_bool" : true,
+          "contact_num" : "-",
+          "contact_mail" : "qbot@tgo.com",
+          "mailout_monthly" : false,
+          "mailout_updates" : true,
+          "isActive" : true,
+          "user_photo" : "http://sawapartners.com/thegood.org.uk/img/qbot_lnkdin.jpg",
+          "user_headline" : "Mathew uses his technical skills (software, electrical and mechanical) combined with a systematic approach to innovation to lead multi-disci",
+          "user_title" : "Managing Director"
+      });
+
+
+
+      Factory.create('userprofile',
+      {
+          "loginEmail" : "logic@tgo.com",
+          "name" : "Zoe Peden",
+          "registerAs" : "StartUp Rep",
+          "is_admin" : false,
+          "contact_bool" : true,
+          "user_photo" : "http://www.sawapartners.com/thegood.org.uk/img/logic_lnkdin.jpg",
+          "user_title" : "Co-founder",
+          "mailout_monthly" : false,
+          "mailout_updates" : true,
+          "isActive" : true
+
+  });
+
+
+
+
+
+
+Factory.define('company', Companies, {
+    "cid" : "test1",
+    "name" : "test14",
+    "hline" : "test177",
+    "about" : "(...company description...)",
+    "url" : "(...URL link to website...)",
+    "logo" : "https://www.leyf.org.uk/image/2/1200/504/5/uploads/homepage-images/slider-bounce-542d53caf412c.jpg",
+    "type" : "StartUp",
+    "loc" : "se12qp",
+    "addr" : "(...company address...)",
+    "rep_name" : "(...firstname lastname...)",
+    "rep_role" : "(... community dept rep ...)",
+    "rep_email" : "(...name@company.com...)",
+    "rep_tel" : "(...+44 #### ### ####...)",
+    "img" : "(...URL link to company picture(s)...)",
+    "youtubeLink" : "(...Add YouTube URL(s)...)",
+    "news" : "...recent company news here...",
+    "employees" : [
+        "admin@admin.com"
+    ],
+    "industry" : [
+        "transport"
+    ],
+    "twitter" : "xcxcaaaa"
+});
+
+
+
+
+  Factory.create('company',
+  {
+      "name" : "Insane Logic",
+      "cid" : "658345879",
+      "hline" : "help children with speech and language difficulties",
+      "about" : "Insane Logic raised investment with ClearlySo – they help children with speech and language difficulties to communicate via their MyChoicePad app",
+      "url" : "http://www.insanelogic.co.uk/",
+      "logo" : "http://cdn.insanelogic.co.uk/wp-content/uploads/2014/10/Logo-header.png",
+      "industry" : [
+          "manufacturing",
+          "education"
+      ],
+      "loc" : "EC1V 4LZ",
+      "addr" : "201 St John Street",
+      "img" : "https://www.leyf.org.uk/image/2/1200/504/5/uploads/homepage-images/slider-bounce-542d53caf412c.jpg",
+      "twitter" : "@Twitter",
+      "newslinks" : "...www.info-here.co...",
+      "employees" : [
+          "j@da1e.com"
+      ],
+      "isActive" : true,
+      "youtubeLink" : "https://www.youtube.com/embed/sfKhFktHtsI"
+  });
+
+
+
+
+
+    Factory.create('company',
+  {
+      "name" : "The Good Org",
+      "hline" : "'Good cause discovery'",
+      "about" : "We promote start-up <-> corporate partnerships on projects of environmental and social interest. We're looking to bring a fresh approach to the matching of resources to needs.",
+      "url" : "http://thrv.us",
+      "logo" : "https://d1qb2nb5cznatu.cloudfront.net/startups/i/659884-7060610f918ab43dcb073f01d7dedd3e-medium_jpg.jpg?buster=1428270969",
+      "industry" : [
+          "education",
+          "other"
+      ],
+      "loc" : "SW7 2AZ",
+      "addr" : "@Imperial College London\nExhibition Road\nLondon \nSW7 2AZ",
+      "youtubeLink" : "https://www.youtube.com/embed/sfKhFktHtsI",
+      "employees" : [
+          "j@da1e.com"
+      ],
+      "cid" : "...CRN: Company Reference Number...",
+      "img" : "http://v0-46849.onmodulus.net/img/about.gif",
+      "newslinks" : "http://thegood.org.uk/",
+      "isActive" : true
+  });
+
+
+        Factory.create('company',
+  {
+      "name" : "The Latimer Group",
+      "hline" : "(...company headline...)",
+      "about" : "Latimer Group is an exciting venture which works with young people inspiring and mentoring them into long term employment by co-creating & distributing authentic campaigns and content for brands, charities, broadcasters & government.",
+      "url" : "www.latimergroup.org",
+      "logo" : "http://www.abianda.com/wp-content/uploads/2012/07/CREATIVEMEDIABLACKSMALL2.png",
+      "industry" : [
+          "financial",
+          "construction",
+          "manufacturing",
+          "transport",
+          "education"
+      ],
+      "loc" : "SE1 3SY",
+      "addr" : "3-5 Hardwidge Street, London",
+      "img" : "http://www.sawapartners.com/thegood.org.uk/img/latimer.jpg",
+      "youtubeLink" : "https://www.youtube.com/watch?v=-rhZu8wvjAQ",
+      "twitter" : "@Twitter",
+      "newslinks" : "...www.info-here.co...",
+      "employees" : [
+          "latimer@tgo.com"
+      ],
+      "cid" : "...CRN: Company Reference Number...",
+      "isActive" : true
+  });
+
+
+    Factory.create('company',
+  {
+      "name" : "Q-Bot",
+      "cid" : "-",
+      "hline" : "Q-Bot is bringing robotic solutions to the building, engineering and infrastructure industries: enhancing existing capabilities, creating new services, and opening up enormous new markets.",
+      "url" : "http://q-bot.co/",
+      "logo" : "http://q-bot.co/images/logo/qbot.jpg",
+      "industry" : [
+          "construction",
+          "manufacturing"
+      ],
+      "loc" : "SW18 4UQ",
+      "addr" : "F266-267, Riverside Business Park, Bendon Valley, Wandsworth, SW18 4UQ",
+      "img" : "http://qbot.co/images/home/suveybot_1.jpg",
+      "youtubeLink" : "https://www.youtube.com/watch?v=WkA2i_9MkvA&feature=youtu.be&t=25",
+      "twitter" : "@Twitter",
+      "newslinks" : "...www.info-here.co...",
+      "employees" : [
+          "qbot@tgo.com"
+      ],
+      "isActive" : true,
+      "about" : "Q-Bot is at the forefront of robotics, sustainability and the built environment and counts Camden Council, Cardiff Council, CityWest Homes and Peabody among its first customers. The company has been identified as one of the seven innovation wonders of the construction world (please see http://q-bot.co/news.php for our current news coverage) and has been highlighted as ‘one to watch’ by the UK Government, Guardian and the Financial Times. \n\nQ-Bot has developed innovative solutions for surveying,"
+  });
+
+
+    Factory.create('company',
+{
+      "name" : "EnergyDeck",
+      "cid" : "...CRN: Company Reference Number...",
+      "hline" : "EnergyDeck is a flexible web-based platform that drives effective tracking and management of building performance.",
+      "about" : "EnergyDeck is a web-based building, energy analytics platform that can achieve substantial consumption and cost savings by enabling buildings to operate more efficiently. EnergyDeck encourages landlords & tenants to share energy data and learn from the experience of others which ultimately builds trust, knowledge and community.\n\nCommercial buildings account for over 40% of carbon emissions. To date, conversations around energy efficiency between landlords and tenants have largely revolved ...",
+      "url" : "www.energydeck.com",
+      "logo" : "https://www.energydeck.com/media/cache/3b/a8/3ba83782f37dc96f2295492da7e451f0.png",
+      "industry" : [
+          "construction"
+      ],
+      "loc" : "EC2A 2BB",
+      "addr" : "Idealondon 69 Wilson Street, Shoreditch, London, EC2A 2BB.",
+      "img" : "https://www.energydeck.com/media/public_pages/feature_sections/save_1.jpg",
+      "youtubeLink" : "https://www.youtube.com/watch?v=pck7ZPVsqbA",
+      "twitter" : "@EnergyDeck",
+      "newslinks" : "Crowdsourcing is the answer to cutting energy bills, says ex-Google startup EnergyDeck computing.co.uk",
+      "employees" : [
+          "energydeck@tgo.com"
+      ],
+      "isActive" : true
+  });
+
+
+  Factory.create('company',
+{
+      "name" : "MUJO Fitness",
+      "cid" : "...CRN: Company Reference Number...",
+      "hline" : "MuJo (Multiple Joint Fitness Systems) provides innovative product solutions for physical strengthening and orthopaedic rehabilitation.",
+      "about" : "The company launched its first range of two shoulder machines in 2014 and is currently developing a further four lower limb solutions as well as the integration of new technology to allow for remote patient monitoring.\n\nWith sales and operations across EMEA and APAC regions, incorporating both public and private sectors, MuJo is quickly setting new benchmarks in the core target orthopaedic health, gym and leisure, and elite sports industries.",
+      "url" : "mujofitness.com",
+      "logo" : "http://sawapartners.com/thegood.org.uk/img/mujo.jpg",
+      "industry" : [
+          "education",
+          "other"
+      ],
+      "loc" : "W10 6BN",
+      "addr" : "MuJo Mechanics Ltd,\n85 Barlby Road,\nLondon",
+      "img" : "http://www.mujofitness.com/images/contact-header.jpg",
+      "twitter" : "@MujoFitness",
+      "newslinks" : "The Telegraph: Doug Higgins explains how his novel idea for training equipment was realised thanks to Find Invest Grow, an uncoventional venture capital group",
+      "employees" : [
+          "mujo@tgo.com"
+      ],
+      "isActive" : true,
+      "youtubeLink" : "https://www.youtube.com/watch?v=ywKzB23cZH0"
+  });
+
+
+    Factory.create('company',
+  {
+      "name" : "Student @ Home",
+      "cid" : "7916389",
+      "hline" : "Student@Home is an award winning, simple, friendly and low-cost service that brings trustworthy and knowledgeable IT students to homes to help solve computer and technology issues.",
+      "about" : "Student@Home is an award winning, simple, friendly and low-cost service that brings trustworthy and knowledgeable IT students to homes to help solve computer and technology issues. The business therefore aims to take two problems and turn them into solutions. It offers students struggling for work experience the opportunity to gain employment, while at the same time providing local residents struggling with technology a cost efficient support service.",
+      "url" : "http://www.studentathome.co.uk/",
+      "logo" : "http://www.studentathome.co.uk/themes/english/images/2015/students-at-home-logo.png",
+      "loc" : "W1G 9DQ",
+      "addr" : "ITSTUDENT@HOME LIMITED\nC/O SHELLEY STOCK HUTTER LLP 1ST FLOOR \n7 - 10 CHANDOS STREET \nLONDON",
+      "img" : "http://www.sawapartners.com/thegood.org.uk/img/sah1.jpg",
+      "youtubeLink" : "https://youtu.be/c3wgYjOTpdE",
+      "twitter" : "@Twitter",
+      "newslinks" : "...www.info-here.co...",
+      "employees" : [
+          "SatH@tgo.com"
+      ],
+      "isActive" : true,
+      "industry" : [
+          "education"
+      ]
+  });
+
+
+    Factory.create('company',
+  {
+      "name" : "Insane Logic",
+      "about" : "We believe that through combining creative techniques and rational thought the most effective solutions are the simplest. \n\nInsane Logic employ insanely creative minds for logical solutions to services and products built with an agile philosophy.",
+      "url" : "www.insanelogic.co.uk",
+      "logo" : "http://cdn.insanelogic.co.uk/wp-content/uploads/2014/10/Logo-header.png",
+      "industry" : [
+          "education"
+      ],
+      "loc" : "SE16 4DG",
+      "addr" : "Unit B101, The Biscuit Factory\n100 Clements Road",
+      "img" : "http://www.sawapartners.com/thegood.org.uk/img/logic1.jpg",
+      "youtubeLink" : "https://www.youtube.com/watch?v=JpiYaCurGOg",
+      "twitter" : "@InsaneLogicUK",
+      "employees" : [
+          "logic@tgo.com"
+      ],
+      "cid" : "...CRN: Company Reference Number...",
+      "hline" : "(...company headline...)",
+      "newslinks" : "...www.info-here.co...",
+      "isActive" : true
+  });
+
+//
+//
+// // ----------------------------------------------
+// // ----------------------------------------------
+//
+//
+// console.log('stop')
+// debugger;
+
+
+
+Factory.define('project', Projects, {
+    "hline" : "Crowdsourcing is the answer to cutting energy bills",
+    "desc" : "We would like the opportunity for a 1 hour lecture at your offices to talk about your in-house energy saving opportunities. We offer a range of Analytics features designed to help you better understand your consumption data, benchmark your sites against those of relevant peers and identify savings opportunities.",
+    "img" : "http://sawapartners.com/thegood.org.uk/img/lect_edeck.jpg",
+    "link" : "https://www.energydeck.com/home/",
+    "city" : "London",
+    "postcode" : "EC2A 2BB",
+    "startDate" : "2015-06-17T00:00:00.000+0000",
+    "endDate" : "2016-03-23T00:00:00.000+0000",
+    "timeframe" : "1 Hour lecture",
+    "status" : '',
+    "active" : true,
+    "interactions" : [''
+    ],
+    "impact_e" : '',
+    "company_id" :'' ,
+    "createdAt" :'',
+    "isActive" : true,
+    "categories" : [''
+    ]
+}).after(function(project) {
+
+  // this function works around the dynamic _id 'ownership...'
+  // we hard code the owner 'employees' email address, then replace with the
+  // matching company _id once this is allocated earlier in this script
+
+    var cpy = Companies.findOne({"employees":project.company_id});
+    var pro = Projects.findOne({"_id":project._id});
+
+    Projects.update({"_id":project._id},
+              {$set:{"company_id":cpy._id }});
+
+    // console.log('p');
+    // console.log(Projects.findOne({"_id":project._id}));
+    // console.log('c');
+    // console.log(cpy._id);
+    // debugger;
+
+});
+
+
+
+Factory.create('project', {
+    "hline" : "Housing Association Collaboration",
+    "desc" : "At Student@Home, we have a range of services designed to help housing associations develop and deliver their digital inclusion strategies.\n\nWe’re a social enterprise, so we understand the aims and needs of the housing sector. We offer housing associations a dynamic, flexible approach - and preferential rates - to suit any project, fledgling or established.",
+    "img" : "http://www.sawapartners.com/thegood.org.uk/img/sah1.jpg",
+    "city" : "London",
+    "active" : false,
+    "impact_r" : "25 residents educated by 1 student IT expert / year",
+    "company_id" : "SatH@tgo.com",
+    "createdAt" : ("2015-06-27T08:38:16.987+0000"),
+    "isActive" : true,
+    "categories" : [
+        "Education",
+        "Community",
+        "Employment",
+        "Accessibility"
+    ],
+    "interactions" : [
+        "Monetary Donations",
+        "Research Agreements",
+        "Product collaboration"
+    ]
+});
+
+Factory.create('project', {
+    "hline" : "Laptop Equipment",
+    "desc" : "Our fleet of student IT experts are in need of Laptops to deliver on-site support. These students are often struggling for work experience the opportunity to gain employment. Any equipment (such as old Laptops) would be very useful to us.",
+    "img" : "http://www.sawapartners.com/thegood.org.uk/img/sah2.jpg",
+    "active" : false,
+    "categories" : [
+        "Education",
+        "Community",
+        "Employment",
+        "Accessibility",
+        "Seniors"
+    ],
+    "interactions" : [
+        "Donate Materials",
+        "Monetary Donations"
+    ],
+    "impact_r" : "45 Elderly citizens reached/year for each Laptop donated",
+    "company_id" : "SatH@tgo.com",
+    "createdAt" : ("2015-06-27T08:57:18.907+0000"),
+    "isActive" : true
+});
+
+Factory.create('project', {
+    "img" : "http://www.sawapartners.com/thegood.org.uk/img/logic2.jpg",
+    "city" : "London",
+    "country" : "UK",
+    "status" : "0%",
+    "active" : true,
+    "impact_r" : "100 Language and Speech therapists educated",
+    "company_id" : "logic@tgo.com",
+    "postcode" : "SE16 4DG",
+    "createdAt" : ("2015-07-01T14:38:12.652+0000"),
+    "isActive" : true,
+    "hline" : "Event sponsorship - Speech and Language Therapists",
+    "desc" : "On the 20th of September we will have an event to demonstrate our flagship product: MyChoicePad, an iPad app to help people with speech and learning difficulties to communicate.\n\nWe are looking for Sponsors interested in our cause. We want to educate over 100 Language and Speech impediment specialist on the use of new technology.",
+    "startDate" : ("2015-09-20T00:00:00.000+0000"),
+    "endDate" : ("2015-09-21T00:00:00.000+0000"),
+    "categories" : [
+        "Education",
+        "Accessibility",
+        "Rehabilitation",
+        "Special Needs"
+    ],
+    "interactions" : [
+        "Donate Materials",
+        "Monetary Donations"
+    ]
+});
+
+Factory.create('project', {
+    "title" : "Insulate homes for low income residents in Knightsbridge",
+    "hline" : "Branding and Communication Strategist",
+    "desc" : "Q-Bot has a simple identity and has largely been operating in stealth mode. The company is preparing to revamp its website and communications to more fully engage with a variety of stakeholders: social housing providers and government, installers and industrial partners, investors and the wider public. To coincide with this Q-Bot plans to engage with the media and has a number of customer case studies and good news stories in the pipeline. \n\nThe company would benefit from support:\n•\tHigh level strategic advice to guide the branding and communications strategy. \n•\tPractical help with the design and execution of communications materials including: print, digital, videos and animation as well as the robots themselves.\n•\tSupport engaging with the media and PR channels.",
+    "img" : "http://qbot.co/images/jobs/team.jpg",
+    "link" : "http://q-bot.co/news.php",
+    "location" : "SW7 2AZ",
+    "active" : false,
+    "categories" : [
+        "Green Technology",
+        "Sustainable Products"
+    ],
+    "interactions" : [
+        "Volunteering"
+    ],
+    "impact_e" : "Cumulative lifetime CO2 savings of >1 million tonnes",
+    "company_id" : "qbot@tgo.com",
+    "createdAt" : ("2015-06-23T14:54:28.773+0000"),
+    "isActive" : true,
+    "city" : "London",
+    "country" : "UK",
+    "postcode" : "SW18 4U",
+    "startDate" : ("2015-06-20T00:00:00.000+0000"),
+    "endDate" : ("2015-08-18T00:00:00.000+0000"),
+    "timeframe" : "2 Full Days",
+    "impact_r" : "Help create more than 50 jobs internally"
+});
+
+
+Factory.create('project', {
+    "title" : "Example Example Example Example",
+    "hline" : "Manufacturing support (electrical)",
+    "desc" : "We would like some support in the development of our robot fleet. We would welcome a Research Agreement, or Product Collaboration with a company specialising in Robotics.\n\nQ-Bot’s robots are compact, powerful and capable of operating in hazardous environments. These intelligent tools can remotely carry out operations that would otherwise be impractical and cost prohibitive for humans to do so. We need help from talented minds with experience in robotics and electrical engineering.",
+    "img" : "http://qbot.co/images/home/spraybot.jpg",
+    "location" : "SW7 2AZ",
+    "active" : true,
+    "categories" : [
+        "Green Technology",
+        "Sustainable Products"
+    ],
+    "interactions" : [
+        "Research Agreements",
+        "Product collaboration",
+        "Brand Collaboration"
+    ],
+    "impact_e" : "Cumulative lifetime CO2 savings of >1 million tonnes",
+    "company_id" : "qbot@tgo.com",
+    "createdAt" : ("2015-06-23T14:58:22.609+0000"),
+    "isActive" : true,
+    "city" : "London",
+    "country" : "UK",
+    "link" : "http://qbot.co/jobs.php",
+    "postcode" : "SW18 4UQ",
+    "startDate" : ("2015-07-17T00:00:00.000+0000"),
+    "endDate" : ("2016-04-30T00:00:00.000+0000")
+});
+
+
+Factory.create('project', {
+    "hline" : "Research Agreement - Energy Use Profiling",
+    "desc" : "Sharing of best practices is at the heart of EnergyDeck - share anonymised performance data and projects with other EnergyDeck users, learn from them and compare building performance at industry or community group level.",
+    "img" : "http://sawapartners.com/thegood.org.uk/img/work_edeck.jpg",
+    "link" : "https://www.energydeck.com/",
+    "city" : "London",
+    "country" : "UK",
+    "postcode" : "EC2A 2BB",
+    "startDate" : ("2015-06-08T00:00:00.000+0000"),
+    "endDate" : ("2015-06-30T00:00:00.000+0000"),
+    "status" : "0%",
+    "active" : true,
+    "impact_e" : "Potential to reduce Energy usage and associated CO2 emissions",
+    "company_id" : "energydeck@tgo.com",
+    "createdAt" : ("2015-06-27T07:24:39.896+0000"),
+    "isActive" : true,
+    "categories" : [
+        "Green Technology",
+        "Energy Management",
+        "Sustainable Products"
+    ],
+    "interactions" : [
+        "Research Agreements",
+        "Product collaboration",
+        "Brand Collaboration"
+    ]
+});
+
+
+Factory.create('project', {
+    "city" : "London",
+    "country" : "UK",
+    "postcode" : "W10 6BN",
+    "active" : true,
+    "impact_h" : "220 People will use this machine for Rehabilitation over the course of 1 year",
+    "company_id" : "mujo@tgo.com",
+    "createdAt" : ("2015-06-27T08:14:57.778+0000"),
+    "isActive" : true,
+    "hline" : "Elite Training and Fitness Station",
+    "desc" : "Our patented solution is a new piece of fitness equipment which trains multiple joints in a single exercise. We've come up with a new kind of weights machine that targets biarticular muscles, those controlling two joints — like the hamstrings, which cross both the hip and the knee — and multiaxial joints, such as the hip and shoulder.",
+    "img" : "http://sawapartners.com/thegood.org.uk/img/mujo1.jpg",
+    "link" : "http://www.mujofitness.com",
+    "startDate" : ("2015-06-01T00:00:00.000+0000"),
+    "endDate" : ("2015-06-30T00:00:00.000+0000"),
+    "categories" : [
+        "Fitness",
+        "Rehabilitation"
+    ],
+    "interactions" : [
+        "Research Agreements"
+    ]
+});
+
+Factory.create('project', {
+    "hline" : "Product Collaboration with a Gym",
+    "desc" : "We would like to Partner with a Gym in London to trial our latest range of Elite Fitness Stations.",
+    "img" : "http://sawapartners.com/thegood.org.uk/img/mujo3.jpg",
+    "link" : "http://www.mujofitness.com",
+    "city" : "London",
+    "country" : "UK",
+    "postcode" : "W10 6BN",
+    "startDate" : ("2015-06-02T00:00:00.000+0000"),
+    "endDate" : ("2015-06-30T00:00:00.000+0000"),
+    "status" : "0%",
+    "active" : true,
+    "categories" : [
+        "Fitness",
+        "Rehabilitation"
+    ],
+    "interactions" : [
+        "Product collaboration",
+        "Brand Collaboration"
+    ],
+    "impact_h" : "550 people will use this machine in 1 month",
+    "company_id" : "mujo@tgo.com",
+    "createdAt" : ("2015-06-27T08:24:51.425+0000"),
+    "isActive" : true
+});
+
+
+Factory.create('project', {
+    "city" : "London",
+    "country" : "UK",
+    "status" : "0%",
+    "active" : true,
+    "impact_r" : "more platforms >> more collaborations >> more benefit",
+    "company_id" : "j@da1e.com",
+    "postcode" : "EC1V 4LZ",
+    "createdAt" : ("2015-06-30T14:35:08.748+0000"),
+    "isActive" : true,
+    "hline" : "Mobile platform design & implemention ninja volunteers wanted",
+    "desc" : "\"Is there an app for that ? \" ...Not yet, but we'd like to build one. We're looking to create a mobile-friendly version of our site so we can broaden your access to projects, and free people from a desktop browser.\nWe'd like to hear from anyone keen to volunteer for a few days, part-time or remotely, and help us get this project to the next stage.",
+    "img" : "http://v0-46849.onmodulus.net/img/shameless_plug.jpg",
+    "categories" : [
+        "Education",
+        "Community"
+    ],
+    "interactions" : [
+        "Volunteering"
+    ]
+});
+
+
+Factory.create('project', {
+    "hline" : "50,000 people to view you Product",
+    "img" : "http://www.sawapartners.com/thegood.org.uk/img/latimer1.jpg",
+    "city" : "London",
+    "country" : "UK",
+    "status" : "0%",
+    "active" : true,
+    "impact_r" : "1000 Young people will receive employment",
+    "company_id" : "latimer@tgo.com",
+    "postcode" : "SE1 3SY\u0003\u0003",
+    "createdAt" : ("2015-07-01T14:25:12.531+0000"),
+    "isActive" : true,
+    "desc" : "We can help your organisation to grow through Co-Created Thinking, an approach to insights and innovation that brings audiences and service providers closer together than ever before. We have a a networf of over 50,000 people that can help shape your product and how it is viewed. \n\nWe typically start small campaigns of 1000 people, and can grow from there.",
+    "link" : "http://latimergroup.org/",
+    "endDate" : ("2015-07-05T00:00:00.000+0000"),
+    "timeframe" : "Contract",
+    "categories" : [
+        "Education",
+        "Community",
+        "Skills & Employment"
+    ],
+    "interactions" : [
+        "Research Agreements",
+        "Product collaboration",
+        "Brand Collaboration"
+    ]
+});
+
+
+Factory.create('project', {
+    "img" : "http://www.sawapartners.com/thegood.org.uk/img/latimer3.jpg",
+    "active" : true,
+    "company_id" : "latimer@tgo.com",
+    "city" : "London",
+    "country" : "UK",
+    "status" : "0%",
+    "impact_r" : "Increased awareness of your Brand's Social Impact",
+    "createdAt" : ("2015-07-01T14:25:52.219+0000"),
+    "isActive" : true,
+    "desc" : "We aim to support your organisation and empower young people to be creators, not simply consumers of digital technologies.\n\nSTRATEGY\nLeverage youth audiences to co-create incredible content, direct mass traffic to the site and build up a solid brand equity.\n\nEXPECTED RESULT\nSocial following increased by 300% for your organisation.\nUnique visitors up by 40%.\nOnline coverage across youth platforms & national press.",
+    "categories" : [
+        "Education",
+        "Community",
+        "Skills & Employment"
+    ],
+    "interactions" : [
+        "Research Agreements",
+        "Product collaboration",
+        "Brand Collaboration"
+    ]
+});
+
+
+Factory.create('project', {
+    "img" : "http://www.sawapartners.com/thegood.org.uk/img/logic3.jpg",
+    "active" : true,
+    "company_id" : "logic@tgo.com",
+    "city" : "London",
+    "country" : "UK",
+    "status" : "0%",
+    "impact_r" : "Help families that include people with learning or communication difficulties",
+    "createdAt" : ("2015-07-01T14:38:21.530+0000"),
+    "isActive" : true,
+    "desc" : "Insane Logic are very happy to be invited along to the Communication Friendly Fun Event in Shrewsbury.\n\nThe purpose of the event is to reach out to people with Speech, Language and Communication Needs, of all ages.\n\nThe day includes refreshments, games and activities. There are some therapy assistance ponies in attendance, lots of dogs, and Cat Kelly who specialises in music for SEN.\n\nHelen from Insane Logic will be there showing off the latest product we have, which is called ‘Learning Pathways’ and the feedback.",
+    "postcode" : "SY1 1PL",
+    "startDate" : ("2015-08-13T00:00:00.000+0000"),
+    "endDate" : ("2015-08-13T00:00:00.000+0000"),
+    "categories" : [
+        "Education",
+        "Mental Health",
+        "Rehabilitation",
+        "Special Needs"
+    ],
+    "interactions" : [
+        "Donate Materials",
+        "Monetary Donations",
+        "Volunteering",
+        "Brand Collaboration"
+    ]
+});
+
+Factory.create('project', {
+    "img" : "http://www.sawapartners.com/thegood.org.uk/img/latimer2.jpg",
+    "active" : true,
+    "company_id" : "latimer@tgo.com",
+    "city" : "London",
+    "country" : "UK",
+    "postcode" : "SE1 3SY\u0003\u0003",
+    "status" : "0%",
+    "impact_r" : "1000 new jobs to shape your Brand",
+    "createdAt" : ("2015-07-01T14:25:31.897+0000"),
+    "isActive" : true,
+    "hline" : "Emmy award winning broadcasts for your Brand",
+    "desc" : "Our Emmy award winning content team and broadcast sub department specialises in co-creating content that reaches a new generation of viewers. By co-creating all our content directly with audiences, we tell stories that speak with an authentic voice and create conversations online and off.\n\nContact us so we can work together on your brand, reaching focus groups and audiences of over 50,000 people.\n\nOur most current work includes a series for The Guardian on youth homelessness, an advertising campaign for Bose, and a BBC Worldwide branded content partnership series. Recent TV credits include a prime time pilot sitcom for ITV1 and the most controversial documentary of 2014, ‘Going to the Dogs’, for the prestigious Channel Four Cutting Edge strand.",
+    "link" : "http://latimergroup.org/",
+    "startDate" : ("2015-07-12T00:00:00.000+0000"),
+    "timeframe" : "Contract",
+    "categories" : [
+        "Sustainable Products",
+        "Community",
+        "Skills & Employment"
+    ],
+    "interactions" : [
+        "Brand Collaboration"
+    ]
+});
+
+
+Factory.create('project', {
+    "hline" : "Insulation of Residences at Risk",
+    "desc" : "We want to help residents at risk of cold temperatures in Falkirk Housing estate insulate their homes. Every year they suffer from temperatures below 13 degrees C, and increasingly higher heating bills. Our robots will help improve underfloor insulation, giving tenants living in fuel poverty improved  health,  comfort, and lowering their heating bills.\n\nWe’re looking for a product collaboration opportunity with a company interested in Construction and Refurbishments.",
+    "img" : "http://qbot.co/images/home/suveybot_1.jpg",
+    "link" : "http://www.qbot.co",
+    "city" : "London",
+    "country" : "UK",
+    "postcode" : "NW1 7JR",
+    "startDate" : ("2015-11-11T00:00:00.000+0000"),
+    "endDate" : ("2015-12-18T00:00:00.000+0000"),
+    "status" : "20%",
+    "active" : true,
+    "categories" : [
+        "Green Technology",
+        "Energy Management",
+        "Sustainable Products"
+    ],
+    "interactions" : [
+        "Donate Materials",
+        "Monetary Donations",
+        "Volunteering",
+        "Research Agreements"
+    ],
+    "impact_e" : "2 tonnes of CO2 reduced per household",
+    "company_id" : "qbot@tgo.com",
+    "impact_h" : "22 Residents will benefit from improved living conditions",
+    "createdAt" : ("2015-07-03T10:42:03.216+0000"),
+    "isActive" : true
+});
+
+
+Factory.create('project', {
+    "img" : "http://www.sawapartners.com/thegood.org.uk/img/edeck4.jpg",
+    "active" : true,
+    "company_id" : "energydeck@tgo.com",
+    "createdAt" : ("2015-07-03T15:42:35.639+0000"),
+    "isActive" : true,
+    "hline" : "Reduce the Energy Consumption of your Business",
+    "desc" : "We provide your business with advanced metering technology so you can track your energy performance and CO2 emission reductions.\n\nOur SaaS platform enables you to compare your building to similar commercial spaces and learn from new energy saving opportunities.",
+    "link" : "http://www.energydeck.com",
+    "city" : "London",
+    "categories" : [
+        "Green Technology",
+        "Energy Management"
+    ],
+    "interactions" : [
+        "Product collaboration",
+        "Lecturing Opportunites"
+    ],
+    "impact_e" : "20% Typical reduction in Energy Consumption"
+});
+
+Factory.create('project', {
+    "hline" : "Crowdsourcing is the answer to cutting energy bills",
+    "desc" : "We would like the opportunity for a 1 hour lecture at your offices to talk about your in-house energy saving opportunities. We offer a range of Analytics features designed to help you better understand your consumption data, benchmark your sites against those of relevant peers and identify savings opportunities.",
+    "img" : "http://sawapartners.com/thegood.org.uk/img/lect_edeck.jpg",
+    "link" : "https://www.energydeck.com/home/",
+    "city" : "London",
+    "postcode" : "EC2A 2BB",
+    "startDate" : ("2015-06-17T00:00:00.000+0000"),
+    "endDate" : ("2016-03-23T00:00:00.000+0000"),
+    "timeframe" : "1 Hour lecture",
+    "status" : "0%",
+    "active" : true,
+    "interactions" : [
+        "Lecturing Opportunites"
+    ],
+    "impact_e" : "10-70% reduction in-house CO2 emissions",
+    "company_id" : "energydeck@tgo.com",
+    "createdAt" : ("2015-06-27T07:19:11.024+0000"),
+    "isActive" : true,
+    "categories" : [
+        "Green Technology",
+        "Energy Management"
+    ]
+});
+
+});
