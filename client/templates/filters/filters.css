@@ -1,6 +1,6 @@
-body {
+/*body {
   overflow: hidden;
-  font-size: 16px; }
+  font-size: 16px; }*/
 
 .chart-wrapper {
   width: 100%;
@@ -17,16 +17,39 @@ path {
     stroke-width: 10px;
     fill: white; }
 
-text {
+/*text {
   font-size: .8em;
   text-transform: uppercase;
-  letter-spacing: .5px; }
+  letter-spacing: .5px; }*/
 
 polyline {
   fill: none;
   stroke: white;
   stroke-width: 2px;
   stroke-dasharray: 5px; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*button {
   position: absolute;

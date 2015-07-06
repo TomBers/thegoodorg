@@ -3,7 +3,7 @@
 
 Meteor.startup(function(){
 
-this is a sanity check... don't push this 'live' to modulus... 
+this is a sanity check... don't push this 'live' to modulus...
 
  Companies.remove({});
  Projects.remove({});
