@@ -149,6 +149,66 @@ function toggleInterest(interest){
 
 /*  end interest functions */
 
+
+function reinitSelected(){
+console.log("reenable");
+	var tmpc = Session.get('arrCause');
+	var xc;
+	for (xc in tmpc){
+		var obj = cause_map[tmpc[xc]];
+		if(obj){
+			$(obj.img_class).css("background-image", obj.background_image);
+		}	
+	}
+	
+	var tmpi = Session.get('interest');
+	var xi;
+	for (xi in tmpi){
+		var obj = interest_map[tmpi[xi]];
+		if(obj){
+				$(obj.img_class).css("background-image", obj.background_image);
+		}
+	}
+	
+	fadeElements();
+}
+
+var isInitialPageLoad = true;
+function initAllSelectionsAtStart(){
+ //setTimeout(function(){hideCollaborateHelpPopup()},5000);
+ 
+ if(isInitialPageLoad){
+ setTimeout(function(){toggleCause("Wildlife & Habitat")},1);
+ setTimeout(function(){toggleCause("Sustainable Transport")},1);
+ setTimeout(function(){toggleCause("Sustainable Products")},1);
+ setTimeout(function(){toggleCause("Green Technology")},1);
+ setTimeout(function(){toggleCause("Energy Management")},1);
+
+ setTimeout(function(){toggleCause("Senior Health")},1);
+ setTimeout(function(){toggleCause("Rehabilitation")},1);
+ setTimeout(function(){toggleCause("Fitness & Exercise")},1);
+ setTimeout(function(){toggleCause("Special Needs")},1);
+ setTimeout(function(){toggleCause("Mental Health")},1);
+
+ setTimeout(function(){toggleCause("Food & Shelter")},1);
+ setTimeout(function(){toggleCause("Accessibility")},1);
+ setTimeout(function(){toggleCause("Community")},1);
+ setTimeout(function(){toggleCause("Skills & Employment")},1);
+ setTimeout(function(){toggleCause("Education")},1);
+
+  
+ setTimeout(function(){toggleInterest("Donate Materials")},1);
+ setTimeout(function(){toggleInterest("Monetary Donations")},1);
+ setTimeout(function(){toggleInterest("Volunteering")},1);
+ setTimeout(function(){toggleInterest("Research Agreements")},1);
+ setTimeout(function(){toggleInterest("Product collaboration")},1);
+ setTimeout(function(){toggleInterest("Brand Collaboration")},1);
+ setTimeout(function(){toggleInterest("Lecturing Opportunites")},1);
+ isInitialPageLoad= false;
+ }
+}
+
+
 var isFirstClick = true;
   function fadeElements(){
 //console.log("fade");
@@ -164,7 +224,7 @@ var isFirstClick = true;
 	if(isFirstClick){
 		  $('.project-nav-msg-triangle').css("display", "block");
 		  isFirstClick = false;
-		  setTimeout(function(){hideCollaborateHelpPopup()},5000);
+		  setTimeout(function(){hideCollaborateHelpPopup();  isFirstClick = false;},5000);
 	}
   }
 
@@ -236,15 +296,15 @@ Template.home.events({
 
 
 Template.home.rendered = function(){
-Session.set('arrCause', []);
-Session.set('interest', []);
+//Session.set('arrCause', []);
+//Session.set('interest', []);
 
   Meteor.subscribe('Projects');
   Meteor.subscribe('UserProfiles');
   Meteor.subscribe("Companies");
   Session.set('company_id', this.data.company_id);
   Session.set('projectId', this.data._id);
-
+	reinitSelected();
 $('document').ready(function(){
 
 
@@ -346,5 +406,9 @@ $('document').ready(function(){
   }
   $(window).bind('resize',positionPopupCall);
 
+  
+  
+  initAllSelectionsAtStart();
+  
   });
 }
