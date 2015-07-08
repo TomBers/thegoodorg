@@ -164,12 +164,12 @@ p{
 	 height:40px;
 	 padding: 0px;
   }
-  
+
   .goal, .impact_div  {
 	padding-top: 5px;
 	padding-bottom: 5px;
   }
-  
+
   .goal{
 	font-size:1.2em;
   }
@@ -181,13 +181,13 @@ p{
     left:0;
     top:0;
     background:linear-gradient(transparent 20px, white);}
-  
+
   .goal-fadeout{
 	max-height:75px;
 	overflow:hidden;
     text-overflow: ellipsis;
   }
-  
+
   .project-card div.fadeout{
     width: 430px;
     padding: 5px 5px 0 5px;
@@ -208,11 +208,11 @@ p{
     background:linear-gradient(transparent 20px, white);}
 
 .main-projects{
-	display: flex; 
+	display: flex;
 	justify-content:center;
 	flex-wrap:wrap;
 }
-	
+
   div.headerbox { height:50; width:400; }
 
   .nopadding {padding:0; margin:0;}
@@ -291,6 +291,8 @@ p{
   .splashMain { max-width:1500px; width:100%; display:block; position:relative; padding-top:0;  margin:0 0 0; }
 
   img.splash {
-    min-height: 100%;    min-width: 1024px;
     width: 100%;    height: auto;
+    /*min-height: auto%;    min-width: auto%;*/
+    /*width: 100%;    height: auto;*/
+    /*min-height: 100%;    min-width: 1024px;*/
     position: fixed; top: 0;    left: 0;}
