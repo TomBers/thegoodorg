@@ -35,8 +35,8 @@ UserProfiles.attachSchema(new SimpleSchema({
   registerAs:  {type: String, label: "Register As:", optional: false, defaultValue:'Individual',
               allowedValues: [
                 "Individual",
-                "StartUp Rep",
-                "Corporate Rep"]},
+                "StartUp Representative",
+                "Corporate Representative"]},
 
 	// flag for admin so can edit (administrate) anything
   is_admin:  {type: Boolean, label: "is Admin?", defaultValue: false, autoform: {omit: true} },
