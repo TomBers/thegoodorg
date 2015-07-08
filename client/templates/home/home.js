@@ -64,7 +64,7 @@ var cause_toggle_status = {
 	"#ProjectTwoLabel":{count:0,status:false},
 	"#ProjectThreeLabel":{count:0,status:false}
  };
- 
+
 function toggleAllCause(causeIn){
 	var currentStatus = cause_toggle_status[causeIn].status;
 	currentStatus = !currentStatus;
@@ -96,20 +96,20 @@ function toggleAllCause(causeIn){
 	updateToggleLabel(causeIn);
 	Session.set('arrCause',tmp);
 }
- 
+
 
 function updateToggleLabel(labelIn){
 		if(cause_toggle_status[labelIn].count==5){
 			$(labelIn).attr('title','Click to deselect all');
 			cause_toggle_status[labelIn].status=true;
 		}
-		
+
 		if(cause_toggle_status[labelIn].count==0){
 			$(labelIn).attr('title','Click to select all');
 			cause_toggle_status[labelIn].status=false;
 		}
 }
- 
+
 /* end cause functions */
 
 
@@ -158,9 +158,9 @@ console.log("reenable");
 		var obj = cause_map[tmpc[xc]];
 		if(obj){
 			$(obj.img_class).css("background-image", obj.background_image);
-		}	
+		}
 	}
-	
+
 	var tmpi = Session.get('interest');
 	var xi;
 	for (xi in tmpi){
@@ -169,14 +169,14 @@ console.log("reenable");
 				$(obj.img_class).css("background-image", obj.background_image);
 		}
 	}
-	
+
 	fadeElements();
 }
 
 var isInitialPageLoad = true;
 function initAllSelectionsAtStart(){
  //setTimeout(function(){hideCollaborateHelpPopup()},5000);
- 
+
  if(isInitialPageLoad){
  setTimeout(function(){toggleCause("Wildlife & Habitat")},1);
  setTimeout(function(){toggleCause("Sustainable Transport")},1);
@@ -196,7 +196,7 @@ function initAllSelectionsAtStart(){
  setTimeout(function(){toggleCause("Skills & Employment")},1);
  setTimeout(function(){toggleCause("Education")},1);
 
-  
+
  setTimeout(function(){toggleInterest("Donate Materials")},1);
  setTimeout(function(){toggleInterest("Monetary Donations")},1);
  setTimeout(function(){toggleInterest("Volunteering")},1);
@@ -207,6 +207,9 @@ function initAllSelectionsAtStart(){
  isInitialPageLoad= false;
  }
 }
+
+
+
 
 
 var isFirstClick = true;
@@ -229,7 +232,7 @@ var isFirstClick = true;
   }
 
 /* Causes actions */
-  
+
   function hideCollaborateHelpPopup(){
 	$('.project-nav-msg-triangle').css("display", "none");
   }
@@ -280,18 +283,56 @@ Template.home.events({
    // console.log(interest);
 	toggleInterest(interest);
   },
-  
+
   "click #close-button-nav":function(event, template){
 	event.preventDefault();
   	//$('.project-nav-msg-triangle').attr("style", "display: none !important");
 	hideCollaborateHelpPopup();
   },
-  
+
   "click .causeLabel": function(event, template){
-  
+
 	var cause = '#'+event.target.id;
 	toggleAllCause(cause);
   },
+
+
+
+  "click #clearAllSelections":function(){
+
+   setTimeout(function(){toggleCause("Wildlife & Habitat")},0);
+   setTimeout(function(){toggleCause("Sustainable Transport")},0);
+   setTimeout(function(){toggleCause("Sustainable Products")},0);
+   setTimeout(function(){toggleCause("Green Technology")},0);
+   setTimeout(function(){toggleCause("Energy Management")},0);
+
+   setTimeout(function(){toggleCause("Senior Health")},0);
+   setTimeout(function(){toggleCause("Rehabilitation")},0);
+   setTimeout(function(){toggleCause("Fitness & Exercise")},0);
+   setTimeout(function(){toggleCause("Special Needs")},0);
+   setTimeout(function(){toggleCause("Mental Health")},0);
+
+   setTimeout(function(){toggleCause("Food & Shelter")},0);
+   setTimeout(function(){toggleCause("Accessibility")},0);
+   setTimeout(function(){toggleCause("Community")},0);
+   setTimeout(function(){toggleCause("Skills & Employment")},0);
+   setTimeout(function(){toggleCause("Education")},0);
+
+
+   setTimeout(function(){toggleInterest("Donate Materials")},0);
+   setTimeout(function(){toggleInterest("Monetary Donations")},0);
+   setTimeout(function(){toggleInterest("Volunteering")},0);
+   setTimeout(function(){toggleInterest("Research Agreements")},0);
+   setTimeout(function(){toggleInterest("Product collaboration")},0);
+   setTimeout(function(){toggleInterest("Brand Collaboration")},0);
+   setTimeout(function(){toggleInterest("Lecturing Opportunites")},0);
+
+ }
+
+
+
+
+
 });
 
 
@@ -406,9 +447,9 @@ $('document').ready(function(){
   }
   $(window).bind('resize',positionPopupCall);
 
-  
-  
+
+
   initAllSelectionsAtStart();
-  
+
   });
 }

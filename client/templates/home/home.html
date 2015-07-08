@@ -79,6 +79,7 @@
       <div class="clear"></div>
 
         <div class="project-nav-one">
+
           <div class="project-nav-project" interest="Donate Materials"><div class="project-nav-one-img-one"></div><span>Donate<br /> Materials</span></div>
           <div class="project-nav-project" interest="Monetary Donations"><div class="project-nav-one-img-two"></div><span>Monetary <br /> Donations</span></div>
           <div class="project-nav-project" interest="Volunteering"><div class="project-nav-one-img-three"></div><span>Volunteering</span></div>
@@ -92,16 +93,23 @@
           </div>
       </div>
 
+
+
     </div>
+
 </div>
 <!-- </span> -->
+<!-- <a type="button" class="btn btn-info btn-md" id='clearAllSelections' style='float:left'>Clear All</a> -->
+
   </div>
+
 
   <div name="queryElements-box">
     <div class="custombox" style ="padding:0; margin:0;padding-left:5px;">
 	Cause : {{#each cause}}  <span class="filter_tag">&nbsp;&nbsp;&nbsp;  {{this}}   <img class="remove-filter" src="/images/close-tag.png" title="Remove" remove-cause="{{this}}">  </span> {{/each}}
     <br>
 	Interest : {{#each interest}}  <span class="filter_tag">&nbsp;&nbsp;&nbsp; {{this}}   <img class="remove-filter" src="/images/close-tag.png" title="Remove" remove-interest="{{this}}">  </span> {{/each}}
+  <a type="button" class="btn btn-info btn-sm" id='clearAllSelections' style='float:right; margin:0 10px 10px 0; align:middle; '>Clear All</a>
     </div>
   </div>
 
