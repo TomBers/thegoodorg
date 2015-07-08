@@ -450,6 +450,7 @@ $('document').ready(function(){
 
 
   initAllSelectionsAtStart();
-
+  $('#filter_graphic').css("height", "515px");
+	setTimeout(function(){$('#filter_graphic').css("height", "");},6000);
   });
 }
