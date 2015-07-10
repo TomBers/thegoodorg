@@ -9,6 +9,25 @@
 
       <!-- <div><h3>Filters:</h3></div> -->
 
+	<div class="my_row" style="padding-top:2px">
+	<img align="left" src="/images/search-icon.jpg" style="float:left;width:60px;height:40px">
+	
+	
+	    <img align="middle" class="small-filter-icon" src="/images/project-one.png">
+		<img align="middle" class="small-filter-icon" src="/images/project-two.png">
+		<img align="middle" class="small-filter-icon" src="/images/project-three.png">
+		<span style="padding-left:40px"></span>
+		<img align="middle" class="small-filter-icon" src="/images/project-nav-one-img-one-hover.png">
+		<img align="middle" class="small-filter-icon" src="/images/project-nav-one-img-two-hover.png">
+		<img align="middle" class="small-filter-icon" src="/images/project-nav-one-img-three-hover.png">
+		<img align="middle" class="small-filter-icon" src="/images/project-nav-one-img-four-hover.png">
+		<img align="middle" class="small-filter-icon" src="/images/project-nav-one-img-five-hover.png">
+		<img align="middle" class="small-filter-icon" src="/images/project-nav-one-img-six-hover.png">
+		<img align="middle" class="small-filter-icon" src="/images/project-nav-one-img-seven-hover.png">
+		
+	<a type="button" class="btn btn-info btn-sm" id='clearAllSelections' style='float:right; margin:0 10px 10px 0; align:middle; '>Clear All</a>	
+	</div>
+	  
       <div class="container-smaller" align = 'middle'>
         <div class="container relative textAlignCenter">
 
@@ -99,10 +118,25 @@
 
 <div name="queryElements-box">
   <div class="custombox" style ="padding:0; margin:0;padding-left:5px;">
-    Cause : {{#each cause}}  <span class="filter_tag">&nbsp;&nbsp;&nbsp;  {{this}}   <img class="remove-filter" src="/images/close-tag.png" title="Remove" remove-cause="{{this}}">  </span> {{/each}}
-    <br>
-    Interest : {{#each interest}}  <span class="filter_tag">&nbsp;&nbsp;&nbsp; {{this}}   <img class="remove-filter" src="/images/close-tag.png" title="Remove" remove-interest="{{this}}">  </span> {{/each}}
-    <a type="button" class="btn btn-info btn-sm" id='clearAllSelections' style='float:right; margin:0 10px 10px 0; align:middle; '>Clear All</a>
+	<div class="my_row">
+		<div class="col-sm-1" style="width: 75px; padding-right: 5px; padding-left: 5px;">
+			Cause : 
+		</div>
+		<div class="col-sm-11" style="padding-right: 0px; padding-left: 0px;">
+			{{#each cause}}  <span class="filter_tag">&nbsp;&nbsp;&nbsp;  {{this}}   <img class="remove-filter" src="/images/close-tag.png" title="Remove" remove-cause="{{this}}">  </span> {{/each}}
+		</div>
+		<div class="col-sm-1" style="width: 75px; padding-right: 0px; padding-left: 0px;">
+		</div>
+	</div>
+	<br>
+	<div class="my_row">
+		<div class="col-sm-1" style="width: 75px; padding-right: 5px; padding-left: 5px;">
+			Interest :
+		</div>
+		<div class="col-sm-11" style="padding-right: 0px; padding-left: 0px;">			
+			{{#each interest}}  <span class="filter_tag">&nbsp;&nbsp;&nbsp; {{this}}   <img class="remove-filter" src="/images/close-tag.png" title="Remove" remove-interest="{{this}}">  </span> {{/each}}
+		</div>
+	</div>
   </div>
 </div>
 
