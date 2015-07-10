@@ -151,7 +151,7 @@ function toggleInterest(interest){
 
 
 function reinitSelected(){
-console.log("reenable");
+//console.log("reenable");
 	var tmpc = Session.get('arrCause');
 	var xc;
 	for (xc in tmpc){
@@ -299,34 +299,34 @@ Template.home.events({
 
 
   "click #clearAllSelections":function(){
-
-   setTimeout(function(){toggleCause("Wildlife & Habitat")},0);
-   setTimeout(function(){toggleCause("Sustainable Transport")},0);
-   setTimeout(function(){toggleCause("Sustainable Products")},0);
-   setTimeout(function(){toggleCause("Green Technology")},0);
-   setTimeout(function(){toggleCause("Energy Management")},0);
-
-   setTimeout(function(){toggleCause("Senior Health")},0);
-   setTimeout(function(){toggleCause("Rehabilitation")},0);
-   setTimeout(function(){toggleCause("Fitness & Exercise")},0);
-   setTimeout(function(){toggleCause("Special Needs")},0);
-   setTimeout(function(){toggleCause("Mental Health")},0);
-
-   setTimeout(function(){toggleCause("Food & Shelter")},0);
-   setTimeout(function(){toggleCause("Accessibility")},0);
-   setTimeout(function(){toggleCause("Community")},0);
-   setTimeout(function(){toggleCause("Skills & Employment")},0);
-   setTimeout(function(){toggleCause("Education")},0);
-
-
-   setTimeout(function(){toggleInterest("Donate Materials")},0);
-   setTimeout(function(){toggleInterest("Monetary Donations")},0);
-   setTimeout(function(){toggleInterest("Volunteering")},0);
-   setTimeout(function(){toggleInterest("Research Agreements")},0);
-   setTimeout(function(){toggleInterest("Product collaboration")},0);
-   setTimeout(function(){toggleInterest("Brand Collaboration")},0);
-   setTimeout(function(){toggleInterest("Lecturing Opportunites")},0);
-
+		var interest;
+		for (interest in interest_map){
+			var obj = interest_map[interest];
+			if(obj){
+					$(obj.img_class).css("background-image", "");
+			}
+		}
+		Session.set('interest', []);
+		
+		
+		var cause;
+		for (cause in cause_map){
+			var obj = cause_map[cause];
+			if(obj){
+					$(obj.img_class).css("background-image", "");
+			}
+		}
+		Session.set('arrCause', []);
+		
+		var causeLabel;
+		for (causeLabel in cause_toggle_status){
+			var obj = cause_toggle_status[causeLabel];
+			if(obj){
+					obj.count=0;
+					obj.status=false;
+					updateToggleLabel(causeLabel);
+			}
+		}
  },
  
  "mouseleave #filter_all":function(){
