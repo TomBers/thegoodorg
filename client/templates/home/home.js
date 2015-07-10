@@ -460,6 +460,7 @@ $('document').ready(function(){
 
 
   initAllSelectionsAtStart();
+  $('.small-filter-icon').css("opacity", "0");
   $('#filter_graphic').css("height", "550px");
 	setTimeout(function(){
 			$('#filter_graphic').css("height", "");
