@@ -327,6 +327,16 @@ Template.home.events({
    setTimeout(function(){toggleInterest("Brand Collaboration")},0);
    setTimeout(function(){toggleInterest("Lecturing Opportunites")},0);
 
+ },
+ 
+ "mouseleave #filter_all":function(){
+		$('#filter_graphic').css("height", "");
+		$('.small-filter-icon').css("opacity", "1");
+ },
+ 
+ "mouseover #filter_graphic":function(){
+		$('#filter_graphic').css("height", "550px");
+		$('.small-filter-icon').css("opacity", "0");
  }
 
 
@@ -453,7 +463,7 @@ $('document').ready(function(){
   $('#filter_graphic').css("height", "550px");
 	setTimeout(function(){
 			$('#filter_graphic').css("height", "");
-			$('.small-filter-icon').css("opacity", "0");
+			$('.small-filter-icon').css("opacity", "1");
 			
 	},6000);
   });
