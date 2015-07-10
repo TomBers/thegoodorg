@@ -47,8 +47,8 @@ p{
 #filter_graphic{
 	-webkit-transition: height 0.5s; /* For Safari 3.1 to 6.0 */
 	transition: height 0.5s;
-	transition-delay: 0.425s;
-	-webkit-transition-delay: 0.425s;
+	transition-delay: 0.5s;
+	-webkit-transition-delay: 0.5s;
 	overflow:hidden;
 	height: 45px;
 	min-height: 45px;
@@ -66,8 +66,8 @@ p{
     -moz-transition: opacity .5s ease-out;
     -webkit-transition: opacity .5s ease-out;
     -o-transition: opacity .5s ease-out;
-	transition-delay: 0.425s;
-	-webkit-transition-delay: 0.425s;
+	transition-delay: 0.5s;
+	-webkit-transition-delay: 0.5s;
 }
 
 .causeLabel:hover{
