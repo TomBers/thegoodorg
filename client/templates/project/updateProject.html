@@ -1,0 +1,107 @@
+
+
+<template name="updateProjectForm">
+
+  {{#autoForm collection="Projects" id="insertExample" template="bootstrap3" doc=this type="update" operation=insert autosave=true}}
+
+  <div style="text-align:left;">
+
+    <fieldset>
+      <!-- <legend>Add something</legend> -->
+      <!-- basic -->
+      {{> afQuickField name='hline' placeholder='project headline' autofocus=''}}
+      {{> afQuickField name='desc' placeholder='project description - this needs to be more than 20 characters long' }}
+
+      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseStory">Add background story</button>
+        <div id="collapseStory" class="collapse out">
+
+          <!-- location -->
+          {{> afQuickField name='story' placeholder='tell us a bit of background to the project here'}}
+
+        </div>
+      </div>
+
+      <div class="row" style='text-align:left;'>
+          <div class="col-sm-6">
+            {{> afQuickField name='categories'}}
+          </div>
+          <div class="col-sm-6">
+            {{> afQuickField name='interactions'}}
+          </div>
+      </div>
+
+      <!-- media -->
+      {{> afQuickField name='img' placeholder='http:// link to display main project image'}}
+      {{> afQuickField name='link' placeholder='http://mywebsite.com/myproject'}}
+
+
+      <span>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseImpact">Impact items</button>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseDates">Date items</button>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseLocation">Location items</button>
+      </span>
+
+
+      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
+        <!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseLocation">Location items</button> -->
+        <div id="collapseLocation" class="collapse out">
+
+          <!-- location -->
+          {{> afQuickField name='city' placeholder='eg. London'}}
+          {{> afQuickField name='country' placeholder='eg. UK'}}
+          {{> afQuickField name='postcode' placeholder='eg. SW19 42P'}}
+
+        </div>
+      </div>
+
+
+      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
+        <!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseDates">Date items</button> -->
+        <div id="collapseDates" class="collapse out">
+
+          <!-- dates -->
+          {{> afQuickField name='startDate' placeholder='DD-MMM-YYYY'}}
+          {{> afQuickField name='endDate' placeholder='DD-MMM-YYYY'}}
+          {{> afQuickField name='timeframe' placeholder='notes on project timeline eg. rolling start'}}
+          {{> afQuickField name='status' placeholder='0% complete'}}
+          <!-- {{> afQuickField name='active'}} -->
+
+        </div>
+      </div>
+
+
+
+      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
+        <!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseImpact">Impact items</button> -->
+        <div id="collapseImpact" class="collapse out">
+
+          <!-- impact -->
+          {{> afQuickField name='impact_e' placeholder='eg. How many CO2 emissions can this project help reduce, or how many trees will you help plant'}}
+          {{> afQuickField name='impact_h' placeholder='eg. How many people will you be able to help with this project?'}}
+          {{> afQuickField name='impact_r' placeholder='eg. How many people will you be able to reach out to?'}}
+
+        </div>
+      </div>
+
+
+  </fieldset>
+    <!-- <button type="submit" class="btn btn-primary">Add</button> -->
+
+    </div>
+
+  {{/autoForm}}
+
+
+</template>
+
+
+
+
+
+
+<template name="addNewProject">
+
+    <a type="button" class="btn btn-info btn-md" id='addNewPro'>Add New</a>
+
+</template>

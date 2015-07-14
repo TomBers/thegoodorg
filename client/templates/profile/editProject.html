@@ -1,0 +1,50 @@
+<template name="editProject2">
+
+  <body style="margin:60px 15px 0px 15px;">
+
+  	<div class="row">
+
+  		<div class="col-md-4">
+
+        {{> updateProjectForm this }}
+
+  		</div>
+
+<!-- style='text-align:left;' -->
+
+      <div class="col-md-8" >
+  			<div id="view_project" disabled="true" class="editProject2 darkOut-OnOver" data-toggle="tooltip" title="Edit me on the left.">
+
+          <!-- project detail view -->
+          <legend>Project detail view</legend>
+
+          {{> projectHeader this}}
+
+          <div class="row">
+            <div class="col-sm-2">
+              <!-- small -->
+              {{> projectPanelLeft this}}
+            </div>
+            <div class="col-sm-10">
+              <!-- large -->
+              {{> projectPanelCentre this}}
+            </div>
+          </div>
+
+  			</div>
+
+        <!-- summary view -->
+        <legend>Project summary view</legend>
+
+        <div disabled="true" class="darkOut-OnOver editProject" data-toggle="tooltip" title="Click to edit" projectID="{{_id}}">
+          {{> projectCard}}
+        </div>
+
+  		</div>
+
+
+  	</div>
+
+</body>
+
+</template>

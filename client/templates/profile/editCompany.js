@@ -39,7 +39,7 @@ Template.editCompany.helpers({
 	editingProject: function(){
 		return Session.get("editingProject");
 	},
-	
+
 	getProjectDoc:function(){
 		return "1";
 	},
@@ -57,6 +57,7 @@ Template.editCompany.helpers({
         return UserProfiles.findOne({"loginEmail":this.employees[0]});
       }
 });
+
 
 
 var postHooksProjectInsert = {

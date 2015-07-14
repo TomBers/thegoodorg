@@ -8,9 +8,20 @@
         <div class="container relative"> -->
 
             {{> projectHeader this}}
-            {{> projectPanelLeft this}}
-            {{> projectPanelCentre this}}
-            <!-- {{> projectPanelRight this}} -->
+
+            <div class="row">
+
+              <div class="col-sm-2">
+                <!-- small -->
+                {{> projectPanelLeft this}}
+              </div>
+
+              <div class="col-sm-10">
+                <!-- large -->
+                {{> projectPanelCentre this}}
+              </div>
+
+            </div>
 
         <!-- </div>
 
@@ -26,7 +37,7 @@
 
 <template name="projectHeader">
 
-  <div  class="custombox" align=left style="min-height:120px;display:inline-block; left:0; ">
+  <div  class="custombox" align=left style="min-height:120px;display:inline-block; left:0; text-align:left;">
 
     <div class="col-sm-2">
 
@@ -82,7 +93,8 @@
 
 <template name="projectPanelLeft">
 <!-- <div class="col-md-2" style='margin:5px 0 0 5px; max-width:200px; padding:0 0 0 0; ' align='left'> -->
-<div class="custombox" style='min-height:1500px; max-width:200px; padding:0 0 0 0; float:left; background-color:#f0f0f0' align='left'>
+<!-- <div class="custombox" style='min-height:1500px; max-width:200px; padding:0 0 0 0; float:left; background-color:#f0f0f0' align='left'> -->
+<!-- <div class="col-sm-2" style='max-width:200px; padding:0 0 0 0; float:left; background-color:#f0f0f0' align='left'> -->
 
 
   <div class="project-info" style=" max-height:200px; margin:1px 1px 1px 1px;" align='left'>
@@ -102,14 +114,14 @@
 
     {{/each}}
 
-    <div class="project-info" style=" max-height:200px; display:inline-block; margin:1px 1px 1px 1px;right:0;right:0">
+    <div class="project-info" style=" max-height:200px; display:inline-block; margin:1px 1px 1px 1px;right:0;right:0;text-align:left;">
       <span class="glyphicon glyphicon-cog" style='padding:0 10px 0 10px;color:#E56717;'></span><txt100 style="vertical-align:50%;">Industry:</txt100><br>
 	   {{#each linkCompany.industry}}
       <div class="my_row industry_div"><txt100>{{this}}</txt100></div>
 	   {{/each}}
     </div>
 
-  </div>
+  <!-- </div> -->
 
 </template>
 
@@ -121,20 +133,29 @@
 
   </div> -->
 
+  <!-- main photo / picture -->
+  {{#if img}}
   <div class="custombox" style='float:left;max-width:910px; min-height:200px;'>
     <!-- <span class="glyphicon glyphicon-picture" style='padding:0 10px 0 10px;color:#E56717;'></span><span><strong><sup> </sup></strong>	</span><br> -->
-
-    <img src="{{#if img}}{{img}}{{else}}{{linkCompany.logo}}{{/if}}" style="width:100%; height:auto;" />
-
+    {{#if img}}
+      <img src="{{img}}" style="width:100%; height:auto;" />
+    {{else}}
+      <img src="{{linkCompany.logo}}" style="max-width:50%; height:auto;" />
+    {{/if}}
   </div>
+  {{/if}}
 
-    <div class="custombox" style='float:left;width:450px;min-height:200px;'>
+    <!-- description -->
+    {{#if desc}}
+    <div class="custombox" style='float:left;width:450px;min-height:200px;text-align:left;'>
       <span class="glyphicon glyphicon-tags" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Project Description:</txt150><br>
       <txt100>{{desc}}</txt100>
-
     </div>
+    {{/if}}
 
-    <div class="custombox" style='float:left;width:450px;min-height:200px;'>
+    <!-- location -->
+    {{#if postcode}}
+    <div class="custombox" style='float:left;width:450px;min-height:200px;text-align:left;'>
       <span class="glyphicon glyphicon-map-marker" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Project Location:</txt150><br>
 
 			{{#if lonLat}}
@@ -151,20 +172,23 @@
 
 		<div class="clear"></div>
     </div>
+    {{/if}}
 
-    <div class="custombox" style='float:left;width:450px;min-height:200px;'>
+    <!-- impact -->
+    <div class="custombox" style='float:left;width:450px;min-height:200px;text-align:left;'>
       <span class="glyphicon glyphicon-flash" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Impact:</txt150><br>
       <span>
       <txt100>
         <div class="my_row impact_div"><img class="icon col-sm-2" src="/images/icons/icon_E-impact.png" /> <div class="col-sm-10">Environment : <br>{{impact_e}}</div></div>
         <div class="my_row impact_div"><img class="icon col-sm-2" src="/images/icons/icon-H-impact.png" /> <div class="col-sm-10">Health : <br>{{impact_h}}</div></div>
-        <div class="my_row impact_div"><img class="icon col-sm-2" src="/images/icons/icon-R-impact.png" /> <div class="col-sm-10">Rights : <br>{{impact_r}}</div></div>
+        <div class="my_row impact_div"><img class="icon col-sm-2" src="/images/icons/icon-R-impact.png" /> <div class="col-sm-10">Humanity : <br>{{impact_r}}</div></div>
       </txt100>
       </span>
     </div>
 
 
-    <div class="custombox" style='float:left;width:450px;min-height:200px;'>
+    <!-- about company -->
+    <div class="custombox" style='float:left;width:450px;min-height:200px; text-align:left;'>
       <span class="glyphicon glyphicon-info-sign" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">About {{linkCompany.name}}:</txt150><br>
 
         <txt100>
@@ -174,6 +198,14 @@
 
         <img height="50px" src="{{linkCompany.logo}}"/>
     </div>
+
+    <!-- project story -->
+    {{#if story}}
+      <div class="custombox" style='float:left;width:450px;min-height:200px;text-align:left;'>
+        <span class="glyphicon glyphicon-info-sign" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Project background:</txt150><br>
+          <txt100>          {{story}}        </txt100>
+        </div>
+    {{/if}}
 
 
 </template>
@@ -257,7 +289,7 @@
 
         <div class='goals'>
 
-        
+
 
         {{#if impact_e}}
           <div class='my_row goal'><div class="col-sm-2"><img class="icon" src="/images/icons/icon_E-impact.png" /></div><div class="green col-sm-10 goal-fadeout">{{impact_e}}</div></div>
@@ -271,7 +303,7 @@
 			{{/if}}
 		{{/if}}
 
-        
+
 
         </div>
 

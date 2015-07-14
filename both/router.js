@@ -31,10 +31,12 @@ Router.map(function() {
   this.route('/about', {path: '/about',template: 'about'});
 
   this.route('/map', {path: '/map',template: 'map'});
+
   this.route('/fll', {path: '/fll',template: 'fll'});
 
   this.route('/impact', {path: '/impact',template: 'impact'});
 
+  this.route('/test', {path: '/test',template: 'test'});
 
   this.route('/project', {
     path: '/project/:_id',
@@ -72,6 +74,21 @@ Router.map(function() {
     return {company:Companies.findOne({_id:this.params._id}),projects:Projects.find({company_id:this.params._id})};
   }
   });
+
+
+  // this.route('/editProject', {path: '/editProject/:_id',template: 'editProject2'});
+
+  this.route('/editProject', {
+    path: '/editProject/:_id',
+    template: 'editProject2',
+    waitOn:function(){
+     return Meteor.subscribe("Projects");
+   },
+    data: function() {
+    return Projects.findOne({_id:this.params._id});
+  }
+  });
+
 
 
 	this.route('/editProfile',

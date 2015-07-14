@@ -21,8 +21,8 @@ Template.company2.helpers({
       },
 
   linkRepresentative: function() {
-  console.log("rrrrrr");
-   console.log(this.company.employees[0])
+  // console.log("rrrrrr");
+  //  console.log(this.company.employees[0])
         return UserProfiles.findOne({"loginEmail":this.company.employees[0]});
       }
 });
@@ -61,7 +61,7 @@ Template.companyVideo.rendered = function(){
   var video = Popcorn.youtube('#youtube-video', this.data.company.youtubeLink);
   ;}
 
-  
+
 Template.companyLocation.rendered = function(){
 	Session.set('LatLng', false);
 	Meteor.call("getLatLngfromAddress", this.data.company.loc, function(error, result){
@@ -74,11 +74,11 @@ Template.companyLocation.rendered = function(){
 				   Session.set('LatLng', result);
 			});
 }
-  
+
 Template.companyLocation.helpers({
 
 	lonLat: function(e) {
 		return Session.get('LatLng')
 	},
-	
+
 });

@@ -1,0 +1,79 @@
+<template name="updateCompanyForm">
+
+  {{#autoForm collection="Companies" id="insertCompany" template="bootstrap3" doc=this type="update" operation=insert autosave=true}}
+
+  <div style="text-align:left;">
+
+    <fieldset>
+      <!-- <legend>Add something</legend> -->
+      <!-- basic -->
+      {{> afQuickField name='name' placeholder='company name' autofocus=''}}
+      {{> afQuickField name='hline' placeholder='company headline' }}
+      {{> afQuickField name='about' placeholder='tell us a bit about what you do' }}
+      {{> afQuickField name='logo' placeholder='http://your.company.logo here' }}
+      {{> afQuickField name='industry' placeholder='' }}
+
+      <span>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseMultiM">Multimedia items</button>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseLoc">Location items</button>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseReps">Company representatives</button>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseNews">News items</button>
+      </span>
+
+      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
+        <!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseMultiM">Multimedia items</button> -->
+        <div id="collapseMultiM" class="collapse out">
+
+          <!-- multimedia items -->
+          {{> afQuickField name='url' placeholder='link to your website' }}
+
+          {{> afQuickField name='img' placeholder='' }}
+          {{> afQuickField name='youtubeLink' placeholder='in the format >> https://www.youtube.com/embed/xXxxXXxxxXXX pls' }}
+
+          <hr>
+
+        </div>
+      </div>
+
+      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
+        <!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseLoc">Location items</button> -->
+        <div id="collapseLoc" class="collapse out">
+
+          <!-- location items -->
+          {{> afQuickField name='addr' placeholder='' }}
+          {{> afQuickField name='loc' placeholder='' }}
+
+        </div>
+      </div>
+
+
+      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
+        <!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseReps">Company representatives</button> -->
+        <div id="collapseReps" class="collapse out">
+
+          <!-- admin employees -->
+          {{> afQuickField name='employees' placeholder='' }}
+
+        </div>
+      </div>
+
+      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
+        <!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseNews">News items</button> -->
+        <div id="collapseNews" class="collapse out">
+
+          <!-- news items -->
+          {{> afQuickField name='twitter' placeholder='@Twitter' }}
+          {{> afQuickField name='newslinks' placeholder='...www.info-here.co...' }}
+
+        </div>
+      </div>
+
+
+
+    </fieldset>
+
+  </div>
+
+  {{/autoForm}}
+
+</template>

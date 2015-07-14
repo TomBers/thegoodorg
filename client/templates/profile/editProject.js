@@ -1,0 +1,15 @@
+Template.editProject2.helpers({
+
+  isOwned: function(){
+      var user = Meteor.user();
+      var mail = user.emails[0].address;
+        if (this.company.employees.indexOf(mail)>-1)
+        {return true;}
+        else
+        {return false;}
+      },
+
+    linkRepresentative: function() {
+        return UserProfiles.findOne({"loginEmail":this.employees[0]});
+      }
+});

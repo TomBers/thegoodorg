@@ -1,20 +1,22 @@
 
 <template name="company2">
 	<body style="margin:60px 15px 0px 15px;">
-	<div class='my_row'>
-	{{> companyHeader}}
-	{{> companyAbout}}
+		<div class='my_row'>
 
-	{{> companyPhotos}}
-	{{> companyVideo}}
+			{{> companyHeader}}
+			{{> companyAbout}}
 
-	{{> companyLocation}}
-	<!-- {{> companyContact}} -->
-	{{> companyNews}}
-</div>
-	<br>
+			{{> companyPhotos}}
+			{{> companyVideo}}
 
-	{{> companyProjects}}
+			{{> companyLocation}}
+			<!-- {{> companyContact}} -->
+			{{> companyNews}}
+
+		</div>
+		<br>
+
+		{{> companyProjects}}
 
 	</body>
 
@@ -23,28 +25,22 @@
 
 <template name="companyHeader">
 
-	<!-- <div class="custombox" style="height:250px;"> -->
 	<div class="custombox" style="display:inline-block; min-height:120px">
 
 		<div style='width:200px; display:inline-block;float:left; align:middle'>
 
 			<center>
-
-					<img src="{{company.logo}}" align=left style='height:100%; width:100%;'>
-					<!-- width ='150px' height='auto' align='middle'/> -->
-
+				<img src="{{company.logo}}" align=left style='height:100%; width:100%;'>
 			</center>
 
-
-			</div>
-
-			<div style='max-width:800px; margin:0 0 0 50px; display:inline-block;float:left'>
-
-				<txt200>{{company.name}}</txt200> <br>
-				<txt100><i>{{company.hline}}</i></txt100>
-			</div>
-
 		</div>
+
+		<div style='max-width:800px; margin:0 0 0 50px; display:inline-block;float:left'>
+			<txt200>{{company.name}}</txt200> <br>
+			<txt100><i>{{company.hline}}</i></txt100>
+		</div>
+
+	</div>
 
 </template>
 
@@ -59,7 +55,6 @@
 
 			{{#each company.employees}}
 			{{#with linkRepresentative this}}
-
 
 			<div>
 				<img src="{{user_photo}}" height="50px"  align='middle'/>
@@ -80,21 +75,16 @@
 </template>
 
 
-
-
-
 <template name="companyProjects">
 
 	<div class="main-projects my_row" >
 
-		<!-- Our Projects : <br> -->
-		<!-- <div class="container relative"> -->
+		<legend>Projects</legend>
 
 			{{#each projects}}
 			{{> projectCard}}
 			{{/each}}
 
-		<!-- </div> -->
 	</div>
 
 	<div class="clear"></div>
@@ -138,7 +128,6 @@
 </template>
 
 <template name="companyPhotos">
-
 	<div class="custombox" style='float:left;width:450px;min-height:200px;'>
 		<span class="glyphicon glyphicon-picture" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Photo(s):</txt150>
 
@@ -148,12 +137,11 @@
 
 		</div>
 	</div>
-
 </template>
 
 
 <template name="companyVideo">
-
+{{#if company.youtubeLink}}
 	<div class="custombox" style='float:left;width:450px;min-height:200px;'>
 
 		<!-- <div class="container"> -->
@@ -162,12 +150,12 @@
 		<!-- </div> -->
 
 	</div>
-
+{{/if}}
 </template>
 
 
 <template name="companyLocation">
-
+{{#if company.loc}}
 	<div class="custombox" style='float:left;width:450px;min-height:200px'>
 	<span class="glyphicon glyphicon-map-marker" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Where we are:</txt150>
 			{{#if lonLat}}
@@ -181,10 +169,10 @@
 				{{company.loc}}
 				</div>
 			{{/if}}
-			
+
 			<div class="clear"></div>
 	</div>
-
+{{/if}}
 </template>
 
 
@@ -195,9 +183,9 @@
 		<span class="glyphicon glyphicon-bullhorn" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Our News:</txt150><br>
 
 				<img class="image-30x30" src="/images/profiles/news.png"/>
-				<span>#1 news: {{company.newslinks}}</span>				<br>
+				<span>{{company.newslinks}}</span>				<br>
 				<img class="image-30x30" src="/images/profiles/twitter.png" />
-				<span>#2 news: {{company.twitter}}</span>
+				<span>{{company.twitter}}</span>
 
 	</div>
 

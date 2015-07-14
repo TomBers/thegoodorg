@@ -1,6 +1,25 @@
 /*  Classification object collections   */
 
 
+/*  Examples */
+Examples = new Mongo.Collection("examples");
+
+Examples.attachSchema(new SimpleSchema({
+  firstField:{type: String},
+  weirdColors:{type: String}
+}));
+
+Examples.allow({
+  insert: function () { return true; },
+  update: function () { return true; },
+  remove: function () { return true; }
+});
+
+
+
+
+
+
 /*  Categories */
 Categories = new Mongo.Collection("categories");
 
@@ -84,22 +103,14 @@ Companies.allow({
 
 
 Companies.attachSchema(new SimpleSchema({
-  name:   {type: String, label: "Company Name", max: 200, optional:false ,defaultValue:'...Company Name...'},
-  cid:    {type: String, label: "Companies House Reference Number", max: 200, defaultValue:'...CRN: Company Reference Number...'},
+  name:   {type: String, label: "Company Name", max: 200, optional:false },
+  cid:    {type: String, label: "Companies House Reference Number", max: 200,defaultValue:'validate this...'},
 
-  hline:  {type: String, label: "Headline (max 200 chars)", max: 200 ,optional:true, defaultValue:'(...company headline...)'},
-  about:   {type: String, label: "About (max 500 chars)", max: 500 ,optional:true, defaultValue:'(...company description...)', autoform: {rows: 3}},
+  hline:  {type: String, label: "Headline (max 200 chars)", max: 200 ,optional:true},
+  about:   {type: String, label: "About (max 500 chars)", max: 500 ,optional:true, autoform: {rows: 4}},
 
-  url:    {type: String, label: "Website", max: 200, optional:true, defaultValue:'(...URL link to website...)'},
-  logo:   {type: String, label: "Logo", max: 200, optional:true, defaultValue:'(...URL link to logo...)'},
-
-/* remove
-	type:   {type: String, label: "Company Type", optional: false, defaultValue:'StartUp',
-            allowedValues: [
-              "StartUp",
-              "Corporate"]},
-
-*/
+  url:    {type: String, label: "Website", max: 200, optional:true},
+  logo:   {type: String, label: "Logo", max: 400, optional:true},
 
 /* link to UserProfiles.loginEmail*/
  employees:{
@@ -136,16 +147,16 @@ industry: {
         type: String
      },
 
-  loc:    {type: String, label: "Postcode", max: 10, optional:true, defaultValue:'(XXX XXXX)'},
-  addr:   {type: String, label: "Address", max: 1000 ,optional:false, defaultValue:'(...company address...)', autoform: {rows: 5}},
+  loc:    {type: String, label: "Postcode", max: 10, optional:true},
+  addr:   {type: String, label: "Address", max: 1000 ,optional:true, autoform: {rows: 5}},
 
 
-  img:    {type: String, label: "Cover image for your company (URL / link)",  optional:true, defaultValue:'(...URL link to company picture(...)'},
-  youtubeLink: {type: String, label: "YouTube 'embed' Url",  optional:true, defaultValue:'(...in the format >> https://www.youtube.com/embed/xXxxXXxxxXXX pls)'},
+  img:    {type: String, label: "Cover image for your company (URL / link)",  optional:true},
+  youtubeLink: {type: String, label: "YouTube 'embed' Url",  optional:true},
 
   /* links to external feeds */
-  twitter: {type: String, optional:true,label: 'Twitter id', defaultValue:'@Twitter'},
-  newslinks: {type: String, optional:true,label:'News link',defaultValue:'...www.info-here.co...'},
+  twitter: {type: String, optional:true,label: 'Twitter id'},
+  newslinks: {type: String, optional:true,label:'News link'},
 
 
 
@@ -195,31 +206,34 @@ Projects.attachSchema(new SimpleSchema({
   company_id:  {type: String, optional: false, label: "Company._id", autoform: {omit: true}  },
 
   // title:    {type: String, optional: true, label: "Project Title", max: 200 },
-  hline:    {type: String, optional: true, label: "Headline (max 200 chars)", max: 200 },
-  desc:     {type: String, optional: true, label: "Description (min 20 chars max 1000 chars)", min: 20, max: 1000, autoform: {rows: 5}   },
-  img:      {type: String, optional: true, label: "URL link to project picture"   },
+  hline:    {type: String, optional: true, label: "Project headline (max 200 chars)", max: 200 },
+  desc:     {type: String, optional: true, label: "Project description (max 1000 chars)", max: 1000, autoform: {rows: 5}   },
+  story:     {type: String, optional: true, label: "Project background / story", max: 1000, autoform: {rows: 5}   },
+
+  img:      {type: String, optional: true, label: "URL link to project picture"},
   link:     {type: String, optional: true, label: "Link to project on your website",    regEx: SimpleSchema.RegEx.Url, autoform: {type: "url"} },
 
-  city:   {type: String, optional: true, label: "City / Region", defaultValue:'...London...'},
-  country:   {type: String, optional: true, label: "Country", defaultValue:'UK'},
-  postcode:   {type: String, optional: true, label: "Postcode", defaultValue:''},
+  city:   {type: String, optional: true, label: "City / Region"},
+  country:   {type: String, optional: true, label: "Country"},
+  postcode:   {type: String, optional: true, label: "Postcode"},
 
 
-  startDate: {type: Date, optional: true, label: 'Start Date (approx) - YYYY-MM-DD', /*odd but different format if using datepicker!*/
+  startDate: {type: Date, optional: true, label: 'Start Date (approx)', /*odd but different format if using datepicker!*/
    /* autoform: {type: "bootstrap-datepicker"} */
 	},
 
-  endDate: {type: Date, optional: true, label: 'End Date (approx) - YYYY-MM-DD',
+  endDate: {type: Date, optional: true, label: 'End Date (approx)',
  /*     autoform: {type: "bootstrap-datepicker"} */
 	  },
 
   timeframe: {type: String, optional: true, label: "Timeframe (notes)"},
 
 
-  status:   {type: String, optional: true, label: "Current Completion Level of Project" ,defaultValue:'0%'},
-  active:   {type: Boolean, label: "Active", defaultValue: true},
+  status:   {type: String, optional: true, label: "Current Completion Level of Project" },
+  // active:   {type: Boolean, label: "Active", defaultValue: true},
 
-  categories: {type: [String], optional: true, label:'Cause(s) your project serves : (multi-select: CTRL+SELECT)',
+  // categories: {type: [String], optional: true, label:'Cause(s) your project serves : (multi-select: CTRL+SELECT)',
+  categories: {type: [String], optional: true, label:'Cause(s) ',
     autoform: {
       type: "select-multiple",
       options: function () {
@@ -239,7 +253,8 @@ Projects.attachSchema(new SimpleSchema({
   },
 
 
-  interactions: {type: [String],optional: true, label: 'Initiaitves(s) your project serves : (multi-select: CTRL+SELECT)',
+  // interactions: {type: [String],optional: true, label: 'Initiaitves(s) your project serves : (multi-select: CTRL+SELECT)',
+  interactions: {type: [String],optional: true, label: 'Initiaitves(s)',
    autoform: {
      type: "select-multiple",
      options: function () {
@@ -257,9 +272,9 @@ Projects.attachSchema(new SimpleSchema({
    }
  },
 
-  impact_e:   {type: String, optional: true, label: "Environmental Impact", defaultValue:'eg. How many CO2 emissions can this project help reduce, or how many trees will you help plant'},
-  impact_h:   {type: String, optional: true, label: "Health Impact", defaultValue:'eg. How many people will you be able to help with this project?'},
-  impact_r:   {type: String, optional: true, label: "Rights Impact", defaultValue:'eg. How many people will you be able to reach out to?'},
+  impact_e:   {type: String, optional: true, label: "Environmental Impact"},
+  impact_h:   {type: String, optional: true, label: "Health Impact" },
+  impact_r:   {type: String, optional: true, label: "Rights Impact" },
 
   // impact_how: {type: String, optional:true,label:'Impact - How ?', defaultValue:'Please explain how you will achieve the impact measures with this project',  autoform: {rows: 5}   },
 
@@ -279,6 +294,96 @@ Projects.attachSchema(new SimpleSchema({
 
 }));
 
+// *** OLD
+
+// Projects.attachSchema(new SimpleSchema({
+// /* links to Company._id*/
+//   company_id:  {type: String, optional: false, label: "Company._id", autoform: {omit: true}  },
+//
+//   // title:    {type: String, optional: true, label: "Project Title", max: 200 },
+//   hline:    {type: String, optional: true, label: "Headline (max 200 chars)", max: 200 },
+//   desc:     {type: String, optional: true, label: "Description (min 20 chars max 1000 chars)", min: 20, max: 1000, autoform: {rows: 5}   },
+//   img:      {type: String, optional: true, label: "URL link to project picture"   },
+//   link:     {type: String, optional: true, label: "Link to project on your website",    regEx: SimpleSchema.RegEx.Url, autoform: {type: "url"} },
+//
+//   city:   {type: String, optional: true, label: "City / Region", defaultValue:'...London...'},
+//   country:   {type: String, optional: true, label: "Country", defaultValue:'UK'},
+//   postcode:   {type: String, optional: true, label: "Postcode", defaultValue:''},
+//
+//
+//   startDate: {type: Date, optional: true, label: 'Start Date (approx) - YYYY-MM-DD', /*odd but different format if using datepicker!*/
+//    /* autoform: {type: "bootstrap-datepicker"} */
+// 	},
+//
+//   endDate: {type: Date, optional: true, label: 'End Date (approx) - YYYY-MM-DD',
+//  /*     autoform: {type: "bootstrap-datepicker"} */
+// 	  },
+//
+//   timeframe: {type: String, optional: true, label: "Timeframe (notes)"},
+//
+//
+//   status:   {type: String, optional: true, label: "Current Completion Level of Project" ,defaultValue:'0%'},
+//   active:   {type: Boolean, label: "Active", defaultValue: true},
+//
+//   categories: {type: [String], optional: true, label:'Cause(s) your project serves : (multi-select: CTRL+SELECT)',
+//     autoform: {
+//       type: "select-multiple",
+//       options: function () {
+//         var opts = [];
+// 	//	 console.log(Categories.find().fetch());
+//          Categories.find().forEach(function(c){
+// 	//	 console.log(c);
+// 		 var index;
+// 		 for (index = 0; index < c.subcat.length; index++) {
+// 			var str = c.cat + " - " + c.subcat[index]
+// 			opts.push({label:str,value:c.subcat[index]});
+//           }
+// 		});
+//         return opts;
+//       }
+//    }
+//   },
+//
+//
+//   interactions: {type: [String],optional: true, label: 'Initiaitves(s) your project serves : (multi-select: CTRL+SELECT)',
+//    autoform: {
+//      type: "select-multiple",
+//      options: function () {
+//        var tmp = [
+//          {label:'Donate Materials',value:'Donate Materials'},
+//          {label:'Monetary Donations',value:'Monetary Donations'},
+//          {label:'Volunteering',value:'Volunteering'},
+//          {label:'Research Agreements',value:'Research Agreements'},
+//          {label:'Product Collaboration',value:'Product collaboration'},
+//          {label:'Brand Collaboration',value:'Brand Collaboration'},
+//          {label:'Lecturing Opportunites',value:'Lecturing Opportunites'}
+//          ];
+//        return tmp;
+//      }
+//    }
+//  },
+//
+//   impact_e:   {type: String, optional: true, label: "Environmental Impact", defaultValue:'eg. How many CO2 emissions can this project help reduce, or how many trees will you help plant'},
+//   impact_h:   {type: String, optional: true, label: "Health Impact", defaultValue:'eg. How many people will you be able to help with this project?'},
+//   impact_r:   {type: String, optional: true, label: "Rights Impact", defaultValue:'eg. How many people will you be able to reach out to?'},
+//
+//   // impact_how: {type: String, optional:true,label:'Impact - How ?', defaultValue:'Please explain how you will achieve the impact measures with this project',  autoform: {rows: 5}   },
+//
+//    // CRUD...
+//   createdAt: {
+//     autoform: {omit: true},
+//     type: Date,
+//     autoValue: function() {
+//       if (this.isInsert) {return new Date;}
+//       else if (this.isUpsert) {return {$setOnInsert: new Date};}
+//       else {        this.unset();      }
+//       }
+//     },
+//
+//     // perhaps let's not delete anything... set to inactive instead
+//     isActive: {type: Boolean, label: "Active ?", defaultValue: true ,autoform: {omit: true}}
+//
+// }));
 
 /* END Projects */
 

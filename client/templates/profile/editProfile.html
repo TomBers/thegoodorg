@@ -23,19 +23,19 @@
  </div>
  </div>
 <br>
-<div class="my_row editCompaniesHeader">
-<h3><div class="col-md-6" align="left">Manage My Companies:  </div>
-<div class="col-md-6" align="right">
 
-        {{#afModal class="btn btn-primary" collection="Companies" operation="insert" omitFields="cid,employees,isActive" formId="makeCompney"}}
-          Add New Company
-        {{/afModal}}
+<div class="my_row editCompaniesHeader">
+
+	<div class="col-md-6" align="left">
+		<legend>	Manage My Companies:</legend>
+		{{> addNewCompany}}
+	</div>
+
 </div>
-</h3>
-</div>
+
 <br>
   {{#each companies}}
-
+	<div>
 	<a href='/editCompany/{{company._id}}' class="darkOut-OnOver editCompany" data-toggle="tooltip" title="Click to edit">
 	<div class="my_row custombox">
 		<div class="col-md-10">
@@ -47,7 +47,17 @@
 		</div>
 	</div>
 	</a>
+	{{> quickRemoveButton collection="Companies" _id=company._id class="btn btn-danger"}}
+</div>
+
 	<br>
   {{/each}}
 </body>
+</template>
+
+
+<template name="addNewCompany">
+
+    <a type="button" class="btn btn-info btn-md" id='addNewCom'>Add New Company</a>
+
 </template>
