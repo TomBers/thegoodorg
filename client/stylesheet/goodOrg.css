@@ -55,7 +55,7 @@ p{
 }
 
 #filter_graphic:hover{
-	height: 550px;
+	height: 350px;
 }
 
 .small-filter-icon{
@@ -323,3 +323,24 @@ p{
     /*width: 100%;    height: auto;*/
     /*min-height: 100%;    min-width: 1024px;*/
     position: fixed; top: 0;    left: 0;}
+	
+	
+/* pie chart*/	
+.polyline {
+	fill: none;
+	stroke: black !important;
+	stroke-width: 2px;
+	stroke-dasharray: 5px;
+}
+
+.path {
+  stroke: #0d0d0d;
+  /* stroke-width: 5px; */
+  cursor: pointer;
+  -webkit-transition: fill 250ms;
+          transition: fill 250ms;
+}
+.path:hover {
+  /* stroke-width: 10px; */
+  fill: #fff;
+}

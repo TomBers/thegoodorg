@@ -1,3 +1,188 @@
+function build_PieChart(wrapper_Class, _data) {
+	var dataset = [1, 1, 1, 1, 1];
+
+	var colors = ['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b'];
+
+	var width = document.querySelector(wrapper_Class).offsetWidth,
+		height = document.querySelector(wrapper_Class).offsetHeight,
+		minOfWH = Math.min(width, height) / 2,
+		initialAnimDelay = 300,
+		arcAnimDelay = 150,
+		arcAnimDur = 3000,
+		secDur = 1000,
+		secIndividualdelay = 150,
+		radius;
+
+	// calculate minimum of width and height to set chart radius
+	if (minOfWH > 200) {
+			radius = 200;
+	} else {
+			radius = minOfWH;
+	}
+
+	// append svg
+	var svg = d3.select(wrapper_Class).append('svg')
+		.attr({
+				'width': width,
+				'height': height,
+				'class': 'pieChart'
+		})
+		.append('g');
+
+	svg.attr({
+		'transform': 'translate(' + width / 2 + ',' + height / 2 + ')'
+	});
+
+	// for drawing slices
+	var arc = d3.svg.arc()
+		.outerRadius(radius * 0.6)
+		.innerRadius(radius * 0.35);
+
+	// for labels and polylines
+	var outerArc = d3.svg.arc()
+		.innerRadius(radius * 0.85)
+		.outerRadius(radius * 0.85);
+
+	// d3 color generator
+	var c10 = d3.scale.category10();
+
+	var pie = d3.layout.pie()
+		.value(function(d) {
+				return d;
+		});
+
+	var draw = function() {
+
+		svg.append("g")
+				.attr("class", "lines");
+		svg.append("g")
+				.attr("class", "slices");
+		svg.append("g")
+				.attr("class", "labels");
+
+		// define slice
+		var slice = svg.select('.slices')
+				.datum(dataset)
+				.selectAll('path')
+				.data(pie);
+		slice
+				.enter().append('path')
+				.attr({
+						'fill': function(d, i) {
+								// slice color 								
+								return colors[i];
+						},
+						'd': arc,
+						'stroke-width': '25px',
+				'id': function(d, i) {
+								// slice color 								
+								return 'seg_'+i;
+						}
+						,
+				'cause': function(d, i) {
+								// slice color 								
+								return _data[i];
+						}
+						
+				})
+				.attr('transform', function(d, i) {
+						return 'rotate(-180, 0, 0)';
+				})
+				.style('opacity', 0)
+				.transition()
+				.delay(function(d, i) {
+						return (i * arcAnimDelay) + initialAnimDelay;
+				})
+				.duration(arcAnimDur)
+				.ease('elastic')
+				.style('opacity', 1)
+				.attr({
+						'transform': 'rotate(0,0,0)'
+				});
+
+		slice.transition()
+				.delay(function(d, i) {
+						return arcAnimDur + (i * secIndividualdelay);
+				})
+				.duration(secDur)
+				.attr('stroke-width', '5px');
+
+		function midAngle(d) {
+				return d.startAngle + (d.endAngle - d.startAngle) / 2;
+		}
+
+		var text = svg.select(".labels").selectAll("text")
+				.data(pie(dataset));
+
+		text.enter()
+				.append('text')
+				.attr('dy', '0.35em')
+				.style("opacity", 0)
+				.style('fill', function(d, i) {
+						return colors[i];
+				})
+				.html(function(d, i) {
+						console.log(_data[i]);
+						console.log(_data[i].split(' '));
+						var words = _data[i].split(' ');
+						if(words[1] && words[1] == '&'){
+							var s = "<tspan x='0'>"+words[0]+ " &</tspan>";
+								s = s+ "<tspan x='0' dy='1.2em'>"+words[2]+ "</tspan>";
+							return s; 
+						}
+						else{
+							var s = "<tspan x='0'>"+words[0]+ "</tspan>";
+							 for (var i = 1; i < words.length; i++) {
+								s = s+ "<tspan x='0' dy='1.2em'>"+words[i]+ "</tspan>";
+							 }
+							return s; 
+						}
+				})
+				.attr('transform', function(d) {
+						// calculate outerArc centroid for 'this' slice
+						var pos = outerArc.centroid(d);
+						// define left and right alignment of text labels 							
+						pos[0] = radius * (midAngle(d) < Math.PI ? 1 : -1);
+						return "translate(" + pos + ")";
+				})
+				.style('text-anchor', function(d) {
+						return midAngle(d) < Math.PI ? "start" : "end";
+				})
+				.transition()
+				.delay(function(d, i) {
+						return arcAnimDur + (i * secIndividualdelay);
+				})
+				.duration(secDur)
+				.style('opacity', 1);
+
+		var polyline = svg.select(".lines").selectAll("polyline")
+				.data(pie(dataset));
+
+		polyline.enter()
+				.append("polyline")
+				.style("opacity", 0.5)
+				.style("stroke","black")
+				.attr('points', function(d) {
+						var pos = outerArc.centroid(d);
+						pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
+						return [arc.centroid(d), arc.centroid(d), arc.centroid(d)];
+						}
+					)
+				.transition()
+				.duration(secDur)
+				.delay(function(d, i) {
+						return arcAnimDur + (i * secIndividualdelay);
+				})
+				.attr('points', function(d) {
+						var pos = outerArc.centroid(d);
+						pos[0] = radius * 0.95 * (midAngle(d) < Math.PI ? 1 : -1);
+						return [arc.centroid(d), outerArc.centroid(d), pos];
+				});
+	};
+  return draw;
+}
+
+
 // Session.set('cause', '');
 Session.set('arrCause', []);
 Session.set('interest', []);
@@ -296,7 +481,11 @@ Template.home.events({
 	toggleAllCause(cause);
   },
 
-
+	"click [cause]": function(event, template){
+	var cause = $(event.target).attr('cause');
+    //console.log(cause);
+	toggleCause(cause);
+  },
 
   "click #clearAllSelections":function(){
 		var interest;
@@ -335,7 +524,7 @@ Template.home.events({
  },
  
  "mouseover #filter_graphic":function(){
-		$('#filter_graphic').css("height", "550px");
+		$('#filter_graphic').css("height", "350px");
 		$('.small-filter-icon').css("opacity", "0");
  }
 
@@ -461,11 +650,36 @@ $('document').ready(function(){
 
   initAllSelectionsAtStart();
   $('.small-filter-icon').css("opacity", "0");
-  $('#filter_graphic').css("height", "550px");
+  $('#filter_graphic').css("height", "350px");
 	setTimeout(function(){
 			$('#filter_graphic').css("height", "");
 			$('.small-filter-icon').css("opacity", "1");
 			
 	},6000);
+	
+	// piecharts:
+	console.log("doing chart");
+	
+	var chart_e = build_PieChart(".cause_env", ["Wildlife & Habitat","Sustainable Transport",
+												"Sustainable Products","Green Technology",
+												"Energy Management"]);
+	chart_e();
+	var chart_h = build_PieChart(".cause_health", ["Senior Health","Fitness & Exercise",
+													"Rehabilitation",
+													"Special Needs",
+													"Mental Health"]);
+	chart_h();
+	var chart_r = build_PieChart(".cause_rights", ["Food & Shelter","Accessibility"
+													,"Community","Skills & Employment",
+													"Education"]);
+	chart_r();
+	
+	
+	
+	
+	
+	
+	
+	
   });
 }
