@@ -1,7 +1,17 @@
+//_data.dataset = [1,1,1,1,1] 
+//_data.labels = [....]
+//_data.colors = ['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b']
+//_data.ids = [....] //to uniquely select segment 
+//_data.attr = ''
+//_data.attr_values = [....] (which is normally labels)
 function build_PieChart(wrapper_Class, _data) {
-	var dataset = [1, 1, 1, 1, 1];
 
-	var colors = ['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b'];
+	
+	var dataset = _data.dataset;
+	
+	var colors = _data.colors;
+	
+	var _attr = _data.attr
 
 	var width = document.querySelector(wrapper_Class).offsetWidth,
 		height = document.querySelector(wrapper_Class).offsetHeight,
@@ -65,6 +75,13 @@ function build_PieChart(wrapper_Class, _data) {
 				.datum(dataset)
 				.selectAll('path')
 				.data(pie);
+				
+		var my_attr = {};
+		my_attr[_attr] = function(d, i) {
+								// slice color 								
+								return _data.attr_values[i];
+						};
+		
 		slice
 				.enter().append('path')
 				.attr({
@@ -74,17 +91,13 @@ function build_PieChart(wrapper_Class, _data) {
 						},
 						'd': arc,
 						'stroke-width': '25px',
-				'id': function(d, i) {
+					'id': function(d, i) {
 								// slice color 								
-								return 'seg_'+i;
-						}
-						,
-				'cause': function(d, i) {
-								// slice color 								
-								return _data[i];
+								return _data.ids[i];
 						}
 						
 				})
+				.attr(my_attr)
 				.attr('transform', function(d, i) {
 						return 'rotate(-180, 0, 0)';
 				})
@@ -122,9 +135,9 @@ function build_PieChart(wrapper_Class, _data) {
 						return colors[i];
 				})
 				.html(function(d, i) {
-						console.log(_data[i]);
-						console.log(_data[i].split(' '));
-						var words = _data[i].split(' ');
+					//	console.log(_data.labels[i]);
+						//console.log(_data.labels[i].split(' '));
+						var words = _data.labels[i].split(' ');
 						if(words[1] && words[1] == '&'){
 							var s = "<tspan x='0'>"+words[0]+ " &</tspan>";
 								s = s+ "<tspan x='0' dy='1.2em'>"+words[2]+ "</tspan>";
@@ -181,8 +194,84 @@ function build_PieChart(wrapper_Class, _data) {
 	};
   return draw;
 }
+/////////////////////////
+
+function showChart(cause){
+		d3.selectAll('.sub_cause .slices').transition().ease('back').duration(500).delay(0).style('opacity', 0).attr('transform', 'translate(0, 250)').remove();
+		d3.selectAll('.sub_cause .lines').transition().ease('back').duration(500).delay(100).style('opacity', 0).attr('transform', 'translate(0, 250)').remove();
+		d3.selectAll('.sub_cause .labels').transition().ease('back').duration(500).delay(200).style('opacity', 0).attr('transform', 'translate(0, 250)').remove();
+		d3.selectAll('.sub_cause .pieChart').transition().ease('back').duration(100).delay(300).style('opacity', 0).attr('transform', 'translate(0, 250)').remove();
+
+		setTimeout(function(){
+				buildSub_CauseChart(cause);
+		}, 500);
+}
+
+function buildCauseChart(){
+	var chart_causes = build_PieChart(".causes", {
+		dataset: [1,1,1],
+		labels: ['Environment','Health','Human Rights'],
+		colors: ['#04B404', '#2E9AFE', '#FFBF00'],
+		ids: ['seg_Environment','seg_Health','seg_Human_Rights'],
+		attr: 'seg_cause',
+		attr_values: ['Environment','Health','Human Rights']
+	});
+	
+	chart_causes();
+
+}
 
 
+function buildSub_CauseChart(cause){
+
+	var _data = {};
+	_data['dataset'] = [1,1,1,1,1];
+	_data['attr'] = 'seg_sub_cause';
+	
+	
+	if(cause == 'Environment'){
+	_data.labels = ["Wildlife & Habitat","Sustainable Transport",
+												"Sustainable Products","Green Technology",
+												"Energy Management"];
+		_data.colors = ['#0B610B', '#088A08', '#04B404','#01DF01', '#00FF00'];
+		_data.ids = ['h1','h2','h3','h4','h5',];
+		_data.attr_values = ["Wildlife & Habitat","Sustainable Transport",
+												"Sustainable Products","Green Technology",
+												"Energy Management"];
+	}
+	
+	
+	if(cause == 'Health'){
+	_data.labels = ["Senior Health","Fitness & Exercise",
+													"Rehabilitation",
+													"Special Needs",
+													"Mental Health"];
+		_data.colors = ['#0404B4', '#0431B4', '#013ADF','#0040FF', '#2E64FE'];
+		_data.ids = ['h1','h2','h3','h4','h5',];
+		_data.attr_values = ["Senior Health","Fitness & Exercise",
+													"Rehabilitation",
+													"Special Needs",
+													"Mental Health"];
+	}
+	
+	
+	if(cause == 'Human Rights'){
+	_data.labels = ["Food & Shelter","Accessibility"
+													,"Community","Skills & Employment",
+													"Education"];
+		_data.colors = ['#DBA901', '#FFBF00', '#FACC2E','#F7D358', '#FACC2E'];
+		_data.ids = ['h1','h2','h3','h4','h5',];
+		_data.attr_values = ["Food & Shelter","Accessibility"
+													,"Community","Skills & Employment",
+													"Education"];
+	}
+	
+	
+	var chart_causes = build_PieChart(".sub_cause",_data);
+	chart_causes();
+}
+
+//////////////////////////////
 // Session.set('cause', '');
 Session.set('arrCause', []);
 Session.set('interest', []);
@@ -481,10 +570,16 @@ Template.home.events({
 	toggleAllCause(cause);
   },
 
-	"click [cause]": function(event, template){
-	var cause = $(event.target).attr('cause');
+	"click [seg_sub_cause]": function(event, template){
+	var cause = $(event.target).attr('seg_sub_cause');
     //console.log(cause);
 	toggleCause(cause);
+  },
+  
+  "click [seg_cause]": function(event, template){
+	var cause = $(event.target).attr('seg_cause');
+    //console.log(cause);
+	showChart(cause);
   },
 
   "click #clearAllSelections":function(){
@@ -516,6 +611,18 @@ Template.home.events({
 					updateToggleLabel(causeLabel);
 			}
 		}
+		
+		
+		d3.selectAll('.slices').transition().ease('back').duration(500).delay(0).style('opacity', 0).attr('transform', 'translate(0, 250)').remove();
+		d3.selectAll('.lines').transition().ease('back').duration(500).delay(100).style('opacity', 0).attr('transform', 'translate(0, 250)').remove();
+		d3.selectAll('.labels').transition().ease('back').duration(500).delay(200).style('opacity', 0).attr('transform', 'translate(0, 250)').remove();
+		d3.selectAll('.pieChart').transition().ease('back').duration(100).delay(300).style('opacity', 0).attr('transform', 'translate(0, 250)').remove();
+		
+		setTimeout(function(){
+				buildCauseChart();
+				buildSub_CauseChart('Environment');
+		}, 500);
+
  },
  
  "mouseleave #filter_all":function(){
@@ -524,7 +631,7 @@ Template.home.events({
  },
  
  "mouseover #filter_graphic":function(){
-		$('#filter_graphic').css("height", "350px");
+		$('#filter_graphic').css("height", "500px");
 		$('.small-filter-icon').css("opacity", "0");
  }
 
@@ -650,7 +757,7 @@ $('document').ready(function(){
 
   initAllSelectionsAtStart();
   $('.small-filter-icon').css("opacity", "0");
-  $('#filter_graphic').css("height", "350px");
+  $('#filter_graphic').css("height", "500px");
 	setTimeout(function(){
 			$('#filter_graphic').css("height", "");
 			$('.small-filter-icon').css("opacity", "1");
@@ -660,22 +767,10 @@ $('document').ready(function(){
 	// piecharts:
 	console.log("doing chart");
 	
-	var chart_e = build_PieChart(".cause_env", ["Wildlife & Habitat","Sustainable Transport",
-												"Sustainable Products","Green Technology",
-												"Energy Management"]);
-	chart_e();
-	var chart_h = build_PieChart(".cause_health", ["Senior Health","Fitness & Exercise",
-													"Rehabilitation",
-													"Special Needs",
-													"Mental Health"]);
-	chart_h();
-	var chart_r = build_PieChart(".cause_rights", ["Food & Shelter","Accessibility"
-													,"Community","Skills & Employment",
-													"Education"]);
-	chart_r();
 	
 	
-	
+	buildCauseChart();
+	buildSub_CauseChart('Environment');
 	
 	
 	
