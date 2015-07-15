@@ -7,7 +7,6 @@
   <div style="text-align:left;">
 
     <fieldset>
-      <!-- <legend>Add something</legend> -->
       <!-- basic -->
       {{> afQuickField name='hline' placeholder='project headline' autofocus=''}}
       {{> afQuickField name='desc' placeholder='project description - this needs to be more than 20 characters long' }}
@@ -92,6 +91,11 @@
 
   {{/autoForm}}
 
+  <br>
+
+  <span style='float:left;'>
+    {{> quickRemoveButton collection="Projects" _id=this class="btn btn-danger"}}
+  </span>
 
 </template>
 

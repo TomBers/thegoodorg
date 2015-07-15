@@ -3,99 +3,78 @@
 
   <body style="margin:60px 15px 0px 15px;">
 
-    <!-- <div class="main_body-project">
+    <div  class="custombox" align=left style="min-height:120px;display:inline-block; left:0; text-align:left;">
 
-        <div class="container relative"> -->
+      {{> projectHeader this}}
+      {{> projectHdrBtns this}}
 
-            {{> projectHeader this}}
+    </div>
 
-            <div class="row">
+    <div class="row">
 
-              <div class="col-sm-2">
-                <!-- small -->
-                {{> projectPanelLeft this}}
-              </div>
+      <div class="col-sm-2">
+        {{> projectPanelLeft this}}
+      </div>
 
-              <div class="col-sm-10">
-                <!-- large -->
-                {{> projectPanelCentre this}}
-              </div>
+      <div class="col-sm-10">
+        {{> projectPanelCentre this}}
+      </div>
 
-            </div>
+    </div>
 
-        <!-- </div>
-
-      </div> -->
-
-    </body>
+  </body>
 
 </template>
 
 
-
-
-
 <template name="projectHeader">
 
-  <div  class="custombox" align=left style="min-height:120px;display:inline-block; left:0; text-align:left;">
-
-    <div class="col-sm-2">
-
-    <div  style='width:200px;min-height:120px; margin:0 0 0 0; display:inline-block;float:left; text-align:left;'>
+    <div  class="col-sm-2" style='width:200px;min-height:120px; margin:0 0 0 0; display:inline-block;float:left; text-align:left;'>
 
     <span class="glyphicon glyphicon-calendar" style='padding:0 10px 0 10px;color:#E56717;'></span><txt100 style="color:grey;">Project Dates:</txt100>
     <br>
     <txt75> End   : <strong style='color:grey;'>{{formatDate endDate}}</strong></txt75><br>
     <txt75> Start : <strong style='color:grey;'>{{formatDate startDate}}</strong></txt75><br>
-    <txt75> (Notes): <strong> {{duration}} </strong></txt75>
+    <txt75> (Notes): <strong> {{timeframe}} </strong></txt75>
     <br>
 
     <div class="clear"> </div>
 
     </div>
+
+  <div class='col-sm-6' style='width:auto; max-width:900px; min-height:120px; margin:0 0 0 0; display:inline-block;float:left'>
+    <center>
+      <txt200>      {{hline}}    </txt200>
+    </center>
+  </div>
+
+</template>
+
+<template name="projectHdrBtns">
+  <div class="col-sm-2" style='float:right;'>
+
+    <br>
+    <a type="button" class="btn btn-info btn-md btn-block" id='moreInfo' href="/company2/{{linkCompany._id}}">Explore {{linkCompany.name}}</a>
+    <br>
+
+  	  {{#if user}}
+
+        {{> autoformModals}}
+
+        {{#afModal class="btn btn-success btn-block" collection="ContactReqs" operation="insert" omitFields="project,from,to" formId="makeContactReq"}}
+          Request Callback
+        {{/afModal}}
+
+  	  {{else}}
+  	   <div class="btn btn-success btn-block"><txt75>Please Sign in to Request Callback</txt75></div>
+  	  {{/if}}
+
     </div>
 
-  <div class="col-sm-8">
-
-  <div style='width:auto; max-width:900px; min-height:120px; margin:0 0 0 0; display:inline-block;float:left'>
-  <!-- <div style='max-width:1000px; min-height:120px; margin:0 0 0 50px; display:inline-block;float:left'> -->
-  <center>
-    <txt200>      {{hline}}    </txt200>
-  </center>
-  </div>
-
-  </div>
-
-<div class="col-sm-2">
-
-<br>
-  <a type="button" class="btn btn-info btn-md btn-block" id='moreInfo' href="/company2/{{linkCompany._id}}">Explore {{linkCompany.name}}</a>
-
-<br>
-
-	  {{#if user}}
-
-    {{> autoformModals}}
-
-    {{#afModal class="btn btn-success btn-block" collection="ContactReqs" operation="insert" omitFields="project,from,to" formId="makeContactReq"}}
-      <!-- <span class="glyphicon glyphicon-star" aria-hidden="true"></span> -->
-      Request Callback
-    {{/afModal}}
-	{{else}}
-	<div class="btn btn-success btn-block"><txt75>Please Sign in to Request Callback</txt75></div>
-	 {{/if}}
-  </div>
-
-  </div>
 </template>
 
 
-
 <template name="projectPanelLeft">
-<!-- <div class="col-md-2" style='margin:5px 0 0 5px; max-width:200px; padding:0 0 0 0; ' align='left'> -->
-<!-- <div class="custombox" style='min-height:1500px; max-width:200px; padding:0 0 0 0; float:left; background-color:#f0f0f0' align='left'> -->
-<!-- <div class="col-sm-2" style='max-width:200px; padding:0 0 0 0; float:left; background-color:#f0f0f0' align='left'> -->
-
 
   <div class="project-info" style=" max-height:200px; margin:1px 1px 1px 1px;" align='left'>
     <span class="glyphicon glyphicon-heart-empty" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Interactions:</txt150>
@@ -126,13 +105,6 @@
 </template>
 
 <template name="projectPanelCentre">
-  <!-- <div class="center-side-panel"> -->
-  <!-- <div class="col-md-7" style='border:1px solid blue;'>
-
-    <div class="image"><img style="width:100%; height:auto;" src="{{img}}" height='auto'></div>
-
-  </div> -->
-
   <!-- main photo / picture -->
   {{#if img}}
   <div class="custombox" style='float:left;max-width:910px; min-height:200px;'>
@@ -202,7 +174,7 @@
     <!-- project story -->
     {{#if story}}
       <div class="custombox" style='float:left;width:450px;min-height:200px;text-align:left;'>
-        <span class="glyphicon glyphicon-info-sign" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Project background:</txt150><br>
+        <span class="glyphicon glyphicon-book" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Project background:</txt150><br>
           <txt100>          {{story}}        </txt100>
         </div>
     {{/if}}
@@ -260,18 +232,17 @@
                 <img class="profile-pic" src="{{user_photo}}" style='margin-bottom:2px' >
 
               <div class="col-sm-6">
-
-                  {{name}}
-                  <br>{{user_title}}
+                  {{name}}<br>
+                  {{user_title}}
               </div>
+
             {{/with}}
 
                 <div>
                   {{#each getInterestPics this}}
                   <img class="project-icon" src="{{this}}" align='middle'/>
                   {{/each}}
-              </div>
-
+                </div>
         </row>
       </div>
 

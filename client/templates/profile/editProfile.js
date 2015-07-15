@@ -1,16 +1,79 @@
 Template.editProfile.rendered = function(){
 //  Meteor.subscribe('Projects');
-//  Meteor.subscribe('UserProfiles');
+	var me = Meteor.user();
+	Meteor.subscribe('UserProfiles');
 //  Meteor.subscribe("Companies");
+// var user = Meteor.user();
 
 	$('document').ready(function(){
-
 
 		//looks shit
 	//	 $('[data-toggle="tooltip"]').tooltip();
 	});
 };
 
+Template.editProfile.helpers({
+	myProfile: function(){
+		var me = Meteor.user();
+		Meteor.subscribe('UserProfiles');
+		var myProfile = UserProfiles.findOne({loginEmail:me.emails[0].address});
+
+        if (myProfile == null)
+				{
+					myProfile = UserProfiles.insert({loginEmail:me.emails[0].address});
+				}
+        return myProfile;
+      }
+,
+
+	myCompanies: function(){
+		Meteor.subscribe('Companies');
+		var me = Meteor.user();
+		var myCompanies = Companies.find({employees: {$in : [me.emails[0].address]}});
+
+			// if (myProfile == null)
+			// {
+			// 	myProfile = UserProfiles.insert({loginEmail:me.email[0].address});
+			// }
+			return myCompanies;
+		},
+
+	myProjects: function(e){
+		Meteor.subscribe('Projects');
+		var me = Meteor.user();
+		var myProjects = Projects.find({company_id: {$in : [e._id]}});
+
+				// if (myProfile == null)
+				// {
+				// 	myProfile = UserProfiles.insert({loginEmail:me.email[0].address});
+				// }
+				return myProjects;
+			}
+
+
+  // isOwned: function(){
+      // var user = Meteor.user();
+      // var mail = UserProfiles.findOne({loginID:user.emails[0].address});
+			//
+      //   if (this.employees[0] == mail.loginEmail)
+      //   {return true;}
+      //   else
+      //   {return false;}
+      // }
+	});
+
+	Template.UProfile.helpers({
+
+	  // isOwned: function(){
+	  //     var user = Meteor.user();
+	  //     var mail = UserProfiles.findOne({loginID:user.emails[0].address});
+		//
+	  //       if (this.employees[0] == mail.loginEmail)
+	  //       {return true;}
+	  //       else
+	  //       {return false;}
+	  //     }
+		});
 
 Template.addNewCompany.events({
 

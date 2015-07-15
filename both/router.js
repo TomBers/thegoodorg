@@ -91,41 +91,43 @@ Router.map(function() {
 
 
 
-	this.route('/editProfile',
-    {path: '/editProfile', template: 'editProfile',
-    waitOn:function(){
-	Meteor.subscribe("Projects");
-	Meteor.subscribe("Companies");
-      return Meteor.subscribe("UserProfiles");
-    },
-    data: function() {
+  this.route('/editProfile', {path: '/editProfile',template: 'editProfile'});
 
-		var userEmail = ''+Meteor.user().emails[0].address;
-		var user = UserProfiles.findOne({loginEmail:userEmail});
-		if(!user){
-			UserProfiles.insert({loginEmail:userEmail});
-			user = UserProfiles.findOne({loginEmail:userEmail});
-		}
-
-		var c = Companies.find({employees: {$in : [userEmail]}});
-
-		// format data to work with template:
-
-		var cData = [];
-		var count = 0;
-
-		c.forEach(function(row){
-			var newRow = {
-						company:row,
-						project_count:Projects.find({company_id:row._id}).count()
-						};
- 			cData[count] = newRow;
-			count++;
-		});
-		//console.log(cData);
-        return {user:user,companies:cData};
-      }
-    });
+	// this.route('/editProfile',
+  //   {path: '/editProfile', template: 'editProfile',
+  //   waitOn:function(){
+	// Meteor.subscribe("Projects");
+	// Meteor.subscribe("Companies");
+  //     return Meteor.subscribe("UserProfiles");
+  //   },
+  //   data: function() {
+  //   var user = Meteor.user();
+	// 	var userEmail = user.emails[0].address;
+	// 	// var user = UserProfiles.findOne({loginEmail:userEmail});
+	// 	if(!user){
+	// 		// UserProfiles.insert({loginEmail:userEmail});
+	// 		// user = UserProfiles.findOne({loginEmail:userEmail});
+	// 	}
+  //
+	// 	var c = Companies.find({employees: {$in : [userEmail]}});
+  //
+	// 	// format data to work with template:
+  //
+	// 	var cData = [];
+	// 	var count = 0;
+  //
+	// 	c.forEach(function(row){
+	// 		var newRow = {
+	// 					company:row,
+	// 					project_count:Projects.find({company_id:row._id}).count()
+	// 					};
+ // 			cData[count] = newRow;
+	// 		count++;
+	// 	});
+	// 	//console.log(cData);
+  //       return {user:user,companies:cData};
+  //     }
+  //   });
 
 
       this.route('/interest', {

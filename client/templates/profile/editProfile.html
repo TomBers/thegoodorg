@@ -1,26 +1,35 @@
 <template name="editProfile">
 	<body style="margin:60px 15px 0px 15px;">
 
-{{> autoformModals}}
-<div class="my_row">
-<h3><div class="col-md-6" align="left">My Profile:</div></h3>
-</div>
-<br>
+<!-- {{> autoformModals}} -->
 <div class="my_row" style="text-align:left">
-<div class="col-md-6">
-{{> quickForm collection="UserProfiles" id="UserProfiles" type="update" doc=this.user omitFields="loginEmail,isAdmin" autosave=true autosaveOnKeyup=true}}
+
+{{#with myProfile}}
+
+<div class="col-md-4">
+<!-- {{> quickForm collection="UserProfiles" id="UserProfiles" type="update" doc=this.user omitFields="loginEmail,isAdmin,registerAs" autosave=true autosaveOnKeyup=true}} -->
+
+<!-- test: {{user._id}} -->
+{{> UProfile this}}
+
 </div>
 <div class="col-md-6">
-	<h4>My Details:</h4>
-    <h6>Name: {{user.name}}</h6>
-    <img src="{{user.user_photo}}" class="img-circle" alt="{{user.name}}" width="100" height="100">
-    <h6>Email: {{user.loginID}}</h6>
-    <h6>Registered As: {{user.registerAs}}</h6>
-    <h6>Contact Me?: {{user.contact_bool}}</h6>
-    <h6>Telephone: {{user.contact_num}}</h6>
-    <h6>Role: {{user.user_title}}</h6>
+
+		<legend>View Profile:</legend>
+
+    <h6>Name: {{name}}</h6>
+    <img src="{{user_photo}}" class="img-circle" alt="{{user.name}}" width="100" height="100">
+    <h6>Email: {{loginEmail}}</h6>
+    <h6>Registered As: {{registerAs}}</h6>
+    <h6>Contact Me?: {{contact_bool}}</h6>
+    <h6>Telephone: {{contact_num}}</h6>
+    <h6>Role: {{user_title}}</h6>
 
  </div>
+
+
+{{/with}}
+
  </div>
 <br>
 
@@ -28,30 +37,67 @@
 
 	<div class="col-md-6" align="left">
 		<legend>	Manage My Companies:</legend>
-		{{> addNewCompany}}
+	</div>
+
+	<div class="col-md-3" align="left">
+		<legend>	Manage My Projects:</legend>
 	</div>
 
 </div>
 
 <br>
-  {{#each companies}}
+
+  {{#each myCompanies}}
 	<div>
-	<a href='/editCompany/{{company._id}}' class="darkOut-OnOver editCompany" data-toggle="tooltip" title="Click to edit">
-	<div class="my_row custombox">
-		<div class="col-md-10">
-			{{> companyHeader}}
+
+	<div class="my_row">
+		<a href='/editCompany/{{_id}}' class="darkOut-OnOver editCompany" data-toggle="tooltip" title="Click to edit">
+		<!-- <div class="my_row custombox"> -->
+
+		<div class="col-md-6">
+
+			<div class="custombox" style="display:inline-block; min-height:120px">
+
+				<div style='width:200px; display:inline-block;float:left; align:middle'>
+					<center>
+						<img src="{{logo}}" align=left style='height:auto; width:auto;max-height:150px;'>
+					</center>
+				</div>
+
+				<div style='max-width:800px; margin:0 0 0 50px; display:inline-block;float:left'>
+					<txt200>{{name}}</txt200> <br>
+					<txt100><i>{{hline}}</i></txt100>
+				</div>
+
+			</div>
+
 		</div>
-		<div class="col-md-1 customboxInner">
-			Project Count:<br>
-			{{project_count}}
-		</div>
+
+		</a>
+
+			{{#each myProjects this}}
+
+			<a href='/editProject/{{_id}}' class="darkOut-OnOver editCompany" data-toggle="tooltip" title="Click to edit">
+			<div class="col-md-3 customboxInner" >
+
+				<span class="glyphicon glyphicon-paperclip" style='padding:0 10px 0 10px;color:#07c;'></span><span>{{hline}}</span><br>
+				<br>
+
+			</div>
+			</a>
+			{{/each}}
+
 	</div>
-	</a>
-	{{> quickRemoveButton collection="Companies" _id=company._id class="btn btn-danger"}}
+
 </div>
 
 	<br>
   {{/each}}
+
+	{{> addNewCompany}}
+
+	<br>
+
 </body>
 </template>
 

@@ -1,0 +1,41 @@
+
+
+
+<template name="UProfile">
+
+  {{#autoForm collection="UserProfiles" id="editProfileForm" doc=this type="update" autosave=true}}
+  <!-- <legend>Add something</legend> -->
+
+  <div style="text-align:left;">
+
+    <fieldset>
+      <legend>Edit Profile</legend>
+
+      {{> afQuickField name='name' placeholder='your first name + last name' autofocus=''}}
+      {{> afQuickField name='user_employer' placeholder="what company do you work for ?" }}
+      {{> afQuickField name='user_title' placeholder="what's your role ?" }}
+      {{> afQuickField name='user_photo' placeholder='add a link to your profile pic'}}
+
+
+      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseContact">Contact options</button>
+        <div id="collapseContact" class="collapse out">
+
+          {{> afQuickField name='loginEmail' placeholder='your contact email address' }}
+          {{> afQuickField name='contact_num' placeholder='your contact telephone number'}}
+          {{> afQuickField name='contact_bool' }}
+          {{> afQuickField name='mailout_monthly' }}
+          {{> afQuickField name='mailout_updates' }}
+
+        </div>
+      </div>
+
+
+  </fieldset>
+
+    </div>
+
+  {{/autoForm}}
+
+
+</template>

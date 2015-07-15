@@ -2,10 +2,11 @@
 
   {{#autoForm collection="Companies" id="insertCompany" template="bootstrap3" doc=this type="update" operation=insert autosave=true}}
 
+  <legend style='text-align:middle;'>Edit Company</legend>
+
   <div style="text-align:left;">
 
     <fieldset>
-      <!-- <legend>Add something</legend> -->
       <!-- basic -->
       {{> afQuickField name='name' placeholder='company name' autofocus=''}}
       {{> afQuickField name='hline' placeholder='company headline' }}
@@ -68,12 +69,15 @@
         </div>
       </div>
 
-
-
     </fieldset>
 
   </div>
 
   {{/autoForm}}
+
+  <br>
+  <span style='float:left;'>
+    {{> quickRemoveButton collection="Companies" _id=this class="btn btn-danger"}}
+  </span>
 
 </template>

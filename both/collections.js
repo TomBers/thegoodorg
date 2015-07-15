@@ -49,7 +49,12 @@ UserProfiles.allow({
 });
 UserProfiles.attachSchema(new SimpleSchema({
   loginEmail:   {type: String,label: "Login mail", max: 200, optional: true },
-  name:   {type: String,label: "Full Name", max: 200, optional: true, defaultValue:'First Name, Last Name' },
+  name:   {type: String,label: "Full Name", max: 200, optional: true },
+
+  //used on project cards
+  user_employer:{type:String, label:"Your company name", optional:true, max:100},
+  user_title:{type:String, label:"Your role within company", optional:true, max:100},
+  user_photo:{type:String, label:"Profile photo URL", optional:true},
 
   registerAs:  {type: String, label: "Register As:", optional: false, defaultValue:'Individual',
               allowedValues: [
@@ -61,11 +66,8 @@ UserProfiles.attachSchema(new SimpleSchema({
   is_admin:  {type: Boolean, label: "is Admin?", defaultValue: false, autoform: {omit: true} },
 
   contact_bool:  {type: Boolean, label: "Contact Me ?", defaultValue: true},
-  contact_num:  {type: String,label: "Contact Telephone", max: 200, optional: true },
+  contact_num:  {type: String,label: "Contact Telephone number", max: 200, optional: true },
 
-  //used on project cards
-  user_photo:{type:String, label:"Profile photo URL", optional:true, defaultValue:"...add link to profile pic..."},
-  user_title:{type:String, label:"Your role within company", optional:true, defaultValue:"...current role..."},
   /*user_headline:{type:String, label:"Personal headline", optional:true, max:140, defaultValue:"...in 140 characters or less..."},*/
 
   // other ... added for future functionality
@@ -254,7 +256,7 @@ Projects.attachSchema(new SimpleSchema({
 
 
   // interactions: {type: [String],optional: true, label: 'Initiaitves(s) your project serves : (multi-select: CTRL+SELECT)',
-  interactions: {type: [String],optional: true, label: 'Initiaitves(s)',
+  interactions: {type: [String],optional: true, label: 'Initiaitves(s)',maxCount:4,
    autoform: {
      type: "select-multiple",
      options: function () {

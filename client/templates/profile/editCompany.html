@@ -11,9 +11,6 @@
 
 {{#if isOwned}}
 <div class="editCompany">
-	<div class="row">
-		<h3><div class="col-md-6" align="left">Company details:</div></h3>
-	</div>
 	<br>
 	<div class="row">
 		<div class="col-md-4">
@@ -21,7 +18,12 @@
     {{> updateCompanyForm this.company}}
 		</div>
 		<div class="col-md-8">
+        <legend style='text-align:middle;'>View Company
+          <a type="button" class="btn btn-success btn-md" id='toMyProfile' href="/editProfile" style='float:right;'>Back to My Profile</a>
+        </legend>
+
 			<div id="view_company" disabled="true" class="editCompany darkOut-OnOver" data-toggle="tooltip" title="Edit me on the left.">
+
 
         {{> companyHeader}}
       	{{> companyAbout}}
