@@ -7,67 +7,45 @@
   <div style="text-align:left;">
 
     <fieldset>
-      <!-- basic -->
-      {{> afQuickField name='name' placeholder='company name' autofocus=''}}
-      {{> afQuickField name='hline' placeholder='company headline' }}
-      {{> afQuickField name='about' placeholder='tell us a bit about what you do' }}
-      {{> afQuickField name='logo' placeholder='http://your.company.logo here' }}
-      {{> afQuickField name='industry' placeholder='' }}
-
-      <span>
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseMultiM">Multimedia items</button>
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseLoc">Location items</button>
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseReps">Company representatives</button>
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseNews">News items</button>
-      </span>
-
-      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
-        <!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseMultiM">Multimedia items</button> -->
-        <div id="collapseMultiM" class="collapse out">
-
+      
+      <ul class="nav nav-pills">
+		<li class="active"><a data-toggle="pill" href="#home">Details</a></li>
+		<li><a data-toggle="pill" href="#collapseMultiM">Photos & Videos</a></li>
+		<li><a data-toggle="pill" href="#collapseLoc">Where we are</a></li>
+		<li><a data-toggle="pill" href="#collapseReps">Representatives</a></li>
+		<li><a data-toggle="pill" href="#collapseNews">Our News</a></li>
+      </ul>
+	  <div class="tab-content">
+		<div id="home" class="tab-pane fade in active">
+			<!-- basic -->
+		  {{> afQuickField name='name' placeholder='company name' autofocus=''}}
+		  {{> afQuickField name='hline' placeholder='company headline' }}
+		  {{> afQuickField name='about' placeholder='tell us a bit about what you do' }}
+		  {{> afQuickField name='logo' placeholder='http://your.company.logo here' }}
+		  {{> afQuickField name='industry' placeholder='' }}
+		</div>
+		<div id="collapseMultiM" class="tab-pane fade">
           <!-- multimedia items -->
           {{> afQuickField name='url' placeholder='link to your website' }}
 
           {{> afQuickField name='img' placeholder='' }}
           {{> afQuickField name='youtubeLink' placeholder='in the format >> https://www.youtube.com/embed/xXxxXXxxxXXX pls' }}
-
-          <hr>
-
-        </div>
-      </div>
-
-      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
-        <!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseLoc">Location items</button> -->
-        <div id="collapseLoc" class="collapse out">
-
+		</div>
+		<div id="collapseLoc" class="tab-pane fade">
           <!-- location items -->
           {{> afQuickField name='addr' placeholder='' }}
           {{> afQuickField name='loc' placeholder='' }}
-
-        </div>
-      </div>
-
-
-      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
-        <!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseReps">Company representatives</button> -->
-        <div id="collapseReps" class="collapse out">
-
+		</div>
+		<div id="collapseReps" class="tab-pane fade">
           <!-- admin employees -->
           {{> afQuickField name='employees' placeholder='' }}
-
         </div>
-      </div>
-
-      <div class="container" style='margin: 0 0 10px 0; padding: 0 0 0 0;'>
-        <!-- <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapseNews">News items</button> -->
-        <div id="collapseNews" class="collapse out">
-
+		<div id="collapseNews" class="tab-pane fade">
           <!-- news items -->
           {{> afQuickField name='twitter' placeholder='@Twitter' }}
           {{> afQuickField name='newslinks' placeholder='...www.info-here.co...' }}
-
         </div>
-      </div>
+	   </div>
 
     </fieldset>
 

@@ -323,3 +323,33 @@ p{
     /*width: 100%;    height: auto;*/
     /*min-height: 100%;    min-width: 1024px;*/
     position: fixed; top: 0;    left: 0;}
+
+	
+/* tabs*/
+.tab-content{
+	border: 1px solid #ccc;
+	padding: 10px;
+	position: relative;
+	top: -1px;
+}
+
+.nav-pills > li > a {
+	border: 1px solid #ccc;
+    border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px; 
+	left: 3px;
+    margin-left: -3px;
+	position: relative;
+	color: #000000;
+	 background-color: #D6D6D6;
+}
+
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    background-color: #eeeeee;
+    color: #000000;
+	border-bottom: 1px solid transparent;
+	 z-index: 1;
+}
