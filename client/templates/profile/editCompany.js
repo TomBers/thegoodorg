@@ -55,7 +55,19 @@ Template.editCompany.helpers({
 
   linkRepresentative: function() {
         return UserProfiles.findOne({"loginEmail":this.employees[0]});
+      },
+	  
+	  
+	  
+	  beforeRemove: function () {
+    return function (collection, id) {
+   //   var doc = collection.findOne(id);
+      if (confirm("So you want to delete this Project?")) {
+        this.remove();
+       // Router.go('/editProfile');
       }
+    };
+  }
 });
 
 

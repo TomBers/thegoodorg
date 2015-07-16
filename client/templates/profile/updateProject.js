@@ -1,7 +1,15 @@
 
 
-Template.addNewProject.helpers({
-
+Template.updateProjectForm.helpers({
+	beforeRemove: function () {
+    return function (collection, id) {
+   //   var doc = collection.findOne(id);
+      if (confirm("So you want to delete this Project?")) {
+        this.remove();
+        Router.go('/editProfile');
+      }
+    };
+  }
 });
 
 

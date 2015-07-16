@@ -24,4 +24,17 @@ Template.updateCompanyForm.rendered = function(){
 	
 //	console.log(x[0].value);
 
-}
+};
+
+
+Template.updateCompanyForm.helpers({
+	beforeRemove: function () {
+    return function (collection, id) {
+   //   var doc = collection.findOne(id);
+      if (confirm("So you want to delete this Company?")) {
+        this.remove();
+        Router.go('/editProfile');
+      }
+    };
+  }
+});
