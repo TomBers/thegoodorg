@@ -30,7 +30,7 @@
 <template name="projectHeader">
 
     <div  class="col-sm-2" style='width:200px;min-height:120px; margin:0 0 0 0; display:inline-block;float:left; text-align:left;'>
-
+    <br>
     <span class="glyphicon glyphicon-calendar" style='padding:0 10px 0 10px;color:#E56717;'></span><txt100 style="color:grey;">Project Dates:</txt100>
     <br>
     <txt75> End   : <strong style='color:grey;'>{{formatDate endDate}}</strong></txt75><br>
@@ -53,20 +53,20 @@
 <template name="projectHdrBtns">
   <div class="col-sm-2" style='float:right;'>
 
-    <br>
-    <a type="button" class="btn btn-info btn-md btn-block" id='moreInfo' href="/company2/{{linkCompany._id}}">Explore {{linkCompany.name}}</a>
+    <!-- <br> -->
+    <a type="button" class="btn btn-info btn-md btn-block" id='moreInfo' href="/company2/{{linkCompany._id}}">Explore <br> {{linkCompany.name}}</a>
     <br>
 
   	  {{#if user}}
 
         {{> autoformModals}}
 
-        {{#afModal class="btn btn-success btn-block" collection="ContactReqs" operation="insert" omitFields="project,from,to" formId="makeContactReq"}}
+        {{#afModal class="btn btn-success btn-md btn-block" collection="ContactReqs" operation="insert" omitFields="project,from,to" formId="makeContactReq"}}
           Request Callback
         {{/afModal}}
 
   	  {{else}}
-  	   <div class="btn btn-success btn-block"><txt75>Please Sign in to Request Callback</txt75></div>
+  	   <div class="btn btn-success btn-md btn-block"><txt75>Please Sign in to Request Callback</txt75></div>
   	  {{/if}}
 
     </div>

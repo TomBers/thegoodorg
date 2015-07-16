@@ -89,44 +89,87 @@ Router.map(function() {
   }
   });
 
+  this.route('/editProfile',
+    {path: '/editProfile', template: 'editProfile',
+    waitOn:function(){
+	    Meteor.subscribe("Projects");
+	    Meteor.subscribe("Companies");
+      return Meteor.subscribe("UserProfiles");
+    },
+    data: function() {
 
+		var userEmail = ''+Meteor.user().emails[0].address;
+		var user = UserProfiles.findOne({loginEmail:userEmail});
+		if(!user){
+			UserProfiles.insert({loginEmail:userEmail});
+			user = UserProfiles.findOne({loginEmail:userEmail});
+		}
 
-  this.route('/editProfile', {path: '/editProfile',template: 'editProfile'});
+		var c = Companies.find({employees: {$in : [userEmail]}});
+
+		// format data to work with template:
+
+		var cData = [];
+		var count = 0;
+
+		c.forEach(function(row){
+			var newRow = {
+						company:row,
+						project_count:Projects.find({company_id:row._id}).count()
+						};
+ 			cData[count] = newRow;
+			count++;
+		});
+		//console.log(cData);
+        return {user:user,companies:cData};
+      }
+    });
+
+  // this.route('/editProfile', {path: '/editProfile',template: 'editProfile'});
 
 	// this.route('/editProfile',
   //   {path: '/editProfile', template: 'editProfile',
   //   waitOn:function(){
-	// Meteor.subscribe("Projects");
-	// Meteor.subscribe("Companies");
-  //     return Meteor.subscribe("UserProfiles");
+	// // Meteor.subscribe("Projects");
+	// // Meteor.subscribe("Companies");
+  //     // var me = Meteor.user()
+  //     // return Meteor.subscribe("UserProfiles",Meteor.Meteor.userId());
+  //   return Meteor.user();
   //   },
   //   data: function() {
-  //   var user = Meteor.user();
-	// 	var userEmail = user.emails[0].address;
-	// 	// var user = UserProfiles.findOne({loginEmail:userEmail});
-	// 	if(!user){
-	// 		// UserProfiles.insert({loginEmail:userEmail});
-	// 		// user = UserProfiles.findOne({loginEmail:userEmail});
-	// 	}
-  //
-	// 	var c = Companies.find({employees: {$in : [userEmail]}});
-  //
-	// 	// format data to work with template:
-  //
-	// 	var cData = [];
-	// 	var count = 0;
-  //
-	// 	c.forEach(function(row){
-	// 		var newRow = {
-	// 					company:row,
-	// 					project_count:Projects.find({company_id:row._id}).count()
-	// 					};
- // 			cData[count] = newRow;
-	// 		count++;
-	// 	});
+  //     var user;
+  //     user = Meteor.user();
+		// var userEmail = user.emails[0].address;
+		// var user = UserProfiles.findOne({loginEmail:userEmail});
+		// if(!user){
+			// UserProfiles.insert({loginEmail:userEmail});
+			// user = UserProfiles.findOne({loginEmail:userEmail});
+		// }
+
+		// var c = Companies.find({employees: {$in : [userEmail]}});
+    //
+		// // format data to work with template:
+    //
+		// var cData = [];
+		// var count = 0;
+
+		// c.forEach(function(row){
+		// 	var newRow = {
+		// 				company:row,
+		// 				project_count:Projects.find({company_id:row._id}).count()
+		// 				};
+ 	// 		cData[count] = newRow;
+		// 	count++;
+		// });
 	// 	//console.log(cData);
-  //       return {user:user,companies:cData};
-  //     }
+  //       return {user:user};
+  //     },
+  //
+  //     action : function () {
+  //   if (this.ready()) {
+  //     this.render();
+  //   }
+  // }
   //   });
 
 

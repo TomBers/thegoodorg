@@ -1,7 +1,9 @@
 Template.editProfile.rendered = function(){
 //  Meteor.subscribe('Projects');
-	var me = Meteor.user();
-	Meteor.subscribe('UserProfiles');
+	// var me = Meteor.user();
+	// Meteor.subscribe('UserProfiles');
+	// var myProfile = UserProfiles.findOne({loginEmail:me.emails[0].address});
+	// Session.set('user', user);
 //  Meteor.subscribe("Companies");
 // var user = Meteor.user();
 
@@ -13,16 +15,21 @@ Template.editProfile.rendered = function(){
 };
 
 Template.editProfile.helpers({
-	myProfile: function(){
-		var me = Meteor.user();
-		Meteor.subscribe('UserProfiles');
-		var myProfile = UserProfiles.findOne({loginEmail:me.emails[0].address});
-
-        if (myProfile == null)
-				{
-					myProfile = UserProfiles.insert({loginEmail:me.emails[0].address});
-				}
-        return myProfile;
+	resetMyProfile: function(){
+		// var me = Meteor.user();
+		// Meteor.subscribe('UserProfiles');
+		// // var myProfile = UserProfiles.findOne({loginEmail:me.emails[0].address});
+		// var myProfile = UserProfiles.findOne({loginEmail:Meteor.user().emails[0].address});
+		//
+    //     if (myProfile == null)
+		// 		{
+		// 			myProfile = UserProfiles.insert({loginEmail:me.emails[0].address});
+		// 		}
+    //     return myProfile;
+    //   }
+		Meteor.subscribe("Users");
+		console.log('hello');
+		    // return Session.get('user');
       }
 ,
 

@@ -4,15 +4,19 @@
 <!-- {{> autoformModals}} -->
 <div class="my_row" style="text-align:left">
 
-{{#with myProfile}}
+<!-- {{#if user}} {{else}} {{resetMyProfile}} {{/if}} -->
+<!-- {{#if currentUser}} {{else}}
+	{{#with resetMyProfile}}{{/with}}
+{{/if}} -->
+
+{{#with user}}
 
 <div class="col-md-4">
-<!-- {{> quickForm collection="UserProfiles" id="UserProfiles" type="update" doc=this.user omitFields="loginEmail,isAdmin,registerAs" autosave=true autosaveOnKeyup=true}} -->
 
-<!-- test: {{user._id}} -->
-{{> UProfile this}}
+	{{> UProfile this}}
 
 </div>
+
 <div class="col-md-6">
 
 		<legend>View Profile:</legend>
@@ -23,12 +27,14 @@
     <h6>Registered As: {{registerAs}}</h6>
     <h6>Contact Me?: {{contact_bool}}</h6>
     <h6>Telephone: {{contact_num}}</h6>
+		<h6>Company: {{user_employer}}</h6>
     <h6>Role: {{user_title}}</h6>
 
  </div>
 
 
 {{/with}}
+
 
  </div>
 <br>

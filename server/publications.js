@@ -10,6 +10,10 @@ Meteor.publish("Categories", function () {
   return Categories.find();
 });
 
+// Meteor.publish("Users", function () {
+//   return Users.find();
+// });
+
 Meteor.publish("UserProfiles", function () {
   return UserProfiles.find();
 });

@@ -4,13 +4,12 @@
   <body style="margin:70px 15px 0px 15px;">
 
  <div id="filter_all">
-    <div id="filter_graphic" class="main_body" align='middle' style="margin-bottom:5px;"> 
+    <div id="filter_graphic" class="main_body" align='middle' style="margin-bottom:5px;">
 
 	<div class="my_row" style="padding-top:2px">
-	<span align="left" class="glyphicon glyphicon-th-list" aria-hidden="true"  style="float:left;width:40px;height:40px"></span>
-	
-	
-	    <img align="middle" class="small-filter-icon" src="/images/ENV-Browse.jpg">
+	   <span align="left" class="glyphicon glyphicon-menu-down" aria-hidden="true"  style="float:left;width:40px;height:40px"></span>
+
+	  <img align="middle" class="small-filter-icon" src="/images/ENV-Browse.jpg">
 		<img align="middle" class="small-filter-icon" src="/images/HEALTH-Browse.jpg">
 		<img align="middle" class="small-filter-icon" src="/images/RIGHTS-Browse.jpg">
 		<span style="padding-left:40px"></span>
@@ -21,10 +20,10 @@
 		<img align="middle" class="small-filter-icon" src="/images/project-nav-one-img-five.png">
 		<img align="middle" class="small-filter-icon" src="/images/project-nav-one-img-six.png">
 		<img align="middle" class="small-filter-icon" src="/images/project-nav-one-img-seven.png">
-		
-	<a type="button" class="btn btn-info btn-sm" id='clearAllSelections' style='float:right; margin:0 10px 10px 0; align:middle; '>Clear All</a>	
+
+	<a type="button" class="btn btn-info btn-sm" id='clearAllSelections' style='float:right; margin:0 10px 10px 0; align:middle; '>Clear All</a>
 	</div>
-	  
+
       <div class="container-smaller" align = 'middle'>
         <div class="container relative textAlignCenter">
 
@@ -117,7 +116,7 @@
   <div class="custombox" style ="padding:0; margin:0;padding-left:5px;">
 	<div class="my_row">
 		<div class="col-sm-1" style="width: 75px; padding-right: 5px; padding-left: 5px;">
-			Cause : 
+			Cause :
 		</div>
 		<div class="col-sm-11" style="padding-right: 0px; padding-left: 0px;">
 			{{#each cause}}  <span class="filter_tag">&nbsp;&nbsp;&nbsp;  {{this}}   <img class="remove-filter" src="/images/close-tag.png" title="Remove" remove-cause="{{this}}">  </span> {{/each}}
@@ -129,7 +128,7 @@
 		<div class="col-sm-1" style="width: 75px; padding-right: 5px; padding-left: 5px;">
 			Interest :
 		</div>
-		<div class="col-sm-11" style="padding-right: 0px; padding-left: 0px;">			
+		<div class="col-sm-11" style="padding-right: 0px; padding-left: 0px;">
 			{{#each interest}}  <span class="filter_tag">&nbsp;&nbsp;&nbsp; {{this}}   <img class="remove-filter" src="/images/close-tag.png" title="Remove" remove-interest="{{this}}">  </span> {{/each}}
 		</div>
 	</div>
