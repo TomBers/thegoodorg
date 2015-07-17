@@ -238,19 +238,49 @@ Projects.attachSchema(new SimpleSchema({
   categories: {type: [String], optional: true, label:'Cause(s) ',
     autoform: {
       type: "select-multiple",
-      options: function () {
-        var opts = [];
-	//	 console.log(Categories.find().fetch());
-         Categories.find().forEach(function(c){
-	//	 console.log(c);
-		 var index;
-		 for (index = 0; index < c.subcat.length; index++) {
-			var str = c.cat + " - " + c.subcat[index]
-			opts.push({label:str,value:c.subcat[index]});
-          }
-		});
-        return opts;
-      }
+  //     options: function () {
+  //       var opts = [];
+	// //	 console.log(Categories.find().fetch());
+  //        Categories.find().forEach(function(c){
+	// //	 console.log(c);
+	// 	 var index;
+	// 	 for (index = 0; index < c.subcat.length; index++) {
+	// 		var str = c.cat + " - " + c.subcat[index]
+	// 		opts.push({label:str,value:c.subcat[index]});
+  //         }
+	// 	});
+  //       return opts;
+  //     }
+
+  options: function () {
+    var tmp = [
+
+      {label:'-- Environment --',value:''},
+      {label:'Green Technology',value:'Green Technology'},
+      {label:'Energy Management',value:'Energy Management'},
+      {label:'Sustainable Transport',value:'Sustainable Transport'},
+      {label:'Sustainable Products',value:'Sustainable Products'},
+      {label:'',value:''},
+
+      {label:'-- Health --',value:''},
+      {label:'Fitness',value:'Fitness'},
+      {label:'Mental Health',value:'Mental Health'},
+      {label:'Rehabilitation',value:'Rehabilitation'},
+      {label:'Seniors',value:'Seniors'},
+      {label:'Special Needs',value:'Special Needs'},
+      {label:'',value:''},
+
+      {label:'-- Humanity --',value:''},
+      {label:'Education',value:'Education'},
+      {label:'Community',value:'Community'},
+      {label:'Skills & Employment',value:'Skills & Employment'},
+      {label:'Food & Shelter',value:'Food & Shelter'},
+      {label:'Accessibility',value:'Accessibility'}
+
+      ];
+    return tmp;
+  }
+
    }
   },
 

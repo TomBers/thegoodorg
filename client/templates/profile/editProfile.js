@@ -27,7 +27,7 @@ Template.editProfile.helpers({
 		// 		}
     //     return myProfile;
     //   }
-		Meteor.subscribe("Users");
+		// Meteor.subscribe("Users");
 		console.log('hello');
 		    // return Session.get('user');
       }

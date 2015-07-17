@@ -180,6 +180,19 @@
     {{/if}}
 
 
+    <!-- project causes -->
+    {{#if categories}}
+      <div class="custombox" style='float:left;width:450px;min-height:100px;text-align:left;'>
+        <span class="glyphicon glyphicon-heart" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Causes this project serves:</txt150><br>
+        <br>
+        {{#each categories}}
+        <span class="glyphicon glyphicon-globe" style='padding:0 10px 0 50px; '></span><txt150 >{{this}}</txt150><br>
+            <!-- <txt200>         {{this}}        </txt200><br> -->
+        {{/each}}
+        </div>
+    {{/if}}
+
+
 </template>
 
 <template name="projectPanelRight">
