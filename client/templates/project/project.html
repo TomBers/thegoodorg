@@ -136,14 +136,44 @@
 				{{/with}}
 			{{else}}
 				<div class='my_row projectAddressManual'>
-				{{company.addr}}
-				<br>
-				{{company.loc}}
+				{{#if city}}
+					{{city}}
+					<br>
+				{{/if}}
+				{{#if country}}
+					{{country}}
+					<br>
+				{{/if}}
+				{{postcode}}
 				</div>
 			{{/if}}
 
 		<div class="clear"></div>
     </div>
+	{{else}}
+		 {{#if city}}
+				<div class="custombox" style='float:left;width:450px;min-height:200px;text-align:left;'>
+						<span class="glyphicon glyphicon-map-marker" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Project Location:</txt150><br>
+						<div class='my_row projectAddressManual'>
+							{{city}}
+							<br>
+							{{country}}
+						</div>
+						<div class="clear"></div>
+				</div>
+		  {{else}}
+				{{#if linkCompany.loc}}
+					<div class="custombox" style='float:left;width:450px;min-height:200px;text-align:left;'>
+						<span class="glyphicon glyphicon-map-marker" style='padding:0 10px 0 10px;color:#E56717;'></span><txt150 style="vertical-align:50%;">Company Location:</txt150>
+						<div class='my_row companyAddressManual'>
+						{{linkCompany.addr}}
+						<br>
+						{{linkCompany.loc}}
+						</div>
+						<div class="clear"></div>
+					</div>
+				{{/if}}
+		  {{/if}}
     {{/if}}
 
     <!-- impact -->
