@@ -1,6 +1,7 @@
 Template.project.rendered = function(){
 	Meteor.subscribe('UserProfiles');
 	Meteor.subscribe('Companies');
+	Meteor.subscribe('ContactReqs');
 	Session.set('company_id', this.data.company_id);
 	Session.set('projectId', this.data._id);
 }
@@ -106,11 +107,23 @@ Template.projectPanelRight.helpers({
 var requestHook = {
   before: {
     insert: function(doc) {
-			doc.from = Meteor.user()._id;
-			doc.to = Session.get('company_id');
+			doc.from = Meteor.user().emails[0].address;
+			 var cmpy = Companies.findOne({"_id":Session.get('company_id')});
+			doc.to = UserProfiles.findOne({"loginEmail":cmpy.employees[0]}).loginEmail;
 			doc.project = Session.get('projectId');
 			console.log(doc);
-      return doc;
+			
+			var count = ContactReqs.find({project:doc.project,from:doc.from,to:doc.to}).count();
+			console.log(count);
+			if(count==0){
+				return doc;
+			}else{
+				if(confirm('You have already contacted this company regarding this project.\nDo you want to send another message?')){
+					return doc;
+				}else{
+					return false;
+				}
+			}
     }
   }
 }

@@ -18,6 +18,10 @@ Meteor.publish("UserProfiles", function () {
   return UserProfiles.find();
 });
 
+Meteor.publish("ContactReqs", function () {
+  return ContactReqs.find();
+});
+
 Meteor.publish("Admin1", function () {
   return Admin1.find();
 });
