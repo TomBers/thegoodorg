@@ -64,7 +64,8 @@ Template.companyVideo.rendered = function(){
 
 Template.companyLocation.rendered = function(){
 	Session.set('LatLng', false);
-	Meteor.call("getLatLngfromAddress", this.data.company.loc, function(error, result){
+	if(this.data.company.loc){
+		Meteor.call("getLatLngfromAddress", this.data.company.loc, function(error, result){
 				   if(error){
 					console.log("error");
 					Session.set('LatLng', false);
@@ -73,6 +74,7 @@ Template.companyLocation.rendered = function(){
 
 				   Session.set('LatLng', result);
 			});
+	}
 }
 
 Template.companyLocation.helpers({

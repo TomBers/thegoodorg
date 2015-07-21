@@ -10,11 +10,16 @@ Meteor.methods({
   },
   getLatLngfromAddress:function(postcode){
     // return postcode;
+	if(!postcode){
+		return false;
+	}
+	
     var url = 'http://api.postcodes.io/postcodes/'+postcode;
     try{
       var res =  HTTP.call("GET", url);
       return {lat:res.data.result.latitude,lng:res.data.result.longitude};
     } catch(e){
+		console.log("Error on postcode lookup for :" + postcode);
       console.log(e);
       return false;
     }

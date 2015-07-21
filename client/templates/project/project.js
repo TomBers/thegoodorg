@@ -60,17 +60,18 @@ Template.projectPanelLeft.helpers({
 
 
 Template.projectPanelCentre.rendered = function(){
-	console.log("error");
 	Session.set('LatLng', false);
-	Meteor.call("getLatLngfromAddress", this.data.postcode, function(error, result){
+	if(this.data.postcode){
+		Meteor.call("getLatLngfromAddress", this.data.postcode, function(error, result){
 				   if(error){
-					console.log("error");
+					console.log("LatLng error");
 					Session.set('LatLng', false);
 					console.log(error);
 				   }
 
 				   Session.set('LatLng', result);
 			});
+	}
 }
 
 Template.projectPanelCentre.helpers({
