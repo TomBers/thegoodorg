@@ -286,7 +286,7 @@ Projects.attachSchema(new SimpleSchema({
 
 
   // interactions: {type: [String],optional: true, label: 'Initiaitves(s) your project serves : (multi-select: CTRL+SELECT)',
-  interactions: {type: [String],optional: true, label: 'Initiaitves(s)',maxCount:4,
+  interactions: {type: [String],optional: true, label: 'Interaction(s)',maxCount:4,
    autoform: {
      type: "select-multiple",
      options: function () {
