@@ -98,29 +98,30 @@ Router.map(function() {
     },
     data: function() {
 
-		var userEmail = ''+Meteor.user().emails[0].address;
-		var user = UserProfiles.findOne({loginEmail:userEmail});
-		if(!user){
-			UserProfiles.insert({loginEmail:userEmail});
-			user = UserProfiles.findOne({loginEmail:userEmail});
-		}
-
-		var c = Companies.find({employees: {$in : [userEmail]}});
-
-		// format data to work with template:
-
+		var user;
 		var cData = [];
-		var count = 0;
+		if(Meteor.user()){
+			var userEmail = ''+Meteor.user().emails[0].address;
+			user = UserProfiles.findOne({loginEmail:userEmail});
+			
+			var c = Companies.find({employees: {$in : [userEmail]}});
 
-		c.forEach(function(row){
-			var newRow = {
-						company:row,
-						project_count:Projects.find({company_id:row._id}).count()
-						};
- 			cData[count] = newRow;
-			count++;
-		});
+			// format data to work with template:
+
+			
+			var count = 0;
+
+			c.forEach(function(row){
+				var newRow = {
+							company:row,
+							project_count:Projects.find({company_id:row._id}).count()
+							};
+				cData[count] = newRow;
+				count++;
+			});
 		//console.log(cData);
+		}
+		
         return {user:user,companies:cData};
       }
     });

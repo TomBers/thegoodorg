@@ -6,6 +6,22 @@ Meteor.startup(function() {
 		}
 	}
 
+	Accounts.onCreateUser(function(options, user) {
+	  var userEmail = ''+user.emails[0].address;
+			var userP = UserProfiles.findOne({loginEmail:userEmail});
+			if(!userP){
+			console.log('11- creating userProfile :' + userEmail);
+				UserProfiles.insert({loginEmail:userEmail});
+				userP = UserProfiles.findOne({loginEmail:userEmail});
+			}else{
+				console.log('11-found userProfile :' + userEmail);
+			}
+	  // We still want the default hook's 'profile' behavior.
+	  if (options.profile)
+		user.profile = options.profile;
+	  return user;
+	});
+	
 	
 });
 
