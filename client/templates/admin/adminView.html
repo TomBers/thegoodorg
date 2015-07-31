@@ -8,17 +8,25 @@
 		<li class="active"><a data-toggle="pill" href="#users">Users</a></li>
 		<li><a data-toggle="pill" href="#companies">Companies</a></li>
 		<li><a data-toggle="pill" href="#projects">Projects</a></li>
+		<li><a data-toggle="pill" href="#faq">FAQ</a></li>
     </ul>
 	  
 	<div class="tab-content">
 		<div id="users" class="tab-pane fade in active">
-		{{> reactiveTable collection=userTable settings=userTableSettings}}
+		{{> reactiveTable collection=usersTable settings=usersTableSettings}}
 		</div>
 		
 		<div id="companies" class="tab-pane fade">
+		{{> reactiveTable collection=companiesTable settings=companiesTableSettings}}
 		</div>
 		
 		<div id="projects" class="tab-pane fade">
+		{{> reactiveTable collection=projectsTable settings=projectsTableSettings}}
+
+		</div>
+		
+		<div id="faq" class="tab-pane fade">
+		{{> faqadmin}}
 		</div>
 	</div>
 </div>
