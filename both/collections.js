@@ -86,7 +86,7 @@ UserProfiles.attachSchema(new SimpleSchema({
                 "Individual",
                 "StartUp Representative",
                 "Corporate Representative"]},
-
+				
 	// flag for admin so can edit (administrate) anything
   is_admin:  {type: Boolean, label: "is Admin?", defaultValue: false, autoform: {omit: true} },
 

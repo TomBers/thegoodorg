@@ -5,11 +5,6 @@
 <!-- {{> autoformModals}} -->
 <div class="my_row" style="text-align:left">
 
-<!-- {{#if user}} {{else}} {{resetMyProfile}} {{/if}} -->
-<!-- {{#if currentUser}} {{else}}
-	{{#with resetMyProfile}}{{/with}}
-{{/if}} -->
-
 {{#with user}}
 
 <div class="col-md-4">
@@ -31,6 +26,10 @@
 		<h6>Company: {{user_employer}}</h6>
     <h6>Role: {{user_title}}</h6>
 
+	{{#if isAdmin}}
+		 <h6>Is Admin: {{is_admin}}</h6>
+	{{/if}}
+	
  </div>
 
 
@@ -54,7 +53,7 @@
 
 <br>
 
-  {{#each myCompanies}}
+  {{#each myCompanies user}}
 	<div>
 
 	<div class="my_row">

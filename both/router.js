@@ -40,6 +40,7 @@ Router.map(function() {
   
   this.route('/faq', {path: '/faq',template: 'faq'});
   this.route('/faqadmin', {path: '/faqadmin',template: 'faqadmin'});
+  this.route('/adminview', {path: '/adminview',template: 'adminview'});
 
   this.route('/project', {
     path: '/project/:_id',
@@ -93,7 +94,7 @@ Router.map(function() {
   });
 
   this.route('/editProfile',
-    {path: '/editProfile', template: 'editProfile',
+    {path: '/editProfile/:_id?', template: 'editProfile',
     waitOn:function(){
 	    Meteor.subscribe("Projects");
 	    Meteor.subscribe("Companies");
@@ -102,80 +103,29 @@ Router.map(function() {
     data: function() {
 
 		var user;
-		var cData = [];
 		if(Meteor.user()){
-			var userEmail = ''+Meteor.user().emails[0].address;
-			user = UserProfiles.findOne({loginEmail:userEmail});
-			
-			var c = Companies.find({employees: {$in : [userEmail]}});
+			if(this.params._id){
+				
+				try{
+					Meteor.subscribe('UserProfiles');
+					var admin = Meteor.user();
+					var adminmail = admin.emails[0].address;
+					var adminprofile = UserProfiles.findOne({"loginEmail":adminmail});
+					if(adminprofile.is_admin){
+						user = UserProfiles.findOne({_id:this.params._id});
+					}
+				} catch(e){
+				}
 
-			// format data to work with template:
-
-			
-			var count = 0;
-
-			c.forEach(function(row){
-				var newRow = {
-							company:row,
-							project_count:Projects.find({company_id:row._id}).count()
-							};
-				cData[count] = newRow;
-				count++;
-			});
-		//console.log(cData);
+			}else{
+				var userEmail = ''+Meteor.user().emails[0].address;
+				user = UserProfiles.findOne({loginEmail:userEmail});
+			}
 		}
 		
-        return {user:user,companies:cData};
+        return {user:user};
       }
     });
-
-  // this.route('/editProfile', {path: '/editProfile',template: 'editProfile'});
-
-	// this.route('/editProfile',
-  //   {path: '/editProfile', template: 'editProfile',
-  //   waitOn:function(){
-	// // Meteor.subscribe("Projects");
-	// // Meteor.subscribe("Companies");
-  //     // var me = Meteor.user()
-  //     // return Meteor.subscribe("UserProfiles",Meteor.Meteor.userId());
-  //   return Meteor.user();
-  //   },
-  //   data: function() {
-  //     var user;
-  //     user = Meteor.user();
-		// var userEmail = user.emails[0].address;
-		// var user = UserProfiles.findOne({loginEmail:userEmail});
-		// if(!user){
-			// UserProfiles.insert({loginEmail:userEmail});
-			// user = UserProfiles.findOne({loginEmail:userEmail});
-		// }
-
-		// var c = Companies.find({employees: {$in : [userEmail]}});
-    //
-		// // format data to work with template:
-    //
-		// var cData = [];
-		// var count = 0;
-
-		// c.forEach(function(row){
-		// 	var newRow = {
-		// 				company:row,
-		// 				project_count:Projects.find({company_id:row._id}).count()
-		// 				};
- 	// 		cData[count] = newRow;
-		// 	count++;
-		// });
-	// 	//console.log(cData);
-  //       return {user:user};
-  //     },
-  //
-  //     action : function () {
-  //   if (this.ready()) {
-  //     this.render();
-  //   }
-  // }
-  //   });
-
 
       this.route('/interest', {
         path: '/interest/',

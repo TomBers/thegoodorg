@@ -13,7 +13,10 @@
 
 	<ul class="nav nav-pills">
 		<li class="active"><a data-toggle="pill" href="#home">My Details</a></li>
-		<li><a data-toggle="pill" href="#menu1">Contact Details</a></li>
+		<li><a data-toggle="pill" href="#details">Contact Details</a></li>
+		{{#if isAdmin}}
+		<li><a data-toggle="pill" href="#admin">Admin</a></li>
+		{{/if}}
     </ul>
 	  
 	<div class="tab-content">
@@ -23,12 +26,20 @@
 			{{> afQuickField name='user_title' placeholder="what's your role ?" }}
 			{{> afQuickField name='user_photo' placeholder='add a link to your profile pic'}}
 		</div>
-		<div id="menu1" class="tab-pane fade">
+		<div id="details" class="tab-pane fade">
 			{{> afQuickField name='contact_num' placeholder='your contact telephone number'}}
 			{{> afQuickField name='contact_bool' }}
 			{{> afQuickField name='mailout_monthly' }}
 			{{> afQuickField name='mailout_updates' }}
 		</div>
+		
+		{{#if isAdmin}}
+			<div id="admin" class="tab-pane fade">
+			{{> afQuickField name='is_admin' }}
+			{{> afQuickField name='registerAs' }}
+			{{> afQuickField name='loginEmail' }}
+			</div>
+		{{/if}}
 	</div>  
       
 

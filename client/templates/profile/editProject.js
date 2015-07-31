@@ -1,12 +1,21 @@
+Template.editProject2.rendered = function(){
+	Meteor.subscribe('UserProfiles');
+	Meteor.subscribe('Companies');
+	Meteor.subscribe('Projects');
+}
+
 Template.editProject2.helpers({
 
-  isOwned: function(){
+	  canEditProject: function(){
       var user = Meteor.user();
       var mail = user.emails[0].address;
-        if (this.company.employees.indexOf(mail)>-1)
-        {return true;}
-        else
-        {return false;}
+	  var company = Companies.findOne({"_id":this.company_id});
+        if (company && company.employees.indexOf(mail)>-1){
+			return true;
+		}else{
+			var profile = UserProfiles.findOne({"loginEmail":mail});
+			return profile.is_admin;
+		}
       },
 
     linkRepresentative: function() {
