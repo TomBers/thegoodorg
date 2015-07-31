@@ -48,3 +48,17 @@ Template.registerHelper(
 		return null;
 	}
 });
+
+
+Template.registerHelper(
+"isAdmin", function() {
+	try{
+		Meteor.subscribe('UserProfiles');
+		var user = Meteor.user();
+		var mail = user.emails[0].address;
+		var profile = UserProfiles.findOne({"loginEmail":mail});
+		return profile.is_admin;
+	} catch(e){
+	}
+	return false;
+});

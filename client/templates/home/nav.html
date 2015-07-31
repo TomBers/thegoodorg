@@ -37,6 +37,10 @@
           {{else}}
             {{> layout_loggedout}}
           {{/if}}
+		  
+		   {{#if isAdmin}}
+            <li><a style='color:#c4c4c4;' href="/faqadmin">FAQ Admin</a></li>
+          {{/if}}
 
           <li style='padding-top:14px;padding-right:15px; padding-left:15px; float:right;'>{{> loginButtons}}</li>
 
