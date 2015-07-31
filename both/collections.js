@@ -16,7 +16,32 @@ Examples.allow({
 });
 
 
+/*  FAQ */
+Faq = new Mongo.Collection("faq");
 
+Faq.attachSchema(new SimpleSchema({
+  question: {type: String, label: "Question", max: 500 ,optional:false},
+  answer:   {type: String, label: "Answer", max: 500 ,optional:false, autoform: {rows: 5}},
+  
+  // CRUD...
+  createdAt: {
+    autoform: {omit: true},
+    type: Date,
+    autoValue: function() {
+      if (this.isInsert) {return new Date;}
+      else if (this.isUpsert) {return {$setOnInsert: new Date};}
+      else {        this.unset();      }
+      }
+    }
+}));
+
+Faq.allow({
+  insert: function () { return true; },
+  update: function () { return true; },
+  remove: function () { return true; }
+});
+
+/*  end Categories */
 
 
 

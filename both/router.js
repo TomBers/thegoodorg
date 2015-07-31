@@ -37,6 +37,9 @@ Router.map(function() {
   this.route('/impact', {path: '/impact',template: 'impact'});
 
   this.route('/test', {path: '/test',template: 'test'});
+  
+  this.route('/faq', {path: '/faq',template: 'faq'});
+  this.route('/faqadmin', {path: '/faqadmin',template: 'faqadmin'});
 
   this.route('/project', {
     path: '/project/:_id',

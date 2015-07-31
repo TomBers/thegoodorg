@@ -32,6 +32,10 @@ Meteor.publish("Admin3", function () {
   return Admin3.find();
 });
 
+Meteor.publish("Faq", function () {
+  return Faq.find();
+});
+
 
 Meteor.publishComposite('findMyReqs', function (comp){
   return{
